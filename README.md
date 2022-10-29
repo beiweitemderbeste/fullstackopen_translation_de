@@ -50,3 +50,4 @@ Ihr könnt den Kurs und verwandte Themen in unserer Discordgruppe https://study.
 - [Abschnitt 11 - CI/CD]("Link einfügen")
 - [Abschnitt 12 - Container]("Link einfügen")
 - [Abschnitt 13 - Relationale Datenbanken]("Link einfügen")
+

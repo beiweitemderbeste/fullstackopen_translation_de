@@ -30,7 +30,32 @@ Merkt euch immer die Entwicklerkonsole beim Entwickeln von Webanwendungen geöff
 
 Die Konsole sieht ungefänr so aus:
 
-!["A screenshot of the developer tools open in a browser"](./images/image1.png?raw=true)
+!["A screenshot of the developer tools open in a browser"](./images/part0/part0b_image1.png?raw=true)
+
+> NB: The most important tab is the Console tab. However, in this introduction we will be using the Network tab quite a bit.
+
+Hinweis: Der wichtigste Tab ist der "Console"-Tab. Trotzdem werden wir uns in dieser Einleitung auch mit dem "Network"-Tab beschäftigen.
+
+## HTTP GET
+
+> The server and the web browser communicate with each other using the HTTP protocol. The Network tab shows how the browser and the server communicate.
+
+Der Server und der Browser kommunizieren über HTTP. Der "Network"-Tab zeigt, wie der Browser und der Server kommunizieren.
+
+> When you reload the page (press the F5 key or the ↻ symbol on your browser), and the console will show that two events have happened:
+
+Wenn ihr die Seite erneut ladet (durch das Drücken der F5-Taste oder das ↻ Symbol in eurem Browser), wird die Konsole zeigen, das zwei Ereignisse passiert sind:
+
+> - The browser has fetched the contents of the page studies.cs.helsinki.fi/exampleapp from the server
+
+- Der Browser hat die Inhalte der Webseite vom Server studies.cs.helsinki.fi/exampleapp geladen
+
+> - And has downloaded the image kuva.png
+
+- und auch die Bilddatei kuva.png
+
+!["Screenshot of the developer console showing these two events"](./images/part0/part0b_image2.png?raw=true)
+
 
 
 
