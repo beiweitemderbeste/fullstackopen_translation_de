@@ -6,6 +6,7 @@
 - [Grundlagen von Webapplikationen](#grundlagen-von-webapplikationen)
 - [HTTP GET](#HTTP-GET)
 - [Traditionelle Webanwendungen](#Traditionelle-Webanwendungen)
+- [Anwendungslogik im Browser laufen lassen](#Anwendungslogik-im-Browser-laufen-lassen)
 
 > Fundamentals of Web apps
 
@@ -139,7 +140,7 @@ Der Server hat dieses Dokument irgendwie erstellt. Das Dokument kann eine statis
 
 Der HTML-Quellcode der Hompage lautet wie folgt:
 
-```
+```javascript
 const getFrontPageHtml = (noteCount) => {
   return(`
     <!DOCTYPE html>
@@ -184,3 +185,161 @@ In traditionellen Webanwendungen ist der Browser "dumm". Er lädt nur die HTML-D
 
 Die Beispielanwendung nutzt Node.js mit der Express-Bibliothek. Dieser Kurs erstellt Webserver mit Node.js und Express.
 
+> Running application logic in the browser
+
+## Anwendungslogik im Browser laufen lassen
+
+> Keep the Developer Console open. Empty the console by clicking the 🚫 symbol, or by typing clear() in the console. Now when you go to the notes page, the browser does 4 HTTP requests: 
+
+Lasst die Entwicklerkonsole offen. Löscht sie, indem ihr auf das 🚫 Symbol klickt oder clear() in der Konsole eingebt. Wenn ihr jetzt die "notes"-Seite öffnet, stellt der Browser 4 HTTP-Anfragen:
+
+!["Screenshot of the developer console with the 4 requests visible"](./images/part0/part0b_image8.png?raw=true)
+
+> All of the requests have different types. The first request's type is document. It is the HTML code of the page, and it looks as follows: 
+
+Jede Anfrage hat einen verschiedenen Typen. Der Typ der ersten Anfrage ist "document". Das ist der HTML-Quellcode der Seite und sieht folgendermaßen aus:
+
+!["Detail view of the first request"](./images/part0/part0b_image9.png?raw=true)
+
+> When we compare the page shown on the browser and the HTML code returned by the server, we notice that the code does not contain the list of notes. The head-section of the HTML contains a script-tag, which causes the browser to fetch a JavaScript file called main.js.
+
+Wenn wir die Seite, die im Browser angezeigt wird, mit dem HTML-Quellcode, den der Server ausgegeben hat, vergleichen, sehen wir, dass der Quellcode keine Liste von Notizen enthält. Die Head-Sektion des HTML-Dokuments enthält einen script-Tag, der dafür sorgt, dass der Browser die Javascript-Datei main.js herunterlädt.
+
+> The JavaScript code looks as follows:
+
+Der Javascript-Quellcode sieht folgendermaßen aus:
+
+```javascript
+var xhttp = new XMLHttpRequest()
+
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    const data = JSON.parse(this.responseText)
+    console.log(data)
+
+    var ul = document.createElement('ul')
+    ul.setAttribute('class', 'notes')
+
+    data.forEach(function(note) {
+      var li = document.createElement('li')
+
+      ul.appendChild(li)
+      li.appendChild(document.createTextNode(note.content))
+    })
+
+    document.getElementsByClassName('notes').appendChild(ul)
+  }
+}
+
+xhttp.open('GET', '/data.json', true)
+xhttp.send()
+```
+
+> The details of the code are not important right now, but some code has been included to spice up the images and the text. We will properly start coding in part 1. The sample code in this part is actually not relevant at all to the coding techniques of this course. 
+
+Die Details des Quellcodes sind im Moment nicht wichtig, er wurde eingefügt, um die Bilder und den Text interessanter zu gestalten. Das "richtige" Programmieren geht ab Abschnitt 1 los. Der Beispielquellcode in diesem Abschnitt ist überhaupt nicht wichtig für alles weitere in diesem Kurs.
+
+> Immediately after fetching the script tag, the browser begins to execute the code. 
+
+Direkt nach dem Laden des script-Tags beginnt der Browser den Quellcode auszuführen.
+
+> The last two lines instruct the browser to do an HTTP GET request to the server's address /data.json:
+
+Die letzten zwei Zeilen weisen den Browser an, eine HTTP GET-Anfrage an die Serveradresse /data.json zu stellen:
+
+```
+xhttp.open('GET', '/data.json', true)
+xhttp.send()
+```
+
+> This is the bottom-most request shown on the Network tab. 
+
+Das ist die Serveranfrage, die im Network-Tab ganz unten steht.
+
+> We can try going to the address https://studies.cs.helsinki.fi/exampleapp/data.json straight from the browser:
+
+Wir können die Adresse https://studies.cs.helsinki.fi/exampleapp/data.json direkt im Browser aufrufen:
+
+!["fullstack content"](./images/part0/part0b_image10.png?raw=true)
+
+> There we find the notes in JSON "raw data". By default, Chromium-based browsers are not too good at displaying JSON data. Plugins can be used to handle the formatting. Install, for example, JSONVue on Chrome, and reload the page. The data is now nicely formatted: 
+
+Hier finden wir die Notizen also "rohe JSON-Daten". Chromium-basierte Browser sind nicht gut im Darstellen von JSON-Daten. Daher solltet ihr Firefox installieren, der das von Haus aus kann:
+
+!["Formatted JSON output"](./images/part0/part0b_image11.png?raw=true)
+
+> So, the JavaScript code of the notes page above downloads the JSON-data containing the notes, and forms a bullet-point list from the note contents:
+
+Der Javascriptcode der Notizenseite lädt die JSON-Daten, die die Notizen enthalten und erstellt eine Aufzählungsliste der Notizen:
+
+> This is done by the following code: 
+
+Das wird über folgenden Quellcode erreicht:
+
+```javascript
+const data = JSON.parse(this.responseText)
+console.log(data)
+
+var ul = document.createElement('ul')
+ul.setAttribute('class', 'notes')
+
+data.forEach(function(note) {
+  var li = document.createElement('li')
+
+  ul.appendChild(li)
+  li.appendChild(document.createTextNode(note.content))
+})
+
+document.getElementById('notes').appendChild(ul)
+```
+
+> The code first creates an unordered list with a ul-tag...
+
+Der Quellcode erstellt zuerst eine ungeordnete List mit dem ul-Tag...
+
+```javascript
+var ul = document.createElement('ul')
+ul.setAttribute('class', 'notes')
+```
+
+> ...and then adds one li-tag for each note. Only the content field of each note becomes the contents of the li-tag. The timestamps found in the raw data are not used for anything here. 
+
+... und fügt dann einen li-Tag für jede Notiz hinzu. Nur das "content field" der jeweiligen Notiz wird zum Inhalt des li-Tags. Die Zeitstempel, die in den rohen Daten angezeigt werden, werden hier nicht genutzt.
+
+```javascript
+data.forEach(function(note) {
+  var li = document.createElement('li')
+
+  ul.appendChild(li)
+  li.appendChild(document.createTextNode(note.content))
+})
+```
+
+> Now open the Console-tab on your Developer Console:
+
+Öffnet jetzt den Console-Tab in euer Entwicklerkonsole:
+
+!["Screenshot of the console tab on the developer console"](./images/part0/part0b_image12.png?raw=true)
+
+> By clicking the little triangle at the beginning of the line, you can expand the text on the console.
+
+Klickt man auf das kleine Dreieck am Beginn der Zeile, kann man den Text in der Konsole ausklappen.
+
+!["Screenshot of one of the previously collapsed entries expanded"](./images/part0/part0b_image13.png?raw=true)
+
+> This output on the console is caused by the console.log command in the code:
+
+Diese Ausgabe in der Konsole wird vom "console.log"-Befehl erzeugt:
+
+```javascript
+const data = JSON.parse(this.responseText)
+console.log(data)
+```
+
+> So, after receiving data from the server, the code prints it to the console. 
+
+Das bedeudet, dass nach dem Erhalt der Daten vom Server, diese in der Konsole angezeigt werden.
+
+> The Console tab and the console.log command will become very familiar to you during the course. 
+
+Mit dem Console-Tab und dem console-log-Befehl werdet ihr euch in diesem Kurs noch sehr vertraut machen.
