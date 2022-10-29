@@ -117,7 +117,7 @@ So sieht die Ereigniskette beim Öffnen der Seite https://studies.cs.helsinki.fi
 
 > First, the browser sends an HTTP GET request to the server to fetch the HTML code of the page. The img tag in the HTML prompts the browser to fetch the image kuva.png. The browser renders the HTML page and the image to the screen. 
 
-Zuerst schickt der Browser eine HTTP GET-Anfrage an den Server, um den HTML-Code der Seite zu laden. Der img-Tag in dem HTML-Dokument fordert den Browser auf, die Bilddatei kuva.png zu laden. Der Browser zeigt die HTML-Seite und die Bilddatei auf dem Bildschirm an.
+Zuerst schickt der Browser eine HTTP GET-Anfrage an den Server, um den HTML-Quellcode der Seite zu laden. Der img-Tag in dem HTML-Dokument fordert den Browser auf, die Bilddatei kuva.png zu laden. Der Browser zeigt die HTML-Seite und die Bilddatei auf dem Bildschirm an.
 
 > Even though it is difficult to notice, the HTML page begins to render before the image has been fetched from the server. 
 
@@ -132,3 +132,55 @@ Auch wenn es schwer zu bemerken ist: es wird begonnen die HTML-Seite darzustelle
 Die Homepage der Beispielanwendungen funktioniert wie eine traditionelle Webanwendung. Wenn die Seite aufgerufen wird, lädt der Browser vom Server das HTML-Dokument, das die Struktur und den textlichen Inhalt der Seite beschreibt.
 
 > The server has formed this document somehow. The document can be a static text file saved into the server's directory. The server can also form the HTML documents dynamically according to the application code, using, for example, data from a database. The HTML code of the example application has been formed dynamically, because it contains information on the number of created notes. 
+
+Der Server hat dieses Dokument irgendwie erstellt. Das Dokument kann eine statische Textdatei sein, die im Serververzeichnis abgespeichert wurde. Der Server kann auch dynamisch HTML-Dokumente erstellen in dem er bspw. Daten aus einer Datenbank lädt. Der HTML-Quellcode der Beispielanwendung wurde dynamisch erstellt, weil er die Anzahl der erstellten Notizen enthält.
+
+> The HTML code of the homepage is as follows: 
+
+Der HTML-Quellcode der Hompage lautet wie folgt:
+
+```
+const getFrontPageHtml = (noteCount) => {
+  return(`
+    <!DOCTYPE html>
+    <html>
+      <head>
+      </head>
+      <body>
+        <div class='container'>
+          <h1>Full stack example app</h1>
+          <p>number of notes created ${noteCount}</p>
+          <a href='/notes'>notes</a>
+          <img src='kuva.png' width='200' />
+        </div>
+      </body>
+    </html>
+`)
+} 
+
+app.get('/', (req, res) => {
+  const page = getFrontPageHtml(notes.length)
+  res.send(page)
+})
+```
+
+> You don't have to understand the code just yet. 
+
+Ihr müsst den Quellcode jetzt noch nicht verstehen können.
+
+> The content of the HTML page has been saved as a template string, or a string which allows for evaluating, for example, variables in the midst of it. The dynamically changing part of the homepage, the number of saved notes (in the code noteCount), is replaced by the current number of notes (in the code notes.length) in the template string.
+
+Der Inhalt der HTML-Seite wurde als "template string" gespeichert bzw. als String, der eine Auswertung erlaubt, z.B. wenn er Variablen erhält. Der sich dynamisch ändernde Teil der Homepage: die Anzahl der gespeicherten Notizen (im Quellcode "noteCount"), wird von der aktuellen Anzahl der Notizen (im Quellcode "notes.length") im "template string" ersetzt.
+
+> Writing HTML in the midst of the code is of course not smart, but for old-school PHP-programmers it was a normal practice.
+
+HTML im Quellcode zu schreiben ist natürlich nicht sehr clever, aber für Oldschool-PHP-Programmierer war das völlig normal.
+
+> In traditional web applications the browser is "dumb". It only fetches HTML data from the server, and all application logic is on the server. A server can be created using Java Spring (like in the University of Helsinki course Web-palvelinohjelmointi), Python Flask (like in the course tietokantasovellus) or with Ruby on Rails to name just a few examples.
+
+In traditionellen Webanwendungen ist der Browser "dumm". Er lädt nur die HTML-Daten vom Server und die ganze Anwendungslogik ist auf dem Server. Ein Server kann mit Java Spring (wie im Kurs Web-palvelinohjelmointi der Universität von Helsinki), Python Flask (wie im Kurs tietokantasovellus) oder mit Ruby on Rails erstellt werden, nur um einige Beispiele zu nennen.
+
+> The example uses Express library with the Node.js. This course will use Node.js and Express to create web servers. 
+
+Die Beispielanwendung nutzt Node.js mit der Express-Bibliothek. Dieser Kurs erstellt Webserver mit Node.js und Express.
+
