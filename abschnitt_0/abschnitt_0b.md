@@ -1,6 +1,15 @@
+
+> table of contents
+
+# Inhaltsverzeichnis
+
+- [Grundlagen von Webapplikationen](#grundlagen-von-webapplikationen)
+- [HTTP GET](#HTTP-GET)
+- [Traditionelle Webanwendungen](#Traditionelle-Webanwendungen)
+
 > Fundamentals of Web apps
 
-# Grundlagen von Webapplikationen
+## Grundlagen von Webapplikationen
 
 > Before we start programming, we will go through some principles of web development by examining an example application at https://studies.cs.helsinki.fi/exampleapp.
 
@@ -56,12 +65,70 @@ Wenn ihr die Seite erneut ladet (durch das Drücken der F5-Taste oder das ↻ Sy
 
 !["Screenshot of the developer console showing these two events"](./images/part0/part0b_image2.png?raw=true)
 
+> On a small screen you might have to widen the console window to see these.
 
+Auf kleineren Displays müsst ihr möglicherweise das Konsolenfenster vergrößern, um alles zu sehen.
 
+> Clicking the first event reveals more information on what's happening: 
 
+Wenn ihr auf das erste Ereignis klickt werden mehr Informationen darüber angezeigt, was passiert:
 
+!["Detail view of a single event"](./images/part0/part0b_image3.png?raw=true)
 
+> The upper part, General, shows that the browser made a request to the address https://studies.cs.helsinki.fi/exampleapp (though the address has changed slightly since this picture was taken) using the GET method, and that the request was successful, because the server response had the Status code 200.
 
+Der obere Teil unter "General" zeigt, dass der Browser über die GET-Methode eine Anfrage zur Adresse https://studies.cs.helsinki.fi/exampleapp geschickt hat (Bitte beachtet, dass sich die adresse leicht geändert hat seitdem der Screenshot erstellt wurde). Die Anfrage war erfolgreich, weil die Serverantwort den Statuscode 200 hatte.
 
+> The request and the server response have several headers:
 
+Die Anfrage und die Serverantwort haben mehrere Header:
 
+!["fullstack content"](./images/part0/part0b_image4.png?raw=true)
+
+> The Response headers on top tell us e.g. the size of the response in bytes, and the exact time of the response. An important header Content-Type tells us that the response is a text file in utf-8-format, contents of which have been formatted with HTML. This way the browser knows the response to be a regular HTML-page, and to render it to the browser 'like a web page'.
+
+Die oberen Antwortheader zeigen z.B. die Größe der Antwort in Bytes und die genaue Zeit der Antwort an. Der wichtige Header "Content-Type" zeigt an, dass die Antwort eine Textdatei im utf-8-Format ist, deren Inhalt mit HTML formattiert wurde. Auf diese Weise weiß der Browser, dass die Antwort eine reguläre HTML-Seite ist und stellt sie als eine "Webseite" dar.
+
+> The Response tab shows the response data, a regular HTML-page. The body section determines the structure of the page rendered to the screen: 
+
+Der "Response"-Tab zeigt die Antwortdaten, eine reguläre HTML-Seite. Die Body-Sektion definiert die Seitenstruktur, die am Bildschirm angezeigt wird:
+
+!["Screenshot of the response tab"](./images/part0/part0b_image5.png?raw=true)
+
+> The page contains a div element, which in turn contains a heading, a link to the page notes, and an img tag, and displays the number of notes created.
+
+Die Seite enthält ein div-Element, das wiederum eine Überschrift enthält, einen Link zu den Seitennotizen und einen img-Tag, ebenso wie die Anzahl der Notizen, die erstellt wurden.
+
+> Because of the img tag, the browser does a second HTTP-request to fetch the image kuva.png from the server. The details of the request are as follows: 
+
+Wegen des img-Tags stellt der Browser eine zweite HTTP-Anfrage, um die Bilddatei kuva.png vom Server zu laden. Die Details der Anfrage sind folgendermaßen:
+
+!["Detail view of the second event"](./images/part0/part0b_image6.png?raw=true)
+
+> The request was made to the address https://studies.cs.helsinki.fi/exampleapp/kuva.png and its type is HTTP GET. The response headers tell us that the response size is 89350 bytes, and its Content-type is image/png, so it is a png image. The browser uses this information to render the image correctly to the screen. 
+
+Die Anfrage (vom Typ HTTP GET) wurde an die Adresse https://studies.cs.helsinki.fi/exampleapp/kuva.png gestellt. Der Antwortheader zeigt uns, dass die Antwort 89350 Bytes groß war und ihr "Content-type" image/png ist. Also ist es eine png-Bilddatei. Der Browser benutzt diese Information, um die Bilddatei korrekt am Bildschirm darzustellen.
+
+> The chain of events caused by opening the page https://studies.cs.helsinki.fi/exampleapp on a browser form the following sequence diagram:
+
+So sieht die Ereigniskette beim Öffnen der Seite https://studies.cs.helsinki.fi/exampleapp in einem Browser in einem Sequenzdiagramm aus: 
+
+!["Sequence diagram of the flow covered above"](./images/part0/part0b_image7.png?raw=true)
+
+> First, the browser sends an HTTP GET request to the server to fetch the HTML code of the page. The img tag in the HTML prompts the browser to fetch the image kuva.png. The browser renders the HTML page and the image to the screen. 
+
+Zuerst schickt der Browser eine HTTP GET-Anfrage an den Server, um den HTML-Code der Seite zu laden. Der img-Tag in dem HTML-Dokument fordert den Browser auf, die Bilddatei kuva.png zu laden. Der Browser zeigt die HTML-Seite und die Bilddatei auf dem Bildschirm an.
+
+> Even though it is difficult to notice, the HTML page begins to render before the image has been fetched from the server. 
+
+Auch wenn es schwer zu bemerken ist: es wird begonnen die HTML-Seite darzustellen, bevor die Bilddatei vom Server geladen wurde.
+
+> Traditional web applications 
+
+## Traditionelle Webanwendungen
+
+> The homepage of the example application works like a traditional web application. When entering the page, the browser fetches the HTML document detailing the structure and the textual content of the page from the server.
+
+Die Homepage der Beispielanwendungen funktioniert wie eine traditionelle Webanwendung. Wenn die Seite aufgerufen wird, lädt der Browser vom Server das HTML-Dokument, das die Struktur und den textlichen Inhalt der Seite beschreibt.
+
+> The server has formed this document somehow. The document can be a static text file saved into the server's directory. The server can also form the HTML documents dynamically according to the application code, using, for example, data from a database. The HTML code of the example application has been formed dynamically, because it contains information on the number of created notes. 
