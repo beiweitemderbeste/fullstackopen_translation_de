@@ -40,7 +40,7 @@ Merkt euch immer die Entwicklerkonsole beim Entwickeln von Webanwendungen geöff
 
 > The console looks like this: 
 
-Die Konsole sieht ungefänr so aus:
+Die Konsole sieht ungefähr so aus:
 
 !["A screenshot of the developer tools open in a browser"](./images/part0/part0b_image1.png?raw=true)
 
@@ -124,7 +124,7 @@ Zuerst schickt der Browser eine HTTP GET-Anfrage an den Server, um den HTML-Quel
 
 > Even though it is difficult to notice, the HTML page begins to render before the image has been fetched from the server. 
 
-Auch wenn es schwer zu bemerken ist: es wird begonnen die HTML-Seite darzustellen, bevor die Bilddatei vom Server geladen wurde.
+Auch wenn es schwer zu bemerken ist: die Darstellung der HTML-Seite beginnt bevor die Bilddatei vom Server geladen wurde.
 
 > Traditional web applications 
 
@@ -136,7 +136,7 @@ Die Homepage der Beispielanwendungen funktioniert wie eine traditionelle Webanwe
 
 > The server has formed this document somehow. The document can be a static text file saved into the server's directory. The server can also form the HTML documents dynamically according to the application code, using, for example, data from a database. The HTML code of the example application has been formed dynamically, because it contains information on the number of created notes. 
 
-Der Server hat dieses Dokument irgendwie erstellt. Das Dokument kann eine statische Textdatei sein, die im Serververzeichnis abgespeichert wurde. Der Server kann auch dynamisch HTML-Dokumente erstellen in dem er bspw. Daten aus einer Datenbank lädt. Der HTML-Quellcode der Beispielanwendung wurde dynamisch erstellt, weil er die Anzahl der erstellten Notizen enthält.
+Der Server hat dieses Dokument irgendwie erstellt. Das Dokument kann eine statische Textdatei sein, die im Serververzeichnis abgespeichert wurde. Der Server kann auch dynamisch HTML-Dokumente erstellen, indem er bspw. Daten aus einer Datenbank lädt. Der HTML-Quellcode der Beispielanwendung wurde dynamisch erstellt, weil er die Anzahl der erstellten Notizen enthält.
 
 > The HTML code of the homepage is as follows: 
 
@@ -173,7 +173,7 @@ Ihr müsst den Quellcode jetzt noch nicht verstehen können.
 
 > The content of the HTML page has been saved as a template string, or a string which allows for evaluating, for example, variables in the midst of it. The dynamically changing part of the homepage, the number of saved notes (in the code noteCount), is replaced by the current number of notes (in the code notes.length) in the template string.
 
-Der Inhalt der HTML-Seite wurde als "template string" gespeichert bzw. als String, der eine Auswertung erlaubt, z.B. wenn er Variablen erhält. Der sich dynamisch ändernde Teil der Homepage: die Anzahl der gespeicherten Notizen (im Quellcode "noteCount"), wird von der aktuellen Anzahl der Notizen (im Quellcode "notes.length") im "template string" ersetzt.
+Der Inhalt der HTML-Seite wurde als "template string" gespeichert bzw. als String, der eine Auswertung erlaubt, z.B. ob er Variablen enthält. Der sich dynamisch ändernde Teil der Homepage (die Anzahl der gespeicherten Notizen (im Quellcode "noteCount")) wird von der aktuellen Anzahl der Notizen (im Quellcode "notes.length") im "template string" ersetzt.
 
 > Writing HTML in the midst of the code is of course not smart, but for old-school PHP-programmers it was a normal practice.
 
@@ -185,7 +185,7 @@ In traditionellen Webanwendungen ist der Browser "dumm". Er lädt nur die HTML-D
 
 > The example uses Express library with the Node.js. This course will use Node.js and Express to create web servers. 
 
-Die Beispielanwendung nutzt Node.js mit der Express-Bibliothek. Dieser Kurs erstellt Webserver mit Node.js und Express.
+Die Beispielanwendung wurde mit Node.js und der Express-Bibliothek erstellt. Diese Technologien werden im Kurs für Webserver eingesetzt.
 
 > Running application logic in the browser
 
@@ -193,7 +193,7 @@ Die Beispielanwendung nutzt Node.js mit der Express-Bibliothek. Dieser Kurs erst
 
 > Keep the Developer Console open. Empty the console by clicking the 🚫 symbol, or by typing clear() in the console. Now when you go to the notes page, the browser does 4 HTTP requests: 
 
-Lasst die Entwicklerkonsole offen. Löscht sie, indem ihr auf das 🚫 Symbol klickt oder clear() in der Konsole eingebt. Wenn ihr jetzt die "notes"-Seite öffnet, stellt der Browser 4 HTTP-Anfragen:
+Lasst die Entwicklerkonsole offen. Löscht sie, indem ihr auf das 🚫-Symbol klickt oder clear() in der Konsole eingebt. Wenn ihr jetzt die "notes"-Seite öffnet, stellt der Browser 4 HTTP-Anfragen:
 
 !["Screenshot of the developer console with the 4 requests visible"](./images/part0/part0b_image8.png?raw=true)
 
@@ -205,7 +205,7 @@ Jede Anfrage hat einen verschiedenen Typen. Der Typ der ersten Anfrage ist "docu
 
 > When we compare the page shown on the browser and the HTML code returned by the server, we notice that the code does not contain the list of notes. The head-section of the HTML contains a script-tag, which causes the browser to fetch a JavaScript file called main.js.
 
-Wenn wir die Seite, die im Browser angezeigt wird, mit dem HTML-Quellcode, den der Server ausgegeben hat, vergleichen, sehen wir, dass der Quellcode keine Liste von Notizen enthält. Die Head-Sektion des HTML-Dokuments enthält einen script-Tag, der dafür sorgt, dass der Browser die Javascript-Datei main.js herunterlädt.
+Wenn wir die Seite, die im Browser angezeigt wird, mit dem HTML-Quellcode, den der Server ausgibt, vergleichen, sehen wir, dass der Quellcode keine Liste von Notizen enthält. Die Head-Sektion des HTML-Dokuments enthält einen script-Tag, der dafür sorgt, dass der Browser die Javascript-Datei main.js herunterlädt.
 
 > The JavaScript code looks as follows:
 
@@ -239,7 +239,7 @@ xhttp.send()
 
 > The details of the code are not important right now, but some code has been included to spice up the images and the text. We will properly start coding in part 1. The sample code in this part is actually not relevant at all to the coding techniques of this course. 
 
-Die Details des Quellcodes sind im Moment nicht wichtig, er wurde eingefügt, um die Bilder und den Text interessanter zu gestalten. Das "richtige" Programmieren geht ab Abschnitt 1 los. Der Beispielquellcode in diesem Abschnitt ist überhaupt nicht wichtig für alles weitere in diesem Kurs.
+Die Details des Quellcodes sind im Moment nicht wichtig, er wurde eingefügt, um die Bilder und den Text interessanter zu gestalten. Das "richtige" Programmieren geht ab Abschnitt 1 los. Der Beispielquellcode in diesem Abschnitt ist nicht wichtig für den weiteren Verlauf dieses Kurs.
 
 > Immediately after fetching the script tag, the browser begins to execute the code. 
 
@@ -266,7 +266,7 @@ Wir können die Adresse https://studies.cs.helsinki.fi/exampleapp/data.json dire
 
 > There we find the notes in JSON "raw data". By default, Chromium-based browsers are not too good at displaying JSON data. Plugins can be used to handle the formatting. Install, for example, JSONVue on Chrome, and reload the page. The data is now nicely formatted: 
 
-Hier finden wir die Notizen also "rohe JSON-Daten". Chromium-basierte Browser sind nicht gut im Darstellen von JSON-Daten. Daher solltet ihr Firefox installieren, der das von Haus aus kann:
+Hier finden wir die Notizen also "rohe" JSON-Daten. Chromium-basierte Browser sind nicht gut im Darstellen von JSON-Daten. Daher solltet ihr Firefox installieren, der das von Haus aus kann.
 
 !["Formatted JSON output"](./images/part0/part0b_image11.png?raw=true)
 
@@ -367,7 +367,7 @@ xhttp.send()
 
 > The request to the server is sent on the last line, but the code to handle the response can be found further up. What's going on? 
 
-Die Serveranfrage
+Die Serveranfrage wird mit der letzten Zeile abgeschickt, aber der Quellcode, der die Antwort abarbeitet steht weiter oben. Was passiert hier?
 
 ```javascript
 xhttp.onreadystatechange = function () {
@@ -375,7 +375,7 @@ xhttp.onreadystatechange = function () {
 
 > On this line, an event handler for event onreadystatechange is defined for the xhttp object doing the request. When the state of the object changes, the browser calls the event handler function. The function code checks that the readyState equals 4 (which depicts the situation The operation is complete) and that the HTTP status code of the response is 200. 
 
-In dieser
+In dieser Zeile wird ein Event Handler für das Event onreadystatechange für das xhttp-Object definiert, das die Anfrage startet. When sich der Zustand des Objektes verändert, dann ruft der Browser die Event Handler-Funktion auf. Der Quellcode der Funktion überprüft, ob der readyState gleich 4 ist (was bedeutet, das die Operation vollständig durchgeführt wurde) und ob der HTTP Statuscode der Antwort 200 ist.
 
 ```javascript
 xhttp.onreadystatechange = function() {
@@ -387,7 +387,7 @@ xhttp.onreadystatechange = function() {
 
 > The mechanism of invoking event handlers is very common in JavaScript. Event handler functions are called callback functions. The application code does not invoke the functions itself, but the runtime environment - the browser, invokes the function at an appropriate time, when the event has occurred. 
 
-Der Vorgang
+Event Handler aufzurufen ist sehr gebräuchlich in der Javascriptentwicklung. Event Handler-Funktionen werden Callback-Funktionen gennant. Der Anwendungsquellcode ruft die Funktionen nicht selbst auf, sondern die Laufzeitumgebung - der Browser selbst - ruft die Funktion zur passenden Zeit, nämlich wenn das Ereignis eintritt, auf.
 
 > Document Object Model or DOM
 
@@ -395,7 +395,7 @@ Der Vorgang
 
 > We can think of HTML-pages as implicit tree structures.
 
-Wir können uns HTML-Seiten als vorstellen.
+Wir können uns HTML-Seiten als geschlossene Baumstrukturen vorstellen.
 
 ```
 html
