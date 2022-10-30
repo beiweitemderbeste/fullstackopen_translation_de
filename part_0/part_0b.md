@@ -12,6 +12,7 @@
 - [Bearbeiten des document objects von der Konsole aus](#Bearbeiten-des-document-objects-von-der-Konsole-aus)
 - [Wie eine Seite geladen wird, die JavaScript enthält](#Wie-eine-Seite-geladen-wird,-die-JavaScript-enthält)
 - [Formulare und HTTP POST](#Formulare-und-HTTP-POST)
+- [AJAX](#AJAX)
 
 > Fundamentals of Web apps
 
@@ -609,3 +610,91 @@ Schauen wir nach, was passiert, wenn die Seite https://studies.cs.helsinki.fi/ex
 > Forms and HTTP POST
 
 ## Formulare und HTTP POST
+
+> Next let's examine how adding a new note is done. 
+
+Als Nächstes untersuchen wir, wie das Hinzufügen einer neuen Notiz funktioniert
+
+> The Notes page contains a form-element.
+
+Die Notizenseite enthält ein form-Element.
+
+!["fullstack content"](./images/part0b_image20.png?raw=true)
+
+> When the button on the form is clicked, the browser will send the user input to the server. Let's open the Network tab and see what submitting the form looks like: 
+
+Wenn der Button des Formulars geklickt wird, sendet der Browser die Benutzereingabe zum Server. Öffnen wir den Network-Tab und sehen uns an, wir das Absenden des Formulars aussieht:
+
+!["fullstack content"](./images/part0b_image21.png?raw=true)
+
+> Surprisingly, submitting the form causes no less than five HTTP requests. The first one is the form submit event. Let's zoom into it: 
+
+Überraschenderweise löst das Abschicken des Formulars nicht weniger als fünf HTTP-Anfragen aus. Die Erste ist das Abschicken selbst. Schauen wir genauer hin:
+
+!["fullstack content"](./images/part0b_image22.png?raw=true)
+
+> It is an HTTP POST request to the server address new_note. The server responds with HTTP status code 302. This is a URL redirect, with which the server asks the browser to do a new HTTP GET request to the address defined in the header's Location - the address notes.
+
+Es ist eine HTTP POST-Anfrage an die Serveradresse new_note. Der Server antwortet mit dem HTTP-Statuscode 302. Das ist eine URL-Umleitung mit der der Server den Browser auffordert, eine neue HTTP-Anfrage zu starten, deren Adresse im Header definiert ist.
+
+> So, the browser reloads the Notes page. The reload causes three more HTTP requests: fetching the style sheet (main.css), the JavaScript code (main.js), and the raw data of the notes (data.json).
+
+Dadurch lädt der Server die Notizenseite erneut. Dieses Neuladen verursacht drei weitere HTTP-Anfragen: das Laden der CSS-Datei (main.css), die JavaScript-Datei (main.js), und die Rohdaten der Notizen (data.json).
+
+> The network tab also shows the data submitted with the form:
+
+Der Network-Tab zeigt auch die Daten, die mit dem Formular abgeschickt werden.
+
+!["fullstack content"](./images/part0b_image23.png?raw=true)
+
+> The Form tag has attributes action and method, which define that submitting the form is done as an HTTP POST request to the address new_note. 
+
+Der Form-Tag hat die Attribute "action" und "method", die festlegen, dass das Abschicken des Formlars als HTTP POST-Anfrage an die Adresse new_note geschieht.
+
+!["fullstack content"](./images/part0b_image24.png?raw=true)
+
+> The code on the server responsible for the POST request is quite simple (NB: this code is on the server, and not on the JavaScript code fetched by the browser):
+
+Der Quellcode auf dem Server, der für POST-Anfragen zuständig ist, ist relativ einfach (Hinweis: der Quellcode liegt auf dem Server und ist nicht die JavaScript-Datei, die heruntergeladen wurde):
+
+```javascript
+app.post('/new_note', (req, res) => {
+  notes.push({
+    content: req.body.note,
+    date: new Date(),
+  })
+
+  return res.redirect('/notes')
+})
+```
+
+> Data is sent as the body of the POST-request. 
+
+Die über das Formular abgeschickten Daten, werden im "body" der HTTP POST-Anfrage verschickt.
+
+> The server can access the data by accessing the req.body field of the request object req.
+
+Der Server kann auf diese Daten zu greifen, in dem er das Feld "req.body" des Request Objects "req" einsieht.
+
+> The server creates a new note object, and adds it to an array called notes.
+
+Der Server erstellt ein neues Notizobjekt und hängt es an das Array "notes".
+
+```javascript
+notes.push({
+  content: req.body.note,
+  date: new Date(),
+})
+```
+
+> The Note objects have two fields: content containing the actual content of the note, and date containing the date and time the note was created. 
+
+Das Notizobjekt hat zwei Felder: "content" enthält den tatsächlichen Inhalt der Notiz und "date" enthält das Datum und die Uhrzeit, an dem die Notiz erstellt wurde.
+
+> The server does not save new notes to a database, so new notes disappear when the server is restarted. 
+
+Der Server speichert keine neuen Notizen in einer Daten, so dass die Notizen verschwinden, wenn der Server neugestartet wird.
+
+> AJAX
+
+## AJAX
