@@ -7,6 +7,8 @@
 - [HTTP GET](#HTTP-GET)
 - [Traditionelle Webanwendungen](#Traditionelle-Webanwendungen)
 - [Anwendungslogik im Browser laufen lassen](#Anwendungslogik-im-Browser-laufen-lassen)
+- [Event Handlers und Callback-Funktionen](#Event-Handlers-und-Callback-Funktionen)
+- [Document Object Model bzw. DOM](#Document-Object-Model-bzw.-DOM)
 
 > Fundamentals of Web apps
 
@@ -247,7 +249,7 @@ Direkt nach dem Laden des script-Tags beginnt der Browser den Quellcode auszufü
 
 Die letzten zwei Zeilen weisen den Browser an, eine HTTP GET-Anfrage an die Serveradresse /data.json zu stellen:
 
-```
+```javascript
 xhttp.open('GET', '/data.json', true)
 xhttp.send()
 ```
@@ -295,7 +297,7 @@ document.getElementById('notes').appendChild(ul)
 
 > The code first creates an unordered list with a ul-tag...
 
-Der Quellcode erstellt zuerst eine ungeordnete List mit dem ul-Tag...
+Der Quellcode erstellt zuerst eine ungeordnete Liste mit dem ul-Tag...
 
 ```javascript
 var ul = document.createElement('ul')
@@ -342,4 +344,73 @@ Das bedeudet, dass nach dem Erhalt der Daten vom Server, diese in der Konsole an
 
 > The Console tab and the console.log command will become very familiar to you during the course. 
 
-Mit dem Console-Tab und dem console-log-Befehl werdet ihr euch in diesem Kurs noch sehr vertraut machen.
+Mit dem Console-Tab und dem console-log-Befehl werdet ihr in diesem Kurs noch sehr vertraut werden.
+
+> Event handlers and Callback functions
+
+## Event Handlers und Callback-Funktionen
+
+> The structure of this code is a bit odd:
+
+Die Struktur von diesem Quellcode ist ein bisschen seltsam:
+
+```javascript
+var xhttp = new XMLHttpRequest()
+
+xhttp.onreadystatechange = function() {
+  // code that takes care of the server response
+}
+
+xhttp.open('GET', '/data.json', true)
+xhttp.send()
+```
+
+> The request to the server is sent on the last line, but the code to handle the response can be found further up. What's going on? 
+
+Die Serveranfrage
+
+```javascript
+xhttp.onreadystatechange = function () {
+```
+
+> On this line, an event handler for event onreadystatechange is defined for the xhttp object doing the request. When the state of the object changes, the browser calls the event handler function. The function code checks that the readyState equals 4 (which depicts the situation The operation is complete) and that the HTTP status code of the response is 200. 
+
+In dieser
+
+```javascript
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    // code that takes care of the server response
+  }
+}
+```
+
+> The mechanism of invoking event handlers is very common in JavaScript. Event handler functions are called callback functions. The application code does not invoke the functions itself, but the runtime environment - the browser, invokes the function at an appropriate time, when the event has occurred. 
+
+Der Vorgang
+
+> Document Object Model or DOM
+
+## Document Object Model bzw. DOM
+
+> We can think of HTML-pages as implicit tree structures.
+
+Wir können uns HTML-Seiten als vorstellen.
+
+```
+html
+  head
+    link
+    script
+  body
+    div
+      h1
+      div
+        ul
+          li
+          li
+          li
+      form
+        input
+        input
+```
