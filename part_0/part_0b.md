@@ -9,6 +9,7 @@
 - [Anwendungslogik im Browser laufen lassen](#Anwendungslogik-im-Browser-laufen-lassen)
 - [Event Handlers und Callback-Funktionen](#Event-Handlers-und-Callback-Funktionen)
 - [Document Object Model bzw. DOM](#Document-Object-Model-bzw.-DOM)
+- [Bearbeiten des document objects von der Konsole aus](#Bearbeiten-des-document-objects-von-der-Konsole-aus)
 
 > Fundamentals of Web apps
 
@@ -42,7 +43,7 @@ Merkt euch immer die Entwicklerkonsole beim Entwickeln von Webanwendungen geöff
 
 Die Konsole sieht ungefähr so aus:
 
-!["A screenshot of the developer tools open in a browser"](./images/part0/part0b_image1.png?raw=true)
+!["A screenshot of the developer tools open in a browser"](./images/part0b_image1.png?raw=true)
 
 > NB: The most important tab is the Console tab. However, in this introduction we will be using the Network tab quite a bit.
 
@@ -66,7 +67,7 @@ Wenn ihr die Seite erneut ladet (durch das Drücken der F5-Taste oder das ↻ Sy
 
 - und auch die Bilddatei kuva.png
 
-!["Screenshot of the developer console showing these two events"](./images/part0/part0b_image2.png?raw=true)
+!["Screenshot of the developer console showing these two events"](./images/part0b_image2.png?raw=true)
 
 > On a small screen you might have to widen the console window to see these.
 
@@ -76,7 +77,7 @@ Auf kleineren Displays müsst ihr möglicherweise das Konsolenfenster vergröße
 
 Wenn ihr auf das erste Ereignis klickt werden mehr Informationen darüber angezeigt, was passiert:
 
-!["Detail view of a single event"](./images/part0/part0b_image3.png?raw=true)
+!["Detail view of a single event"](./images/part0b_image3.png?raw=true)
 
 > The upper part, General, shows that the browser made a request to the address https://studies.cs.helsinki.fi/exampleapp (though the address has changed slightly since this picture was taken) using the GET method, and that the request was successful, because the server response had the Status code 200.
 
@@ -86,7 +87,7 @@ Der obere Teil unter "General" zeigt, dass der Browser über die GET-Methode ein
 
 Die Anfrage und die Serverantwort haben mehrere Header:
 
-!["fullstack content"](./images/part0/part0b_image4.png?raw=true)
+!["fullstack content"](./images/part0b_image4.png?raw=true)
 
 > The Response headers on top tell us e.g. the size of the response in bytes, and the exact time of the response. An important header Content-Type tells us that the response is a text file in utf-8-format, contents of which have been formatted with HTML. This way the browser knows the response to be a regular HTML-page, and to render it to the browser 'like a web page'.
 
@@ -96,7 +97,7 @@ Die oberen Antwortheader zeigen z.B. die Größe der Antwort in Bytes und die ge
 
 Der "Response"-Tab zeigt die Antwortdaten, eine reguläre HTML-Seite. Die Body-Sektion definiert die Seitenstruktur, die am Bildschirm angezeigt wird:
 
-!["Screenshot of the response tab"](./images/part0/part0b_image5.png?raw=true)
+!["Screenshot of the response tab"](./images/part0b_image5.png?raw=true)
 
 > The page contains a div element, which in turn contains a heading, a link to the page notes, and an img tag, and displays the number of notes created.
 
@@ -106,7 +107,7 @@ Die Seite enthält ein div-Element, das wiederum eine Überschrift enthält, ein
 
 Wegen des img-Tags stellt der Browser eine zweite HTTP-Anfrage, um die Bilddatei kuva.png vom Server zu laden. Die Details der Anfrage sind folgendermaßen:
 
-!["Detail view of the second event"](./images/part0/part0b_image6.png?raw=true)
+!["Detail view of the second event"](./images/part0b_image6.png?raw=true)
 
 > The request was made to the address https://studies.cs.helsinki.fi/exampleapp/kuva.png and its type is HTTP GET. The response headers tell us that the response size is 89350 bytes, and its Content-type is image/png, so it is a png image. The browser uses this information to render the image correctly to the screen. 
 
@@ -116,7 +117,7 @@ Die Anfrage (vom Typ HTTP GET) wurde an die Adresse https://studies.cs.helsinki.
 
 So sieht die Ereigniskette beim Öffnen der Seite https://studies.cs.helsinki.fi/exampleapp in einem Browser in einem Sequenzdiagramm aus: 
 
-!["Sequence diagram of the flow covered above"](./images/part0/part0b_image7.png?raw=true)
+!["Sequence diagram of the flow covered above"](./images/part0b_image7.png?raw=true)
 
 > First, the browser sends an HTTP GET request to the server to fetch the HTML code of the page. The img tag in the HTML prompts the browser to fetch the image kuva.png. The browser renders the HTML page and the image to the screen. 
 
@@ -195,13 +196,13 @@ Die Beispielanwendung wurde mit Node.js und der Express-Bibliothek erstellt. Die
 
 Lasst die Entwicklerkonsole offen. Löscht sie, indem ihr auf das 🚫-Symbol klickt oder clear() in der Konsole eingebt. Wenn ihr jetzt die "notes"-Seite öffnet, stellt der Browser 4 HTTP-Anfragen:
 
-!["Screenshot of the developer console with the 4 requests visible"](./images/part0/part0b_image8.png?raw=true)
+!["Screenshot of the developer console with the 4 requests visible"](./images/part0b_image8.png?raw=true)
 
 > All of the requests have different types. The first request's type is document. It is the HTML code of the page, and it looks as follows: 
 
 Jede Anfrage hat einen verschiedenen Typen. Der Typ der ersten Anfrage ist "document". Das ist der HTML-Quellcode der Seite und sieht folgendermaßen aus:
 
-!["Detail view of the first request"](./images/part0/part0b_image9.png?raw=true)
+!["Detail view of the first request"](./images/part0b_image9.png?raw=true)
 
 > When we compare the page shown on the browser and the HTML code returned by the server, we notice that the code does not contain the list of notes. The head-section of the HTML contains a script-tag, which causes the browser to fetch a JavaScript file called main.js.
 
@@ -262,13 +263,13 @@ Das ist die Serveranfrage, die im Network-Tab ganz unten steht.
 
 Wir können die Adresse https://studies.cs.helsinki.fi/exampleapp/data.json direkt im Browser aufrufen:
 
-!["fullstack content"](./images/part0/part0b_image10.png?raw=true)
+!["fullstack content"](./images/part0b_image10.png?raw=true)
 
 > There we find the notes in JSON "raw data". By default, Chromium-based browsers are not too good at displaying JSON data. Plugins can be used to handle the formatting. Install, for example, JSONVue on Chrome, and reload the page. The data is now nicely formatted: 
 
 Hier finden wir die Notizen also "rohe" JSON-Daten. Chromium-basierte Browser sind nicht gut im Darstellen von JSON-Daten. Daher solltet ihr Firefox installieren, der das von Haus aus kann.
 
-!["Formatted JSON output"](./images/part0/part0b_image11.png?raw=true)
+!["Formatted JSON output"](./images/part0b_image11.png?raw=true)
 
 > So, the JavaScript code of the notes page above downloads the JSON-data containing the notes, and forms a bullet-point list from the note contents:
 
@@ -321,13 +322,13 @@ data.forEach(function(note) {
 
 Öffnet jetzt den Console-Tab in euer Entwicklerkonsole:
 
-!["Screenshot of the console tab on the developer console"](./images/part0/part0b_image12.png?raw=true)
+!["Screenshot of the console tab on the developer console"](./images/part0b_image12.png?raw=true)
 
 > By clicking the little triangle at the beginning of the line, you can expand the text on the console.
 
 Klickt man auf das kleine Dreieck am Beginn der Zeile, kann man den Text in der Konsole ausklappen.
 
-!["Screenshot of one of the previously collapsed entries expanded"](./images/part0/part0b_image13.png?raw=true)
+!["Screenshot of one of the previously collapsed entries expanded"](./images/part0b_image13.png?raw=true)
 
 > This output on the console is caused by the console.log command in the code:
 
@@ -414,3 +415,94 @@ html
         input
         input
 ```
+
+> The same treelike structure can be seen on the console tab Elements.
+
+Die gleiche baumartige Struktur kann man im Konsolentab "Elements" sehen.
+
+!["A screenshot of the Elements tab of the developer console"](./images/part0b_image14.png?raw=true)
+
+> The functioning of the browser is based on the idea of depicting HTML elements as a tree.
+
+Die Funktionstüchtigkeit des Browser basiert auf der Idee HTML-Elemente als Baum darzustellen.
+
+> Document Object Model, or DOM, is an Application Programming Interface (API) which enables programmatic modification of the element trees corresponding to web-pages.
+
+Das Document Object Model, oder kurz DOM, ist eine API (Application Programming Interface), die die Veränderung der Baumelemente von Webseiten ermöglicht.
+
+> The JavaScript code introduced in the previous chapter used the DOM-API to add a list of notes to the page.
+
+Der Javascriptquellcode, der im vorangegangen Kapitel vorgestellt wurde, nutzt die DOM-API, um eine Liste der Notizen auf der Webseite darzustellen.
+
+> The following code creates a new node to the variable ul, and adds some child nodes to it: 
+
+Der folgende Quellcode erstellt einen Knoten für die Variable ul und fügt einige untergeordnete Knoten hinzu:
+
+```javascript
+var ul = document.createElement('ul')
+
+data.forEach(function(note) {
+  var li = document.createElement('li')
+
+  ul.appendChild(li)
+  li.appendChild(document.createTextNode(note.content))
+})
+```
+
+> Finally, the tree branch of the ul variable is connected to its proper place in the HTML tree of the whole page: 
+
+Schließlich wird in der HTML-Struktur der ganzen Seite, der Teil der ul-Variable eingefügt:
+
+```javascript
+document.getElementsByClassName('notes').appendChild(ul)
+```
+
+> Manipulating the document-object from console
+
+## Bearbeiten des document objects von der Konsole aus
+
+> The topmost node of the DOM tree of an HTML document is called the document object. We can perform various operations on a web-page using the DOM-API. You can access the document object by typing document into the Console-tab:
+
+Der oberste Knoten des DOM-Baumes eines HTML-Dokuments wird document object genannt. Wir können eine Webseite mit der DOM-API auf verschiedene Weise bearbeiten. Auf das document object könnt ihr direkt in der Konsole zugreifen, indem ihr document eingebt:
+
+!["A screenshot of the Elements tab of the developer console"](./images/part0b_image15.png?raw=true)
+
+> Let's add a new note to the page from the console.
+
+Jetzt hängen wir über die Konsole eine neue Notiz an die Webseite.
+
+> First, we'll get the list of notes from the page. The list is in the first ul-element of the page: 
+
+Zuerst laden wir die Liste der Notizen von der Seite. Die Liste ist das erste ul-Element:
+
+```javascript
+list = document.getElementsByTagName('ul')[0]
+```
+
+> Then create a new li-element and add some text content to it:
+
+Dann erstellen wir ein neues li-Element und ergänzen es mit ein wenig Text:
+
+```javascript
+newElement = document.createElement('li')
+newElement.textContent = 'Page manipulation from console is easy'
+
+```
+
+> And add the new li-element to the list:
+
+Und dann hängen wir das li-Element an die Liste:
+
+```javascript
+list.appendChild(newElement)
+```
+
+!["Screenshot of the page with the new note added to the list"](./images/part0b_image16.png?raw=true)
+
+> Even though the page updates on your browser, the changes are not permanent. If the page is reloaded, the new note will disappear, because the changes were not pushed to the server. The JavaScript code the browser fetches will always create the list of notes based on JSON-data from the address https://studies.cs.helsinki.fi/exampleapp/data.json.
+
+Auch wenn die Seite in eurem Browser angepasst wird, sind die Änderungen nicht dauerhaft. Wenn die Seite neugeladen wird, verschwindet die neue Notiz, da die Änderungen nicht an den Server übertragen wurden. Der JavaScriptquellcode, der vom Browser geladen wird, erstellt immer eine Liste mit Notizen, die auf den JSON-Daten beruhen, die von der Adresse https://studies.cs.helsinki.fi/exampleapp/data.json geladen werden.
+
+> CSS
+
+## CSS
