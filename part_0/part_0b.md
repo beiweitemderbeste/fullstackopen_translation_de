@@ -506,3 +506,70 @@ Auch wenn die Seite in eurem Browser angepasst wird, sind die Änderungen nicht 
 > CSS
 
 ## CSS
+
+> The head element of the HTML code of the Notes page contains a link tag, which determines that the browser must fetch a CSS style sheet from the address main.css.
+
+Das Head-Element des HTML-Quellcode der Notizenseite enthält einen Link-Tag, der festlegt, dass der Browser die CSS-Datei main.css laden soll.
+
+> Cascading Style Sheets, or CSS, is a style sheet language used to determine the appearance of web pages.
+
+Cascading Style Sheets, oder kurz CSS, ist eine Style Sheet-Sprache, die genutzt wird, um das Aussehen von Webseiten festzulegen.
+
+> The fetched CSS-file looks as follows: 
+
+Die CSS-Datei sieht folgendermaßen aus:
+
+```css
+.container {
+  padding: 10px;
+  border: 1px solid; 
+}
+
+.notes {
+  color: blue;
+}
+```
+
+> The file defines two class selectors. These are used to select certain parts of the page and to define styling rules to style them.
+
+Die Datei definiert 2 Class-Selectors. Diese werden benutzt, um bestimmte Teile der Seite auszuwählen und Regeln für deren Aussehen zu bestimmen.
+
+> A class selector definition always starts with a period, and contains the name of the class.
+
+Eine Class-Selector-Definition begint immer mit einem Punkt und enthält den Namen der Klasse.
+
+> The classes are attributes, which can be added to HTML elements.
+
+Klassen sind Attribute, die HTML-Elementen hinzugefügt werden können.
+
+> CSS attributes can be examined on the elements tab of the console: 
+
+CSS-Attribute können im Elements-Tab der Konsole betrachtet werden:
+
+!["Screenshot of the Elements tab on the developer console"](./images/part0b_image17.png?raw=true)
+
+> The outermost div element has the class container. The ul element containing the list of notes has the class notes.
+
+Das äußerste Div-Element hat die Klasse "container". Das ul-Element, das die Notizenliste enthält, hat die Klasse "notes".
+
+> The CSS rule defines that elements with the container class will be outlined with a one pixel wide border. It also sets 10 pixel padding on the element. This adds some empty space between the element's content and the border.
+
+Die CSS-Regel bestimmt, dass Elemente mit der Klasse "container" eine 1 Pixel-breite Umrandung haben. Die Klasse legt auch einen Padding-Wert von 10 Pixeln für zugehörige Elemente fest. Dadurch gibt es einen freien Bereich zwischen dem Inhalt der Elemente und deren Umrandung.
+
+> The second CSS rule sets the text color of the notes as blue.
+
+Die zweite CSS-Regel besagt, dass die Textfarbe der Notizen blau ist.
+
+> HTML elements can also have other attributes apart from classes. The div element containing the notes has an id attribute. JavaScript code uses the id to find the element.
+
+HTML-Elemente können auch andere Attribute als Klassen haben. Das Div-Element, dass die Notizen enthält, hat auch ein id-Attribut. Der Javascriptquellcode nutzt diese id, um das Element zu finden.
+
+> The Elements tab of the console can be used to change the styles of the elements.
+
+Der Elements-Tab der Konsole kann dazu benutzt werden, das Aussehen der verschiedenen Elemente zu ändern.
+
+!["fullstack content"](./images/part0b_image18.png?raw=true)
+
+> Changes made on the console will not be permanent. If you want to make lasting changes, they must be saved to the CSS style sheet on the server. 
+
+Veränderungen der Seite, die in der Konsole durchgeführt werden, sind nicht dauerhaft. Wenn ihr dauerhafte Änderungen durchführen wollt, muss die CSS-Datei auf dem Server gespeichert werden.
