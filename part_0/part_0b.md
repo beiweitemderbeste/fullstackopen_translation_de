@@ -10,6 +10,8 @@
 - [Event Handlers und Callback-Funktionen](#Event-Handlers-und-Callback-Funktionen)
 - [Document Object Model bzw. DOM](#Document-Object-Model-bzw.-DOM)
 - [Bearbeiten des document objects von der Konsole aus](#Bearbeiten-des-document-objects-von-der-Konsole-aus)
+- [Wie eine Seite geladen wird, die JavaScript enthält](#Wie-eine-Seite-geladen-wird,-die-JavaScript-enthält)
+- [Formulare und HTTP POST](#Formulare-und-HTTP-POST)
 
 > Fundamentals of Web apps
 
@@ -573,3 +575,37 @@ Der Elements-Tab der Konsole kann dazu benutzt werden, das Aussehen der verschie
 > Changes made on the console will not be permanent. If you want to make lasting changes, they must be saved to the CSS style sheet on the server. 
 
 Veränderungen der Seite, die in der Konsole durchgeführt werden, sind nicht dauerhaft. Wenn ihr dauerhafte Änderungen durchführen wollt, muss die CSS-Datei auf dem Server gespeichert werden.
+
+> Loading a page containing JavaScript - review
+
+## Wie eine Seite geladen wird, die JavaScript enthält
+
+> Let's review what happens when the page https://studies.cs.helsinki.fi/exampleapp/notes is opened on the browser. 
+
+Schauen wir nach, was passiert, wenn die Seite https://studies.cs.helsinki.fi/exampleapp/notes im Browser geöffnet wird.
+
+!["fullstack content"](./images/part0b_image19.png?raw=true)
+
+> - The browser fetches the HTML code defining the content and the structure of the page from the server using an HTTP GET request.
+
+Über eine HTTP GET-Anfrage lädet der Browser den HTML-Quellcode, der den Inhalt und die Struktur der Seite bestimmt.
+
+> - Links in the HTML code cause the browser to also fetch the CSS style sheet main.css...
+
+- Die Links im HTML-Quellcode veranlassen den Browser auch die CSS-Datei main.css zu laden...
+
+> - ...and a JavaScript code file main.js
+
+- ... ebenso wie die JavaScript-Datei main.js
+
+> - The browser executes the JavaScript code. The code makes an HTTP GET request to the address https://studies.cs.helsinki.fi/exampleapp/data.json, which returns the notes as JSON data. 
+
+- Der Browser für den JavaScript-Quellecode aus. Dadurch wird eine HTTP GET-Anfrage an die Adresse https://studies.cs.helsinki.fi/exampleapp/data.json geschickt, woraufhin die Notizen als JSON-Daten zurückkommen.
+
+> - When the data has been fetched, the browser executes an event handler, which renders the notes to the page using the DOM-API. 
+
+- Wenn die Daten geladen wurden, führt der Browser einen Event Handler aus, der Notizen auf der Seite anzeigt, indem er die DOM-API nutzt.
+
+> Forms and HTTP POST
+
+## Formulare und HTTP POST
