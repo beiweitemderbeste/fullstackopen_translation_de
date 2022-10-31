@@ -12,7 +12,7 @@
 - [Bearbeiten des document objects von der Konsole aus](#Bearbeiten-des-document-objects-von-der-Konsole-aus)
 - [Wie eine Seite geladen wird, die JavaScript enthält](#Wie-eine-Seite-geladen-wird,-die-JavaScript-enthält)
 - [Formulare und HTTP POST](#Formulare-und-HTTP-POST)
-- [AJAX](#AJAX)
+- [AJAX](#AJAX)+
 
 > Fundamentals of Web apps
 
@@ -476,7 +476,7 @@ Jetzt hängen wir über die Konsole eine neue Notiz an die Webseite.
 
 > First, we'll get the list of notes from the page. The list is in the first ul-element of the page: 
 
-Zuerst laden wir die Liste der Notizen von der Seite. Die Liste ist das erste ul-Element:
+Jetzt fügen wir über die Konsole eine neue Notiz in die Webseite ein.
 
 ```javascript
 list = document.getElementsByTagName('ul')[0]
@@ -504,7 +504,7 @@ list.appendChild(newElement)
 
 > Even though the page updates on your browser, the changes are not permanent. If the page is reloaded, the new note will disappear, because the changes were not pushed to the server. The JavaScript code the browser fetches will always create the list of notes based on JSON-data from the address https://studies.cs.helsinki.fi/exampleapp/data.json.
 
-Auch wenn die Seite in eurem Browser angepasst wird, sind die Änderungen nicht dauerhaft. Wenn die Seite neugeladen wird, verschwindet die neue Notiz, da die Änderungen nicht an den Server übertragen wurden. Der JavaScriptquellcode, der vom Browser geladen wird, erstellt immer eine Liste mit Notizen, die auf den JSON-Daten beruhen, die von der Adresse https://studies.cs.helsinki.fi/exampleapp/data.json geladen werden.
+Auch wenn die Seite in eurem Browser verändert wird, sind die Änderungen nicht dauerhaft. Wenn die Seite neugeladen wird, verschwindet die Notiz, da die Änderungen nicht an den Server übertragen wurden. Der JavaScriptquellcode, der vom Browser geladen wird, erstellt immer eine Liste mit den Notizen aus den JSON-Daten, die von der Adresse https://studies.cs.helsinki.fi/exampleapp/data.json geladen werden.
 
 > CSS
 
@@ -512,7 +512,7 @@ Auch wenn die Seite in eurem Browser angepasst wird, sind die Änderungen nicht 
 
 > The head element of the HTML code of the Notes page contains a link tag, which determines that the browser must fetch a CSS style sheet from the address main.css.
 
-Das Head-Element des HTML-Quellcode der Notizenseite enthält einen Link-Tag, der festlegt, dass der Browser die CSS-Datei main.css laden soll.
+Das Head-Element des HTML-Quellcode enthält einen Link-Tag, der festlegt, dass der Browser die CSS-Datei main.css laden soll.
 
 > Cascading Style Sheets, or CSS, is a style sheet language used to determine the appearance of web pages.
 
@@ -539,7 +539,7 @@ Die Datei definiert 2 Class-Selectors. Diese werden benutzt, um bestimmte Teile 
 
 > A class selector definition always starts with a period, and contains the name of the class.
 
-Eine Class-Selector-Definition begint immer mit einem Punkt und enthält den Namen der Klasse.
+Eine Class-Selector-Definition beginnt immer mit einem Punkt und enthält den Namen der Klasse.
 
 > The classes are attributes, which can be added to HTML elements.
 
@@ -557,11 +557,11 @@ Das äußerste Div-Element hat die Klasse "container". Das ul-Element, das die N
 
 > The CSS rule defines that elements with the container class will be outlined with a one pixel wide border. It also sets 10 pixel padding on the element. This adds some empty space between the element's content and the border.
 
-Die CSS-Regel bestimmt, dass Elemente mit der Klasse "container" eine 1 Pixel-breite Umrandung haben. Die Klasse legt auch einen Padding-Wert von 10 Pixeln für zugehörige Elemente fest. Dadurch gibt es einen freien Bereich zwischen dem Inhalt der Elemente und deren Umrandung.
+Die CSS-Regel bestimmt, dass Elemente mit der Klasse "container" eine 1 Pixel-breite Umrandung haben. Die Klasse legt auch einen Padding-Wert von 10 Pixeln fest. Dadurch gibt es einen freien Bereich zwischen den Elementen und deren Umrandung.
 
 > The second CSS rule sets the text color of the notes as blue.
 
-Die zweite CSS-Regel besagt, dass die Textfarbe der Notizen blau ist.
+Die zweite CSS-Regel ändert die Textfarbe der Notizen zu blau.
 
 > HTML elements can also have other attributes apart from classes. The div element containing the notes has an id attribute. JavaScript code uses the id to find the element.
 
@@ -589,7 +589,7 @@ Schauen wir nach, was passiert, wenn die Seite https://studies.cs.helsinki.fi/ex
 
 > - The browser fetches the HTML code defining the content and the structure of the page from the server using an HTTP GET request.
 
-Über eine HTTP GET-Anfrage lädet der Browser den HTML-Quellcode, der den Inhalt und die Struktur der Seite bestimmt.
+Über eine HTTP GET-Anfrage lädt der Browser den HTML-Quellcode, der den Inhalt und die Struktur der Seite bestimmt.
 
 > - Links in the HTML code cause the browser to also fetch the CSS style sheet main.css...
 
@@ -613,7 +613,7 @@ Schauen wir nach, was passiert, wenn die Seite https://studies.cs.helsinki.fi/ex
 
 > Next let's examine how adding a new note is done. 
 
-Als Nächstes untersuchen wir, wie das Hinzufügen einer neuen Notiz funktioniert
+Als Nächstes untersuchen wir, wie das Hinzufügen einer neuen Notiz funktioniert.
 
 > The Notes page contains a form-element.
 
@@ -623,7 +623,7 @@ Die Notizenseite enthält ein form-Element.
 
 > When the button on the form is clicked, the browser will send the user input to the server. Let's open the Network tab and see what submitting the form looks like: 
 
-Wenn der Button des Formulars geklickt wird, sendet der Browser die Benutzereingabe zum Server. Öffnen wir den Network-Tab und sehen uns an, wir das Absenden des Formulars aussieht:
+Wenn der Button des Formulars geklickt wird, sendet der Browser die Benutzereingabe zum Server. Öffnen wir den Network-Tab und sehen uns an, wie das Absenden des Formulars aussieht:
 
 !["fullstack content"](./images/part0b_image21.png?raw=true)
 
@@ -635,7 +635,7 @@ Wenn der Button des Formulars geklickt wird, sendet der Browser die Benutzereing
 
 > It is an HTTP POST request to the server address new_note. The server responds with HTTP status code 302. This is a URL redirect, with which the server asks the browser to do a new HTTP GET request to the address defined in the header's Location - the address notes.
 
-Es ist eine HTTP POST-Anfrage an die Serveradresse new_note. Der Server antwortet mit dem HTTP-Statuscode 302. Das ist eine URL-Umleitung mit der der Server den Browser auffordert, eine neue HTTP-Anfrage zu starten, deren Adresse im Header definiert ist.
+Wir sehen eine HTTP POST-Anfrage an die Serveradresse new_note. Der Server antwortet mit dem HTTP-Statuscode 302. Das ist eine URL-Umleitung mit der der Server den Browser auffordert, eine neue HTTP-Anfrage zu starten, deren Adresse im Header definiert ist.
 
 > So, the browser reloads the Notes page. The reload causes three more HTTP requests: fetching the style sheet (main.css), the JavaScript code (main.js), and the raw data of the notes (data.json).
 
@@ -678,7 +678,7 @@ Der Server kann auf diese Daten zu greifen, in dem er das Feld "req.body" des Re
 
 > The server creates a new note object, and adds it to an array called notes.
 
-Der Server erstellt ein neues Notizobjekt und hängt es an das Array "notes".
+Der Server erstellt ein neues Notizobjekt und hängt es an das Array "notes":
 
 ```javascript
 notes.push({
@@ -693,8 +693,9 @@ Das Notizobjekt hat zwei Felder: "content" enthält den tatsächlichen Inhalt de
 
 > The server does not save new notes to a database, so new notes disappear when the server is restarted. 
 
-Der Server speichert keine neuen Notizen in einer Daten, so dass die Notizen verschwinden, wenn der Server neugestartet wird.
+Der Server speichert keine neuen Notizen, so dass die Notizen verschwinden, wenn der Server neugestartet wird.
 
 > AJAX
 
 ## AJAX
+

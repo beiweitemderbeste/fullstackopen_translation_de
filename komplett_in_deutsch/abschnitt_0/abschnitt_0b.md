@@ -6,6 +6,12 @@
 - [Anwendungslogik im Browser laufen lassen](#Anwendungslogik-im-Browser-laufen-lassen)
 - [Event Handlers und Callback-Funktionen](#Event-Handlers-und-Callback-Funktionen)
 - [Document Object Model bzw. DOM](#Document-Object-Model-bzw.-DOM)
+- [Bearbeiten des document objects von der Konsole aus](#Bearbeiten-des-document-objects-von-der-Konsole-aus)
+- [CSS](#CSS)
+- [Wie eine Seite geladen wird, die JavaScript enthält](#Wie-eine-Seite-geladen-wird,-die-JavaScript-enthält)
+- [Formulare und HTTP POST](#Formulare-und-HTTP-POST)
+- [AJAX](#AJAX)
+
 
 ## Grundlagen von Webapplikationen
 
@@ -285,19 +291,181 @@ html
         input
 ```
 
+Die gleiche baumartige Struktur kann man im Konsolentab "Elements" sehen.
+
+Die Funktionstüchtigkeit des Browser basiert auf der Idee HTML-Elemente als Baum darzustellen.
+
+Das Document Object Model, oder kurz DOM, ist eine API (Application Programming Interface), die die Veränderung der Elemente von Webseiten ermöglicht.
+
+Der Javascriptquellcode, der im vorangegangen Kapitel vorgestellt wurde, nutzt die DOM-API, um eine Liste der Notizen auf der Webseite darzustellen.
+
+Der folgende Quellcode erstellt einen Knoten für die Variable ul und fügt einige untergeordnete Knoten hinzu:
+
+```javascript
+var ul = document.createElement('ul')
+
+data.forEach(function(note) {
+  var li = document.createElement('li')
+
+  ul.appendChild(li)
+  li.appendChild(document.createTextNode(note.content))
+})
+```
+
+Schließlich wird in der HTML-Struktur der ganzen Seite, der Teil der ul-Variable eingefügt:
+
+```javascript
+document.getElementsByClassName('notes').appendChild(ul)
+```
+
+## Bearbeiten des document objects von der Konsole aus
+
+Der oberste Knoten des DOM-Baumes eines HTML-Dokuments wird document object genannt. Wir können eine Webseite mit der DOM-API auf verschiedene Weise bearbeiten. Auf das document object könnt ihr direkt in der Konsole zugreifen, indem ihr document eingebt:
+
+!["Ein Screenshot des Elements-Tab der Entwicklerkonsole"](./bilder/abschnitt0b_bild15.png?raw=true)
+
+Jetzt fügen wir über die Konsole eine neue Notiz in die Webseite ein.
+
+```javascript
+list = document.getElementsByTagName('ul')[0]
+```
+
+Dann erstellen wir ein neues li-Element und ergänzen es mit ein wenig Text:
+
+```javascript
+newElement = document.createElement('li')
+newElement.textContent = 'Page manipulation from console is easy'
+
+```
+
+Und dann hängen wir das li-Element an die Liste:
+
+```javascript
+list.appendChild(newElement)
+```
+
+!["Ein Screenshot der Seite mit der neuen Notiz in der Liste"](./bilder/abschnitt0b_bild16.png?raw=true)
+
+Auch wenn die Seite in eurem Browser verändert wird, sind die Änderungen nicht dauerhaft. Wenn die Seite neugeladen wird, verschwindet die Notiz, da die Änderungen nicht an den Server übertragen wurden. Der JavaScriptquellcode, der vom Browser geladen wird, erstellt immer eine Liste mit den Notizen aus den JSON-Daten, die von der Adresse https://studies.cs.helsinki.fi/exampleapp/data.json geladen werden.
+
+## CSS
+
+Das Head-Element des HTML-Quellcode enthält einen Link-Tag, der festlegt, dass der Browser die CSS-Datei main.css laden soll.
+
+Cascading Style Sheets, oder kurz CSS, ist eine Style Sheet-Sprache, die genutzt wird, um das Aussehen von Webseiten festzulegen.
+
+Die CSS-Datei sieht folgendermaßen aus:
+
+```css
+.container {
+  padding: 10px;
+  border: 1px solid; 
+}
+
+.notes {
+  color: blue;
+}
+```
+
+Die Datei definiert 2 Class-Selectors. Diese werden benutzt, um bestimmte Teile der Seite auszuwählen und Regeln für deren Aussehen zu bestimmen.
+
+Eine Class-Selector-Definition beginnt immer mit einem Punkt und enthält den Namen der Klasse.
+
+Klassen sind Attribute, die HTML-Elementen hinzugefügt werden können.
+
+CSS-Attribute können im Elements-Tab der Konsole betrachtet werden:
+
+!["Ein Screenshot des Elements-Tab der Entwicklerkonsole"](./bilder/abschnitt0b_bild17.png?raw=true)
+
+Das äußerste Div-Element hat die Klasse "container". Das ul-Element, das die Notizenliste enthält, hat die Klasse "notes".
+
+Die CSS-Regel bestimmt, dass Elemente mit der Klasse "container" eine 1 Pixel-breite Umrandung haben. Die Klasse legt auch einen Padding-Wert von 10 Pixeln fest. Dadurch gibt es einen freien Bereich zwischen den Elementen und deren Umrandung.
+
+Die zweite CSS-Regel ändert die Textfarbe der Notizen zu blau.
+
+HTML-Elemente können auch andere Attribute als Klassen haben. Das Div-Element, dass die Notizen enthält, hat auch ein id-Attribut. Der Javascriptquellcode nutzt diese id, um das Element zu finden.
+
+Der Elements-Tab der Konsole kann dazu benutzt werden, das Aussehen der verschiedenen Elemente zu ändern.
+
+!["fullstack content"](./bilder/abschnitt0b_bild18.png?raw=true)
+
+Veränderungen der Seite, die in der Konsole durchgeführt werden, sind nicht dauerhaft. Wenn ihr dauerhafte Änderungen durchführen wollt, muss die CSS-Datei auf dem Server gespeichert werden.
+
+## Wie eine Seite geladen wird, die JavaScript enthält
+
+Schauen wir nach, was passiert, wenn die Seite https://studies.cs.helsinki.fi/exampleapp/notes im Browser geöffnet wird.
+
+!["fullstack content"](./bilder/abschnitt0b_bild19.png?raw=true)
+
+Über eine HTTP GET-Anfrage lädt der Browser den HTML-Quellcode, der den Inhalt und die Struktur der Seite bestimmt.
+
+- Die Links im HTML-Quellcode veranlassen den Browser die CSS-Datei main.css zu laden...
+
+- ... ebenso wie die JavaScript-Datei main.js
+
+- Der Browser für den JavaScript-Quellcode aus. Dadurch wird eine HTTP GET-Anfrage an die Adresse https://studies.cs.helsinki.fi/exampleapp/data.json geschickt, woraufhin die Notizen als JSON-Daten zurückkommen.
+
+- Wenn die Daten geladen wurden, führt der Browser einen Event Handler aus, der Notizen auf der Seite anzeigt, indem er die DOM-API nutzt.
+
+## Formulare und HTTP POST
+
+Als Nächstes untersuchen wir, wie das Hinzufügen einer neuen Notiz funktioniert.
+
+Die Notizenseite enthält ein form-Element.
+
+!["fullstack content"](./bilder/abschnitt0b_bild20.png?raw=true)
+
+Wenn der Button des Formulars geklickt wird, sendet der Browser die Benutzereingabe zum Server. Öffnen wir den Network-Tab und sehen uns an, wie das Absenden des Formulars aussieht:
+
+!["fullstack content"](./bilder/abschnitt0b_bild21.png?raw=true)
+
+Überraschenderweise löst das Abschicken des Formulars nicht weniger als fünf HTTP-Anfragen aus. Die Erste ist das Abschicken selbst. Schauen wir genauer hin:
+
+!["fullstack content"](./bilder/abschnitt0b_bild22.png?raw=true)
+
+Wir sehen eine HTTP POST-Anfrage an die Serveradresse new_note. Der Server antwortet mit dem HTTP-Statuscode 302. Das ist eine URL-Umleitung mit der der Server den Browser auffordert, eine neue HTTP-Anfrage zu starten, deren Adresse im Header definiert ist.
+
+Dadurch lädt der Server die Notizenseite erneut. Dieses Neuladen verursacht drei weitere HTTP-Anfragen: das Laden der CSS-Datei (main.css), die JavaScript-Datei (main.js), und die Rohdaten der Notizen (data.json).
+
+Der Network-Tab zeigt auch die Daten, die mit dem Formular abgeschickt werden.
+
+!["fullstack content"](./bilder/abschnitt0b_bild23.png?raw=true)
+
+Der Form-Tag hat die Attribute "action" und "method", die festlegen, dass das Abschicken des Formlars als HTTP POST-Anfrage an die Adresse new_note geschieht.
+
+!["fullstack content"](./bilder/abschnitt0b_bild24.png?raw=true)
+
+Der Quellcode auf dem Server, der für POST-Anfragen zuständig ist, ist relativ einfach (Hinweis: der Quellcode liegt auf dem Server und ist nicht die JavaScript-Datei, die heruntergeladen wurde):
+
+```javascript
+app.post('/new_note', (req, res) => {
+  notes.push({
+    content: req.body.note,
+    date: new Date(),
+  })
+
+  return res.redirect('/notes')
+})
+```
+Die über das Formular abgeschickten Daten, werden im "body" der HTTP POST-Anfrage verschickt.
+
+Der Server kann auf diese Daten zu greifen, in dem er das Feld "req.body" des Request Objects "req" einsieht.
 
 
+Der Server erstellt ein neues Notizobjekt und hängt es an das Array "notes":
 
+```javascript
+notes.push({
+  content: req.body.note,
+  date: new Date(),
+})
+```
 
+Das Notizobjekt hat zwei Felder: "content" enthält den tatsächlichen Inhalt der Notiz und "date" enthält das Datum und die Uhrzeit, an dem die Notiz erstellt wurde.
 
+Der Server speichert keine neuen Notizen, so dass die Notizen verschwinden, wenn der Server neugestartet wird.
 
-
-
-
-
-
-
-
+## AJAX
 
 
 

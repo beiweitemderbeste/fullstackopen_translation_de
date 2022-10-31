@@ -1,0 +1,77 @@
+[33mcommit 7a3c5563121787cb08e1ceb204a4ea171d3f55d0[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: beiweitemderbeste <beiweitemderbeste@protonmail.com>
+Date:   Sun Oct 30 19:37:51 2022 +0100
+
+    translating Forms and HTTP POST
+
+[33mcommit 6063d1d113e3bda28ea8b6bb8c7bfbe5e7317311[m
+Author: beiweitemderbeste <beiweitemderbeste@protonmail.com>
+Date:   Sun Oct 30 19:11:48 2022 +0100
+
+    translating Loading a page containing JavaScript
+
+[33mcommit 1df275191e25aeaf36b0a4e9efe09b65b1077a27[m
+Author: beiweitemderbeste <beiweitemderbeste@protonmail.com>
+Date:   Sun Oct 30 18:55:26 2022 +0100
+
+    translating CSS
+
+[33mcommit 28f17b6c7232c5ff4ac5241edcf6cfd5770dd5c0[m
+Author: beiweitemderbeste <beiweitemderbeste@protonmail.com>
+Date:   Sun Oct 30 18:38:40 2022 +0100
+
+    translating manupilating the document-object from console
+
+[33mcommit b87b2fd76e3a7fa690e8749a82c41c7cec613941[m
+Author: beiweitemderbeste <beiweitemderbeste@protonmail.com>
+Date:   Sun Oct 30 17:29:45 2022 +0100
+
+    adding pure german version
+
+[33mcommit 7be68b5cbb6c5efc9812ae959d51d7d64d980cc4[m
+Author: beiweitemderbeste <beiweitemderbeste@protonmail.com>
+Date:   Sun Oct 30 15:58:30 2022 +0100
+
+    create entirely german version
+
+[33mcommit c7a634cce381e62b69af19d8eddd9ff91c6beeee[m
+Author: beiweitemderbeste <beiweitemderbeste@protonmail.com>
+Date:   Sat Oct 29 20:57:34 2022 +0200
+
+    adding Running application logic in the browser
+
+[33mcommit ec26a760597dd8450b42bfecf76b53a3bbebcafc[m
+Author: beiweitemderbeste <beiweitemderbeste@protonmail.com>
+Date:   Sat Oct 29 19:50:49 2022 +0200
+
+    translating traditional web applications
+
+[33mcommit 03ff2499b22d4f2d65e77744ea860356f918c013[m
+Author: beiweitemderbeste <beiweitemderbeste@protonmail.com>
+Date:   Sat Oct 29 19:06:10 2022 +0200
+
+    adding table of contents
+
+[33mcommit 2da82734f8afd8f616aa0d3e641a0aa519e8b8ce[m
+Author: beiweitemderbeste <beiweitemderbeste@protonmail.com>
+Date:   Sat Oct 29 17:27:08 2022 +0200
+
+    added images for part0b
+
+[33mcommit e45b7612da52b05e61417cecc73af9cf9ae4d1c1[m
+Author: beiweitemderbeste <beiweitemderbeste@protonmail.com>
+Date:   Sat Oct 29 17:02:40 2022 +0200
+
+    added part0b
+
+[33mcommit 9d7cda9839c8ff5f328c0e3a53f1a6d90656c790[m
+Author: beiweitemderbeste <beiweitemderbeste@protonmail.com>
+Date:   Sat Oct 29 16:12:08 2022 +0200
+
+    create readme and folder per each part
+
+[33mcommit 0ef9601211ba08dc2e120f9ed6b51d2840c765f6[m
+Author: beiweitemderbeste <beiweitemderbeste@protonmail.com>
+Date:   Sat Oct 29 13:29:18 2022 +0200
+
+    initial commit
