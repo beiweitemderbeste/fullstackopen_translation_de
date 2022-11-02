@@ -846,17 +846,31 @@ Der Quellcode der Anwendung ist unter https://github.com/mluukkai/example_app ve
 
 > The sample app is done with so called vanilla JavaScript, using only the DOM-API and JavaScript to manipulate the structure of the pages.
 
+Die Beispielanwendung ist in sogenanntem Vanilla JavaScript geschrieben und nutzt nur dieses und die DOM-API, um die Strukturen der Seiten zu verändern.
+
 > Instead of using JavaScript and the DOM-API only, different libraries containing tools that are easier to work with compared to the DOM-API are often used to manipulate pages. One of these libraries is the ever-so-popular jQuery.
+
+Anstatt nur reinem JavaScript und DOM-API, kann man auch verschiedene Bibliotheken nutzen, mit denen sich viel leichter Webseiten verändern lassen. Eine dieser Bilbiotheken ist jQuery.
 
 > jQuery was developed back when web applications mainly followed the traditional style of the server generating HTML pages, the functionality of which was enhanced on the browser side using JavaScript written with jQuery. One of the reasons for the success of jQuery was its so-called cross-browser compatibility. The library worked regardless of the browser or the company that made it, so there was no need for browser-specific solutions. Nowadays using jQuery is not as justified given the advancement of JavaScript, and the most popular browsers generally support basic functionalities well.
 
+jQuery wurde entwickelt, als Webapplikationen noch hauptsächlich aus HTML-Seiten bestanden, die von Server generiert wurden. Diese Funktionalität wurde durch, auf Browserseite genutztem, JavaScript und jQuery erweitert. Eine der Gründe für den Erfolg von jQuery war seine Kompabilität über mehrere Browser. Die Bibliothek arbeitete unabhängig vom eingesetzten Browser oder der Firma, die ihn erstellt hat. Dadurch waren keine browserspezifischen Lösungen mehr nötig. Heutzutage ist wegen der Weiterentwicklung von JavaScript der Einsatz von jQuery nicht mehr gerechtfertigt und die meisten Browser unterstützen sowieso die meisten Grundfunktionien.
+
 > The rise of the single page app brought several more "modern" ways of web development than jQuery. The favorite of the first wave of developers was BackboneJS. After its launch in 2012, Google's AngularJS quickly became almost the de facto standard of modern web development.
+
+Der Aufstieg der SPAs brauchte auch mehrere verschiedene "moderne" Wege zur Webentwicklung zum Vorschein als jQuery. Der Liebling der ersten Welle von Entwicklern war BackboneJS. Nach seiner Einführung 2012 wurde Googles AngularJS schnell zum Quasistandard der Webentwicklung.
 
 > However, the popularity of Angular plummeted in October 2014 after the Angular team announced that support for version 1 will end, and Angular 2 will not be backwards compatible with the first version. Angular 2 and the newer versions have not gotten too warm of a welcome.
 
+Wie auch immer, die Beliebtheit von Angular stürzte im Oktober 2014 ab, als das Angularteam bekannt gab den Support für Version 1 einzustellen und das Angular 2 nicht rückwärtskompatibel sein wird. Angular 2 und neuere Versionen erreichten nie die Beliebtheit von Version 1.
+
 > Currently the most popular tool for implementing the browser-side logic of web-applications is Facebook's React library. During this course, we will get familiar with React and the Redux library, which are frequently used together.
 
+Das momentan beliebteste Werkzeug für das Implementieren von Anwendungslogik auf Browserseite ist Facebooks React-Bibliothek. In diesem Kurs werden wir uns mit der React- und Redux-Bibliothek vertraut machen, die sehr häufig zusammen genutzt werden.
+
 > The status of React seems strong, but the world of JavaScript is ever changing. For example, recently a newcomer - VueJS - has been capturing some interest. 
+
+Der Beliebtheitsgrad von React ist sehr groß, aber die Welt von JavaScript ändert sich ständig. Es gibt z.B. zur Zeit einen Newcomer - VueJs - der für einigies Interesse sorgt.
 
 ## Full stack web development
 
