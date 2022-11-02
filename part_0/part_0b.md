@@ -1036,4 +1036,5 @@ Erstellt ein Diagramm, dass die Situation beschreibt, wie ein Benutzer die Singl
 
 > This was the last exercise, and it's time to push your answers to GitHub and mark the exercises as done in the submission system.
 
+
 [part 1](part_1/part_1.md)
