@@ -11,6 +11,7 @@
 - [Wie eine Seite geladen wird, die JavaScript enthält](#Wie-eine-Seite-geladen-wird,-die-JavaScript-enthält)
 - [Formulare und HTTP POST](#Formulare-und-HTTP-POST)
 - [AJAX](#AJAX)
+- [Single page app](#Single-page-app)
 
 
 ## Grundlagen von Webapplikationen
@@ -467,11 +468,19 @@ Der Server speichert keine neuen Notizen, so dass die Notizen verschwinden, wenn
 
 ## AJAX
 
+Die Notizenseite folgt einem Webentwicklungstrend aus den frühen 90ern und nutzt "Ajax". Als solches hatte es seine Hochzeit in den frühen 00er Jahren.
 
+AJAX (Asynchronous JavaScript and XML) ist ein Begriff, der im Februar 2005 eingeführt wurde und einen revolutionären Ansatz beschreibt, wie Inhalt von Webseiten geladen werden ohne die Seite erneut zu laden.
 
+Vor der AJAX-Zeit funktionierten alle Webseiten wie unsere traditionelle Webanwendung, die wir schon eher in diesem Kapitel gesehen haben. Alle Daten, die auf der Webseite dargestellt werden
 
+Die Notizenseite lädt die Daten der Notizen über AJAX. Das Abschicken des Formulars geschieht immer noch über traditionelle Techniken.
 
+Die URLS der Anwendung spiegeln die alten sorgenfreien Zeiten wieder. Die JSON-Daten werden von der URL https://studies.cs.helsinki.fi/exampleapp/data.json geladen und neue Notizen werden an die URL https://studies.cs.helsinki.fi/exampleapp/new_note gesendet. Heutzutage werden solche URLS nicht mehr akzeptiert, da sie nicht den anerkannten Konventionen von RESTful APIs (mehr davon in Abschnitt3) folgen.
 
+AJAX ist heute so verbreitet, dass es als selbstverständlich angenommen wird. Der Begriff ist in Vergessenheit geraten und die neue Generation hat noch nicht mal davon gehört.
+
+## Single page app
 
 
 
