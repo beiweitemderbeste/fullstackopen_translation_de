@@ -9,10 +9,10 @@
 - [Traditionelle Webanwendungen](#Traditionelle-Webanwendungen)
 - [Anwendungslogik im Browser laufen lassen](#Anwendungslogik-im-Browser-laufen-lassen)
 - [Event Handlers und Callback-Funktionen](#Event-Handlers-und-Callback-Funktionen)
-- [Document Object Model bzw. DOM](#Document-Object-Model-bzw.-DOM)
+- [Document Object Model bzw DOM](#Document-Object-Model-bzw-DOM)
 - [Bearbeiten des document objects von der Konsole aus](#Bearbeiten-des-document-objects-von-der-Konsole-aus)
 - [CSS](#CSS)
-- [Wie eine Seite geladen wird, die JavaScript enthält](#Wie-eine-Seite-geladen-wird,-die-JavaScript-enthält)
+- [Wie eine Seite geladen wird, die JavaScript enthält](#Wie-eine-Seite-geladen-wird-die-JavaScript-enthält)
 - [Formulare und HTTP POST](#Formulare-und-HTTP-POST)
 - [AJAX](#AJAX)
 - [Single page app](#Single-page-app)
@@ -402,7 +402,7 @@ Event Handler aufzurufen ist sehr gebräuchlich in der Javascriptentwicklung. Ev
 
 > Document Object Model or DOM
 
-## Document Object Model bzw. DOM
+## Document Object Model bzw DOM
 
 > We can think of HTML-pages as implicit tree structures.
 
@@ -586,7 +586,7 @@ Veränderungen der Seite, die in der Konsole durchgeführt werden, sind nicht da
 
 > Loading a page containing JavaScript - review
 
-## Wie eine Seite geladen wird, die JavaScript enthält
+## Wie eine Seite geladen wird die JavaScript enthält
 
 > Let's review what happens when the page https://studies.cs.helsinki.fi/exampleapp/notes is opened on the browser. 
 
@@ -913,7 +913,7 @@ Die Welt von JavaScript ändert sich schnell, was zu einer eigenen Reihe von Her
 
 Auch ihr werden während des Kurses an JavaScript-Müdigkeit leiden. Glücklicherweise gibt es ein paar Arten, wie man die Lernkurve abschwächen kann und wir beginnen damit, indem wir programmieren anstatt zu konfigurieren. Wir können das Konfigurieren zwar nicht ganz verhindern, aber wir können es um ein paar Wochen verschieben.
 
-## Exercises 0.1.-0.6.
+## Exercises
 
 > The exercises are submitted via GitHub, and by marking the exercises as done in the submission system.
 
