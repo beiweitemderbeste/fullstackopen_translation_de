@@ -1,4 +1,6 @@
-# Inhaltsverzeichnis
+# Abschnitt 0b
+
+## Inhaltsverzeichnis
 
 - [Grundlagen von Webapplikationen](#grundlagen-von-webapplikationen)
 - [HTTP GET](#HTTP-GET)
@@ -485,3 +487,4 @@ AJAX ist heute so verbreitet, dass es als selbstverständlich angenommen wird. D
 
 
 
+[Abschnitt 1](../abschnitt_1/abschnitt_1.md)
