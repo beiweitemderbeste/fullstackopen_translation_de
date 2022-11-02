@@ -11,6 +11,7 @@
 - [Event Handlers und Callback-Funktionen](#Event-Handlers-und-Callback-Funktionen)
 - [Document Object Model bzw. DOM](#Document-Object-Model-bzw.-DOM)
 - [Bearbeiten des document objects von der Konsole aus](#Bearbeiten-des-document-objects-von-der-Konsole-aus)
+- [CSS](#CSS)
 - [Wie eine Seite geladen wird, die JavaScript enthält](#Wie-eine-Seite-geladen-wird,-die-JavaScript-enthält)
 - [Formulare und HTTP POST](#Formulare-und-HTTP-POST)
 - [AJAX](#AJAX)
@@ -902,17 +903,29 @@ Es war üblicher, dass sich Entwickler auf eine Schicht des Stacks konzentriert 
 
 > Full stack web development is challenging in many ways. Things are happening in many places at once, and debugging is quite a bit harder than with regular desktop applications. JavaScript does not always work as you'd expect it to (compared to many other languages), and the asynchronous way its runtime environments work causes all sorts of challenges. Communicating on the web requires knowledge of the HTTP protocol. One must also handle databases and server administration and configuration. It would also be good to know enough CSS to make applications at least somewhat presentable.
 
+Die Full Stack-Webentwicklung ist auf vielen Seiten herausfordernd. Sachen passieren an vielen Orten gleichzeitig, debuggen ist schwieriger im Vergleich zu regulären Desktopanwendungen. JavaScript funktioniert auch nicht immer, wie man erwartet (im Vergleich zu vielen anderen Sprachen), und die asynchrone Weise, auf die seine Entwicklungsumgebung arbeitet, verursacht alle Arten von Herausforderungen. Um mit dem Server zu kommunizieren, benötigt es Wissen über HTTP. Außerdem muss man mit Datenbanken umgehen können und Server verwalten und konfigurieren können. Es wäre auch gut zu wissen, wie man CSS einsetzt, um die Anwendungen präsentieren zu können.
+
 > The world of JavaScript develops fast, which brings its own set of challenges. Tools, libraries and the language itself are under constant development. Some are starting to get tired of the constant change, and have coined a term for it: JavaScript fatigue. See How to Manage JavaScript Fatigue on auth0 or JavaScript fatigue on Medium.
 
+Die Welt von JavaScript ändert sich schnell, was zu einer eigenen Reihe von Herausforderungen führt. Werkzeuge, Bibliothken und die Sprache selber sind unter konstanter Entwicklung. Manche werden langsam müde von der dauerhaften Veränderung und haben dafür ein Wort gefunden: JavaScript-Müdigkeit. Wie ihr damit umzugehen lernt, könnt ihr [hier](https://auth0.com/blog/how-to-manage-javascript-fatigue/) oder [hier](https://medium.com/@ericclemmons/javascript-fatigue-48d4011b6fc4) nachlesen.
+
 > You will suffer from JavaScript fatigue yourself during this course. Fortunately for us, there are a few ways to smooth the learning curve, and we can start with coding instead of configuration. We can't avoid configuration completely, but we can merrily push ahead in the next few weeks while avoiding the worst of configuration hells. 
+
+Auch ihr werden während des Kurses an JavaScript-Müdigkeit leiden. Glücklicherweise gibt es ein paar Arten, wie man die Lernkurve abschwächen kann und wir beginnen damit, indem wir programmieren anstatt zu konfigurieren. Wir können das Konfigurieren zwar nicht ganz verhindern, aber wir können es um ein paar Wochen verschieben.
 
 ## Exercises 0.1.-0.6.
 
 > The exercises are submitted via GitHub, and by marking the exercises as done in the submission system.
 
+Die Aufgaben werden über GitHub eingereicht und in dem sie als erledigt im Submissionsystem markiert sind.
+
 > You can submit all of the exercises into the same repository, or use multiple different repositories. If you submit exercises from different parts into the same repository, name your directories well. If you use a private repository to submit the exercises, add mluukkai as a collaborator to it.
 
+Ihr könnt alle Aufgaben über eine Repository einreichen oder verschiedene Repositories benutzen. Bitte benennt eure Verzeichnisse korrekt, wenn ihr Aufgaben verschiedener Abschnitte im selben Repository einreicht. Wenn ihr ein privates Repository mit Aufgaben einreichen wollt, fügt mluukkai Collaborator hinzu.
+
 > One good way to name the directories in your submission repository is as follows: 
+
+Ein Beispiel für eine gelungene Benennung eurer Verzeichnisse könnte so aussehen:
 
 ```
 part0
@@ -928,28 +941,46 @@ part2
 
 > So, each part has its own directory, which contains a directory for each exercise set (like the unicafe exercises in part 1).
 
+Dadurch hat jeder Abschnitt sein eigenes Verzeichnis, dass jeweils ein Verzeichnis für jede Aufgabenzusammenstellung enthält (z.B. die unicafe-Aufgaben in Abschnitt 1).
+
 > The exercises are submitted one part at a time. When you have submitted the exercises for a part, you can no longer submit any missed exercises for that part.
+
+Die Aufgaben werden Abschnitt für Abschnitt eingereicht. Wenn ihr Aufgaben für einen Abschnitt eingereicht habt, könnt ihr nicht länger noch fehlende Aufgaben für diesen Abschnitt abgeben.
 
 ### 0.1: HTML
 
 > Review the basics of HTML by reading this tutorial from Mozilla: HTML tutorial.
 > This exercise is not submitted to GitHub, it's enough to just read the tutorial
 
+Schaut euch nochmal die Grundlagen von HTML an, in dem ihr diese Anleitung von Mozilla lest: [HTML Tutorial](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics)
+
+Bei dieser Aufgabe müsst ihr nichts abgeben, nur den Link lesen.
+
 ### 0.2: CSS
 
 > Review the basics of CSS by reading this tutorial from Mozilla: CSS tutorial.
 > This exercise is not submitted to GitHub, it's enough to just read the tutorial
+
+Schaut euch nochmal die Grundlagen von HTML an, in dem ihr diese Anleitung von Mozilla lest: [CSS Tutorial](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics)
+
+Bei dieser Aufgabe müsst ihr nichts abgeben, nur den Link lesen.
 
 ### 0.3: HTML forms
 
 > Learn about the basics of HTML forms by reading Mozilla's tutorial Your first form.
 > This exercise is not submitted to GitHub, it's enough to just read the tutorial
 
+Lernt über die Grundlagen von HTML-Formularen, indem ihr diese Anleitung von Mozilla lest: [Your first form](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Your_first_HTML_form)
+
 ### 0.4: New note
 
 > In chapter Loading a page containing JavaScript - review the chain of events caused by opening the page https://studies.cs.helsinki.fi/exampleapp/notes is depicted as a sequence diagram
 
+Im Abschnitt "Wie eine Seite geladen wird, die Javascript enthält" wird die Abfolge der Ereignisse beim Öfnnen der Seite https://studies.cs.helsinki.fi/exampleapp/notes als Sequenzdiagramm dargestellt.
+
 > The diagram was made using websequencediagrams service as follows: 
+
+Das Diagramm wurde mithilfe von websequencediagrams service folgendermaßen erstellt:
 
 ```
 browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
@@ -975,17 +1006,29 @@ end note
 
 > Create a similar diagram depicting the situation where the user creates a new note on page https://studies.cs.helsinki.fi/exampleapp/notes when writing something into the text field and clicking the submit button.
 
+Erstellt ein ähnliches Diagramm, dass die Situation beschreibt, wo ein Benutzer eine neue Notiz auf der Seite https://studies.cs.helsinki.fi/exampleapp/notes erstellt, indem ihr etwas ins Textfeld schreibt und auf den Abschickenbutton klickt.
+
 > If necessary, show operations on the browser or on the server as comments on the diagram.
+
+Bei Bedarf könnt ihr die Operationen im Browser oder auf dem Server als Kommentare im Diagramm zeigen.
 
 > The diagram does not have to be a sequence diagram. Any sensible way of presenting the events is fine.
 
+Das Diagramm muss kein Sequenzdiagramm sein. Jede vernünfte Art, wie die Ereignisse dargestellt werden, ist in Ordnung.
+
 > All necessary information for doing this, and the next two exercises, can be found from the text of this part. The idea of these exercises is to read the text through once more, and to think through what is going on there. Reading the application code is not necessary, but it is of course possible.
 
+Alle benötigten Informationen für diese und die nächsten beiden Aufgaben findet ihr im Text dieses Abschnitts. Die Intention dieser Aufgaben ist es, erneut den Text zu lesen und darüber zu denken, was hier passiert. Den Quellcode der Anwendung zu lesen ist dafür nicht nötig, aber natürlich möglich.
+
 > Note perhaps the best way to do diagrams is the Mermaid syntax that is now implemented in GitHub markdown pages! 
+
+Hinweis: Der wahrscheinlich beste Weg um Diagramme zu erstellen (die Mermaid syntax) ist jetzt auch auf Github möglich.
 
 ### 0.5: Single page app
 
 > Create a diagram depicting the situation where the user goes to the single page app version of the notes app at https://studies.cs.helsinki.fi/exampleapp/spa.
+
+Erstellt ein Diagramm, dass die Situation beschreibt, wie ein Benutzer die Single page app-Version der Notizenseite unter https://studies.cs.helsinki.fi/exampleapp/spa öffnet.
 
 ### 0.6: New note
 
