@@ -876,15 +876,27 @@ Der Beliebtheitsgrad von React ist sehr groß, aber die Welt von JavaScript änd
 
 > What does the name of the course, Full stack web development, mean? Full stack is a buzzword that everyone talks about, while no one really knows what it means. Or at least, there is no agreed-upon definition for the term.
 
+Was bedeutet eigentlich Full Stack Webentwicklung? Full Stack ist ein Modewort, über das jeder redet, aber keiner so wirklich weiß, was es bedeutet. Oder zumindest gibt es keine allgemein gültige Definition für diesen Begriff.
+
 > Practically all web applications have (at least) two "layers": the browser, being closer to the end-user, is the top layer, and the server the bottom one. There is often also a database layer below the server. We can therefore think of the architecture of a web application as a kind of stack of layers.
+
+Praktisch gesehen habe alle Webanwendung (mindestens) 2 "Schichten": den Browser (die obere Schicht), der näher am Endbenutzer ist und den Server (die untere Schicht). Es gibt oft noch eine Datenbankschicht unter der Serverschicht. Wir können uns daher die Architektur von Webanwendungen als einen Stapel (Stack) verschiedener Schichten vorstellen.
 
 > Often, we also talk about the frontend and the backend. The browser is the frontend, and JavaScript that runs on the browser is frontend code. The server on the other hand is the backend.
 
+Oft wird auch vom Frontend und Backend gesprochen. Der Browser ist das Frontend und JavaScript, das im Browser läuft, ist Fontendcode. Der Server auf der anderen Seite, ist Backend.
+
 > In the context of this course, full stack web development means that we focus on all parts of the application: the frontend, the backend, and the database. Sometimes the software on the server and its operating system are seen as parts of the stack, but we won't go into those.
+
+Im Zusamenhang mit diesem Kurses bedeutet Full Stack Webentwicklung das wir uns auf alle teile einer Anwendung konzentrieren: das Frontend, das Backend und die Datenbank. Manchmal wird die Software auf dem Server und sein Betriebssystem als Teile des Stacks bezeichnet, aber damit werden wir uns nicht beschäftigen.
 
 > We will code the backend with JavaScript, using the Node.js runtime environment. Using the same programming language on multiple layers of the stack gives full stack web development a whole new dimension. However, it's not a requirement of full stack web development to use the same programming language (JavaScript) for all layers of the stack.
 
+Wir werden das Backend mit Javascript schreiben, in dem wir die Node.js-Entwicklungsumgebung nutzen. Die gleiche Programmiersprache in den verschiedenen Schichten des Stacks nutzen gibt der Webentwicklung eine ganz andere Dimension. Wie auch immer ist es keine Vorraussetzung für Full Stack Entwicklung die gleiche Sprache (JavaScript) für alle Schichten des Stacks zu benutzen.
+
 > It used to be more common for developers to specialize in one layer of the stack, for example the backend. Technologies on the backend and the frontend were quite different. With the Full stack trend, it has become common for developers to be proficient on all layers of the application and the database. Oftentimes, full stack developers must also have enough configuration and administration skills to operate their application, for example, in the cloud. 
+
+Es war üblicher, dass sich Entwickler auf eine Schicht des Stacks konzentriert haben, z.B. auf das Backend. Die Technologien auf dem Backend und dem Frontend ware sehr verschieden. Mit dem Full Stack-Trend ist es jetzt verbreiteter, dass sich Entwickler auf allen Schichten der Anwendung auskennen, ebenso wie der Datenbank. Oft müssen Full Stack-Entwickler auch genug Konfigurations- und Administrationsfähigkeiten besizen, um ihre Anwendungen z.B. in der Cloud laufen zu lassen.
 
 ## JavaScript fatigue
 
