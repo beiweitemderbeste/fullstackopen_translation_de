@@ -6,7 +6,6 @@
   - [part 0a](part_0/part_0a.md)
   - [part 0b](part_0/part_0b.md)
 
-
 ## Inhaltsverzeichnis des übersetzten Kurses
 
 - [Abschnitt 0](komplett_in_deutsch/abschnitt_0/abschnitt_0.md)
