@@ -282,22 +282,34 @@ aber wenn man JSX schreibt, muss man den Tag schließen:
 <br />
 ```
 
-## Multiple Comonents
+## Multiple Components
 
 > Let's modify the file App.js as follows (NB: export at the bottom is left out in these examples, now and in the future. It is still needed for the code to work):
 
+Verändern wir die Datei App.js wie folgt (Hinweis: der Export am unteren Rand wird in diesen und anderen Beispielen weggelassen. Ihr müsst ihn trotzdem hinzufügen, damit die Anwendung funktioniert):
+
 ```javascript
-const Hello = () => {  return (    <div>      <p>Hello world</p>    </div>  )}
+const Hello = () => {  
+  return (
+    <div>
+      <p>Hello world</p>
+    </div>  
+  )
+}
+
 const App = () => {
   return (
     <div>
       <h1>Greetings</h1>
-      <Hello />    </div>
+      <Hello />
+    </div>
   )
 }
 ```
 
 > We have defined a new component Hello and used it inside the component App. Naturally, a component can be used multiple times:
+
+Wir haben einen neuen Komponenten Hello definiert und innerhalb des Komponenten App benutzt. Ein Komponent kann selbstredend mehrere Male verwendet werden:
 
 ```javascript
 const App = () => {
@@ -305,14 +317,20 @@ const App = () => {
     <div>
       <h1>Greetings</h1>
       <Hello />
-      <Hello />      <Hello />    </div>
+      <Hello />
+      <Hello />
+    </div>
   )
 }
 ```
 
 > Writing components with React is easy, and by combining components, even a more complex application can be kept fairly maintainable. Indeed, a core philosophy of React is composing applications from many specialised reusable components.
 
+Mit React Komponenten zu schreiben ist sehr einfach und wenn man mehrere Komponenten miteinander kombiniert, lassen sich auch komplexere Anwendungen leicht betreiben. Tatsächlich ist die Kernphilosophie von React das Kombinieren vieler spezialisierter und wiederverwendbarer Komponenten.
+
 > Another strong convention is the idea of a root component called App at the top of the component tree of the application. Nevertheless, as we will learn in part 6, there are situations where the component App is not exactly the root, but is wrapped within an appropriate utility component.
+
+Eine andere Konvention ist die Idee einen Hauptkomponenten "App" an die erste Stelle zu setzen. Nichtsdestotrotz werden wir in Abschnitt 6 lernen, dass es Situationen gibt, wo der Komponent "App" nicht an erster Stelle kommt.
 
 ## props: passing data to components
 
