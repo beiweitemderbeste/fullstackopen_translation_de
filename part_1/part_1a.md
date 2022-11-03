@@ -110,15 +110,23 @@ Schaut [hier](https://fullstackopen.com/en/part1/a_more_complex_state_debugging_
 
 > The file App.js now defines a React component with the name App. The command on the final line of file index.js
 
+Die Datei App.js definiert einen React-Komponenten "App". Der Befehl in der letzten Zeile von index.js
+
 ```javascript
 ReactDOM.createRoot(document.getElementById('root')).render(<App />)
 ```
 
 > renders its contents into the div-element, defined in the file public/index.html, having the id value 'root'.
 
+stellt die Inhalte von diesem App-Komponenten einem div-Element mit der id "root" dar. Das div-Element wird in der Datei public/index.html eingefügt.
+
 > By default, the file public/index.html doesn't contain any HTML markup that is visible to us in the browser. You can try adding some HTML to the file. However, when using React, all content that needs to be rendered is usually defined as React components.
 
+Standardäßig enthält public/index.html kein HTML, das für uns im Browser sichtbar ist. Ihr könnt versuchen HTML in diese Datei zu schreiben, aber normalerweise wird in React jeder Inhalt über React-Komponenten dargestellt.
+
 > Let's take a closer look at the code defining the component:
+
+Schauen wir uns den Code, der den Komponenten definiert, ein bisschen genauer an:
 
 ```javascript
 const App = () => (
@@ -130,7 +138,11 @@ const App = () => (
 
 > As you probably guessed, the component will be rendered as a div-tag, which wraps a p-tag containing the text Hello world.
 
+Wir ihr wahrscheinlich schon geraten habt, wird der Komponent als div-Tag angezeigt, der einen p-Tag mit dem Text "Hello world" umschließt.
+
 > Technically the component is defined as a JavaScript function. The following is a function (which does not receive any parameters):
+
+Technisch gesehen wird der Komponent als Javascriptfunktion definiert. Das Folgende ist eine Funktion (die keine Parameter übergeben bekommt):
 
 ```javascript
 () => (
@@ -142,13 +154,19 @@ const App = () => (
 
 > The function is then assigned to a constant variable App:
 
+Die Funktion wird dann der Konstanten App zugewiesen:
+
 ```javascript
 const App = ...
 ```
 
 > There are a few ways to define functions in JavaScript. Here we will use arrow functions, which are described in a newer version of JavaScript known as ECMAScript 6, also called ES6.
 
-> Because the function consists of only a single expression we have used a shorthand, which represents this piece of code:+
+Es gibt verschiedene Wege, um Funktionen in Javascript zu definieren. Wir verwenden hier Pfeilfunktionen, die in einer neueren Version von Javascript (bekannt als ECMAScript 6) beschrieben werden.
+
+> Because the function consists of only a single expression we have used a shorthand, which represents this piece of code:
+
+Da die Funktion nur aus einem Ausdruck besteht, haben wir eine Kurzform verwendet, die so lautet:
 
 ```javascript
 const App = () => {
@@ -162,7 +180,11 @@ const App = () => {
 
 > In other words, the function returns the value of the expression.
 
+In anderen Worten, die Funktion gibt den Wert des Ausdrucks zurück.
+
 > The function defining the component may contain any kind of JavaScript code. Modify your component to be as follows and observe what happens in the console:
+
+Die Funktion, die den Komponenten definiert, kann jede Art von Javascriptcode enthalten. Ändert euren Komponenten folgendermaßen ab und beobachtet, was passiert:
 
 ```javascript
 const App = () => {
@@ -177,7 +199,11 @@ const App = () => {
 
 > It is also possible to render dynamic content inside of a component.
 
+Es ist auch möglich dynamischen Inhalt innerhalb eines Komponenten darzustellen.
+
 > Modify the component as follows:
+
+Ändert den Komponenten dafür wie folgt ab:
 
 ```javascript
 const App = () => {
@@ -197,6 +223,8 @@ const App = () => {
 ```
 
 > Any JavaScript code within the curly braces is evaluated and the result of this evaluation is embedded into the defined place in the HTML produced by the component.
+
+Jeglicher Javascriptcode innerhalb der geschwungenen Klammer wird ausgewertet und das Ergebnis dieser Auswertung wird in seinem definiert Platz im HTML eingefügt, dass der Komponent ausgibt.
 
 ## JSX
 
