@@ -523,9 +523,15 @@ Jetzt ist die Kompilierung erfolgreich und die von React generierte DOM enthält
 
 > Exercises are submitted through GitHub and by marking completed exercises in the submission application.
 
+Die Aufgaben werden über GitHub eingereicht und in dem sie als erledigt im Submissionsystem markiert werden.
+
 > You may submit all the exercises of this course into the same repository, or use multiple repositories. If you submit exercises of different parts into the same repository, please use a sensible naming scheme for the directories.
 
+Ihr könnt alle Aufgaben über ein Repository einreichen oder verschiedene Repositories benutzen. Bitte benennt eure Verzeichnisse korrekt, wenn ihr Aufgaben verschiedener Abschnitte im selben Repository einreicht. 
+
 > One very functional file structure for the submission repository is as follows:
+
+Ein Beispiel für eine gelungene Benennung eurer Verzeichnisse könnte so aussehen:
 
 ```
 part0
@@ -542,15 +548,25 @@ part2
 
 > For each part of the course there is a directory, which further branches into directories containing a series of exercises, like "unicafe" for part 1.
 
+Für jeden Abschnitt des Kurses gibt es ein Verzeichnis, das sich weiter in verschiedene Verzeichnisse aufteilt, die die Aufgaben enthalten, wie z.B. "unicafe" in Abschnitt 1.
+
 > For each web application for a series of exercises, it is recommended to submit all files relating to that application, except for the directory node_modules.
+
+Für jede Webapplikation gibt es mehrere Aufgaben. Es wird empfohlen immer alle Dateien, die zu einer Anwendung gehören, einzureichen, abgesehen vom Verzeichnis node_modules.
 
 > The exercises are submitted one part at a time. When you have submitted the exercises for a part of the course you can no longer submit undone exercises for the same part.
 
+Die Aufgaben werden Abschnitt für Abschnitt eingereicht. Wenn ihr Aufgaben für einen Abschnitt eingereicht habt, könnt ihr nicht länger noch fehlende Aufgaben für diesen Abschnitt abgeben.
+
 > Note that in this part, there are more exercises besides those found below. Do not submit your work until you have completed all of the exercises you want to submit for the part.
+
+Beachtet, dass es in diesem Abschnitt noch mehr Aufgaben, als die unten stehenden, gibt.
 
 ### 1.1: course information, step1
 
 > The application that we will start working on in this exercise will be further developed in a few of the following exercises. In this and other upcoming exercise sets in this course, it is enough to only submit the final state of the application. If desired, you may also create a commit for each exercise of the series, but this is entirely optional.
+
+
 
 > Use create-react-app to initialize a new application. Modify index.js to match the following
 
@@ -636,3 +652,10 @@ const Content = ... {
 ```
 
 > Our application passes on information in quite a primitive way at the moment, since it is based on individual variables. This situation will improve soon.
+
+Unsere 
+
+[Part 1a](part_1a.md)
+[Part 1b](part_1b.md)
+[Part 1c](part_1c.md)
+[Part 1d](part_1d.md)
