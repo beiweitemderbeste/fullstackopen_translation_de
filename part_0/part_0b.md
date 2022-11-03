@@ -2,7 +2,7 @@
 
 > table of contents
 
-# Inhaltsverzeichnis
+## Inhaltsverzeichnis
 
 - [Grundlagen von Webapplikationen](#grundlagen-von-webapplikationen)
 - [HTTP GET](#HTTP-GET)
