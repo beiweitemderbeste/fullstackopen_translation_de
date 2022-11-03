@@ -917,11 +917,11 @@ Auch ihr werden während des Kurses an JavaScript-Müdigkeit leiden. Glückliche
 
 > The exercises are submitted via GitHub, and by marking the exercises as done in the submission system.
 
-Die Aufgaben werden über GitHub eingereicht und in dem sie als erledigt im Submissionsystem markiert sind.
+Die Aufgaben werden über GitHub eingereicht und in dem sie als erledigt im Submissionsystem markiert werden.
 
 > You can submit all of the exercises into the same repository, or use multiple different repositories. If you submit exercises from different parts into the same repository, name your directories well. If you use a private repository to submit the exercises, add mluukkai as a collaborator to it.
 
-Ihr könnt alle Aufgaben über eine Repository einreichen oder verschiedene Repositories benutzen. Bitte benennt eure Verzeichnisse korrekt, wenn ihr Aufgaben verschiedener Abschnitte im selben Repository einreicht. Wenn ihr ein privates Repository mit Aufgaben einreichen wollt, fügt mluukkai Collaborator hinzu.
+Ihr könnt alle Aufgaben über ein Repository einreichen oder verschiedene Repositories benutzen. Bitte benennt eure Verzeichnisse korrekt, wenn ihr Aufgaben verschiedener Abschnitte im selben Repository einreicht. Wenn ihr ein privates Repository mit Aufgaben einreichen wollt, fügt mluukkai Collaborator hinzu.
 
 > One good way to name the directories in your submission repository is as follows: 
 
