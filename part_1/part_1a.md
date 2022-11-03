@@ -336,55 +336,78 @@ Eine andere Konvention ist die Idee einen Hauptkomponenten "App" an die erste St
 
 > It is possible to pass data to components using so-called props.
 
+Es ist möglich an die Komponenten Daten zu übergeben, diese werden "props" genannt.
+
 > Let's modify the component Hello as follows:
 
+Verändern wir den Komponenten Hello:
+
 ```javascript
-const Hello = (props) => {  return (
+const Hello = (props) => {
+  return (
     <div>
-      <p>Hello {props.name}</p>    </div>
+      <p>Hello {props.name}</p>
+    </div>
   )
 }
 ```
 
 > Now the function defining the component has a parameter props. As an argument, the parameter receives an object, which has fields corresponding to all the "props" the user of the component defines.
 
+Jetzt übergibt die Funktion, die den Komponenten definiert, einen Parameter props. Als Argument erhält der Parameter ein Objekt, das zugehörige Felder für alle "props", die der Komponent definiert, hat.
+
 > The props are defined as follows:
+
+Die props werden so definiert:
 
 ```javascript
 const App = () => {
   return (
     <div>
       <h1>Greetings</h1>
-      <Hello name='George' />      <Hello name='Daisy' />    </div>
+      <Hello name='George' />
+      <Hello name='Daisy' />
+    </div>
   )
 }
 ```
 
 > There can be an arbitrary number of props and their values can be "hard-coded" strings or the results of JavaScript expressions. If the value of the prop is achieved using JavaScript it must be wrapped with curly braces.
 
+Es kann unzählige props geben und ihre Werte können hartkodierte Strings sein oder das Ergebnis von Javascriptausdrücken.
+
 > Let's modify the code so that the component Hello uses two props:
+
+Ändern wir den Code so ab, dass der Komponent Hello 2 props benutzt:
 
 ```javascript
 const Hello = (props) => {
   return (
     <div>
       <p>
-        Hello {props.name}, you are {props.age} years old      </p>
+        Hello {props.name}, you are {props.age} years old
+      </p>
     </div>
   )
 }
 
 const App = () => {
-  const name = 'Peter'  const age = 10
+  const name = 'Peter'
+  const age = 10
+
   return (
     <div>
       <h1>Greetings</h1>
-      <Hello name='Maya' age={26 + 10} />      <Hello name={name} age={age} />    </div>
+      <Hello name='Maya' age={26 + 10} />
+      <Hello name={name} age={age} />
+    </div>
   )
 }
 ```
 
 > The props sent by the component App are the values of the variables, the result of the evaluation of the sum expression and a regular string.
+
+Die props, die vom Komponenten App überreicht werden, sind die Werte der Variablen: das Ergebnis der Evaluierung der Summe und eines normalen Strings.
 
 ## Some notes
 
