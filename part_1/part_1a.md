@@ -13,9 +13,15 @@
 
 > We will now start getting familiar with probably the most important topic of this course, namely the React-library. Let's start off by making a simple React application as well as getting to know the core concepts of React.
 
+Wir befassen uns jetzt mit dem wahrscheinlich wichtigstem Thema dieses Kurses, der React-Bibliothek. Wir fangen an, indem wir eine einfache React-Anwendung erstellen und uns mit den Grundkonzepten von React auseinandersetzen.
+
 > The easiest way to get started by far is by using a tool called create-react-app. It is possible (but not necessary) to install create-react-app on your machine if the npm tool that was installed along with Node has a version number of at least 5.3.
 
+Der bei weitem einfachste Weg zu starten ist ein Werkzeug names create-react-app zu benutzen. Es ist möglich (aber nicht notwendig) create-react-app auf eurem Rechner zu installieren, wenn npm mit Nodejs (mind. Version 5.3) installiert wurde.
+
 > Let's create an application called part1 and navigate to its directory.
+
+Wir beginnen, indem wir die Anwendung "part1" erstellen und in ihr Verzeichnis wechseln.
 
 ```
 npx create-react-app part1
@@ -24,17 +30,25 @@ cd part1
 
 >The application is run as follows
 
+Die Anwendung wird folgendermaßen gestartet:
+
 ```
 npm start
 ```
 
 > By default, the application runs on localhost port 3000 with the address http://localhost:3000
 
+Standardmäßig läuft die Anwendung unter http://localhost:3000
+
 > Your default browser should launch automatically. Open the browser console immediately. Also open a text editor so that you can view the code as well as the webpage at the same time on the screen:
+
+Euer Standardbrowser sollte sie automatisch öffnen. Öffnet direkt die Browserkonsole.
 
 !["fullstack content"](./images/part1a_image1.png?raw=true)
 
 > The code of the application resides in the src folder. Let's simplify the default code such that the contents of the file index.js look like:
+
+Der Quellcode der Anwendung liegt im src-Verzeichnis. Wir vereinfachen den Inhalt der Datei index.js, so dass er so aussieht:
 
 ```javascript
 import React from 'react'
@@ -46,6 +60,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />)
 ```
 
 > and file App.js looks like this
+
+und die Datei App.js sieht so aus:
 
 ```javascript
 const App = () => (
@@ -59,13 +75,21 @@ export default App
 
 > The files App.css, App.test.js, index.css, logo.svg, setupTests.js and reportWebVitals.js may be deleted as they are not needed in our application right now.
 
+Die Dateien App.css, App.test.js, index.css, logo.svg, setupTests.js und reportWebVitals.js können gelöscht werden, weil wir sie momentan nicht benötigt werden. 
+
 > If you end up with the following error:
+
+Wenn ihr folgenden Fehler angezeigt bekommt:
 
 > !["fullstack content"](./images/part1a_image2.png?raw=true)
 
-Then, for some reason you are using a React version older than the current version 18.
+> Then, for some reason you are using a React version older than the current version 18.
+
+liegt das daran, dass ihr aus irgeneinem Grund eine ältere React-Version als die aktuelle (18) benutzt.
 
 > The fix is to change index.js as follows:
+
+Die Lösung dafür ist index.js so abzuändern:
 
 ```javascript
 import ReactDOM from 'react-dom'
@@ -76,7 +100,11 @@ ReactDOM.render(<App />, document.getElementById('root'))
 
 > You quite likely need to do the same for your other projects.
 
+Ihr müsst das dann wahrscheinlich auch in einer anderen Projekten machen.
+
 > See this for more about the version differences.
+
+Schaut [hier](https://fullstackopen.com/en/part1/a_more_complex_state_debugging_react_apps/#a-note-on-react-version) nach, wenn ihr mehr über die Versionsunterschieden lesen wollt.
 
 ## Component
 
