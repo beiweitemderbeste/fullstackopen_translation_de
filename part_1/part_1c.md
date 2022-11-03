@@ -683,7 +683,5 @@ const Button = ({ onClick, text }) => <button onClick={onClick}>{text}</button>
 
 > However, be careful to not oversimplify your components, as this makes adding complexity a more tedious task down the road.
 
-[Part 1a](part_1a.md)
-[Part 1b](part_1b.md)
-[Part 1c](part_1c.md)
-[Part 1d](part_1d.md)
+[back to Part 1b](part_1b.md)
+[next Part 1d](part_1d.md)

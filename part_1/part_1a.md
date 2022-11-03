@@ -655,7 +655,5 @@ const Content = ... {
 
 Unsere 
 
-[Part 1a](part_1a.md)
-[Part 1b](part_1b.md)
-[Part 1c](part_1c.md)
-[Part 1d](part_1d.md)
+[back to Part 1](part_1.md)
+[next Part 1b](part_1b.md)

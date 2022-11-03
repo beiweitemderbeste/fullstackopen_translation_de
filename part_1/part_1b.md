@@ -497,7 +497,5 @@ janja.greet()
 
 > egghead.io has plenty of quality screencasts on JavaScript, React, and other interesting topics. Unfortunately, some of the material is behind a paywall.
 
-[Part 1a](part_1a.md)
-[Part 1b](part_1b.md)
-[Part 1c](part_1c.md)
-[Part 1d](part_1d.md)
+[back to Part 1a](part_1a.md)
+[next Part 1c](part_1c.md)
