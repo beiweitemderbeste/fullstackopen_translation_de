@@ -230,7 +230,11 @@ Jeglicher Javascriptcode innerhalb der geschwungenen Klammer wird ausgewertet un
 
 > It seems like React components are returning HTML markup. However, this is not the case. The layout of React components is mostly written using JSX. Although JSX looks like HTML, we are actually dealing with a way to write JavaScript. Under the hood, JSX returned by React components is compiled into JavaScript.
 
+Es sieht so aus als würden React-Komponenten HTML ausgeben, was aber nicht der Fall ist. React-Kompenenten werden meisten in JSX geschrieben. Auch wenn JSX wir HTML aussieht, handelt es sich tatsächlich um einen anderen Weg Javascript zu schreiben:
+
 > After compiling, our application looks like this:
+
+Nachdem Kompilieren sieht unsere Anwendung so aus:
 
 ```javascript
 const App = () => {
@@ -252,17 +256,27 @@ const App = () => {
 
 > The compilation is handled by Babel. Projects created with create-react-app are configured to compile automatically. We will learn more about this topic in part 7 of this course.
 
+Die Kompilierung wird von Babel übernommen. Projekte, die mit create-react-app erstellt wurden, sind so kofiguriert, das die Kompilierung automatisch geschieht. Wir werden uns in Abschnitt 7 dieses Kurs näher mit diesem Thema beschäftigen.
+
 > It is also possible to write React as "pure JavaScript" without using JSX. Although, nobody with a sound mind would actually do so.
+
+Es ist möglich, React in "purem" Javascript zu schreiben ohne JSX zu verwenden. Allerdings würde das niemand, der bei klarem Verstand ist, das tun.
 
 > In practice, JSX is much like HTML with the distinction that with JSX you can easily embed dynamic content by writing appropriate JavaScript within curly braces. The idea of JSX is quite similar to many templating languages, such as Thymeleaf used along with Java Spring, which are used on servers.
 
+In der Praxis sieht JSX ähnlich wie HTML aus, mit dem Unterschied, dass man dynamischen Inhalt leicht einfügen kann, indem man passendenes Javascript in geschwungenen Klammern einfügt. Die Grundgedanke von JSX ist sehr ähnlich zu anderen Template-Sprachen, wie z.B. Thymeleaf für Java Spring, die auf Servern eingesetzt werden.
+
 > JSX is "XML-like", which means that every tag needs to be closed. For example, a newline is an empty element, which in HTML can be written as follows:
+
+JSX ist ähnlich wie XML, was bedeudet, dass jeder Tag geschlossen werden muss. Zum Beispiel ist ein Zeilenumbruch ein leeres Element, dass in HTML so geschrieben werden kann:
 
 ```
 <br>
 ```
 
 > but when writing JSX, the tag needs to be closed:
+
+aber wenn man JSX schreibt, muss man den Tag schließen:
 
 ```
 <br />
