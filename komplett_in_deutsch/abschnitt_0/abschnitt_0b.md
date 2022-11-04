@@ -577,12 +577,19 @@ Das momentan beliebteste Werkzeug für das Implementieren von Anwendungslogik au
 
 Der Beliebtheitsgrad von React ist sehr groß, aber die Welt von JavaScript ändert sich ständig. Es gibt z.B. zur Zeit einen Newcomer - VueJs - der für einigies Interesse sorgt.
 
+## Full stack web development
 
+Was bedeutet eigentlich Full Stack Webentwicklung? Full Stack ist ein Modewort, über das jeder redet, aber keiner so wirklich weiß, was es bedeutet. Oder zumindest gibt es keine allgemein gültige Definition für diesen Begriff.
 
+Praktisch gesehen habe alle Webanwendung (mindestens) 2 "Schichten": den Browser (die obere Schicht), der näher am Endbenutzer ist und den Server (die untere Schicht). Es gibt oft noch eine Datenbankschicht unter der Serverschicht. Wir können uns daher die Architektur von Webanwendungen als einen Stapel (Stack) verschiedener Schichten vorstellen.
 
+Oft wird auch vom Frontend und Backend gesprochen. Der Browser ist das Frontend und JavaScript, das im Browser läuft, ist Fontendcode. Der Server auf der anderen Seite, ist Backend.
 
+Im Zusamenhang mit diesem Kurses bedeutet Full Stack Webentwicklung das wir uns auf alle teile einer Anwendung konzentrieren: das Frontend, das Backend und die Datenbank. Manchmal wird die Software auf dem Server und sein Betriebssystem als Teile des Stacks bezeichnet, aber damit werden wir uns nicht beschäftigen.
 
+Wir werden das Backend mit Javascript schreiben, in dem wir die Node.js-Entwicklungsumgebung nutzen. Die gleiche Programmiersprache in den verschiedenen Schichten des Stacks nutzen gibt der Webentwicklung eine ganz andere Dimension. Wie auch immer ist es keine Vorraussetzung für Full Stack Entwicklung die gleiche Sprache (JavaScript) für alle Schichten des Stacks zu benutzen.
 
+Es war üblicher, dass sich Entwickler auf eine Schicht des Stacks konzentriert haben, z.B. auf das Backend. Die Technologien auf dem Backend und dem Frontend ware sehr verschieden. Mit dem Full Stack-Trend ist es jetzt verbreiteter, dass sich Entwickler auf allen Schichten der Anwendung auskennen, ebenso wie der Datenbank. Oft müssen Full Stack-Entwickler auch genug Konfigurations- und Administrationsfähigkeiten besizen, um ihre Anwendungen z.B. in der Cloud laufen zu lassen.
 
 
 
