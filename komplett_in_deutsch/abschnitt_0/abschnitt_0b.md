@@ -561,6 +561,31 @@ Dieser Quellcode definiert, dass die Daten per HTTP POST-Anfrage geschickt werde
 
 Der Quellcode der Anwendung ist unter https://github.com/mluukkai/example_app verfügbar. Denkt dran, dass dieser nur die Konzepte des Kurses demonstrieren soll. In gewissen Maße folgt er einem schlechten Programmier-/Entwicklungsstil und sollte auf keinen Fall als Vorbild dafür dienen, wie ihr Anwendungen baut. Das gleiche gilt für die URLS, die hier benutzt werden. Die URL new_note_spa, an die neuen Notizen geschickt werden, hält sich nicht an aktuelle "best practices".
 
+## Javascript-libraries
+
+Die Beispielanwendung ist in sogenanntem Vanilla JavaScript geschrieben und nutzt nur dieses und die DOM-API, um die Strukturen der Seiten zu verändern.
+
+Anstatt nur reinem JavaScript und DOM-API, kann man auch verschiedene Bibliotheken nutzen, mit denen sich viel leichter Webseiten verändern lassen. Eine dieser Bilbiotheken ist jQuery.
+
+jQuery wurde entwickelt, als Webapplikationen noch hauptsächlich aus HTML-Seiten bestanden, die von Server generiert wurden. Diese Funktionalität wurde durch, auf Browserseite genutztem, JavaScript und jQuery erweitert. Eine der Gründe für den Erfolg von jQuery war seine Kompabilität über mehrere Browser. Die Bibliothek arbeitete unabhängig vom eingesetzten Browser oder der Firma, die ihn erstellt hat. Dadurch waren keine browserspezifischen Lösungen mehr nötig. Heutzutage ist wegen der Weiterentwicklung von JavaScript der Einsatz von jQuery nicht mehr gerechtfertigt und die meisten Browser unterstützen sowieso die meisten Grundfunktionien.
+
+Der Aufstieg der SPAs brauchte auch mehrere verschiedene "moderne" Wege zur Webentwicklung zum Vorschein als jQuery. Der Liebling der ersten Welle von Entwicklern war BackboneJS. Nach seiner Einführung 2012 wurde Googles AngularJS schnell zum Quasistandard der Webentwicklung.
+
+Wie auch immer, die Beliebtheit von Angular stürzte im Oktober 2014 ab, als das Angularteam bekannt gab den Support für Version 1 einzustellen und das Angular 2 nicht rückwärtskompatibel sein wird. Angular 2 und neuere Versionen erreichten nie die Beliebtheit von Version 1.
+
+Das momentan beliebteste Werkzeug für das Implementieren von Anwendungslogik auf Browserseite ist Facebooks React-Bibliothek. In diesem Kurs werden wir uns mit der React- und Redux-Bibliothek vertraut machen, die sehr häufig zusammen genutzt werden.
+
+Der Beliebtheitsgrad von React ist sehr groß, aber die Welt von JavaScript ändert sich ständig. Es gibt z.B. zur Zeit einen Newcomer - VueJs - der für einigies Interesse sorgt.
+
+
+
+
+
+
+
+
+
+
 
 
 
