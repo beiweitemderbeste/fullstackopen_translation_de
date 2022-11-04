@@ -591,10 +591,13 @@ Wir werden das Backend mit Javascript schreiben, in dem wir die Node.js-Entwickl
 
 Es war üblicher, dass sich Entwickler auf eine Schicht des Stacks konzentriert haben, z.B. auf das Backend. Die Technologien auf dem Backend und dem Frontend ware sehr verschieden. Mit dem Full Stack-Trend ist es jetzt verbreiteter, dass sich Entwickler auf allen Schichten der Anwendung auskennen, ebenso wie der Datenbank. Oft müssen Full Stack-Entwickler auch genug Konfigurations- und Administrationsfähigkeiten besizen, um ihre Anwendungen z.B. in der Cloud laufen zu lassen.
 
+## JavaScript fatigue
 
+Die Full Stack-Webentwicklung ist auf vielen Seiten herausfordernd. Sachen passieren an vielen Orten gleichzeitig, debuggen ist schwieriger im Vergleich zu regulären Desktopanwendungen. JavaScript funktioniert auch nicht immer, wie man erwartet (im Vergleich zu vielen anderen Sprachen), und die asynchrone Weise, auf die seine Entwicklungsumgebung arbeitet, verursacht alle Arten von Herausforderungen. Um mit dem Server zu kommunizieren, benötigt es Wissen über HTTP. Außerdem muss man mit Datenbanken umgehen können und Server verwalten und konfigurieren können. Es wäre auch gut zu wissen, wie man CSS einsetzt, um die Anwendungen präsentieren zu können.
 
+Die Welt von JavaScript ändert sich schnell, was zu einer eigenen Reihe von Herausforderungen führt. Werkzeuge, Bibliothken und die Sprache selber sind unter konstanter Entwicklung. Manche werden langsam müde von der dauerhaften Veränderung und haben dafür ein Wort gefunden: JavaScript-Müdigkeit. Wie ihr damit umzugehen lernt, könnt ihr [hier](https://auth0.com/blog/how-to-manage-javascript-fatigue/) oder [hier](https://medium.com/@ericclemmons/javascript-fatigue-48d4011b6fc4) nachlesen.
 
-
+Auch ihr werden während des Kurses an JavaScript-Müdigkeit leiden. Glücklicherweise gibt es ein paar Arten, wie man die Lernkurve abschwächen kann und wir beginnen damit, indem wir programmieren anstatt zu konfigurieren. Wir können das Konfigurieren zwar nicht ganz verhindern, aber wir können es um ein paar Wochen verschieben.
 
 
 
