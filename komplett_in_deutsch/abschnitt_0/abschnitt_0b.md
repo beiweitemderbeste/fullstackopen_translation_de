@@ -484,6 +484,94 @@ AJAX ist heute so verbreitet, dass es als selbstverständlich angenommen wird. D
 
 ## Single page app
 
+In unserer Beispielapp funktioniert die Homepage wie eine traditionelle Webseite: Die komplette Logik liegt auf dem Server, der Browser ist nur für die HTML-Darstellung zuständig.
+
+Die Notizenseite gibt einen Teil der Arbeitan den Brower ab: das Generieren des HTML-Codes für die Notizen.
+
+Seit ein paar Jahren gibt es einen Trend, dass man Webanwendungen als SPAs (single page apps) erstellt.
+
+Die Notizenseite hat ein wenig Ähnlichkeit mit SPAs, aber nicht wirklich viel. Auch wenn die Logik für das Darstellen der Notizen im Browser läuft, werden neue Notizen noch über traditionelle Wege erstellt. Die Daten werden über das Abschicken des Formulars an den Server geschickt und der Server weist den Browser über eine Umleitung an, die Notizenseite neuzuladen.
+
+Eine Single page app-Version unserer Beispielanwendung findet man unter https://studies.cs.helsinki.fi/exampleapp/spa. Auf den ersten Blick sieht die Anwendung genauso aus, wie die andere. Der HTML-Code ist fast identisch, aber die JavaScript-Datei ist eine andere (spa.js) und es gibt eine kleine Änderung, wie der form-Tag definiert wird:
+
+!["fullstack content"](./bilder/abschnitt0b_bild25.png?raw=true)
+
+Das Formular hat keine action- oder method-Attribut, die definieren wie und wohin die Formulardaten geschickt werden sollen.
+
+Öffnet den Network-Tab und löscht ihn. Wenn ihr jetzt eine neue Notiz erstellt, werdet ihr bemerken, dass der Browser nur eine Anfrage an den Server schickt:
+
+!["fullstack content"](./bilder/abschnitt0b_bild26.png?raw=true)
+
+Die POST-Anfrage an die Adresse new_note_spa schickt die Notiz im JSON-Format, in dem der Inhalt der Notiz (content) und der Zeitstempel (date) enthalten sind.
+
+```json
+{
+  content: "single page app does not reload the whole page",
+  date: "2019-05-25T15:15:59.905Z"
+}
+```
+
+Der "Content-Type-Header" der Anfrage sagt dem Server, dass die mitgeschickten Daten im JSON-Format sind.
+
+!["fullstack content"](./bilder/abschnitt0b_bild27.png?raw=true)
+
+Ohne diesen Header würde der Server nicht genau wissen, wie er die mitgeschickten Daten interpretieren soll.
+
+Der Server antwortet mit dem Statuscode "201 created". Dieses Mal fragt der Server nicht nach einer Weiterleitung, der Browser bleibt auf der selben Seite und stellt keine weiteren HTTP-Anfragen.
+
+Die SPA-Version der App sendet die Formulardaten nicht auf traditionelle Weise, sondern benutzt stattdessen den JavaScript-Code, der vom Server geladen wird. Wir schauen uns jetzt den Quellcode an, wenn auch das Verständis aller Details unwichtig ist.
+
+```javascript
+var form = document.getElementById('notes_form')
+form.onsubmit = function(e) {
+  e.preventDefault()
+
+  var note = {
+    content: e.target.elements[0].value,
+    date: new Date(),
+  }
+
+  notes.push(note)
+  e.target.elements[0].value = ''
+  redrawNotes()
+  sendToServer(note)
+}
+```
+
+Der Befehl "document.getElementById('notes_form')" ruft das Formular der Seite auf und hängt einen Event Handler an das Formular, so dass das Abschicken des Formulars von diesem erledigt wird. Der Event Handler ruft sofort die Methode e.preventDefault() auf, um das voreingestellte Abschicken des Formulars zu unterbinden. Das voreingestellte Abschicken würde Daten an den Server sichken und eine GET-Anfrage auslösen, was wir verhindern wollen.
+
+Dann erstellt der Event Handler eine neue Notiz, fügt sie mit dem Befehl notes.push(note) an die Notizenliste, zeigt die neue Notizenlist auf der Seite an und sendet die neue Noitz an den Server.
+
+Der Quellcode für das Senden der Notiz an den Server sieht so aus:
+
+```javascript
+var sendToServer = function(note) {
+  var xhttpForPost = new XMLHttpRequest()
+  // ...
+
+  xhttpForPost.open('POST', '/new_note_spa', true)
+  xhttpForPost.setRequestHeader(
+    'Content-type', 'application/json'
+  )
+  xhttpForPost.send(JSON.stringify(note))
+}
+```
+
+Dieser Quellcode definiert, dass die Daten per HTTP POST-Anfrage geschickt werden und dass der Datentyp JSON ist. Der Datentyp wird durch den Content-Type-Header bestimmt. Dann werden alle Daten als JSON-String verschickt.
+
+Der Quellcode der Anwendung ist unter https://github.com/mluukkai/example_app verfügbar. Denkt dran, dass dieser nur die Konzepte des Kurses demonstrieren soll. In gewissen Maße folgt er einem schlechten Programmier-/Entwicklungsstil und sollte auf keinen Fall als Vorbild dafür dienen, wie ihr Anwendungen baut. Das gleiche gilt für die URLS, die hier benutzt werden. Die URL new_note_spa, an die neuen Notizen geschickt werden, hält sich nicht an aktuelle "best practices".
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
