@@ -1034,7 +1034,10 @@ Erstellt ein Diagramm, dass die Situation beschreibt, wie ein Benutzer die Singl
 
 > Create a diagram depicting the situation where the user creates a new note using the single page version of the app.
 
+Erstellt ein Diagramm, das die Situation beschreibt, wie ein Benutzer eine neue Notiz auf der SPA-Version der App erstellt.
+
 > This was the last exercise, and it's time to push your answers to GitHub and mark the exercises as done in the submission system.
 
+Das war die letzte Aufgabe, jetzt ist es Zeit eure Antworten auf GitHub hochzuladen und die Aufgaben im Submissionsystem zu markieren.
 
 [part 1](part_1/part_1.md)
