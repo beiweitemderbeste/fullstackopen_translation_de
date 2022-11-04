@@ -599,15 +599,86 @@ Die Welt von JavaScript ändert sich schnell, was zu einer eigenen Reihe von Her
 
 Auch ihr werden während des Kurses an JavaScript-Müdigkeit leiden. Glücklicherweise gibt es ein paar Arten, wie man die Lernkurve abschwächen kann und wir beginnen damit, indem wir programmieren anstatt zu konfigurieren. Wir können das Konfigurieren zwar nicht ganz verhindern, aber wir können es um ein paar Wochen verschieben.
 
+## Exercises
 
+Die Aufgaben werden über GitHub eingereicht und in dem sie als erledigt im Submissionsystem markiert werden.
 
+Ihr könnt alle Aufgaben über ein Repository einreichen oder verschiedene Repositories benutzen. Bitte benennt eure Verzeichnisse korrekt, wenn ihr Aufgaben verschiedener Abschnitte im selben Repository einreicht. Wenn ihr ein privates Repository mit Aufgaben einreichen wollt, fügt mluukkai Collaborator hinzu.
 
+Ein Beispiel für eine gelungene Benennung eurer Verzeichnisse könnte so aussehen:
 
+```
+part0
+part1
+  courseinfo
+  unicafe
+  anecdotes
+part2
+  courseinfo
+  phonebook
+  countries
+```
 
+Dadurch hat jeder Abschnitt sein eigenes Verzeichnis, dass jeweils ein Verzeichnis für jede Aufgabenzusammenstellung enthält (z.B. die unicafe-Aufgaben in Abschnitt 1).
 
+### 0.1: HTML
 
+Schaut euch nochmal die Grundlagen von HTML an, in dem ihr diese Anleitung von Mozilla lest: [HTML Tutorial](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics)
 
+Bei dieser Aufgabe müsst ihr nichts abgeben, nur den Link lesen.
 
+### 0.2: CSS
 
+Schaut euch nochmal die Grundlagen von HTML an, in dem ihr diese Anleitung von Mozilla lest: [CSS Tutorial](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics)
+
+Bei dieser Aufgabe müsst ihr nichts abgeben, nur den Link lesen.
+
+### 0.3: HTML forms
+
+Lernt über die Grundlagen von HTML-Formularen, indem ihr diese Anleitung von Mozilla lest: [Your first form](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Your_first_HTML_form)
+
+Im Abschnitt "Wie eine Seite geladen wird, die Javascript enthält" wird die Abfolge der Ereignisse beim Öfnnen der Seite https://studies.cs.helsinki.fi/exampleapp/notes als Sequenzdiagramm dargestellt.
+
+Das Diagramm wurde mithilfe von websequencediagrams service folgendermaßen erstellt:
+
+```
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+server-->browser: HTML-code
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server-->browser: main.css
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+server-->browser: main.js
+
+note over browser:
+browser starts executing js-code
+that requests JSON data from server 
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server-->browser: [{ content: "HTML is easy", date: "2019-05-23" }, ...]
+
+note over browser:
+browser executes the event handler
+that renders notes to display
+end note
+```
+
+Erstellt ein ähnliches Diagramm, dass die Situation beschreibt, wo ein Benutzer eine neue Notiz auf der Seite https://studies.cs.helsinki.fi/exampleapp/notes erstellt, indem ihr etwas ins Textfeld schreibt und auf den Abschickenbutton klickt.
+
+Bei Bedarf könnt ihr die Operationen im Browser oder auf dem Server als Kommentare im Diagramm zeigen.
+
+Das Diagramm muss kein Sequenzdiagramm sein. Jede vernünfte Art, wie die Ereignisse dargestellt werden, ist in Ordnung.
+
+Alle benötigten Informationen für diese und die nächsten beiden Aufgaben findet ihr im Text dieses Abschnitts. Die Intention dieser Aufgaben ist es, erneut den Text zu lesen und darüber zu denken, was hier passiert. Den Quellcode der Anwendung zu lesen ist dafür nicht nötig, aber natürlich möglich.
+
+Hinweis: Der wahrscheinlich beste Weg um Diagramme zu erstellen (die Mermaid syntax) ist jetzt auch auf Github möglich.
+
+### 0.5: Single page app
+
+Erstellt ein Diagramm, dass die Situation beschreibt, wie ein Benutzer die Single page app-Version der Notizenseite unter https://studies.cs.helsinki.fi/exampleapp/spa öffnet.
+
+### 0.6: New note
+
+Erstellt ein Diagramm, das die Situation beschreibt, wie ein Benutzer eine neue Notiz auf der SPA-Version der App erstellt.
 
 [Abschnitt 1](../abschnitt_1/abschnitt_1.md)
