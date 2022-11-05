@@ -14,6 +14,10 @@
 - [Formulare und HTTP POST](#Formulare-und-HTTP-POST)
 - [AJAX](#AJAX)
 - [Single page app](#Single-page-app)
+- [Javascript Bibliotheken](#Javascript-libraries)
+- [Fullstack Webentwicklung](#Full-stack-web-development)
+- [JavaScript-Müdigkeit](#JavaScript-Müdigkeit)
+- [Aufgaben](#Aufgaben)
 
 
 ## Grundlagen von Webapplikationen
@@ -561,7 +565,7 @@ Dieser Quellcode definiert, dass die Daten per HTTP POST-Anfrage geschickt werde
 
 Der Quellcode der Anwendung ist unter https://github.com/mluukkai/example_app verfügbar. Denkt dran, dass dieser nur die Konzepte des Kurses demonstrieren soll. In gewissen Maße folgt er einem schlechten Programmier-/Entwicklungsstil und sollte auf keinen Fall als Vorbild dafür dienen, wie ihr Anwendungen baut. Das gleiche gilt für die URLS, die hier benutzt werden. Die URL new_note_spa, an die neuen Notizen geschickt werden, hält sich nicht an aktuelle "best practices".
 
-## Javascript-libraries
+## Javascript Bibliotheken
 
 Die Beispielanwendung ist in sogenanntem Vanilla JavaScript geschrieben und nutzt nur dieses und die DOM-API, um die Strukturen der Seiten zu verändern.
 
@@ -577,7 +581,7 @@ Das momentan beliebteste Werkzeug für das Implementieren von Anwendungslogik au
 
 Der Beliebtheitsgrad von React ist sehr groß, aber die Welt von JavaScript ändert sich ständig. Es gibt z.B. zur Zeit einen Newcomer - VueJs - der für einigies Interesse sorgt.
 
-## Full stack web development
+## Fullstack Webentwicklung
 
 Was bedeutet eigentlich Full Stack Webentwicklung? Full Stack ist ein Modewort, über das jeder redet, aber keiner so wirklich weiß, was es bedeutet. Oder zumindest gibt es keine allgemein gültige Definition für diesen Begriff.
 
@@ -591,7 +595,7 @@ Wir werden das Backend mit Javascript schreiben, in dem wir die Node.js-Entwickl
 
 Es war üblicher, dass sich Entwickler auf eine Schicht des Stacks konzentriert haben, z.B. auf das Backend. Die Technologien auf dem Backend und dem Frontend ware sehr verschieden. Mit dem Full Stack-Trend ist es jetzt verbreiteter, dass sich Entwickler auf allen Schichten der Anwendung auskennen, ebenso wie der Datenbank. Oft müssen Full Stack-Entwickler auch genug Konfigurations- und Administrationsfähigkeiten besizen, um ihre Anwendungen z.B. in der Cloud laufen zu lassen.
 
-## JavaScript fatigue
+## JavaScript-Müdigkeit
 
 Die Full Stack-Webentwicklung ist auf vielen Seiten herausfordernd. Sachen passieren an vielen Orten gleichzeitig, debuggen ist schwieriger im Vergleich zu regulären Desktopanwendungen. JavaScript funktioniert auch nicht immer, wie man erwartet (im Vergleich zu vielen anderen Sprachen), und die asynchrone Weise, auf die seine Entwicklungsumgebung arbeitet, verursacht alle Arten von Herausforderungen. Um mit dem Server zu kommunizieren, benötigt es Wissen über HTTP. Außerdem muss man mit Datenbanken umgehen können und Server verwalten und konfigurieren können. Es wäre auch gut zu wissen, wie man CSS einsetzt, um die Anwendungen präsentieren zu können.
 
@@ -599,7 +603,7 @@ Die Welt von JavaScript ändert sich schnell, was zu einer eigenen Reihe von Her
 
 Auch ihr werden während des Kurses an JavaScript-Müdigkeit leiden. Glücklicherweise gibt es ein paar Arten, wie man die Lernkurve abschwächen kann und wir beginnen damit, indem wir programmieren anstatt zu konfigurieren. Wir können das Konfigurieren zwar nicht ganz verhindern, aber wir können es um ein paar Wochen verschieben.
 
-## Exercises
+## Aufgaben
 
 Die Aufgaben werden über GitHub eingereicht und in dem sie als erledigt im Submissionsystem markiert werden.
 
@@ -633,7 +637,7 @@ Schaut euch nochmal die Grundlagen von HTML an, in dem ihr diese Anleitung von M
 
 Bei dieser Aufgabe müsst ihr nichts abgeben, nur den Link lesen.
 
-### 0.3: HTML forms
+### 0.3: HTML-Formulare
 
 Lernt über die Grundlagen von HTML-Formularen, indem ihr diese Anleitung von Mozilla lest: [Your first form](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Your_first_HTML_form)
 
@@ -677,7 +681,7 @@ Hinweis: Der wahrscheinlich beste Weg um Diagramme zu erstellen (die Mermaid syn
 
 Erstellt ein Diagramm, dass die Situation beschreibt, wie ein Benutzer die Single page app-Version der Notizenseite unter https://studies.cs.helsinki.fi/exampleapp/spa öffnet.
 
-### 0.6: New note
+### 0.6: Neue Notiz
 
 Erstellt ein Diagramm, das die Situation beschreibt, wie ein Benutzer eine neue Notiz auf der SPA-Version der App erstellt.
 
