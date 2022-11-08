@@ -209,3 +209,47 @@ aber wenn man JSX schreibt, muss man den Tag schließen:
 ```
 <br />
 ```
+
+## Multiple Components
+
+Verändern wir die Datei App.js wie folgt:
+
+```javascript
+const Hello = () => {  
+  return (
+    <div>
+      <p>Hello world</p>
+    </div>  
+  )
+}
+
+const App = () => {
+  return (
+    <div>
+      <h1>Greetings</h1>
+      <Hello />
+    </div>
+  )
+}
+```
+
+Hinweis: der Export am unteren Rand wird in diesen und anderen Beispielen weggelassen. Ihr müsst ihn trotzdem einfügen, damit die Anwendung funktioniert.
+
+Wir haben einen neuen Komponenten Hello definiert und innerhalb des Komponenten App benutzt. Ein Komponent kann selbstredend mehrere Male verwendet werden:
+
+```javascript
+const App = () => {
+  return (
+    <div>
+      <h1>Greetings</h1>
+      <Hello />
+      <Hello />
+      <Hello />
+    </div>
+  )
+}
+```
+
+Mit React ist sehr einfach Komponenten zu erstellen und wenn man mehrere Komponenten miteinander kombiniert, lassen sich auch komplexere Anwendungen leicht verwalten. Tatsächlich ist eine Kernphilosophie von React das Kombinieren vieler spezialisierter und wiederverwendbarer Komponenten.
+
+Eine andere Konvention ist die Idee einen Hauptkomponenten "App" an die Spitze der Appstruktur zu setzen. Trotzdem werden wir in Abschnitt 6 noch lernen, dass es Situationen gibt, wo der Komponent "App" nicht nicht ganz oben steht.
