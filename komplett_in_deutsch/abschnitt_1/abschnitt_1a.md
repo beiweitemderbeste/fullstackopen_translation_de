@@ -169,3 +169,43 @@ const App = () => {
 Jeglicher Javascriptcode innerhalb der geschwungenen Klammern wird ausgewertet und das Ergebnis davon wird in seinem jeweiligem Platz im HTML-Code eingefügt.
 
 ## JSX
+
+Es sieht so aus als würden React-Komponenten HTML ausgeben, was aber nicht der Fall ist. React-Kompenenten werden meistens in JSX geschrieben. Auch wenn JSX wie HTML aussieht, handelt es sich tatsächlich um eine andere Art Javascript zu schreiben:
+
+Nachdem Kompilieren sieht unsere Anwendung so aus:
+
+```javascript
+const App = () => {
+  const now = new Date()
+  const a = 10
+  const b = 20
+  return React.createElement(
+    'div',
+    null,
+    React.createElement(
+      'p', null, 'Hello world, it is ', now.toString()
+    ),
+    React.createElement(
+      'p', null, a, ' plus ', b, ' is ', a + b
+    )
+  )
+}
+```
+
+Die Kompilierung wird von "babel" übernommen. Projekte, die mit create-react-app erstellt wurden, sind so kofiguriert, das die Kompilierung automatisch geschieht. Wir werden uns in Abschnitt 7 dieses Kurs näher mit diesem Thema beschäftigen.
+
+Es ist möglich, React in "purem" Javascript zu schreiben ohne JSX zu verwenden. Allerdings würde das niemand, der bei klarem Verstand ist, tun.
+
+In der Praxis sieht JSX ähnlich wie HTML aus, mit dem Unterschied, dass man dynamischen Inhalt leicht einfügen kann, indem man Javascript in geschwungenen Klammern einfügt. Die Grundgedanke von JSX ist sehr ähnlich zu anderen Template-Sprachen, wie z.B. Thymeleaf für Java Spring.
+
+JSX ist ähnlich wie XML, was bedeudet, dass jeder Tag geschlossen werden muss. Zum Beispiel ist ein Zeilenumbruch ein leeres Element, dass in HTML so geschrieben werden kann:
+
+```
+<br>
+```
+
+aber wenn man JSX schreibt, muss man den Tag schließen:
+
+```
+<br />
+```
