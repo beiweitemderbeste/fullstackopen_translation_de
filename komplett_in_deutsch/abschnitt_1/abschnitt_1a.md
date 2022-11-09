@@ -43,7 +43,7 @@ import App from './App'
 ReactDOM.createRoot(document.getElementById('root')).render(<App />)
 ```
 
-und die Datei App.js sieht so aus:
+und die Datei App.js so aussieht:
 
 ```javascript
 const App = () => (
@@ -55,15 +55,15 @@ const App = () => (
 export default App
 ```
 
-Die Dateien App.css, App.test.js, index.css, logo.svg, setupTests.js und reportWebVitals.js können gelöscht werden, weil wir sie momentan nicht benötigt werden. 
+Die Dateien App.css, App.test.js, index.css, logo.svg, setupTests.js und reportWebVitals.js können gelöscht werden, weil sie momentan nicht benötigt werden. 
 
-Wenn ihr folgenden Fehler angezeigt bekommt:
+Wenn ihr folgenden Fehler angezeigt bekommt
 
 !["fullstack content"](./bilder/abschnitt1a_bild2.png?raw=true)
 
 liegt das daran, dass ihr aus irgeneinem Grund eine ältere React-Version als die aktuelle (18) benutzt.
 
-Die Lösung dafür ist index.js so abzuändern:
+Die Lösung dafür ist, index.js so abzuändern
 
 ```javascript
 import ReactDOM from 'react-dom'
@@ -74,7 +74,7 @@ ReactDOM.render(<App />, document.getElementById('root'))
 
 Ihr müsst das dann wahrscheinlich auch in euren anderen Projekten machen.
 
-Schaut [hier](https://fullstackopen.com/en/part1/a_more_complex_state_debugging_react_apps/#a-note-on-react-version) nach, wenn ihr mehr über die Versionsunterschieden lesen wollt.
+Schaut [hier](https://fullstackopen.com/en/part1/a_more_complex_state_debugging_react_apps/#a-note-on-react-version) nach, wenn ihr mehr über die Versionsunterschiede wissen wollt.
 
 ## Component
 
@@ -98,7 +98,7 @@ const App = () => (
 )
 ```
 
-Wir ihr wahrscheinlich schon geraten habt, wird der Komponent als div-Tag angezeigt, der einen p-Tag mit dem Text "Hello world" umschließt.
+Wie ihr wahrscheinlich schon geraten habt, wird der Komponent als div-Tag angezeigt, der einen p-Tag mit dem Text "Hello world" umschließt.
 
 Technisch gesehen wird der Komponent als Javascriptfunktion definiert. Das Folgende ist eine Funktion (an die keine Parameter übergeben werden):
 
@@ -170,7 +170,7 @@ Jeglicher Javascriptcode innerhalb der geschwungenen Klammern wird ausgewertet u
 
 ## JSX
 
-Es sieht so aus als würden React-Komponenten HTML ausgeben, was aber nicht der Fall ist. React-Kompenenten werden meistens in JSX geschrieben. Auch wenn JSX wie HTML aussieht, handelt es sich tatsächlich um eine andere Art Javascript zu schreiben:
+Es sieht so aus als würden React-Komponenten HTML ausgeben, was aber nicht der Fall ist. React-Kompenenten werden meistens in JSX geschrieben. Auch wenn JSX wie HTML aussieht, handelt es sich tatsächlich um eine andere Art Javascript zu schreiben.
 
 Nachdem Kompilieren sieht unsere Anwendung so aus:
 
@@ -192,7 +192,7 @@ const App = () => {
 }
 ```
 
-Die Kompilierung wird von "babel" übernommen. Projekte, die mit create-react-app erstellt wurden, sind so kofiguriert, das die Kompilierung automatisch geschieht. Wir werden uns in Abschnitt 7 dieses Kurs näher mit diesem Thema beschäftigen.
+Die Kompilierung wird von "babel" übernommen. Projekte, die mit create-react-app erstellt wurden, sind so konfiguriert, das die Kompilierung automatisch geschieht. Wir werden uns in Abschnitt 7 dieses Kurs näher mit diesem Thema beschäftigen.
 
 Es ist möglich, React in "purem" Javascript zu schreiben ohne JSX zu verwenden. Allerdings würde das niemand, der bei klarem Verstand ist, tun.
 
@@ -253,3 +253,66 @@ const App = () => {
 Mit React ist sehr einfach Komponenten zu erstellen und wenn man mehrere Komponenten miteinander kombiniert, lassen sich auch komplexere Anwendungen leicht verwalten. Tatsächlich ist eine Kernphilosophie von React das Kombinieren vieler spezialisierter und wiederverwendbarer Komponenten.
 
 Eine andere Konvention ist die Idee einen Hauptkomponenten "App" an die Spitze der Appstruktur zu setzen. Trotzdem werden wir in Abschnitt 6 noch lernen, dass es Situationen gibt, wo der Komponent "App" nicht nicht ganz oben steht.
+
+## props: passing data to components
+
+Es ist möglich an die Komponenten Daten zu übergeben, diese werden "props" genannt.
+
+Ändern wir den Komponenten Hello ab:
+
+```javascript
+const Hello = (props) => {
+  return (
+    <div>
+      <p>Hello {props.name}</p>
+    </div>
+  )
+}
+```
+
+Jetzt übergibt die Funktion, die den Komponenten definiert, einen Parameter props. Als Argument erhält der Parameter ein Objekt, das zugehörige Felder für alle "props", die der Komponent definiert, hat.
+
+Die props werden so definiert:
+
+```javascript
+const App = () => {
+  return (
+    <div>
+      <h1>Greetings</h1>
+      <Hello name='George' />
+      <Hello name='Daisy' />
+    </div>
+  )
+}
+```
+
+Es kann unzählige props geben und ihre Werte können hartkodierte Strings sein oder das Ergebnis von Javascript-Ausdrücken. Wenn die Werte der props mit Javascript ermittelt werden, müssen sie in geschwungen Klammern einfügt werden.
+
+Ändern wir den Code so ab, dass der Komponent Hello zwei props benutzt:
+
+```javascript
+const Hello = (props) => {
+  return (
+    <div>
+      <p>
+        Hello {props.name}, you are {props.age} years old
+      </p>
+    </div>
+  )
+}
+
+const App = () => {
+  const name = 'Peter'
+  const age = 10
+
+  return (
+    <div>
+      <h1>Greetings</h1>
+      <Hello name='Maya' age={26 + 10} />
+      <Hello name={name} age={age} />
+    </div>
+  )
+}
+```
+
+Die props, die vom Komponenten App überreicht werden, sind die Werte der Variablen: das Ergebnis der Evaluierung der Summe und eines normalen Strings.
