@@ -404,3 +404,123 @@ const App = () => {
 ```
 
 Jetzt ist die Kompilierung erfolgreich und die von React generierte DOM enthält nicht länger ein unnötiges div-Element.
+
+
+## Exercises
+
+Die Aufgaben werden über GitHub eingereicht und müssen im Submissionsystem als erledigt markiert werden.
+
+Ihr könnt alle Aufgaben über ein Repository einreichen oder verschiedene Repositories benutzen. Bitte benennt eure Verzeichnisse korrekt, wenn ihr Aufgaben verschiedener Abschnitte im selben Repository einreicht. 
+
+Ein Beispiel für eine gelungene Benennung eurer Verzeichnisse könnte so aussehen:
+
+```
+part0
+part1
+  courseinfo
+  unicafe
+  anecdotes
+part2
+  phonebook
+  countries
+```
+
+Für jeden Abschnitt des Kurses gibt es ein Verzeichnis, das sich weiter in verschiedene Verzeichnisse aufteilt, die die Aufgaben enthalten, wie z.B. "unicafe" in Abschnitt 1.
+
+Für jede Webapplikation gibt es mehrere Aufgaben. Es wird empfohlen immer alle Dateien, die zu einer Anwendung gehören, einzureichen, abgesehen vom Verzeichnis node_modules.
+
+Die Aufgaben werden Abschnitt für Abschnitt eingereicht. Wenn ihr Aufgaben für einen Abschnitt eingereicht habt, könnt ihr nicht länger noch fehlende Aufgaben für diesen Abschnitt abgeben.
+
+Beachtet, dass es in diesem Abschnitt noch mehr Aufgaben gibt als die folgenden:
+
+### 1.1: course information, step1
+
+Die Anwendung, mit der wir in dieser Übung anfangen, werden wir in den nächsten Übungen fortführen. Für dieses und andere Kapitel reicht es aus, nur den Endstand der Anwendung einzureichen. Wenn ihr wollt, könnte ihr für jede einzelne Aufgabe einen Commit erstellen, aber das ist komplett optional.
+
+Benutzt create-react-app, um die Anwendung zu initialisieren. Ändert index.js wie folgt ab:
+
+```javascript
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+
+import App from './App'
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />)
+```
+
+und App.js so:
+
+```javascript
+const App = () => {
+  const course = 'Half Stack application development'
+  const part1 = 'Fundamentals of React'
+  const exercises1 = 10
+  const part2 = 'Using props to pass data'
+  const exercises2 = 7
+  const part3 = 'State of a component'
+  const exercises3 = 14
+
+  return (
+    <div>
+      <h1>{course}</h1>
+      <p>
+        {part1} {exercises1}
+      </p>
+      <p>
+        {part2} {exercises2}
+      </p>
+      <p>
+        {part3} {exercises3}
+      </p>
+      <p>Number of exercises {exercises1 + exercises2 + exercises3}</p>
+    </div>
+  )
+}
+
+export default App
+```
+
+und löscht alle unnötigen Dateien (App.css, App.test.js, index.css, logo.svg, setupTests.js, reportWebVitals.js).
+
+Leider ist die ganze Anwendung im selben Komponenten. Verändert den Code so, dass sie aus drei neuen Komponenten besteht: Header, Content und Total. Alle Daten verbleiben im App-Komponenten, der die benötigten Daten über props an jeden Komponenten weiterreicht.
+
+Definiert die Komponenten in App.js.
+
+Der App-Komponent sollte ungefähr so aussehen:
+
+```javascript
+const App = () => {
+  // const-definitions
+
+  return (
+    <div>
+      <Header course={course} />
+      <Content ... />
+      <Total ... />
+    </div>
+  )
+}
+```
+
+ACHTUNG: create-react-app wandelt das Projekt in ein git-Repository um, sofern es nicht innerhalb eines bereits bestehendenen Repositorys erstellt wurde. Ihr wollt eurer Projekt sicherlich nicht in ein Repository umwandeln, also gebt den Befehl "rm -rf .git" im Hauptverzeichnis eures Projektes ein.
+
+### 1.2: course information, step2
+
+Ändert den Content-Komponenten so ab, dass dieser keine Namen von Abschnitten oder Zahlen der Aufgaben selbst anzeigt, sondern drei Parts-Komponenten, die jeweils den Abschnittsnamen oder die Zahl der Aufgaben des Abschnitts anzeigen.
+
+```javascript
+const Content = ... {
+  return (
+    <div>
+      <Part .../>
+      <Part .../>
+      <Part .../>
+    </div>
+  )
+}
+```
+
+Unsere Anwendung gibt die verschiedenen Informationen auf recht primitive Weise weiter, da die Informationen auf individuellen Variablen basieren. Diese Situation werden wir in Kürze verbessern.
+
+[zurück zu Abschnitt 1](abschnitt_1.md)
+[weiter zu Abschnitt 1b](abschnitt_1b.md)
