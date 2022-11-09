@@ -303,17 +303,24 @@ In diesem Kurs definieren wir Funktionen nur als Pfeilfunktionen.
 
 > We continue building the application that we started working on in the previous exercises. You can write the code into the same project, since we are only interested in the final state of the submitted application.
 
+Wir arbeiten weiter an der Anwendung, mit wir schon in den vorangegangen Aufgaben gearbeitet haben. Ihr könnt mit dem gleichen Code weiterarbeiten, da nur der Endstand der eingereichten Anwendung erforderlich ist.
+
 > Pro-tip: you may run into issues when it comes to the structure of the props that components receive. A good way to make things more clear is by printing the props to the console, e.g. as follows:
+
+Hinweis: Ihr könnt Probleme bekommen, wenn es um die Struktur geht, mit der props an Komponenten weitergegeben werden. Um zu wissen, um welche props es geht, könnt ihr sie einfach auf der Konsole ausgeben, z.B. so:
 
 ```javascript
 const Header = (props) => {
-  console.log(props)  return <h1>{props.course}</h1>
+  console.log(props)
+  return <h1>{props.course}</h1>
 }
 ```
 
 ### 1.3: course information step3
 
 > Let's move forward to using objects in our application. Modify the variable definitions of the App component as follows and also refactor the application so that it still works:
+
+Machen wir weiter, indem wir Objekte in unserer Anwendung verwenden. Ändert die Definitionen der Variablen im App-Komponenten wie folgt ab und dann sorgt dafür, dass die Anwendung weiterhin funktioniert:
 
 ```javascript
 const App = () => {
@@ -343,6 +350,8 @@ const App = () => {
 
 > And then place the objects into an array. Modify the variable definitions of App into the following form and modify the other parts of the application accordingly:
 
+Fügt nun alle Objekte in ein Array. Ändert wieder die Definitionen der Variablen wie folgt ab und passt wieder den Rest der Anwendung an, damit sie weiterhin funktioniert:
+
 ```javascript
 const App = () => {
   const course = 'Half Stack application development'
@@ -371,7 +380,11 @@ const App = () => {
 
 > NB at this point you can assume that there are always three items, so there is no need to go through the arrays using loops. We will come back to the topic of rendering components based on items in arrays with a more thorough exploration in the next part of the course.
 
+Hinweis: Ab jetzt könnt ihr immer davon ausgehen, dass es sich um 3 Teile handelt, also müsst ihr keine Schleifen für das Array schreiben. Wir kommen auf das Thema - Komponenten im Bezug auf die Werte in einem Array zu erstellen - im nächsten Abschnitt zurück.
+
 > However, do not pass different objects as separate props from the App component to the components Content and Total. Instead, pass them directly as an array:
+
+Übergebt allerdings nicht die verschiedenen Objekte als separate props vom App-Komponenten an die Komponenten Content und Total. Übergebt sie stattdessen diekt als Array:
 
 ```javascript
 const App = () => {
@@ -390,6 +403,8 @@ const App = () => {
 ### 1.5: course information step5
 
 > Let's take the changes one step further. Change the course and its parts into a single JavaScript object. Fix everything that breaks.
+
+Gehen wir noch einen Schritt weiter. Macht den Kurs und seine Teile zu einem Javascript-Objekt. Behebt alle resultierenden Probleme.
 
 ```javascript
 const App = () => {
