@@ -217,6 +217,8 @@ Objekte können auch über sogenannte Constructor-Funktionen definiert werden, w
 
 > We have already become familiar with defining arrow functions. The complete process, without cutting corners, to defining an arrow function is as follows:
 
+Wir wissen bereits, wie man Pfeilfunktionen definiert. Der komplette Prozess dafür lautet:
+
 ```javascript
 const sum = (p1, p2) => {
   console.log(p1)
@@ -227,12 +229,16 @@ const sum = (p1, p2) => {
 
 > and the function is called as can be expected:
 
+und die Funktion wird erwartet aufgerufen:
+
 ```javascript
 const result = sum(1, 5)
 console.log(result)
 ```
 
 > If there is just a single parameter, we can exclude the parentheses from the definition:
+
+Wenn nur ein Parameter übergeben wird, kann man die runden Klammern weglassen:
 
 ```javascript
 const square = p => {
@@ -243,12 +249,15 @@ const square = p => {
 
 > If the function only contains a single expression then the braces are not needed. In this case the function only returns the result of its only expression. Now, if we remove console printing, we can further shorten the function definition:
 
+Wenn die Funktion nur einen einzigen Ausdruck enthält, können auch die geschwungenen Klammern weggelassen werden. In diesem Fall gibt die Funktion nur das Ergebnis ihres einzigen Ausdrucks aus. Wenn wir jetzt noch den Befehl "console.log" weglassen, können wir die Definition der Funktion wir folgt kürzen:
+
 ```javascript
 const square = p => p * p
 ```
 
-
 > This form is particularly handy when manipulating arrays - e.g. when using the map method:
+
+Diese Form ist besonders nützlich, wenn man Arrays verändert, z.B. mit der map-Methode:
 
 ```javascript
 const t = [1, 2, 3]
@@ -258,7 +267,11 @@ const tSquared = t.map(p => p * p)
 
 > The arrow function feature was added to JavaScript only a couple of years ago, with version ES6. Prior to this the only way to define functions was by using the keyword function.
 
+Pfeilfunktionen gibt es erst seit Version ES6. Vorher gab es nur die Möglichkeit mit dem Schlagwort "function" Funktionen zu definieren.
+
 > There are two ways to reference the function; one is giving a name in a function declaration.
+
+Es gibt zwei Arten, um auf Funktionen zu verweisen. Eine davon ist, einen Namen in der Funktionsdeklaration zu verwenden:
 
 ```javascript
 function product(a, b) {
@@ -271,6 +284,8 @@ const result = product(2, 6)
 
 >The other way to define the function is using a function expression. In this case there is no need to give the function a name and the definition may reside among the rest of the code:
 
+Die andere Art ist die Funktion durch einen Funktionsaudruck zu definieren. In diesem Fall wird für die Funktion kein Name vergeben und die Definition der Funktion kann im übrigen Code bleiben:
+
 ```javascript
 const average = function(a, b) {
   return (a + b) / 2
@@ -281,6 +296,8 @@ const result = average(2, 5)
 ```
 
 > During this course we will define all functions using the arrow syntax.
+
+In diesem Kurs definieren wir Funktionen nur als Pfeilfunktionen.
 
 ## Exercises
 
