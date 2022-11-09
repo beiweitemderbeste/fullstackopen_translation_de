@@ -153,6 +153,8 @@ Hier werden den Variablen "first" und "second" die ersten beiden Integer des Arr
 
 > There are a few different ways of defining objects in JavaScript. One very common method is using object literals, which happens by listing its properties within braces:
 
+Es gibt verschiedene Möglichkeiten, um Objekte in Javascript zu definieren. Eine häufig verwendete ist die Benutzung von "object literals", das die Eigenschaften eines Objekts innerhalb geschwungener Klammern darstellt:
+
 ```javascript
 const object1 = {
   name: 'Arto Hellas',
@@ -178,7 +180,11 @@ const object3 = {
 
 > The values of the properties can be of any type, like integers, strings, arrays, objects...
 
+Die Werte der Eigenschaften können von jedem Datentyp sein, wie z.B. Integer, Strings, Arrays, andere Objekte...
+
 > The properties of an object are referenced by using the "dot" notation, or by using brackets:
+
+Die Eigenschaften eines Objekts können über die Punktnotierung oder über eckige Klammern zugeordnet werden:
 
 ```javascript
 console.log(object1.name)         // Arto Hellas is printed
@@ -188,6 +194,8 @@ console.log(object1[fieldName])    // 35 is printed
 
 > You can also add properties to an object on the fly by either using dot notation or brackets:
 
+Man kann über die Punktnotierung bzw. eckige Klammern dem Objekt auch neue Eigenschaften hinzufügen:
+
 ```javascript
 object1.address = 'Helsinki'
 object1['secret number'] = 12341
@@ -195,9 +203,15 @@ object1['secret number'] = 12341
 
 > The latter of the additions has to be done by using brackets, because when using dot notation, secret number is not a valid property name because of the space character.
 
+Die untere Ergänzung muss über eckige Klammern erfolgen, da bei der Punktnotierung kein Leerzeichen im Namen sein darf.
+
 > Naturally, objects in JavaScript can also have methods. However, during this course we do not need to define any objects with methods of their own. This is why they are only discussed briefly during the course.
 
+Selbstverständlich können Objekte in Javascript auch Methoden haben. Allerdings werden wir in diesem Kurs keine Objekte mit eigenen Methoden definieren. Deswegen sprechen wir sie auch nur kurz an
+
 > Objects can also be defined using so-called constructor functions, which results in a mechanism reminiscent of many other programming languages, e.g. Java's classes. Despite this similarity, JavaScript does not have classes in the same sense as object-oriented programming languages. There has been, however, an addition of the class syntax starting from version ES6, which in some cases helps structure object-oriented classes.
+
+Objekte können auch über sogenannte Constructor-Funktionen definiert werden, was an Techniken anderer Programmiersprachen erinnert, z.B. Javas Klassen. Abgesehen von diesr Ähnlichkeit, hat Javascript nichts ähnliches wie Klassen aus objektorientierten Programmiersprachen. Es gab allerdings eine Ergänzung zur Klassensyntax in Version ES6, die es in einigen Fällen ermöglicht, objektorientierte Klassen zu erstellen.
 
 ## Functions
 
