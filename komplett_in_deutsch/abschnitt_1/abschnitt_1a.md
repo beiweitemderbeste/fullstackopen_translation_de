@@ -316,3 +316,91 @@ const App = () => {
 ```
 
 Die props, die vom Komponenten App überreicht werden, sind die Werte der Variablen: das Ergebnis der Evaluierung der Summe und eines normalen Strings.
+
+## Some notes
+
+React wurde so konfiguriert, dass es sehr klare Fehlermeldungen ausgibt. Abgesehen davon solltet ihr gerade am Anfang in sehr kleinen Schritten vorgehen und sicherstellen, das jede Änderung funktioniert.
+
+Die Konsole sollte immer geöffnet sein. Wenn der Browser Fehlermeldungen anzeigt, ist es nicht ratsam weiter zu programmieren und auf Wunder zu hoffen. Ihr solltet stattdessen versuchen zu verstehen, was den Fehler verursacht hat und zurück zum letzten Stand gehen, der funktioniert hat:
+
+!["fullstack content"](./bilder/abschnitt1a_bild3.png?raw=true)
+
+Es ist immer gut, sich daran zu erinnern, dass es in React möglich ist console.log()-Befehle in den Code zu setzen.
+
+Beachtet auch, dass React-Komponenten am Anfang groß geschrieben werden müssen. Ihr könnt versuchen einen Komponenten so zu definieren:
+
+```javascript
+const footer = () => {
+  return (
+    <div>
+      greeting app created by <a href='https://github.com/mluukkai'>mluukkai</a>
+    </div>
+  )
+}
+```
+
+und so zu benutzen:
+
+```javascript
+const App = () => {
+  return (
+    <div>
+      <h1>Greetings</h1>
+      <Hello name='Maya' age={26 + 10} />
+      <footer />    
+    </div>
+  )
+}
+```
+
+Die Seite wird den Inhalt des Footer-Komponenten nicht anzeigen und stattdessen erstellt React nur ein leeres Footer-Element, mit anderen Worten das eingebaute HTML-Element statt des React-Elements mit demselben Namen. Wenn ihr den Namen des Komponent am Anfang großschreibt, erstellt React ein div-Element für den Footer und zeigt darin seinen Inhalt an.
+
+Beachtet, dass der Inhalt eines React-Komponenten (normalerweise) ein Hauptelement enthalten muss. Wenn wir einen Komponenten ohne ein Hauptelement definieren: 
+
+```javascript
+const App = () => {
+  return (
+    <h1>Greetings</h1>
+    <Hello name='Maya' age={26 + 10} />
+    <Footer />
+  )
+}
+```
+
+ist das Ergebnis eine Fehlermeldung
+
+!["fullstack content"](./bilder/abschnitt1a_bild4.png?raw=true)
+
+Ein Hauptelement zu verwenden, ist nicht die einzige Möglichkeit, die hier funktioniert. Ein Array wäre auch möglich:
+
+```javascript
+const App = () => {
+  return [
+    <h1>Greetings</h1>,
+    <Hello name='Maya' age={26 + 10} />,
+    <Footer />
+  ]
+}
+```
+
+Jedoch ist dies beim Definieren des Hauptkomponenten nicht besonders ratsam und es macht den Code hässlich.
+
+Weil ein Hauptelement vorgeschrieben ist, haben wir ein Extra-div-Element in der DOM. Das kann man vermeiden, indem man Fragemente verwendet, mit anderen Worten, man umschließt den Inhalt des Komponenten mit einem leeren Element:
+
+```javascript
+const App = () => {
+  const name = 'Peter'
+  const age = 10
+
+  return (
+    <>
+      <h1>Greetings</h1>
+      <Hello name='Maya' age={26 + 10} />
+      <Hello name={name} age={age} />
+      <Footer />
+    </>
+  )
+}
+```
+
+Jetzt ist die Kompilierung erfolgreich und die von React generierte DOM enthält nicht länger ein unnötiges div-Element.
