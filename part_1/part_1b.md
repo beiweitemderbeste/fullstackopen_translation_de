@@ -15,25 +15,45 @@
 
 > During the course, we have a goal and a need to learn a sufficient amount of JavaScript in addition to web development.
 
+Während des Kurses werden wir viel Javascript zusätzlich zur Webentwicklung lernen.
+
 > JavaScript has advanced rapidly in the last few years and in this course we use features from the newer versions. The official name of the JavaScript standard is ECMAScript. At this moment, the latest version is the one released in June of 2021 with the name ECMAScript®2021, otherwise known as ES12.
+
+Bei Javascript hat sich in den letzten Jahren viel getan und in diesem Kurz greifen wir auf einige Features der neuen Versionen zu. Der offizielle Name des Javascript-Standards ist ECMAScript. Im Moment ist die aktuelleste Version von Juni 2021 "ECMAScript®2021", auch bekannt als ES12.
 
 > Browsers do not yet support all of JavaScript's newest features. Due to this fact, a lot of code run in browsers has been transpiled from a newer version of JavaScript to an older, more compatible version.
 
+Nicht alle Browser unterstützen schon alle neue Javascript-Features. Aus diesem Grund wird ein großer Teil des Codes, der im Browser läuft, von einer neueren in eine ältere, kompatiblere Version von Javascript übersetzt.
+
 > Today, the most popular way to do the transpiling is by using Babel. Transpilation is automatically configured in React applications created with create-react-app. We will take a closer look at the configuration of the transpilation in part 7 of this course.
+
+Heutzutage geschieht dies am meisten mit "Babel". Die Übersetzung wird in React-Anwendungen, die mit create-react-app erstellt wurden, automatisch eingestellt. Wir schauen uns die Konfiguration dieser Übersetzung in Abschnitt 7 noch genauer an.
 
 > Node.js is a JavaScript runtime environment based on Google's Chrome V8 JavaScript engine and works practically anywhere - from servers to mobile phones. Let's practice writing some JavaScript using Node. It is expected that the version of Node.js installed on your machine is at least version 16.13.2. The latest versions of Node already understand the latest versions of JavaScript, so the code does not need to be transpiled.
 
+Node.js ist eine Javascript-Laufzeitumgebung, die auf Googles Chrome V8 Javascript Engine basiert, und praktisch überall läuft, von Servern bis zu mobilen Telefonen. Üben wir ein bisschen das Schreiben von Javascript, indem wir Node benutzen. Es wird erwartet, dass mindestens Version 16.12.2 von Node.js auf euren Rechnern installiert ist. Die neueste Version von Node.js versteht auch die neuesten Versionen von Javascript, so dass dieser Code nicht übersetzt werden muss.
+
 > The code is written into files ending with .js that are run by issuing the command node name_of_file.js
+
+Unser Code wird in Dateien geschrieben, deren Dateinamen mit ".js" enden und mit dem Befehl "node dateiname.js" gestartet werden.
 
 > It is also possible to write JavaScript code into the Node.js console, which is opened by typing node in the command-line, as well as into the browser's developer tool console. The newest revisions of Chrome handle the newer features of JavaScript pretty well without transpiling the code. Alternatively you can use a tool like JS Bin.
 
+Man kann auch Javascript-Code in die Node.js-Konsole tippen (diese öffnet man durch den Befehl "node" im Terminal). Ebenso könnt ihr auch Javascript in der Entwicklerkonsole eures Browsers tippen. Die aktuellen Versionen von Firefox können mit den neuen Features von Javascript ganz gut umgehen, ohne den Code vorher übersetzen zu müssen. Alternativ könnt ihr auch Werkzeuge wie [JS Bin](link-einfügen) verwenden.
+
 > JavaScript is sort of reminiscent, both in name and syntax, to Java. But when it comes to the core mechanism of the language they could not be more different. Coming from a Java background, the behavior of JavaScript can seem a bit alien, especially if one does not make the effort to look up its features.
 
+Javascript erinnert vom Namen und Syntax an Java. Aber wenn es um die Kerneigenschaften der Sprachen geht, könnten sie nicht unterschiedlicher sein. Wenn man einen Java-Background hat, mag einem Javascript ein bisschen fremd vorkommen, besonders wenn man keine Anstrengung unternimmt, um seine Eigenschaften nachzuschauen.
+
 > In certain circles it has also been popular to attempt "simulating" Java features and design patterns in JavaScript. We do not recommend doing this as the languages and respective ecosystems are ultimately very different.
+
+In bestimmten Kreisen ist es beliebt Eigenschaften von Java zu simulieren und in Javascript zu schreiben. Das wird von unserer Seite nicht empfohlen, da die Sprachen und ihre zugehörigen Ökosystem sehr verschieden sind.
 
 ## Arrays
 
 > An array and a couple of examples of its use:
+
+Ein Array und ein paar Beispiele, wie es verwendet werden kann
 
 ```javascript
 const t = [1, -1, 3]
@@ -50,7 +70,11 @@ t.forEach(value => {
 
 > Notable in this example is the fact that the contents of the array can be modified even though it is defined as a const. Because the array is an object, the variable always points to the same object. However, the content of the array changes as new items are added to it.
 
+Beachtet bitte, dass in diesem Beispiel die Inhalte von dem Array geändert werden können, obwohl es als Konstante definiert worden ist. Weil das Array ein Objekt ist, zeigt die Variable immer auf das gleiche Objekt. Allerdings ändert sich der Inhalt des Arrays, wenn neue Werte hinzugefügt werden.
+
 > One way of iterating through the items of the array is using forEach as seen in the example. forEach receives a function defined using the arrow syntax as a parameter.
+
+Ein Möglichkeit, um eine Schleife durch das Array laufen zu lassen, ist "forEach". "forEach" erhält als Parameter eine Pfeilfunktion.
 
 ```javascript
 value => {
@@ -60,7 +84,11 @@ value => {
 
 > forEach calls the function for each of the items in the array, always passing the individual item as an argument. The function as the argument of forEach may also receive other arguments.
 
+forEach ruft die Funktion für jeden Wert des Arrays auf und übergibt immer den jeweiligen Wert als Argument an die Funktion. Die Pfeilfunktion kann auch andere Argumente übergeben bekommen.
+
 > In the previous example, a new item was added to the array using the method push. When using React, techniques from functional programming are often used. One characteristic of the functional programming paradigm is the use of immutable data structures. In React code, it is preferable to use the method concat, which does not add the item to the array, but creates a new array in which the content of the old array and the new item are both included.
+
+Im vorangegangenen Beispiel wurde neue Werte mit der push-Methode zum Array hinzugefügt. Wenn React verwendet wird, nutzt man oft Techniken aus der funktionalen Programmierung. Eine Charakteristik des funktionalen Programmierungsparadigmas ist das Benutzen von unveränderbaren Datenstrukturen. In React wird oft die Methode "concat" verwendet. Diese hängt keinen neuen Wert an das Array, sondern erstellt ein neues Array, dass den Inhalt des alten Arrays und den neuen Wert enthält.
 
 ```javascript
 const t = [1, -1, 3]
@@ -73,7 +101,11 @@ console.log(t2) // [1, -1, 3, 5] is printed
 
 > The method call t.concat(5) does not add a new item to the old array but returns a new array which, besides containing the items of the old array, also contains the new item.
 
+Der Aufruf der Methode "t.concat(5)" hängt keinen neuen Wert an das Array "t", sondern gibt ein neues Array aus, das die Werte von "t" und den Wert "5" enthält.
+
 > There are plenty of useful methods defined for arrays. Let's look at a short example of using the map method.
+
+Es gibt viele nützliche Methoden, die für Arrays definiert worden sind. Schauen wir uns ein kurzes Beispiel der map-Methode an
 
 ```javascript
 const t = [1, 2, 3]
@@ -84,7 +116,11 @@ console.log(m1)   // [2, 4, 6] is printed
 
 > Based on the old array, map creates a new array, for which the function given as a parameter is used to create the items. In the case of this example the original value is multiplied by two.
 
+Basierend auf dem Array t, erstellt map ein neues Array. Dieses bekommt als Parameter eine Funktion übergeben, die dafür genutzt wird, Werte des Arrays zu erstellen.
+
 > Map can also transform the array into something completely different:
+
+map kann also ein Array in etwas ganz anderes verwandeln:
 
 ```javascript
 const m2 = t.map(value => '<li>' + value + '</li>')
@@ -94,7 +130,11 @@ console.log(m2)
 
 > Here an array filled with integer values is transformed into an array containing strings of HTML using the map method. In part 2 of this course, we will see that map is used quite frequently in React.
 
+Hier wird ein Array, das nur Integers enthält, in ein Array umgewandelt, dass nur HTML-Strings enthält. Im zweiten Abschnitt des Kurses werden wir sehen, dass die map-Methode sehr häufig in React zum Einsatz kommt.
+
 > Individual items of an array are easy to assign to variables with the help of the destructuring assignment.
+
+Einzelne Werte eines Arrays können leicht über "destructuring" Variablen zugewiesen werden.
 
 ```javascript
 const t = [1, 2, 3, 4, 5]
@@ -106,6 +146,8 @@ console.log(rest)          // [3, 4, 5] is printed
 ```
 
 > Thanks to the assignment, the variables first and second will receive the first two integers of the array as their values. The remaining integers are "collected" into an array of their own which is then assigned to the variable rest.
+
+Hier werden den Variablen "first" und "second" die ersten beiden Integer des Arrays als Werte zugewiesen. Die verbliebenen Integer werden gesammelt einem eigenen Array zugewiesen, das selbst der Variable "rest" zugewiesen wird.
 
 ## Objects
 
