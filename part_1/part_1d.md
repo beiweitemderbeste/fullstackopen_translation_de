@@ -965,3 +965,78 @@ const Button = (props) => (
 
 ## Do Not Define Components Within Components
 
+> Let's start displaying the value of the application into its own Display component.
+
+> We will change the application by defining a new component inside of the App-component.
+
+```javascript
+// This is the right place to define a component
+const Button = (props) => (
+  <button onClick={props.handleClick}>
+    {props.text}
+  </button>
+)
+
+const App = () => {
+  const [value, setValue] = useState(10)
+
+  const setToValue = newValue => {
+    console.log('value now', newValue)
+    setValue(newValue)
+  }
+
+  // Do not define components inside another component
+  const Display = props => <div>{props.value}</div>
+
+  return (
+    <div>
+      <Display value={value} />
+      <Button handleClick={() => setToValue(1000)} text="thousand" />
+      <Button handleClick={() => setToValue(0)} text="reset" />
+      <Button handleClick={() => setToValue(value + 1)} text="increment" />
+    </div>
+  )
+}
+```
+
+> The application still appears to work, but don't implement components like this! Never define components inside of other components. The method provides no benefits and leads to many unpleasant problems. The biggest problems are due to the fact that React treats a component defined inside of another component as a new component in every render. This makes it impossible for React to optimize the component.
+
+> Let's instead move the Display component function to its correct place, which is outside of the App component function:
+
+```javascript
+const Display = props => <div>{props.value}</div>
+
+const Button = (props) => (
+  <button onClick={props.handleClick}>
+    {props.text}
+  </button>
+)
+
+const App = () => {
+  const [value, setValue] = useState(10)
+
+  const setToValue = newValue => {
+    console.log('value now', newValue)
+    setValue(newValue)
+  }
+
+  return (
+    <div>
+      <Display value={value} />
+      <Button handleClick={() => setToValue(1000)} text="thousand" />
+      <Button handleClick={() => setToValue(0)} text="reset" />
+      <Button handleClick={() => setToValue(value + 1)} text="increment" />
+    </div>
+  )
+}
+```
+
+## Useful Reading
+
+> The internet is full of React-related material. However, we use the new style of React for which a large majority of the material found online is outdated.
+
+> You may find the following links useful:
+
+> - The official React documentation is worth checking out at some point, although most of it will become relevant only later on in the course. Also, everything related to class-based components is irrelevant to us;  
+
+> - Some courses on Egghead.io like Start learning React are of high quality, and recently updated The Beginner's Guide to React is also relatively good; both courses introduce concepts that will also be introduced later on in this course. NB The first one uses class components but the latter uses the new functional ones.
