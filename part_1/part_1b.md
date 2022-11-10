@@ -628,15 +628,27 @@ Diese Klassensyntax aus ES6 wird viel in älteren React- und Node.js-Projekten v
 
 > There exist both good and poor guides for JavaScript on the Internet. Most of the links on this page relating to JavaScript features reference Mozilla's JavaScript Guide.
 
+Es gibt gute und schlechte Anleitungen für Javascript im Internet. Die meisten Links auf dieser Seite zu Javascript verweisen auf [Mozilla's JavaScript Guide](link-missing)
+
 > It is highly recommended to immediately read A re-introduction to JavaScript (JS tutorial) on Mozilla's website.
+
+Wir empfehlen dringend sofort [A re-introduction to JavaScript (JS tutorial)](link-missing) auf der Webseite von [Mozilla](link-missing)
 
 > If you wish to get to know JavaScript deeply there is a great free book series on the Internet called You-Dont-Know-JS.
 
+Wenn ihr euch richtig gut mit Javascript auskennen wollt, es gibt da eine großartige, kostenfreie Buchserie [You-Dont-Know-JS](link-missing)
+
 > Another great resource for learning JavaScript is javascript.info.
+
+Eine andere großartige Quelle, um Javascript zu lernen, ist [javascript.info](link-missing)
 
 > The free and highly engaging book Eloquent JavaScript https://eloquentjavascript.net. Takes you from the basics to interesting stuff quickly, a mixture of theory projects and exercises, covers general programming theory as well as the JavaScript language.
 
+Das kostenfreie und sehr fesselnde Buch [Eloquent Javascript](https://eloquentjavascript.net). Bringt euch sehr schnell von den Grundlagen zum interessanten Zeug, eine Mischung aus theoretischen Projekten und Aufgaben, es geht sowohl um generelle Programmierkenntnisse, sowie um die Sprache an sich.
+
 > egghead.io has plenty of quality screencasts on JavaScript, React, and other interesting topics. Unfortunately, some of the material is behind a paywall.
+
+[egghead.io](egghead.io) hat viele qualitativ vervollte Screencasts zu Javascript, React und anderen interessanten Themen. Leider ist ein Teil des Materials hinter einer Zahlwand.
 
 [back to Part 1a](part_1a.md)
 [next Part 1c](part_1c.md)
