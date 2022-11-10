@@ -651,4 +651,5 @@ Das kostenfreie und sehr fesselnde Buch [Eloquent Javascript](https://eloquentja
 [egghead.io](egghead.io) hat viele qualitativ vervollte Screencasts zu Javascript, React und anderen interessanten Themen. Leider ist ein Teil des Materials hinter einer Zahlwand.
 
 [back to Part 1a](part_1a.md)
+
 [next Part 1c](part_1c.md)

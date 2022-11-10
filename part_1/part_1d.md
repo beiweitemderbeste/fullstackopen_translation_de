@@ -1262,3 +1262,9 @@ copy[2] += 1
 > If multiple anecdotes are tied for first place it is sufficient to just show one of them.
 
 > This was the last exercise for this part of the course and it's time to push your code to GitHub and mark all of your finished exercises to the exercise submission system.
+
+[back to Part 1c](part_1c.md)
+
+[back to Part 1](part_1.md)
+
+[next Part 2](../part_2/part_2.md)

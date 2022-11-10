@@ -675,4 +675,5 @@ const Content = ... {
 Unsere Anwendung gibt die verschiedenen Informationen auf recht primitive Weise weiter, da die Informationen auf individuellen Variablen basieren. Diese Situation werden wir in Kürze verbessern.
 
 [back to Part 1](part_1.md)
+
 [next Part 1b](part_1b.md)
