@@ -547,3 +547,151 @@ const App = () => {
 ```
 
 ## Event Handling Revisited
+
+> Event handling has proven to be a difficult topic in previous iterations of this course.
+
+> For this reason we will revisit the topic.
+
+> Let's assume that we're developing this simple application with the following component App:
+
+```javascript
+const App = () => {
+  const [value, setValue] = useState(10)
+
+  return (
+    <div>
+      {value}
+      <button>reset to zero</button>
+    </div>
+  )
+}
+```
+
+> We want the clicking of the button to reset the state stored in the value variable.
+
+> In order to make the button react to a click event, we have to add an event handler to it.
+
+> Event handlers must always be a function or a reference to a function. The button will not work if the event handler is set to a variable of any other type.
+
+> If we were to define the event handler as a string:
+
+```javascript
+<button onClick="crap...">button</button>
+```
+
+> React would warn us about this in the console:
+
+```javascript
+index.js:2178 Warning: Expected `onClick` listener to be a function, instead got a value of `string` type.
+    in button (at index.js:20)
+    in div (at index.js:18)
+    in App (at index.js:27)
+```
+
+> The following attempt would also not work:
+
+```javascript
+<button onClick={value + 1}>button</button>
+```
+
+> We have attempted to set the event handler to value + 1 which simply returns the result of the operation. React will kindly warn us about this in the console:
+
+```javascript
+index.js:2178 Warning: Expected `onClick` listener to be a function, instead got a value of `number` type.
+```
+
+> This attempt would not work either:
+
+```javascript
+<button onClick={value = 0}>button</button>
+```
+
+> The event handler is not a function but a variable assignment, and React will once again issue a warning to the console. This attempt is also flawed in the sense that we must never mutate state directly in React.
+
+> What about the following:
+
+```javascript
+<button onClick={console.log('clicked the button')}>
+  button
+</button>
+```
+
+> The message gets printed to the console once when the component is rendered but nothing happens when we click the button. Why does this not work even when our event handler contains a function console.log?
+
+> The issue here is that our event handler is defined as a function call which means that the event handler is actually assigned the returned value from the function, which in the case of console.log is undefined.
+
+> The console.log function call gets executed when the component is rendered and for this reason it gets printed once to the console.
+
+> The following attempt is flawed as well:
+
+```javascript
+<button onClick={setValue(0)}>button</button>
+```
+
+> We have once again tried to set a function call as the event handler. This does not work. This particular attempt also causes another problem. When the component is rendered the function setValue(0) gets executed which in turn causes the component to be re-rendered. Re-rendering in turn calls setValue(0) again, resulting in an infinite recursion.
+
+> Executing a particular function call when the button is clicked can be accomplished like this:
+
+```javascript
+<button onClick={() => console.log('clicked the button')}>
+  button
+</button>
+```
+
+> Now the event handler is a function defined with the arrow function syntax () => console.log('clicked the button'). When the component gets rendered, no function gets called and only the reference to the arrow function is set to the event handler. Calling the function happens only once the button is clicked.
+
+> We can implement resetting the state in our application with this same technique:
+
+```javascript
+<button onClick={() => setValue(0)}>button</button>
+```
+
+> The event handler is now the function () => setValue(0).
+
+> Defining event handlers directly in the attribute of the button is not necessarily the best possible idea.
+
+> You will often see event handlers defined in a separate place. In the following version of our application we define a function that then gets assigned to the handleClick variable in the body of the component function:
+
+```javascript
+const App = () => {
+  const [value, setValue] = useState(10)
+
+  const handleClick = () =>
+    console.log('clicked the button')
+
+  return (
+    <div>
+      {value}
+      <button onClick={handleClick}>button</button>
+    </div>
+  )
+}
+```
+
+> The handleClick variable is now assigned to a reference to the function. The reference is passed to the button as the onClick attribute:
+
+```javascript
+<button onClick={handleClick}>button</button>
+```
+
+> Naturally, our event handler function can be composed of multiple commands. In these cases we use the longer curly brace syntax for arrow functions:
+
+```javascript
+const App = () => {
+  const [value, setValue] = useState(10)
+
+  const handleClick = () => {    
+    console.log('clicked the button')    
+    setValue(0)  
+  }
+
+  return (
+    <div>
+      {value}
+      <button onClick={handleClick}>button</button>
+    </div>
+  )
+}
+```
+
+## Function that returns a function
