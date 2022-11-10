@@ -438,9 +438,15 @@ const App = () => {
 
 > Due to the fact that during this course we are using a version of React containing React Hooks we have no need for defining objects with methods. The contents of this chapter are not relevant to the course but are certainly in many ways good to know. In particular when using older versions of React one must understand the topics of this chapter.
 
+Da wir in diesem Kurs eine Reactversion verwenden, die React Hooks kennt, müssen wir nicht wissen, wie man Objekte mit Methoden erstellen. Das Folgende ist nicht relevant für den weiteren Kurs, aber trotzdem gut zu wissen. Besonders, wenn man ältere Reactversionen pflegt.
+
 > Arrow functions and functions defined using the function keyword vary substantially when it comes to how they behave with respect to the keyword this, which refers to the object itself.
 
+Pfeilfunktionen und Funktionen, die mit dem Schlagwort function erstellt wurden, unterscheiden sich erheblich, wenn es darum geht, wie mit "this" umgegangen wird.
+
 > We can assign methods to an object by defining properties that are functions:
+
+Wir können einem Objekt Methoden zuweisen, indem wir Objekteigenschaften als Funktionen definieren:
 
 ```javascript
 const arto = {
@@ -456,6 +462,8 @@ arto.greet()  // "hello, my name is Arto Hellas" gets printed
 ```
 
 > Methods can be assigned to objects even after the creation of the object:
+
+Methoden können einem Objekt auch nach dessen Erstellung zugewiesen werden:
 
 ```javascript
 const arto = {
@@ -478,6 +486,8 @@ console.log(arto.age)   // 36 is printed
 
 > Let's slightly modify the object:
 
+Ändern wir das Objekt leicht ab:
+
 ```javascript
 const arto = {
   name: 'Arto Hellas',
@@ -499,7 +509,21 @@ referenceToAddition(10, 15)   // 25 is printed
 
 > Now the object has the method doAddition which calculates the sum of numbers given to it as parameters. The method is called in the usual way, using the object arto.doAddition(1, 4) or by storing a method reference in a variable and calling the method through the variable: referenceToAddition(10, 15).
 
+Jetzt hat das Objekt die Methode "doAddition", die die Summe zweier Zahlen errechnet, die als Parameter übergeben werden. Die Methode kann entweder über das Objekt aufgerufen werden
+
+```javascript
+arto.doAddition(1, 4)
+```
+
+oder indem der Verweis auf die Methode in einer Variable gespeichert wird und die Variable aufgerufen wird
+
+```javascript
+referenceToAddition(10, 15)
+```
+
 > If we try to do the same with the method greet we run into an issue:
+
+Wenn wir das gleiche mit der greet-Methode machen, laufen wir in ein Problem:
 
 ```javascript
 arto.greet()       // "hello, my name is Arto Hellas" gets printed
@@ -510,14 +534,21 @@ referenceToGreet() // prints "hello, my name is undefined"
 
 > When calling the method through a reference, the method loses knowledge of what the original this was. Contrary to other languages, in JavaScript the value of this is defined based on how the method is called. When calling the method through a reference the value of this becomes the so-called global object and the end result is often not what the software developer had originally intended.
 
+Wenn wir die Methode über einen Verweis aufrufen, verliert die Methode das Wissen, auf wen "this" verweist. Im Gegensatz zu anderen Sprachen beruht in Javascript die Definition von "this" darauf, wie die Methode aufgerufen wurde. Geschieht der Aufruf über einen Verweis, zeigt der Wert von "this" auf das sogenannte globale Objekt und das Endergebnis ist oft nicht das, was der Softwareentwickler im Sinn hatte.
+
 > Losing track of this when writing JavaScript code brings forth a few potential issues. Situations often arise where React or Node (or more specifically the JavaScript engine of the web browser) needs to call some method in an object that the developer has defined. However, in this course we avoid these issues by using the "this-less" JavaScript.
 
+Wenn man den Überblick darüber verliert, auf wen "this" verweist, bekomt man Probleme. Es gibt öfter Situationen, in denen React oder Node (genauer gesagt, die Javascript-Engine des Browsers) eine Methode eines Objektes aufruft, die der Entwickler definiert hat. In diesem Kurs umgehen wir diese Probleme, in dem wir wenig "this" verwenden.
+
 > One situation leading to the "disappearance" of this arises when we set a timeout to call the greet function on the arto object, using the setTimeout function.
+
+Eine Möglichkeit, um "this" verschwinden zu lassen, ist einen Timeout zu setzen, der die greet-Funktion aufruft. Wir verwenden dafür die Funktion setTimeout:
 
 ```javascript
 const arto = {
   name: 'Arto Hellas',
   greet: function() {
+    console.log(this);
     console.log('hello, my name is ' + this.name)
   },
 }
@@ -527,7 +558,11 @@ setTimeout(arto.greet, 1000)
 
 > As mentioned, the value of this in JavaScript is defined based on how the method is being called. When setTimeout is calling the method, it is the JavaScript engine that actually calls the method and, at that point, this refers to the global object.
 
+Wie bereits erwähnt wird der Wert von "this" in Javascript darüber bestimmt, wie die Methode aufgrufen wird, zu diesem Punkt verweist "this" auf das globale Objekt.
+
 > There are several mechanisms by which the original this can be preserved. One of these is using a method called bind:
+
+Es gibt verschiedene Techniken, wie man das originiale "this" erhalten kann. Eine davon ist die Methode bind zu nutzen: 
 
 ```javascript
 setTimeout(arto.greet.bind(arto), 1000)
@@ -535,9 +570,15 @@ setTimeout(arto.greet.bind(arto), 1000)
 
 > Calling arto.greet.bind(arto) creates a new function where this is bound to point to Arto, independent of where and how the method is being called.
 
+Der Funktionsaufruf arto.greet.bind(arto) erstellt eine neue Funktion, bei der "this" an Arto gebunden ist, unabhängig davon, wie die Methode aufgerufen wird.
+
 > Using arrow functions it is possible to solve some of the problems related to this. They should not, however, be used as methods for objects because then this does not work at all. We will come back later to the behavior of this in relation to arrow functions.
 
+Indem man Pfeilfunktionen nutzt, ist es möglich einige Probleme zu umgehen, die mit "this" verbunden sind. Allerdings sollten Sie nicht für Objektmethoden verwendet werden, weil dann "this" überhaupt nicht funktioniert. Wir kommen später nochmal auf die Beziehung von Pfeilfunktionenn und "this" zurück.
+
 > If you want to gain a better understanding of how this works in JavaScript, the Internet is full of material about the topic, e.g. the screencast series Understand JavaScript's this Keyword in Depth by egghead.io is highly recommended!
+
+Wenn ihr ein besseres Verständnis für "this" in Javascript bekommen wollt, dann empfehlen wir unbedingt die Screencastserie "Understand JavaScript's this Keyword in Depth" von [egghead.io](egghead.io).
 
 ## Classes
 
