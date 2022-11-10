@@ -584,9 +584,15 @@ Wenn ihr ein besseres Verständnis für "this" in Javascript bekommen wollt, dan
 
 > As mentioned previously, there is no class mechanism in JavaScript like the ones in object-oriented programming languages. There are, however, features to make "simulating" object-oriented classes possible.
 
+Wie bereits erwähnt gibt es in Javascript keine Klassen, die mit denen von objektorientierten Sprachen vergleichbar sind. Allerdings gibt es Features mit denen sich objektorientierte Klassen simulieren lassen.
+
 > Let's take a quick look at the class syntax that was introduced into JavaScript with ES6, which substantially simplifies the definition of classes (or class-like things) in JavaScript.
 
+Schauen wir uns kurz die Klassensyntax an, die mit ES6 eingeführt wurde. Diese Syntax vereinfachte die Definition von Klassen in Javascript ungemein.
+
 > In the following example we define a "class" called Person and two Person objects:
+
+Im folgenden Beispiel definieren wir eine Klasse "Person" und zwei Person-Objekte:
 
 ```javascript
 class Person {
@@ -608,9 +614,15 @@ janja.greet()
 
 > When it comes to syntax, the classes and the objects created from them are very reminiscent of Java classes and objects. Their behavior is also quite similar to Java objects. At the core they are still objects based on JavaScript's prototypal inheritance. The type of both objects is actually Object, since JavaScript essentially only defines the types Boolean, Null, Undefined, Number, String, Symbol, BigInt, and Object.
 
+Diese Syntax erinnert stark daran, wie Klassen und Objekte in Java erstellt weren. Ihr Verhalten ist dem von Java-Objekten auch sehr ähnlich. Im Kern sind sie aber immer noch Objekte, die auf Javascripts Prototypenvererbung basieren. Der Datentyp von beiden Objekten ist tatsächlich Object, weil Javascript im Wesentlichen nur 7 Datentypen kennt: Boolean, Null, Undefined, Number, String, Symbol, BigInt und Object.
+
 > The introduction of the class syntax was a controversial addition. Check out Not Awesome: ES6 Classes or Is “Class” In ES6 The New “Bad” Part? on Medium for more details.
 
+Die Einführung von Klassen war eine kontroverse Ergänzung. Schaut euch [Not Awesome: ES6 Classes or Is “Class” In ES6 The New “Bad” Part?](link-missing) auf Medium für mehr Details an.
+
 > The ES6 class syntax is used a lot in "old" React and also in Node.js, hence an understanding of it is beneficial even in this course. However, since we are using the new Hooks feature of React throughout this course, we have no concrete use for JavaScript's class syntax.
+
+Diese Klassensyntax aus ES6 wird viel in älteren React- und Node.js-Projekten verwendet, daher ist ihr Verstehen vorteilhaft. Allerdings nutzen wir in diesem Kurs die neuen Hooks von React, daher gibt gibt es für die Klassen keine direkte Anwendung.
 
 ## Javascript Materials
 
