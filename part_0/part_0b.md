@@ -1040,4 +1040,6 @@ Erstellt ein Diagramm, das die Situation beschreibt, wie ein Benutzer eine neue 
 
 Das war die letzte Aufgabe, jetzt ist es Zeit eure Antworten auf GitHub hochzuladen und die Aufgaben im Submissionsystem zu markieren.
 
-[part 1](part_1/part_1.md)
+[back to part 0](part_0.md)
+
+[next part 1](../part_1/part_1.md)
