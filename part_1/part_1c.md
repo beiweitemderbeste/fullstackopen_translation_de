@@ -306,9 +306,15 @@ Erneute Aufrufe der Methode render ist nicht der empfohlene Weg, um in React Kom
 
 > All of our components up till now have been simple in the sense that they have not contained any state that could change during the lifecycle of the component.
 
+Bis jetzt waren unsere Komponenten sehr einfach gestaltet, d.h. sie enthalten keinen State, der sich im Lebenszyklus eines Komponenten ändern könnte.
+
 > Next, let's add state to our application's App component with the help of React's state hook.
 
+Als nächste erweitern wir unseren Komponenten App mithilfe des React State Hooks um einen State.
+
 > We will change the application as follows. index.js goes back to
+
+Änderdt die Anwendung wie folgt ab. index.js wird zu
 
 ```javascript
 import React from 'react'
@@ -342,11 +348,15 @@ export default App
 
 > In the first row, the file imports the useState function:
 
+In der ersten Zeile importiert die Datei die Funktion useState:
+
 ```javascript
 import { useState } from 'react'
 ```
 
 > The function body that defines the component begins with the function call:
+
+Der Körper der Funktion, der den Komponenten definiert, beginnt mit einem Funktionsaufruf:
 
 ```javascript
 const [ counter, setCounter ] = useState(0)
@@ -354,9 +364,15 @@ const [ counter, setCounter ] = useState(0)
 
 > The function call adds state to the component and renders it initialized with the value of zero. The function returns an array that contains two items. We assign the items to the variables counter and setCounter by using the destructuring assignment syntax shown earlier.
 
+Der Funktionsaufruf fügt einen State an den Komponenten und zeigt ihn mit einem Anfangswert von 0 an. Die Funktion gibt ein Array mit 2 Elementen zurück. Diese weisen wir den Variablen counter und setCounter zu, indem wir die Destrukturierung aus den vorangegangenen Kapiteln nutzen.
+
 > The counter variable is assigned the initial value of state which is zero. The variable setCounter is assigned to a function that will be used to modify the state.
 
+Der Variablen counter wird der Startwert von State (der 0 ist) zugewiesen. Der Variablen setCounter wird eine Funktion zugewiesen, die dafür genutzt wird den State zu ändern.
+
 > The application calls the setTimeout function and passes it two parameters: a function to increment the counter state and a timeout of one second:
+
+Die Anwendung ruft die Funktion setTimeout auf und übergibt ihr zwei Parameter: eine Funktion, um den State des Zählers zu erhöhen und einen Timeout von einer Sekunde:
 
 ```javascript
 setTimeout(
@@ -367,11 +383,15 @@ setTimeout(
 
 > The function passed as the first parameter to the setTimeout function is invoked one second after calling the setTimeout function
 
+Die Funktion, die die Funktion setTimeout als ersten Parameter übergeben bekommt, wird eine Sekunde nachdem Funtionsaufruf von setTimeout gestartet.
+
 ```javascript
 () => setCounter(counter + 1)
 ```
 
 > When the state modifying function setCounter is called, React re-renders the component which means that the function body of the component function gets re-executed:
+
+Wenn die Funktion setCounter, mit der man den State verändern kann, aufgerufen wird, wird der Komponent erneut gerendert, was bedeutet das der Körper der Komponentenfunktion erneut ausgeführt wird:
 
 ```javascript
 () => {
@@ -390,15 +410,23 @@ setTimeout(
 
 > The second time the component function is executed it calls the useState function and returns the new value of the state: 1. Executing the function body again also makes a new function call to setTimeout, which executes the one second timeout and increments the counter state again. Because the value of the counter variable is 1, incrementing the value by 1 is essentially the same as an expression setting the value of counter to 2.
 
+Wenn die Komponentenfunktion das zweite Mal ausgeführt wird, ruft sie die Funktion useState auf und gibt den neuen Wert von State aus: 1. Das erneute Ausführen des Funktionskörpers des Komponenten, führt zu einem zweiten Timeout und erhöht den Zählerstand erneut. Weil der Wert der Zählervariable 1 ist, ist es grundlegend dasselbe, wie ein Ausdruck der den Wert des Zählerstands auf 2 setzt.
+
 ```javascript
 () => setCounter(2)
 ```
 
 > Meanwhile, the old value of counter - "1" - is rendered to the screen.
 
+Währenddessen wird der alte Wert vom Zähler - "1" - am Bildschirm ausgegeben.
+
 > Every time the setCounter modifies the state it causes the component to re-render. The value of the state will be incremented again after one second, and this will continue to repeat for as long as the application is running.
 
+Jedes Mal, wenn setCounter den State verändert, wird dadurch ein erneutes Rendern des Komponenten erzeugt. Der Wert des States wird wieder nach einer Sekunde erhöht, was dazuführt das alles wiederholt wird, solange die Anwendung läuft.
+
 > If the component doesn't render when you think it should, or if it renders at the "wrong time", you can debug the application by logging the values of the component's variables to the console. If we make the following additions to our code:
+
+Wenn euch der Komponent nicht das anzeigen sollte, was ihr denkt er sollte, oder wenn es "zur falschen Zeit" angezeigt wird, könnt ihr die Anwendung auf Fehler untersuchen, indem ihr euch die Werte der Variablen in der Konsole ausgeben lasst. Übernehmt die folgenden Änderungen in euren Code:
 
 ```javascript
 const App = () => {
@@ -419,9 +447,9 @@ const App = () => {
 
 > It's easy to follow and track the calls made to the App component's render function:
 
-!["fullstack content"](./images/part1c_image1.png?raw=true)
+Somit lassen sich die Funktionsaufrufe des Komponenten App leicht folgen:
 
-part1c_image1.png
+!["fullstack content"](./images/part1c_image1.png?raw=true)
 
 ## Event Handling
 
