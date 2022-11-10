@@ -89,9 +89,15 @@ Wenn wir unseren Code genauer anschauen, bemerken wir, das die Hilfsfunktion eig
 
 > Before we move forward, we will take a look at a small but useful feature of the JavaScript language that was added in the ES6 specification, that allows us to destructure values from objects and arrays upon assignment.
 
+Bevor wir weitermachen, schauen wir uns noch ein kleines aber nützliches Feature von Javascript an, das mit der ES6-Spezifikation hinzugefügt wurde: das Destrukturieren von Werten von Objekten und Arrays in Variablen.
+
 > In our previous code, we had to reference the data passed to our component as props.name and props.age. Of these two expressions we had to repeat props.age twice in our code.
 
+In unserem vorangegangenen Code haben wir auf die Daten, die an unseren Komponenten übergeben wurden, mit props.name und props.age verwiesen. Von diesen beiden Ausdrücken mussten wir props.age zweimal verwenden.
+
 > Since props is an object
+
+Da props ein Objekt ist
 
 ```javascript
 props = {
@@ -100,6 +106,8 @@ props = {
 }
 ```
 > we can streamline our component by assigning the values of the properties directly into two variables name and age which we can then use in our code:
+
+können wir unseren Komponenten optimieren, in dem wir die Werte der props direkt zwei Variablen "name" und "age" zuweisen, die wir in unserem Code verwenden:
 
 ```javascript
 const Hello = (props) => {
@@ -119,7 +127,11 @@ const Hello = (props) => {
 
 > Note that we've also utilized the more compact syntax for arrow functions when defining the bornYear function. As mentioned earlier, if an arrow function consists of a single expression, then the function body does not need to be written inside of curly braces. In this more compact form, the function simply returns the result of the single expression.
 
+Hinweis: Wir haben die kompaktere Syntax von Pfeilfunktionen benutzt, um die Funktion bornYear zu definieren. Wie bereits erwähnt, muss der Körper der Funktion nicht in geschweiften Klammen stehen, wenn die Pfeilfunktion aus nur einem Ausdruck besteht. In dieser kompakteren Form gibt die Funktion lediglich das Ergebnis des einzigen Ausdrucks aus.
+
 > To recap, the two function definitions shown below are equivalent:
+
+Zur Wiederholung: die zwei Funktionsdefinitionen sind gleich:
 
 ```javascript
 const bornYear = () => new Date().getFullYear() - age
@@ -131,9 +143,9 @@ const bornYear = () => {
 
 > Destructuring makes the assignment of variables even easier, since we can use it to extract and gather the values of an object's properties into separate variables:
 
+Das Destrukturieren macht das Zuweisen von Variablen noch einfacher, da wir es verwenden können, um die Werte eines Objekts in verschiedenen Variablen zu speichern:
+
 ```javascript
-
-
 const Hello = (props) => {
   const { name, age } = props  
   const bornYear = () => new Date().getFullYear() - age
@@ -149,6 +161,8 @@ const Hello = (props) => {
 
 > If the object we are destructuring has the values
 
+Wenn das Objekt, das wir destrukturieren, folgende Werte hat
+
 ```javascript
 props = {
   name: 'Arto Hellas',
@@ -158,7 +172,11 @@ props = {
 
 > the expression const { name, age } = props assigns the values 'Arto Hellas' to name and 35 to age.
 
+dann weist der Ausdruck const { name, age } = props die Werte "Arto Hellas" an "name" und "35" an "age" zu.
+
 > We can take destructuring a step further:
+
+Wir können mit dem Destrukturieren auch einen Schritt weitergehen:
 
 ```javascript
 const Hello = ({ name, age }) => {  const bornYear = () => new Date().getFullYear() - age
@@ -176,7 +194,11 @@ const Hello = ({ name, age }) => {  const bornYear = () => new Date().getFullYea
 
 > The props that are passed to the component are now directly destructured into the variables name and age.
 
+Die props, die an den Komponenten weitergegeben werden, werden jetzt direkt in die Variablen "name" und "age" destrukturiert.
+
 > This means that instead of assigning the entire props object into a variable called props and then assigning its properties into the variables name and age
+
+Das bedeutet, dass anstatt das ganze props-Objekts einer Variablen "props" zugewiesen wird und dann seine Eigenschaften an die Variablen "name" und "age" zugewiesen werden
 
 ```javascript
 const Hello = (props) => {
@@ -184,6 +206,8 @@ const { name, age } = props
 ```
 
 > we assign the values of the properties directly to variables by destructuring the props object that is passed to the component function as a parameter:
+
+weisen wir die Werte der Eigenschaft direkt den Variablen zu, indem wir das props-Objekt, das an den Komponeten als Parameter übergeben wird, destrukturieren:
 
 ```javascript
 const Hello = ({ name, age }) => {
