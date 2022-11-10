@@ -217,7 +217,11 @@ const Hello = ({ name, age }) => {
 
 > So far all of our applications have been such that their appearance remains the same after the initial rendering. What if we wanted to create a counter where the value increased as a function of time or at the click of a button?
 
+Bis jetzt waren alle unsere Anwendungen in ihrer Erscheinung gleich, alle veränderten sich nicht nach dem ersten Rendern. Was aber, wenn wir einen Zähler verwenden wollen, dessen Zählerstand sich bei einem Klick auf einen Button oder einer Funktion nach Zeit erhöht?
+
 > Let's start with the following. File App.js becomes:
+
+Fangen wir mit folgendem an. Die Datei App.js wird zu:
 
 ```javascript
 const App = (props) => {
@@ -231,6 +235,8 @@ export default App
 ```
 
 > And file index.js becomes:
+
+Und die Datei index.js wird zu:
 
 ```javascript
 import React from 'react'
@@ -247,9 +253,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
 > The App component is given the value of the counter via the counter prop. This component renders the value to the screen. What happens when the value of counter changes? Even if we were to add the following
 
+Der Komponent App bekommt den Wert des Zählers über die prop "counter". Dieser Komponent zeigt den Wert auf dem Bildschirm an. Was passiert, wenn sich der Zählerstand ändert? Was wenn wir das folgende hinzufügen?
+
 ```javascript
 counter += 1
 ```
+
+Der Komponent wird nicht erneut gerendert. Wir bekommen den Komponenten dazu, indem wir die Methode render ein zweites Mal aufrufen, z.B. so:
 
 > the component won't re-render. We can get the component to re-render by calling the render method a second time, e.g. in the following way:
 
@@ -271,9 +281,15 @@ refresh()
 
 > The re-rendering command has been wrapped inside of the refresh function to cut down on the amount of copy-pasted code.
 
+Der Befehl zum erneuten rendern wurde in die Funktion refresh eingebaut, um zu verhindern, dass zuviel Code kopiert wird.
+
 > Now the component renders three times, first with the value 1, then 2, and finally 3. However, the values 1 and 2 are displayed on the screen for such a short amount of time that they can't be noticed.
 
+Jetzt wird der Komponent dreimal gerendert, das erste Mal mit dem Wert 1, dann 2 und schließlich 3. Allerdings werden die Werte 1 und 2 nur so kurz am Bildschirm ausgegeben, dass man es nicht bemerken kann.
+
 > We can implement slightly more interesting functionality by re-rendering and incrementing the counter every second by using setInterval:
+
+Wir können eine leicht interessantere Funktionalität einbauen, indem wir den Zähler mit jeder Sekunde erneut rendern und erhöhen:
 
 ```javascript
 setInterval(() => {
@@ -283,6 +299,8 @@ setInterval(() => {
 ```
 
 > Making repeated calls to the render method is not the recommended way to re-render components. Next, we'll introduce a better way of accomplishing this effect.
+
+Erneute Aufrufe der Methode render ist nicht der empfohlene Weg, um in React Komponenten erneut zu rendern. Als nächstes führen wir eine bessere Möglichkeit ein, um das zu erreichen.
 
 ## Stateful component
 
