@@ -295,3 +295,220 @@ const App = () => {
 > We call the join method on the allClicks array that joins all the items into a single string, separated by the string passed as the function parameter, which in our case is an empty space.
 
 ## Conditional rendering
+
+> Let's modify our application so that the rendering of the clicking history is handled by a new History component:
+
+```javascript
+const History = (props) => {
+  if (props.allClicks.length === 0) {
+    return (
+      <div>
+        the app is used by pressing the buttons
+      </div>
+    )
+  }
+  
+  return (    
+    <div>      
+      button press history: {props.allClicks.join(' ')}
+    </div>
+  )
+}
+const App = () => {
+  // ...
+
+  return (
+    <div>
+      {left}
+      <button onClick={handleLeftClick}>left</button>
+      <button onClick={handleRightClick}>right</button>
+      {right}
+      <History allClicks={allClicks} />    </div>
+  )
+}
+```
+
+> Now the behavior of the component depends on whether or not any buttons have been clicked. If not, meaning that the allClicks array is empty, the component renders a div element with some instructions instead:
+
+```html
+<div>the app is used by pressing the buttons</div>
+```
+
+> And in all other cases, the component renders the clicking history:
+
+```javascript
+<div>
+  button press history: {props.allClicks.join(' ')}
+</div>
+```
+
+> The History component renders completely different React elements depending on the state of the application. This is called conditional rendering.
+
+> React also offers many other ways of doing conditional rendering. We will take a closer look at this in part 2.
+
+> Let's make one last modification to our application by refactoring it to use the Button component that we defined earlier on:
+
+```javascript
+const History = (props) => {
+  if (props.allClicks.length === 0) {
+    return (
+      <div>
+        the app is used by pressing the buttons
+      </div>
+    )
+  }
+
+  return (
+    <div>
+      button press history: {props.allClicks.join(' ')}
+    </div>
+  )
+}
+
+const Button = ({ handleClick, text }) => (  
+  <button onClick={handleClick}>    
+    {text}  
+  </button>
+)
+
+const App = () => {
+  const [left, setLeft] = useState(0)
+  const [right, setRight] = useState(0)
+  const [allClicks, setAll] = useState([])
+
+  const handleLeftClick = () => {
+    setAll(allClicks.concat('L'))
+    setLeft(left + 1)
+  }
+
+  const handleRightClick = () => {
+    setAll(allClicks.concat('R'))
+    setRight(right + 1)
+  }
+
+  return (
+    <div>
+      {left}
+      <Button handleClick={handleLeftClick} text='left' />
+      <Button handleClick={handleRightClick} text='right' />      
+      {right}
+      <History allClicks={allClicks} />
+    </div>
+  )
+}
+```
+
+## Old React
+
+> In this course we use the state hook to add state to our React components, which is part of the newer versions of React and is available from version 16.8.0 onwards. Before the addition of hooks, there was no way to add state to functional components. Components that required state had to be defined as class components, using the JavaScript class syntax.
+
+> In this course we have made the slightly radical decision to use hooks exclusively from day one, to ensure that we are learning the current and future style of React. Even though functional components are the future of React, it is still important to learn the class syntax, as there are billions of lines of legacy React code that you might end up maintaining someday. The same applies to documentation and examples of React that you may stumble across on the internet.
+
+> We will learn more about React class components later on in the course.
+
+## Debugging React applications
+
+> A large part of a typical developer's time is spent on debugging and reading existing code. Every now and then we do get to write a line or two of new code, but a large part of our time is spent on trying to figure out why something is broken or how something works. Good practices and tools for debugging are extremely important for this reason.
+
+> Lucky for us, React is an extremely developer-friendly library when it comes to debugging.
+
+> Before we move on, let us remind ourselves of one of the most important rules of web development.
+
+> The first rule of web development
+
+> > Keep the browser's developer console open at all times.
+
+> > The Console tab in particular should always be open, unless there is a specific reason to view another tab.
+
+> Keep both your code and the web page open together at the same time, all the time.
+
+> If and when your code fails to compile and your browser lights up like a Christmas tree:
+
+!["fullstack content"](./images/part1d_image1.png?raw=true)
+
+> don't write more code but rather find and fix the problem immediately. There has yet to be a moment in the history of coding where code that fails to compile would miraculously start working after writing large amounts of additional code. I highly doubt that such an event will transpire during this course either.
+
+> Old school, print-based debugging is always a good idea. If the component
+
+```javascript
+const Button = ({ onClick, text }) => (
+  <button onClick={onClick}>
+    {text}
+  </button>
+)
+```
+
+> is not working as intended, it's useful to start printing its variables out to the console. In order to do this effectively, we must transform our function into the less compact form and receive the entire props object without destructuring it immediately:
+
+```javascript
+const Button = (props) => { 
+  console.log(props)  
+  
+  const { onClick, text } = props
+  return (
+    <button onClick={onClick}>
+      {text}
+    </button>
+  )
+}
+```
+
+> This will immediately reveal if, for instance, one of the attributes has been misspelled when using the component.
+
+> NB When you use console.log for debugging, don't combine objects in a Java-like fashion by using the plus operator. Instead of writing:
+
+```javascript
+console.log('props value is ' + props)
+```
+
+> Separate the things you want to log to the console with a comma:
+
+```javascript
+console.log('props value is', props)
+```
+
+> If you use the Java-like way of concatenating a string with an object, you will end up with a rather uninformative log message:
+
+```javascript
+props value is [object Object]
+```
+
+> Whereas the items separated by a comma will all be available in the browser console for further inspection.
+
+> Logging to the console is by no means the only way of debugging our applications. You can pause the execution of your application code in the Chrome developer console's debugger, by writing the command debugger anywhere in your code.
+
+> The execution will pause once it arrives at a point where the debugger command gets executed:
+
+!["fullstack content"](./images/part1d_image2.png?raw=true)
+
+> By going to the Console tab, it is easy to inspect the current state of variables:
+
+!["fullstack content"](./images/part1d_image3.png?raw=true)
+
+> Once the cause of the bug is discovered you can remove the debugger command and refresh the page.
+
+> The debugger also enables us to execute our code line by line with the controls found on the right-hand side of the Sources tab.
+
+> You can also access the debugger without the debugger command by adding breakpoints in the Sources tab. Inspecting the values of the component's variables can be done in the Scope-section:
+
+!["fullstack content"](./images/part1d_image4.png?raw=true)
+
+> It is highly recommended to add the React developer tools extension to Chrome. It adds a new Components tab to the developer tools. The new developer tools tab can be used to inspect the different React elements in the application, along with their state and props:
+
+!["fullstack content"](./images/part1d_image5.png?raw=true)
+
+> The App component's state is defined like so:
+
+```javascript
+const [left, setLeft] = useState(0)
+const [right, setRight] = useState(0)
+const [allClicks, setAll] = useState([])
+```
+
+> Dev tools shows the state of hooks in the order of their definition:
+
+!["fullstack content"](./images/part1d_image6.png?raw=true)
+
+> The first State contains the value of the left state, the next contains the value of the right state and the last contains the value of the allClicks state.
+
+## Rules of Hooks
