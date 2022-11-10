@@ -16,7 +16,11 @@
 
 > Let's go back to working with React.
 
+Arbeiten wir weiter mit React.
+
 > We start with a new example:
+
+Fangen wir mit einem neuen Beispiel an:
 
 ```javascript
 const Hello = (props) => {
@@ -47,6 +51,8 @@ const App = () => {
 
 > Let's expand our Hello component so that it guesses the year of birth of the person being greeted:
 
+Erweitern wir den Komponenten Hello so, dass er das Geburtsjahr der Person, die gegrüßt wird, errät.
+
 ```javascript
 const Hello = (props) => {
   const bornYear = () => {    
@@ -69,9 +75,15 @@ const Hello = (props) => {
 
 > The logic for guessing the year of birth is separated into a function of its own that is called when the component is rendered.
 
+Die Logik hinter dem Erraten des Geburtsjahres steckt in einer eigenen Funktion, die aufgerufen wird, wenn der Komponent gerendert wird.
+
 > The person's age does not have to be passed as a parameter to the function, since it can directly access all props that are passed to the component.
 
+Das Alter der Person muss nicht als Parameter an die Funktion übergeben werden, da die Funktion direkten Zugang zu allen props bekommt, die an den Komponenten übergeben werden.
+
 > If we examine our current code closely, we'll notice that the helper function is actually defined inside of another function that defines the behavior of our component. In Java programming, defining a function inside another one is complex and cumbersome, so not all that common. In JavaScript, however, defining functions within functions is a commonly-used technique.
+
+Wenn wir unseren Code genauer anschauen, bemerken wir, das die Hilfsfunktion eigentlich in einer anderen Funktion definiert ist, die das Verhalten unseres Komponenten definiert. Wenn man mit Java programmiert ist die Definition einer Funktion innerhalb einer anderen Funktion komplex und mühsam, also nicht allzu gewöhnlich, während es in Javascript sehr gebräuchlich ist.
 
 ## Destructuring
 
