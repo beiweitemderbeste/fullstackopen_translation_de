@@ -560,6 +560,8 @@ Jetzt ist unsere Anwendung bereit!
 
 > We define the event handlers for our buttons where we declare their onClick attributes:
 
+Wir definieren die Event Handler für unsere Buttons dort, wo wir ihre onClick-Attribute vergeben:
+
 ```javascript
 <button onClick={() => setCounter(counter + 1)}> 
   plus
@@ -567,6 +569,8 @@ Jetzt ist unsere Anwendung bereit!
 ```
 
 > What if we tried to define the event handlers in a simpler form?
+
+Was, wenn wir versuchen würden, die Event Handler in einer einfacheren Form zu definieren?
 
 ```javascript
 <button onClick={setCounter(counter + 1)}> 
@@ -576,9 +580,13 @@ Jetzt ist unsere Anwendung bereit!
 
 > This would completely break our application:
 
+Das würde erstmal zu sehr vielen Fehlermeldungen führen:
+
 !["fullstack content"](./images/part1c_image2.png?raw=true)
 
 > What's going on? An event handler is supposed to be either a function or a function reference, and when we write:
+
+Was passiert hier? Ein Event Handler sollte entweder eine Funktion oder ein Verweis auf eine Funktion sein, aber wenn wir so etwas schreiben
 
 ```javascript
 <button onClick={setCounter(counter + 1)}>
@@ -586,7 +594,11 @@ Jetzt ist unsere Anwendung bereit!
 
 > the event handler is actually a function call. In many situations this is ok, but not in this particular situation. In the beginning the value of the counter variable is 0. When React renders the component for the first time, it executes the function call setCounter(0+1), and changes the value of the component's state to 1. This will cause the component to be re-rendered, React will execute the setCounter function call again, and the state will change leading to another rerender...
 
+ist der Event Handler eigentlich ein Funktionsaufruf. In vielen Situationen ist das in Ordnung, aber nicht in dieser besonderen Situation. Am Anfang ist der Wert der Variable counter 0. Wenn React den Komponenten das erste Mal rendert, ruft es die Funktion setCounter(0+1), und ändert damit den Wert des States des Komponenten zu 1. Das erzeugt ein erneutes rendern des Komponenten, dadurch ruft React wieder die Funktion setCounter auf und der State ändert sich erneut...
+
 > Let's define the event handlers like we did before:
+
+Definieren wir die Event Handler wir vorhin:
 
 ```javascript
 <button onClick={() => setCounter(counter + 1)}> 
@@ -596,9 +608,15 @@ Jetzt ist unsere Anwendung bereit!
 
 > Now the button's attribute which defines what happens when the button is clicked - onClick - has the value () => setCounter(counter + 1). The setCounter function is called only when a user clicks the button.
 
+Jetzt wird das Buttonattribut onClick, das definiert, was passiert, wenn der Button geklickt wird, auf () => setCounter(counter + 1) gesetzt.
+
 > Usually defining event handlers within JSX-templates is not a good idea. Here it's ok, because our event handlers are so simple.
 
+Normalerweise ist das Definieren von Event Handlern innerhalb von JSX-Vorlagen keine gute Idee. Hier ist es in Ordnung, weil unsere Event Handler so einfach gestaltet sind.
+
 > Let's separate the event handlers into separate functions anyway: 
+
+Trennen wir trotzdem die Event Handler in verschiedene Funktionen ab:
 
 ```javascript
 const App = () => {
@@ -623,6 +641,8 @@ const App = () => {
 ```
 
 > Here, the event handlers have been defined correctly. The value of the onClick attribute is a variable containing a reference to a function:
+
+Hier wurden die Event Handler korrekt definiert. Der Wert des onClick-Attributs ist eine Varaiable, die auf eine Funktion verweist:
 
 ```javascript
 <button onClick={increaseByOne}> 
