@@ -89,7 +89,7 @@ Wenn wir unseren Code genauer anschauen, bemerken wir, das die Hilfsfunktion eig
 
 > Before we move forward, we will take a look at a small but useful feature of the JavaScript language that was added in the ES6 specification, that allows us to destructure values from objects and arrays upon assignment.
 
-Bevor wir weitermachen, schauen wir uns noch ein kleines aber nützliches Feature von Javascript an, das mit der ES6-Spezifikation hinzugefügt wurde: das Destrukturieren von Werten von Objekten und Arrays in Variablen.
+Bevor wir weitermachen, schauen wir uns noch ein kleines aber nützliches Feature von Javascript an, das mit der ES6-Spezifikation hinzugefügt wurde: das Destrukturieren von Teilen von Objekten und Arrays und ihr gleichzeitiges Zuweisen zu Variablen.
 
 > In our previous code, we had to reference the data passed to our component as props.name and props.age. Of these two expressions we had to repeat props.age twice in our code.
 
@@ -131,7 +131,7 @@ Hinweis: Wir haben die kompaktere Syntax von Pfeilfunktionen benutzt, um die Fun
 
 > To recap, the two function definitions shown below are equivalent:
 
-Zur Wiederholung: die zwei Funktionsdefinitionen sind gleich:
+Zur Wiederholung: die zwei folgenden Funktionsdefinitionen sind equivalent:
 
 ```javascript
 const bornYear = () => new Date().getFullYear() - age
@@ -198,7 +198,7 @@ Die props, die an den Komponenten weitergegeben werden, werden jetzt direkt in d
 
 > This means that instead of assigning the entire props object into a variable called props and then assigning its properties into the variables name and age
 
-Das bedeutet, dass anstatt das ganze props-Objekts einer Variablen "props" zugewiesen wird und dann seine Eigenschaften an die Variablen "name" und "age" zugewiesen werden
+Das bedeutet, das anstatt das ganze props-Objekts einer Variablen "props" zugewiesen wird, seine Eigenschaften an die Variablen "name" und "age" zugewiesen werden
 
 ```javascript
 const Hello = (props) => {
@@ -207,7 +207,7 @@ const { name, age } = props
 
 > we assign the values of the properties directly to variables by destructuring the props object that is passed to the component function as a parameter:
 
-weisen wir die Werte der Eigenschaft direkt den Variablen zu, indem wir das props-Objekt, das an den Komponeten als Parameter übergeben wird, destrukturieren:
+Weisen wir die Werte der Eigenschaft direkt den Variablen zu, indem wir das props-Objekt, das an den Komponeten als Parameter übergeben wird, destrukturieren:
 
 ```javascript
 const Hello = ({ name, age }) => {
@@ -217,7 +217,7 @@ const Hello = ({ name, age }) => {
 
 > So far all of our applications have been such that their appearance remains the same after the initial rendering. What if we wanted to create a counter where the value increased as a function of time or at the click of a button?
 
-Bis jetzt waren alle unsere Anwendungen in ihrer Erscheinung gleich, alle veränderten sich nicht nach dem ersten Rendern. Was aber, wenn wir einen Zähler verwenden wollen, dessen Zählerstand sich bei einem Klick auf einen Button oder einer Funktion nach Zeit erhöht?
+Bis jetzt waren alle unsere Anwendungen in ihrer Erscheinung gleich, keine veränderte sich nach dem ersten Rendern. Was aber, wenn wir einen Zähler verwenden wollen, dessen Zählerstand sich bei einem Klick auf einen Button oder einer Funktion nach Zeit erhöht?
 
 > Let's start with the following. File App.js becomes:
 
@@ -306,7 +306,7 @@ Erneute Aufrufe der Methode render ist nicht der empfohlene Weg, um in React Kom
 
 > All of our components up till now have been simple in the sense that they have not contained any state that could change during the lifecycle of the component.
 
-Bis jetzt waren unsere Komponenten sehr einfach gestaltet, d.h. sie enthalten keinen State, der sich im Lebenszyklus eines Komponenten ändern könnte.
+Bis jetzt waren unsere Komponenten sehr einfach gestaltet, d.h. sie enthielten keinen State, der sich im Lebenszyklus eines Komponenten ändern könnte.
 
 > Next, let's add state to our application's App component with the help of React's state hook.
 
@@ -314,7 +314,7 @@ Als nächste erweitern wir unseren Komponenten App mithilfe des React State Hook
 
 > We will change the application as follows. index.js goes back to
 
-Änderdt die Anwendung wie folgt ab. index.js wird zu
+Ändert die Anwendung wie folgt ab. index.js wird zu
 
 ```javascript
 import React from 'react'
@@ -326,6 +326,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />)
 ```
 
 > and App.js changes to the following:
+
+und App.js ändert sich so
 
 ```javascript
 import { useState } from 'react'
@@ -372,7 +374,7 @@ Der Variablen counter wird der Startwert von State (der 0 ist) zugewiesen. Der V
 
 > The application calls the setTimeout function and passes it two parameters: a function to increment the counter state and a timeout of one second:
 
-Die Anwendung ruft die Funktion setTimeout auf und übergibt ihr zwei Parameter: eine Funktion, um den State des Zählers zu erhöhen und einen Timeout von einer Sekunde:
+Die Anwendung ruft die Funktion setTimeout auf und übergibt ihr zwei Parameter: eine Funktion, um den Zählerstand zu erhöhen und einen Timeout von einer Sekunde:
 
 ```javascript
 setTimeout(
@@ -410,7 +412,7 @@ Wenn die Funktion setCounter, mit der man den State verändern kann, aufgerufen 
 
 > The second time the component function is executed it calls the useState function and returns the new value of the state: 1. Executing the function body again also makes a new function call to setTimeout, which executes the one second timeout and increments the counter state again. Because the value of the counter variable is 1, incrementing the value by 1 is essentially the same as an expression setting the value of counter to 2.
 
-Wenn die Komponentenfunktion das zweite Mal ausgeführt wird, ruft sie die Funktion useState auf und gibt den neuen Wert von State aus: 1. Das erneute Ausführen des Funktionskörpers des Komponenten, führt zu einem zweiten Timeout und erhöht den Zählerstand erneut. Weil der Wert der Zählervariable 1 ist, ist es grundlegend dasselbe, wie ein Ausdruck der den Wert des Zählerstands auf 2 setzt.
+Wenn die Komponentenfunktion das zweite Mal ausgeführt wird, ruft sie die Funktion useState auf und gibt den neuen Wert von State aus: 1. Das erneute Ausführen des Funktionskörpers des Komponenten, führt zu einem zweiten Timeout und erhöht den Zählerstand erneut. Weil der Wert der Zählervariable 1 ist, ist es grundlegend dasselbe, wie ein Ausdruck, der den Wert des Zählerstands auf 2 setzt.
 
 ```javascript
 () => setCounter(2)
@@ -455,11 +457,19 @@ Somit lassen sich die Funktionsaufrufe des Komponenten App leicht folgen:
 
 > We have already mentioned event handlers that are registered to be called when specific events occur a few times in part 0. E.g. a user's interaction with the different elements of a web page can cause a collection of various different kinds of events to be triggered.
 
+Wir haben bereits über Event Handlers in Abschnitt 1 gesprochen, sie werden aufgerufen, wenn spezielle Ereignisse auftreten sollen, z.B. können Benutzerinteraktionen mit den verschiedenen Elementen einer Webseite eine ganze Reihe von Ergeignissen starten.
+
 > Let's change the application so that increasing the counter happens when a user clicks a button, which is implemented with the button element.
+
+Ändern wir die Anwendung so ab, dass der Zählerstand sich erhöht, wenn ein Benutzer auf einen Button klickt.
 
 > Button elements support so-called mouse events, of which click is the most common event. The click event on a button can also be triggered with the keyboard or a touch screen despite the name mouse event.
 
+Buttons unterstützen sogenannte mouse events von denen der Klick der üblichste ist. Abgesehen vom Namen mouse events kann der Klick auf einen Button auch durch eine Tastatur oder Touchscreen ausgelöst werden.
+
 > In React, registering an event handler function to the click event happens like this:
+
+In React sieht die Funktion eines Event Handlers ungefähr so aus: 
 
 ```javascript
 const App = () => {
@@ -481,9 +491,15 @@ const App = () => {
 
 > We set the value of the button's onClick attribute to be a reference to the handleClick function defined in the code.
 
+Wir setzten den Wert vom Attribut onClick auf einen Verweis auf die Funktio handleClick, die im Code definiert wird.
+
 > Now every click of the plus button causes the handleClick function to be called, meaning that every click event will log a clicked message to the browser console.
 
+Jetzt führt jeder Klick auf den Button plus dazu, dass die Funktion handleClick ausgeführt wird. Das heißt jeder Klick schreibt eine Nachricht in die Browserkonsole.
+
 > The event handler function can also be defined directly in the value assignment of the onClick-attribute:
+
+Die event handler-Funktion kann auch direkt im Attribut onclick definiert werden:
 
 ```javascript
 const App = () => {
@@ -502,6 +518,8 @@ const App = () => {
 
 > By changing the event handler to the following form
 
+Wenn wir nun den Event Handlers so abändern
+
 ```javascript
 <button onClick={() => setCounter(counter + 1)}>
   plus
@@ -510,7 +528,11 @@ const App = () => {
 
 > we achieve the desired behavior, meaning that the value of counter is increased by one and the component gets re-rendered.
 
+erhalten wir das gewünschte Verhalten, dass sich der Zählerstand um 1 erhöht und der Komponent erneut gerendert wird.
+
 > Let's also add a button for resetting the counter:
+
+Es gibt auch einen Button, um den Zähler zurückzusetzen:
 
 ```javascript
 const App = () => {
@@ -531,6 +553,8 @@ const App = () => {
 ```
 
 > Our application is now ready!
+
+Jetzt ist unsere Anwendung bereit!
 
 ## Event handler is a function
 
