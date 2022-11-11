@@ -21,12 +21,18 @@
 
 > Version 18 of React was released late March 2022. The code in this course should work with the new React version. However, some libraries might not yet be compatible with React 18. At the moment of writing (4th April) at least the Apollo client used in part 8 does not yet work with most recent React.
 
+Version 18 von React wurde im späten März 2022 veröffentlicht. Der Code in diesem Kurs sollte mit der neuen React-Version kompatibel sein, aber einige Bibliotheken könnten es noch nicht. Zur Zeit des Verfassens dieses Textes (04.04.) ist mindestens der Client für Apollo, der in Abschnitt 8 verwendet wird, noch nicht zur aktuellen Reactversion kompatibel.
+
 > In case you end up in a situation where your application breaks because of library compatibility problems, downgrade to the older React by changing the file package.json as follows:
+
+Tritt der Fall auf, dass eure Anwendung wegen Kompabilitätsproblemen von Bibliotheken nicht funktioniert, führt ein Downgrade zu einer älteren Reactversion durch, in dem ihr die Datei package.json so ändert:
 
 ```javascript
 {
   "dependencies": {
-    "react": "^17.0.2",    "react-dom": "^17.0.2",    "react-scripts": "5.0.0",
+    "react": "^17.0.2",    
+    "react-dom": "^17.0.2",    
+    "react-scripts": "5.0.0",
     "web-vitals": "^2.1.4"
   },
   // ...
@@ -35,11 +41,15 @@
 
 > After the change is made, reinstall dependencies by running
 
+Nach der Änderung müssen die Abhängigkeiten erneut installiert werden
+
 ```javascript
 npm install
 ```
 
 > Note that also the file index.js needs to be changed a bit. For React 17 it looks like
+
+Beachtet, dass auch die Datei index.js abgeändert werden muss. In React 17 sieht das so aus
 
 ```javascript
 import ReactDOM from 'react-dom'
@@ -49,6 +59,8 @@ ReactDOM.render(<App />, document.getElementById('root'))
 ```
 
 > but for React 18 the correct form is
+
+aber in React 18 wäre das korrekt
 
 ```javascript
 import React from 'react'
