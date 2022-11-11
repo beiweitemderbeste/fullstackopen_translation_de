@@ -767,11 +767,19 @@ Der Event Handler wird an den Komponenten Button über onClick weitergegeben. De
 
 > Let's go over the main principles of how an application works once more.
 
+Besprechen wir nochmal die Hauptprinzipien, wie unsere Anwendung läuft:
+
 > When the application starts, the code in App is executed. This code uses a useState hook to create the application state, setting an initial value of the variable counter. This component contains the Display component - which displays the counter's value, 0 - and three Button components. The buttons all have event handlers, which are used to change the state of the counter.
+
+Wenn die Anwendung startet, wird der Code im Komponenten App ausgeführt. Dieser Code nutzt useState, um den State der Anwendung zu erstellen und einen Anfangswert für die Variable counter festzulegen. Diser Komponent App enthält den Komponenten Display, der den Wert des Zählers - 0 - ausgibt, und drei Komponenten Button. Die Buttons haben alle Event Handler, die verwendet werden den State des Zähler zu ändern.
 
 > When one of the buttons is clicked, the event handler is executed. The event handler changes the state of the App component with the setCounter function. Calling a function which changes the state causes the component to rerender.
 
+Wenn einer der Buttons geklickt wird, wird der Event Handler ausgeführt. Der Event Handler verändert den State des Komponenten App mit der Funktion setCounter.
+
 > So, if a user clicks the plus button, the button's event handler changes the value of counter to 1, and the App component is rerendered. This causes its subcomponents Display and Button to also be re-rendered. Display receives the new value of the counter, 1, as props. The Button components receive event handlers which can be used to change the state of the counter.
+
+Also, wenn ein Benutzer auf den Button plus klickt, ändert der Event Handler den Wert des Zählers auf 1 und der Komponent App wird erneut gerendert. Das führt dazu, das seine Unterkomponenten Display und Button auch erneut gerendert werden. Display erhält den neuen Wert des Zählers - 1 - als props. Die Komponenten Button erhalten Event Handler, die genutzt werden, um den State des Zählers zu ändern.
 
 ## Refactoring the components
 
