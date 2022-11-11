@@ -267,6 +267,8 @@ Es gibt Gelegenheiten, wo es profitabale sein kann, einen Teil des States in ein
 
 > Let's add a piece of state to our application containing an array allClicks that remembers every click that has occurred in the application.
 
+Erweitern wir den State unserer Anwendung um ein Array allClicks, das jeden Klick mit schreibt, der in der Anwendung auftaucht.
+
 ```javascript
 const App = () => {
   const [left, setLeft] = useState(0)
@@ -297,11 +299,15 @@ const App = () => {
 
 > Every click is stored into a separate piece of state called allClicks that is initialized as an empty array:
 
+Jeder Klick wir in einem abgetrennten Teil des States, allClicks, gespeichert. Dieser wird alles leeres Array initialisiert:
+
 ```javascript
 const [allClicks, setAll] = useState([])
 ```
 
 > When the left button is clicked, we add the letter L to the allClicks array:
+
+Wenn der Button left geklickt wird, hängen wir den Buchstaben L an das Array allClicks:
 
 ```javascript
 const handleLeftClick = () => {
@@ -312,7 +318,11 @@ const handleLeftClick = () => {
 
 > The piece of state stored in allClicks is now set to be an array that contains all of the items of the previous state array plus the letter L. Adding the new item to the array is accomplished with the concat method, that does not mutate the existing array but rather returns a new copy of the array with the item added to it.
 
+Der Teil des States, der in allClicks gespeichert ist, wird als Array festgelegt, das alle Elemente des vorherigen States enthält und den Buchstaben L. Das Hinzufügen des neuen Elements geschieht über die Methode concat, die nicht das bestehende Array verändert, sondern eine neue Kopie des Arrays mit dem neuen Element erstellt.
+
 > As mentioned previously, it's also possible in JavaScript to add items to an array with the push method. If we add the item by pushing it to the allClicks array and then updating the state, the application would still appear to work:
+
+Wie bereits erwähnt ist es in Javascript auch möglich mit der Methode push neue Elemente an ein Array zu hängen. Wenn wir ein Element über push hinufügen und dann den State aktualisieren, würde die Anwendung immer noch funktionieren:
 
 ```javascript
 const handleLeftClick = () => {
@@ -324,7 +334,11 @@ const handleLeftClick = () => {
 
 > However, don't do this. As mentioned previously, the state of React components like allClicks must not be mutated directly. Even if mutating state appears to work in some cases, it can lead to problems that are very hard to debug.
 
+Trotzdem, macht das nicht! Wie bereits erwähnt wird der State von React-Komponenten wie z.B. allClicks nicht direkt verändert. Auch wenn das direkte Verändern des States in machen Fällen zu funktionieren scheint, kann es zu Problemen führen, die sich nur sehr schwer reparieren lassen.
+
 > Let's take a closer look at how the clicking is rendered to the page:
+
+Schauen wir uns genauer, wie das Klicken auf der Seite angezeigt wird:
 
 ```javascript
 const App = () => {
@@ -343,6 +357,8 @@ const App = () => {
 ```
 
 > We call the join method on the allClicks array that joins all the items into a single string, separated by the string passed as the function parameter, which in our case is an empty space.
+
+Wir rufen die Methode join für das Array allClicks auf, dass alle Elemente des Arrays zu einem einzigen String zusammenfügt.
 
 ## Conditional rendering
 
