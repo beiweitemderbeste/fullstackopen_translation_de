@@ -75,9 +75,15 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />)
 
 > In our previous example the application state was simple as it was comprised of a single integer. What if our application requires a more complex state?
 
+In unserem vorangegangen Beispiel bestand der State der Anwendung aus nur einem Integer. Was, wenn unsere Anwendung einen komplexeren State benöitgen würde?
+
 > In most cases the easiest and best way to accomplish this is by using the useState function multiple times to create separate "pieces" of state.
 
+In den meisten Fällen ist die beste Art das zu erreichen, indem man die Funktion useState mehrfach verwendet, um verschiedene "Stücke" des States zu erstellen.
+
 > In the following code we create two pieces of state for the application named left and right that both get the initial value of 0:
+
+Im folgenden Code erstellen wir 2 Teile des States der Anwendung mit den Namen left und right, die beide einen Anfangswert von 0 zugewiesen bekommen:
 
 ```javascript
 const App = () => {
@@ -101,7 +107,11 @@ const App = () => {
 
 > The component gets access to the functions setLeft and setRight that it can use to update the two pieces of state.
 
+Der Komponent erhält Zugang zu den Funktionen setLeft und setRigt, die er benutzen kann, um die zwei Teile des States zu aktualisieren.
+
 > The component's state or a piece of its state can be of any type. We could implement the same functionality by saving the click count of both the left and right buttons into a single object:
+
+Der State des Komponenten oder ein Teil seines States kann von jedem Datentyp sein. Wir können dieselbe Funktionalität erreichen, wenn wir jeden Klick auf left oder right mitzählen und in einem einzigen Objekt speichern:
 
 ```javascript
 {
@@ -111,6 +121,8 @@ const App = () => {
 ```
 
 > In this case the application would look like this:
+
+In diesem Fall würde die Anwendung so aussehen:
 
 ```javascript
 const App = () => {
@@ -147,7 +159,11 @@ const App = () => {
 
 > Now the component only has a single piece of state and the event handlers have to take care of changing the entire application state.
 
+Jetzt hat der Komponent nur einen State un die Event Handler kümmern sich darum, den State der ganzen Anwendung zu ändern.
+
 > The event handler looks a bit messy. When the left button is clicked, the following function is called:
+
+Der Event Handler sieht ein bisschen chaotisch aus. Wenn der Button left geklickt wird, wird die folgende Funktion aufgerufen:
 
 ```javascript
 const handleLeftClick = () => {
@@ -161,6 +177,8 @@ const handleLeftClick = () => {
 
 > The following object is set as the new state of the application:
 
+Das folgende Objekt wird als der neue State der Anwendung verwendet:
+
 ```javascript
 {
   left: clicks.left + 1,
@@ -170,7 +188,11 @@ const handleLeftClick = () => {
 
 > The new value of the left property is now the same as the value of left + 1 from the previous state, and the value of the right property is the same as value of the right property from the previous state.
 
+Der neue Wert der Eigenschaft left ist jetzt der gleiche Wert von left + 1 aus dem vorangegangenen States und der Wert der Eigenschaft right ist jetzt derselbe Wert von right wie vom vorangegangenen State.
+
 > We can define the new state object a bit more neatly by using the object spread syntax that was added to the language specification in the summer of 2018:
+
+Ein geschickterer Weg, um ein neues State-Objekt zu definieren, ist die Object Spread-Syntax, die mit der Spezifikation der Sprache im Sommer 2018 kam:
 
 ```javascript
 const handleLeftClick = () => {
@@ -192,7 +214,11 @@ const handleRightClick = () => {
 
 > The syntax may seem a bit strange at first. In practice { ...clicks } creates a new object that has copies of all of the properties of the clicks object. When we specify a particular property - e.g. right in { ...clicks, right: 1 }, the value of the right property in the new object will be 1.
 
+Die Syntax erscheint zu erst ein bisschen fremd. In der Praxis erstellt { ...clicks } ein neues Objekt, dass Kopien jeder Eigenschaft des Objekts clicks hat. Wenn wir eine spezielle Eigenschaft bestimmen, z.B. right in { ...clicks, right: 1 }, ist der Wert der Eigenschaft right im neuen Ojbekt 1.
+
 > In the example above, this:
+
+Im oberen Beispiel, erstellt die Zeile
 
 ```javascript
 { ...clicks, right: clicks.right + 1 }
@@ -200,7 +226,11 @@ const handleRightClick = () => {
 
 > creates a copy of the clicks object where the value of the right property is increased by one.
 
+eine Kopie des Objekts clicks, bei der der Wert der Eigenschaft right um 1 erhöht wird.
+
 > Assigning the object to a variable in the event handlers is not necessary and we can simplify the functions to the following form:
+
+Das Zuweisen des Objekts zu einer Variablen in den Event Handlern ist nicht notwendig und wir können die Funktionen auf folgendes verkürzen:
 
 ```javascript
 const handleLeftClick = () =>
@@ -212,6 +242,8 @@ const handleRightClick = () =>
 
 > Some readers might be wondering why we didn't just update the state directly, like this:
 
+Einige Leser mögen sich wundern, warum wir den State nicht direkt ändern, ungefähr so:
+
 ```javascript
 const handleLeftClick = () => {
   clicks.left++
@@ -221,9 +253,15 @@ const handleLeftClick = () => {
 
 > The application appears to work. However, it is forbidden in React to mutate state directly, since it can result in unexpected side effects. Changing state has to always be done by setting the state to a new object. If properties from the previous state object are not changed, they need to simply be copied, which is done by copying those properties into a new object, and setting that as the new state.
 
+Die Anwendung scheint zu funktionieren, trotzdem ist es in React verboten, den State direkt zu verändern, da das ungewünschte Nebeneffekte haben kann. Das Ändern des States muss immer über den Weg, ein neues Objekt zu erstellen, erfolgen.
+
 > Storing all of the state in a single state object is a bad choice for this particular application; there's no apparent benefit and the resulting application is a lot more complex. In this case storing the click counters into separate pieces of state is a far more suitable choice.
 
+In dieser speziellen Anwendung ist das Speichern des States in einem einzigen State-Objekt eine schlechte Wahl: es gibt keinen offensichtlichen Profit dadurch und es verkompliziert die Anwendung nur unnötig. In diesem Fall wäre es besser, die Klickzähler in verschiedenen Teilen des States zu speichern.
+
 > There are situations where it can be beneficial to store a piece of application state in a more complex data structure. The official React documentation contains some helpful guidance on the topic.
+
+Es gibt Gelegenheiten, wo es profitabale sein kann, einen Teil des States in einer komplexeren Datenstruktur zu speichern. Die offizielle React-Dokumentation enthält einige hilfreiche Tipps zu diesem Thema.
 
 ## Handling arrays
 
