@@ -243,3 +243,119 @@ setInterval(() => {
 
 Erneute Aufrufe der Methode render ist nicht der empfohlene Weg, um in React Komponenten erneut zu rendern. Als nächstes führen wir eine bessere Möglichkeit ein, um das zu erreichen.
 
+## Stateful component
+
+Bis jetzt waren unsere Komponenten sehr einfach gestaltet, d.h. sie enthielten keinen State, der sich im Lebenszyklus eines Komponenten ändern könnte.
+
+Als nächste erweitern wir unseren Komponenten App mithilfe des React State Hooks um einen State.
+
+Ändert die Anwendung wie folgt ab: index.js wird zu
+
+```javascript
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+
+import App from './App'
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />)
+```
+
+und App.js ändert sich so
+
+```javascript
+import { useState } from 'react'
+
+const App = () => {
+  const [ counter, setCounter ] = useState(0)
+
+  setTimeout(    
+    () => setCounter(counter + 1),    
+    1000  
+  )
+
+  return (
+    <div>{counter}</div>
+  )
+}
+
+export default App
+```
+
+In der ersten Zeile importiert die Datei die Funktion useState:
+
+```javascript
+import { useState } from 'react'
+```
+
+Der Körper der Funktion, der den Komponenten definiert, beginnt mit einem Funktionsaufruf:
+
+```javascript
+const [ counter, setCounter ] = useState(0)
+```
+
+Der Funktionsaufruf fügt einen State an den Komponenten und zeigt ihn mit einem Anfangswert von 0 an. Die Funktion gibt ein Array mit 2 Elementen zurück. Diese weisen wir den Variablen counter und setCounter zu, indem wir die Destrukturierung aus den vorangegangenen Kapiteln nutzen.
+
+Der Variablen counter wird der Startwert von State (der 0 ist) zugewiesen. Der Variablen setCounter wird eine Funktion zugewiesen, die dafür genutzt wird den State zu ändern.
+
+Die Anwendung ruft die Funktion setTimeout auf und übergibt ihr zwei Parameter: eine Funktion, um den Zählerstand zu erhöhen und einen Timeout von einer Sekunde:
+
+```javascript
+setTimeout(
+  () => setCounter(counter + 1),
+  1000
+)
+```
+
+Die Funktion, die die Funktion setTimeout als ersten Parameter übergeben bekommt, wird eine Sekunde nachdem Funtionsaufruf von setTimeout gestartet.
+
+Wenn die Funktion setCounter, mit der man den State verändern kann, aufgerufen wird, wird der Komponent erneut gerendert, was bedeutet das der Körper der Komponentenfunktion erneut ausgeführt wird:
+
+```javascript
+() => {
+  const [ counter, setCounter ] = useState(0)
+
+  setTimeout(
+    () => setCounter(counter + 1),
+    1000
+  )
+
+  return (
+    <div>{counter}</div>
+  )
+}
+```
+
+Wenn die Komponentenfunktion das zweite Mal ausgeführt wird, ruft sie die Funktion useState auf und gibt den neuen Wert von State aus: 1. Das erneute Ausführen des Funktionskörpers des Komponenten, führt zu einem zweiten Timeout und erhöht den Zählerstand erneut. Weil der Wert der Zählervariable 1 ist, ist es grundlegend dasselbe, wie ein Ausdruck, der den Wert des Zählerstands auf 2 setzt.
+
+```javascript
+() => setCounter(2)
+```
+
+Währenddessen wird der alte Wert vom Zähler - "1" - am Bildschirm ausgegeben.
+
+Jedes Mal, wenn setCounter den State verändert, wird dadurch ein erneutes Rendern des Komponenten erzeugt. Der Wert des States wird wieder nach einer Sekunde erhöht, was dazuführt das alles wiederholt wird, solange die Anwendung läuft.
+
+Wenn euch der Komponent nicht das anzeigen sollte, was ihr denkt er sollte, oder wenn es "zur falschen Zeit" angezeigt wird, könnt ihr die Anwendung auf Fehler untersuchen, indem ihr euch die Werte der Variablen in der Konsole ausgeben lasst. Übernehmt die folgenden Änderungen in euren Code:
+
+```javascript
+const App = () => {
+  const [ counter, setCounter ] = useState(0)
+
+  setTimeout(
+    () => setCounter(counter + 1),
+    1000
+  )
+
+  console.log('rendering...', counter)
+
+  return (
+    <div>{counter}</div>
+  )
+}
+```
+
+Somit lassen sich die Funktionsaufrufe des Komponenten App leicht folgen:
+
+!["fullstack content"](./bilder/abschnitt1c_bild1.png?raw=true)
+
+## Event Handling
