@@ -457,7 +457,7 @@ Somit lassen sich die Funktionsaufrufe des Komponenten App leicht folgen:
 
 > We have already mentioned event handlers that are registered to be called when specific events occur a few times in part 0. E.g. a user's interaction with the different elements of a web page can cause a collection of various different kinds of events to be triggered.
 
-Wir haben bereits über Event Handlers in Abschnitt 1 gesprochen, sie werden aufgerufen, wenn spezielle Ereignisse auftreten sollen, z.B. können Benutzerinteraktionen mit den verschiedenen Elementen einer Webseite eine ganze Reihe von Ergeignissen starten.
+Wir haben bereits über Event Handlers in Abschnitt 1 gesprochen, sie werden aufgerufen, wenn spezielle Ereignisse gestartet werden sollen, z.B. können Benutzerinteraktionen mit den verschiedenen Elementen einer Webseite eine ganze Reihe von Ergeignissen starten.
 
 > Let's change the application so that increasing the counter happens when a user clicks a button, which is implemented with the button element.
 
@@ -785,6 +785,8 @@ Also, wenn ein Benutzer auf den Button plus klickt, ändert der Event Handler de
 
 > The component displaying the value of the counter is as follows:
 
+Der Komponent, der den Wert des Zählers anzeigt, sieht so aus:
+
 ```javascript
 const Display = (props) => {
   return (
@@ -794,6 +796,8 @@ const Display = (props) => {
 ```
 
 > The component only uses the counter field of its props. This means we can simplify the component by using destructuring, like so:
+
+Der Komponent verwendet nur das Zählerfeld seiner props. Das bedeutet, das wir den Komponenten mit Destrukturieren vereinfachen können, ungefähr so:
 
 ```javascript
 const Display = ({ counter }) => {
@@ -805,11 +809,15 @@ const Display = ({ counter }) => {
 
 > The function defining the component contains only the return statement, so we can define the function using the more compact form of arrow functions:
 
+Da die Funktion, die den Komponenten definiert, nur eine Ausgabe hat, können wir die Funktion als Pfeilfunktion darstellen:
+
 ```javascript
 const Display = ({ counter }) => <div>{counter}</div>
 ```
 
 > We can simplify the Button component as well.
+
+Wir können auch den Komponenten Button vereinfachen.
 
 ```javascript
 const Button = (props) => {
@@ -823,6 +831,8 @@ const Button = (props) => {
 
 > We can use destructuring to get only the required fields from props, and use the more compact form of arrow functions:
 
+Wir nutzen Destrukturierung, um nur die benötigten Felder der props zu bekommen und verwenden hierfür auch Pfeilfunktionen:
+
 ```javascript
 const Button = ({ onClick, text }) => (
   <button onClick={onClick}>
@@ -833,11 +843,15 @@ const Button = ({ onClick, text }) => (
 
 > We can simplify the Button component once more by declaring the return statement in just one line:
 
+Jetzt können wir noch einen Schritt weitergehen und den Komponenten in nur einer Zeile schreiben:
+
 ```javascript
 const Button = ({ onClick, text }) => <button onClick={onClick}>{text}</button>
 ```
 
 > However, be careful to not oversimplify your components, as this makes adding complexity a more tedious task down the road.
+
+Trotzdem solltet ihr vorsichtig sein und euere Komponenten nicht zu sehr zu vereinfachen. Denn es sorgt dafür, dass Erweiterungen deutlich schwieriger umzusetzen sind.
 
 [back to Part 1b](part_1b.md)
 
