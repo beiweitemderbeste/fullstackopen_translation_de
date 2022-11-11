@@ -654,13 +654,23 @@ Hier wurden die Event Handler korrekt definiert. Der Wert des onClick-Attributs 
 
 > It's recommended to write React components that are small and reusable across the application and even across projects. Let's refactor our application so that it's composed of three smaller components, one component for displaying the counter and two components for buttons.
 
+Es wird empfohlen React-Komponenten zu schreiben, die klein und über ganze Anwendungen und sogar über Projekte wiederverwertbar sind. Verbessern wir unsere Anwendung so, dass sie aus drei kleineren Komponenten besteht, ein Komponent für das Darstellen des Zählers und zwei Komponenten für Buttons.
+
 > Let's first implement a Display component that's responsible for displaying the value of the counter.
+
+Als ersten implementieren wir den Komponenten Display, der für das Darstellen des Inhalts des Zählers verantwortlich ist.
 
 > One best practice in React is to lift the state up in the component hierarchy. The documentation says:
 
+Eine best practice in React ist es den State durch die Komponentenstruktur zu reichen. Die Dokumentation besagt:
+
 > Often, several components need to reflect the same changing data. We recommend lifting the shared state up to their closest common ancestor.
 
+Oft stellen mehrere Komponenten die selben sich veränderten Daten dar. Wir empfehlen den gemeinsamen State in den obersten gemeinsamen Komponenten zu schreiben.
+
 > So let's place the application's state in the App component and pass it down to the Display component through props:
+
+Setzt wir also den State der Anwendung in den Komponenten App und geben ihn als props an den Komponenten Display weiter:
 
 ```javascript
 const Display = (props) => {
@@ -671,6 +681,8 @@ const Display = (props) => {
 ```
 
 > Using the component is straightforward, as we only need to pass the state of the counter to it:
+
+Den Komponenten zu verwenden ist einfach, wir müssen nur den State des Zählers übergeben:
 
 ```javascript
 const App = () => {
@@ -695,7 +707,11 @@ const App = () => {
 
 > Everything still works. When the buttons are clicked and the App gets re-rendered, all of its children including the Display component are also re-rendered.
 
+Alles funktioniert weiterhin. Wenn die Buttons geklickt werden und die App erneut gerendert wird, werden auch alle Kinder neugerendert, was den Komponenten Display einschließt.
+
 > Next, let's make a Button component for the buttons of our application. We have to pass the event handler as well as the title of the button through the component's props:
+
+Erstellen wir jetzt einen Komponenten Button für die Buttons unserer Anwendung. Wir übergeben sowohl den Event Handler also auch den Titel des Buttons über die props:
 
 ```javascript
 const Button = (props) => {
@@ -708,6 +724,8 @@ const Button = (props) => {
 ```
 
 > Our App component now looks like this:
+
+Und unser Komponent App sieht so aus:
 
 ```javascript
 const App = () => {
@@ -739,7 +757,11 @@ const App = () => {
 
 > Since we now have an easily reusable Button component, we've also implemented new functionality into our application by adding a button that can be used to decrement the counter.
 
+Da wir jetzt Komponenten für die Buttons haben, die sich leicht wiederverwerten lassen, können wir in unsere Anwendung auch einen neue Funktionalität einbauen: einen Button, der es ermöglicht, den Zähler runterzusetzen.
+
 > The event handler is passed to the Button component through the onClick prop. The name of the prop itself is not that significant, but our naming choice wasn't completely random. React's own official tutorial suggests this convention.
+
+Der Event Handler wird an den Komponenten Button über onClick weitergegeben. Der Name der props selbst ist nicht signifikat, aber unsere Benennung war nicht komplett zufällig. Reacts eigene Anleitung schlägt diese Konvention vor.
 
 ## Changes in state cause rerendering
 
