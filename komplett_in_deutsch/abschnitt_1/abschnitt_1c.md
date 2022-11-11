@@ -173,3 +173,73 @@ const Hello = ({ name, age }) => {
 ```
 
 ## Page re-rendering
+
+Bis jetzt waren alle unsere Anwendungen in ihrer Erscheinung gleich, keine veränderte sich nach dem ersten Rendern. Was aber, wenn wir einen Zähler verwenden wollen, dessen Zählerstand sich bei einem Klick auf einen Button oder einer Funktion nach Zeit erhöht?
+
+Fangen wir mit folgendem an. Die Datei App.js wird zu:
+
+```javascript
+const App = (props) => {
+  const {counter} = props
+  return (
+    <div>{counter}</div>
+  )
+}
+
+export default App
+```
+
+Und die Datei index.js wird zu:
+
+```javascript
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+
+import App from './App'
+
+let counter = 1
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <App counter={counter} />
+)
+```
+
+Der Komponent App bekommt den Wert des Zählers über die prop "counter". Dieser Komponent zeigt den Wert auf dem Bildschirm an. Was passiert, wenn sich der Zählerstand ändert? Was wenn wir das folgende hinzufügen?
+
+```javascript
+counter += 1
+```
+
+Der Komponent wird nicht erneut gerendert. Wir bekommen den Komponenten dazu, indem wir die Methode render ein zweites Mal aufrufen, z.B. so:
+
+```javascript
+let counter = 1
+
+const refresh = () => {
+  ReactDOM.createRoot(document.getElementById('root')).render(
+    <App counter={counter} />
+  )
+}
+
+refresh()
+counter += 1
+refresh()
+counter += 1
+refresh()
+```
+
+Der Befehl zum erneuten rendern wurde in die Funktion refresh eingebaut, um zu verhindern, dass zuviel Code hin und her kopiert wird.
+
+Jetzt wird der Komponent dreimal gerendert, das erste Mal mit dem Wert 1, dann 2 und schließlich 3. Allerdings werden die Werte 1 und 2 nur so kurz am Bildschirm ausgegeben, dass man es nicht bemerken kann.
+
+Wir können eine leicht interessantere Funktionalität einbauen, indem wir den Zähler mit jeder Sekunde erneut rendern und erhöhen:
+
+```javascript
+setInterval(() => {
+  refresh()
+  counter += 1
+}, 1000)
+```
+
+Erneute Aufrufe der Methode render ist nicht der empfohlene Weg, um in React Komponenten erneut zu rendern. Als nächstes führen wir eine bessere Möglichkeit ein, um das zu erreichen.
+
