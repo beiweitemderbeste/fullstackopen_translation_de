@@ -3,7 +3,7 @@
 > table of contents
 
 ## Inhaltsverzeichnis
-
+ 
 - [Variables](#Variables)
 - [Arrays](#Arrays)
 - [Objects](#Objects)
@@ -538,11 +538,11 @@ Wenn wir die Methode über einen Verweis aufrufen, verliert die Methode das Wiss
 
 > Losing track of this when writing JavaScript code brings forth a few potential issues. Situations often arise where React or Node (or more specifically the JavaScript engine of the web browser) needs to call some method in an object that the developer has defined. However, in this course we avoid these issues by using the "this-less" JavaScript.
 
-Wenn man den Überblick darüber verliert, auf wen "this" verweist, bekomt man Probleme. Es gibt öfter Situationen, in denen React oder Node (genauer gesagt, die Javascript-Engine des Browsers) eine Methode eines Objektes aufruft, die der Entwickler definiert hat. In diesem Kurs umgehen wir diese Probleme, in dem wir wenig "this" verwenden.
+Wenn man den Überblick darüber verliert, auf wen "this" verweist, bekommt man Probleme. Es gibt öfter Situationen, in denen React oder Node (genauer gesagt, die Javascript-Engine des Browsers) eine Methode eines Objektes aufruft, die der Entwickler definiert hat. In diesem Kurs umgehen wir diese Probleme, in dem wir wenig "this" verwenden.
 
 > One situation leading to the "disappearance" of this arises when we set a timeout to call the greet function on the arto object, using the setTimeout function.
 
-Eine Möglichkeit, um "this" verschwinden zu lassen, ist einen Timeout zu setzen, der die greet-Funktion aufruft. Wir verwenden dafür die Funktion setTimeout:
+Eine Möglichkeit, um "this" verschwinden zu lassen, ist einen Timeout zu setzen, der die Funktion greet aufruft. Wir verwenden dafür die Funktion setTimeout:
 
 ```javascript
 const arto = {
@@ -558,7 +558,7 @@ setTimeout(arto.greet, 1000)
 
 > As mentioned, the value of this in JavaScript is defined based on how the method is being called. When setTimeout is calling the method, it is the JavaScript engine that actually calls the method and, at that point, this refers to the global object.
 
-Wie bereits erwähnt wird der Wert von "this" in Javascript darüber bestimmt, wie die Methode aufgrufen wird, zu diesem Punkt verweist "this" auf das globale Objekt.
+Wie bereits erwähnt wird der Wert von "this" in Javascript darüber bestimmt, wie die Methode aufgrufen wird, zum jetzigen Punkt verweist "this" auf das globale Objekt.
 
 > There are several mechanisms by which the original this can be preserved. One of these is using a method called bind:
 
@@ -570,11 +570,11 @@ setTimeout(arto.greet.bind(arto), 1000)
 
 > Calling arto.greet.bind(arto) creates a new function where this is bound to point to Arto, independent of where and how the method is being called.
 
-Der Funktionsaufruf arto.greet.bind(arto) erstellt eine neue Funktion, bei der "this" an Arto gebunden ist, unabhängig davon, wie die Methode aufgerufen wird.
+Der Funktionsaufruf arto.greet.bind(arto) erstellt eine neue Funktion, bei der "this" an Arto gebunden ist, unabhängig davon, wie die Methode greet aufgerufen wird.
 
 > Using arrow functions it is possible to solve some of the problems related to this. They should not, however, be used as methods for objects because then this does not work at all. We will come back later to the behavior of this in relation to arrow functions.
 
-Indem man Pfeilfunktionen nutzt, ist es möglich einige Probleme zu umgehen, die mit "this" verbunden sind. Allerdings sollten Sie nicht für Objektmethoden verwendet werden, weil dann "this" überhaupt nicht funktioniert. Wir kommen später nochmal auf die Beziehung von Pfeilfunktionenn und "this" zurück.
+Indem man Pfeilfunktionen nutzt, ist es möglich einige Probleme zu umgehen, die mit "this" verbunden sind. Allerdings sollten sie nicht für Objektmethoden verwendet werden, weil dann "this" überhaupt nicht funktioniert. Wir kommen später nochmal auf die Beziehung von Pfeilfunktionenn und "this" zurück.
 
 > If you want to gain a better understanding of how this works in JavaScript, the Internet is full of material about the topic, e.g. the screencast series Understand JavaScript's this Keyword in Depth by egghead.io is highly recommended!
 
@@ -614,7 +614,7 @@ janja.greet()
 
 > When it comes to syntax, the classes and the objects created from them are very reminiscent of Java classes and objects. Their behavior is also quite similar to Java objects. At the core they are still objects based on JavaScript's prototypal inheritance. The type of both objects is actually Object, since JavaScript essentially only defines the types Boolean, Null, Undefined, Number, String, Symbol, BigInt, and Object.
 
-Diese Syntax erinnert stark daran, wie Klassen und Objekte in Java erstellt weren. Ihr Verhalten ist dem von Java-Objekten auch sehr ähnlich. Im Kern sind sie aber immer noch Objekte, die auf Javascripts Prototypenvererbung basieren. Der Datentyp von beiden Objekten ist tatsächlich Object, weil Javascript im Wesentlichen nur 7 Datentypen kennt: Boolean, Null, Undefined, Number, String, Symbol, BigInt und Object.
+Diese Syntax erinnert stark daran, wie Klassen und Objekte in Java erstellt werden. Ihr Verhalten ist dem von Java-Objekten auch sehr ähnlich. Im Kern sind sie aber immer noch Objekte, die auf Javascripts Prototypenvererbung basieren. Der Datentyp von beiden Objekten ist tatsächlich Object, weil Javascript im Wesentlichen nur 7 Datentypen kennt: Boolean, Null, Undefined, Number, String, Symbol, BigInt und Object.
 
 > The introduction of the class syntax was a controversial addition. Check out Not Awesome: ES6 Classes or Is “Class” In ES6 The New “Bad” Part? on Medium for more details.
 
@@ -628,15 +628,15 @@ Diese Klassensyntax aus ES6 wird viel in älteren React- und Node.js-Projekten v
 
 > There exist both good and poor guides for JavaScript on the Internet. Most of the links on this page relating to JavaScript features reference Mozilla's JavaScript Guide.
 
-Es gibt gute und schlechte Anleitungen für Javascript im Internet. Die meisten Links auf dieser Seite zu Javascript verweisen auf [Mozilla's JavaScript Guide](link-missing)
+Es gibt gute und schlechte Anleitungen für Javascript im Internet. Die meisten Links zu Javascript auf dieser Seite verweisen auf [Mozilla's JavaScript Guide](link-missing)
 
 > It is highly recommended to immediately read A re-introduction to JavaScript (JS tutorial) on Mozilla's website.
 
-Wir empfehlen dringend sofort [A re-introduction to JavaScript (JS tutorial)](link-missing) auf der Webseite von [Mozilla](link-missing)
+Wir empfehlen dringend [A re-introduction to JavaScript (JS tutorial)](link-missing) auf der Webseite von [Mozilla](link-missing)
 
 > If you wish to get to know JavaScript deeply there is a great free book series on the Internet called You-Dont-Know-JS.
 
-Wenn ihr euch richtig gut mit Javascript auskennen wollt, es gibt da eine großartige, kostenfreie Buchserie [You-Dont-Know-JS](link-missing)
+Wenn ihr euch richtig gut mit Javascript auskennen wollt, es gibt da eine großartige, kostenfreie Buchserie: [You-Dont-Know-JS](link-missing)
 
 > Another great resource for learning JavaScript is javascript.info.
 
