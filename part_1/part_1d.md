@@ -364,6 +364,8 @@ Wir rufen die Methode join für das Array allClicks auf, dass alle Elemente des 
 
 > Let's modify our application so that the rendering of the clicking history is handled by a new History component:
 
+Verändern wir die Anwendung so, dass das Anzeigen der Klickhistorie von einem Komponenten history gehändelt wird:
+
 ```javascript
 const History = (props) => {
   if (props.allClicks.length === 0) {
@@ -380,6 +382,7 @@ const History = (props) => {
     </div>
   )
 }
+
 const App = () => {
   // ...
 
@@ -389,18 +392,23 @@ const App = () => {
       <button onClick={handleLeftClick}>left</button>
       <button onClick={handleRightClick}>right</button>
       {right}
-      <History allClicks={allClicks} />    </div>
+      <History allClicks={allClicks} />    
+    </div>
   )
 }
 ```
 
 > Now the behavior of the component depends on whether or not any buttons have been clicked. If not, meaning that the allClicks array is empty, the component renders a div element with some instructions instead:
 
+Das Verhalten des Komponenten hängt davon ab, ob einer der Button geklickt wurde oder nicht. Wenn nicht, ist das Array allClicks leer, der Komponent zeigt stattdessen ein div-Element mit einigen Anweisungen an:
+
 ```html
 <div>the app is used by pressing the buttons</div>
 ```
 
 > And in all other cases, the component renders the clicking history:
+
+In allen anderen Fällen zeigt der Komponent die Klickhistorie an:
 
 ```javascript
 <div>
@@ -410,9 +418,15 @@ const App = () => {
 
 > The History component renders completely different React elements depending on the state of the application. This is called conditional rendering.
 
+Der Komponent History zeigt komplett verschiedene React-Elemente an, abhängig vom State der Anwendung. Das wird conditional rendering gennant.
+
 > React also offers many other ways of doing conditional rendering. We will take a closer look at this in part 2.
 
+React bietet auch viele andere Wege für conditional rendering an. Wir schauen uns das noch genauer in Abschnitt 2 an.
+
 > Let's make one last modification to our application by refactoring it to use the Button component that we defined earlier on:
+
+Verändern wir unsere Anwendung ein letztes Mal, indem wir unseren Button-Komponenten von vorhin einsetzen
 
 ```javascript
 const History = (props) => {

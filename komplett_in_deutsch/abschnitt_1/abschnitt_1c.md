@@ -359,3 +359,8 @@ Somit lassen sich die Funktionsaufrufe des Komponenten App leicht folgen:
 !["fullstack content"](./bilder/abschnitt1c_bild1.png?raw=true)
 
 ## Event Handling
+
+Wir haben bereits über Event Handlers in Abschnitt 1 gesprochen, sie werden aufgerufen, wenn spezielle Ereignisse gestartet werden sollen, z.B. können Benutzerinteraktionen mit den verschiedenen Elementen einer Webseite eine ganze Reihe von Ergeignissen starten.
+
+Ändern wir die Anwendung so ab, dass der Zählerstand sich erhöht, wenn ein Benutzer auf einen Button klickt.
+
