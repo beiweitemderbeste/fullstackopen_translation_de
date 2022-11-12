@@ -465,7 +465,7 @@ Wir haben bereits über Event Handlers in Abschnitt 1 gesprochen, sie werden auf
 
 > Button elements support so-called mouse events, of which click is the most common event. The click event on a button can also be triggered with the keyboard or a touch screen despite the name mouse event.
 
-Buttons unterstützen sogenannte mouse events von denen der Klick der üblichste ist. Abgesehen vom Namen mouse events kann der Klick auf einen Button auch durch eine Tastatur oder Touchscreen ausgelöst werden.
+Buttons unterstützen sogenannte mouse events von denen der Klick der gebräuchlichste ist. Abgesehen vom Namen mouse events kann der Klick auf einen Button auch durch einen Tastendruck oder Touchscreen ausgelöst werden.
 
 > In React, registering an event handler function to the click event happens like this:
 
@@ -491,7 +491,7 @@ const App = () => {
 
 > We set the value of the button's onClick attribute to be a reference to the handleClick function defined in the code.
 
-Wir setzten den Wert vom Attribut onClick auf einen Verweis auf die Funktio handleClick, die im Code definiert wird.
+Wir setzten den Wert vom Attribut onClick auf einen Verweis auf die Funktion handleClick, die im Code definiert wird.
 
 > Now every click of the plus button causes the handleClick function to be called, meaning that every click event will log a clicked message to the browser console.
 
@@ -499,7 +499,7 @@ Jetzt führt jeder Klick auf den Button plus dazu, dass die Funktion handleClick
 
 > The event handler function can also be defined directly in the value assignment of the onClick-attribute:
 
-Die event handler-Funktion kann auch direkt im Attribut onclick definiert werden:
+Die event handler-Funktion kann auch direkt im Attribut onClick definiert werden:
 
 ```javascript
 const App = () => {
@@ -608,7 +608,7 @@ Definieren wir die Event Handler wir vorhin:
 
 > Now the button's attribute which defines what happens when the button is clicked - onClick - has the value () => setCounter(counter + 1). The setCounter function is called only when a user clicks the button.
 
-Jetzt wird das Buttonattribut onClick, das definiert, was passiert, wenn der Button geklickt wird, auf () => setCounter(counter + 1) gesetzt.
+Jetzt wird das Buttonattribut onClick, das definiert was passiert, wenn der Button geklickt wird, auf () => setCounter(counter + 1) gesetzt.
 
 > Usually defining event handlers within JSX-templates is not a good idea. Here it's ok, because our event handlers are so simple.
 
@@ -707,7 +707,7 @@ const App = () => {
 
 > Everything still works. When the buttons are clicked and the App gets re-rendered, all of its children including the Display component are also re-rendered.
 
-Alles funktioniert weiterhin. Wenn die Buttons geklickt werden und die App erneut gerendert wird, werden auch alle Kinder neugerendert, was den Komponenten Display einschließt.
+Alles funktioniert weiterhin. Wenn die Buttons geklickt werden und die App erneut gerendert wird, werden auch alle Unterkomponenten neugerendert, was Display einschließt.
 
 > Next, let's make a Button component for the buttons of our application. We have to pass the event handler as well as the title of the button through the component's props:
 
