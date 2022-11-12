@@ -1231,7 +1231,11 @@ Das Verwenden des Komponents Button ist einfach, trotzdem müssen wir sichereste
 
 > Let's start displaying the value of the application into its own Display component.
 
+Fangen wir an, den Wert der Anwendung in seinem eigenen Display-Komponenten anzuzeigen.
+
 > We will change the application by defining a new component inside of the App-component.
+
+Wir ändern die Anwendung, indem wir einen neuen Komponenten innerhalb des App-Komponenten definieren.
 
 ```javascript
 // This is the right place to define a component
@@ -1265,7 +1269,11 @@ const App = () => {
 
 > The application still appears to work, but don't implement components like this! Never define components inside of other components. The method provides no benefits and leads to many unpleasant problems. The biggest problems are due to the fact that React treats a component defined inside of another component as a new component in every render. This makes it impossible for React to optimize the component.
 
+Die Anwendung scheint weiterhin zu funktionieren, aber implementiert niemals Komponenten auf diese Art! Diese Methode hat keine Boni und für zu vielen unagenehmen Problemen. Die größten Probleme sind dem Fakt geschuldet, dass React Komponenten, die innerhalb anderer Komponenten definiert wurden, als neuen Komponenten behandelt. Das macht es für React unmöglich, den Komponenten zu optimieren.
+
 > Let's instead move the Display component function to its correct place, which is outside of the App component function:
+
+Schieben wir stattdessen den Komponenten Display seine korrekte Stelle, was außerhalb des Komponenten App ist:
 
 ```javascript
 const Display = props => <div>{props.value}</div>
