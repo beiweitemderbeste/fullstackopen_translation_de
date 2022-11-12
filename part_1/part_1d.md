@@ -1325,13 +1325,23 @@ Einige Kurse auf egghead.io, wie z.B. Start learning React, sind von hoher Quali
 
 > Submit your solutions to the exercises by first pushing your code to GitHub and then marking the completed exercises into the exercise submission system.
 
+Reicht die Lösungen für die Aufgaben ein, indem ihr euren Code auf GitHub veröffentlicht und markiert die abgeschlossen Aufgaben im Submissionsystem.
+
 > Remember, submit all the exercises of one part in a single submission. Once you have submitted your solutions for one part, you cannot submit more exercises to that part any more.
+
+Merkt euch alle Aufgaben eines Abschnitts gesammtelt einzureichen. Wenn ihr eure Lösungen für einen Abschnitt eingereicht habt, könnt ihr keinen weiteren Aufgaben für diesen Abschnitt einreichen.
 
 > Some of the exercises work on the same application. In these cases, it is sufficient to submit just the final version of the application. If you wish, you can make a commit after every finished exercise, but it is not mandatory.
 
+Einige der Aufgaben beziehen sich auf die gleiche Applikation. In diesen Fällen reicht es aus die Endversion der Anwendung einzureichen. Wenn ihr möchtet, können ihr einen Commit für jede beendete Aufgabe machen, aber das wird nicht verlangt.
+
 > WARNING create-react-app will automatically turn your project into a git-repository unless you create your application inside of an existing git repository. Most likely you do not want each of your projects to be a separate repository, so simply run the rm -rf .git command at the root of your application.
 
+WARNUNG: create-react-app erstellt aus eurem Projekt ein git-Repository, es sei denn, ihr erstellt eure Anwendung in einem bereits bestehenden git-Repository. Sehr wahrscheinlich möchtet ihr nicht für jedes Projekt ein eigenes Repository, deswegen könnt ihr einfach den Befehlt rm -rf .git im Wurzelverzeichnis eurer Anwendung ausführen.
+
 > In some situations you may also have to run the command below from the root of the project:
+
+In manchen Fällen müsst ihr auch den folgenden Befehl im Wurzelverzeinis des Projekts ausführen:
 
 ```bash
 rm -rf node_modules/ && npm i
@@ -1341,13 +1351,21 @@ rm -rf node_modules/ && npm i
 
 > Like most companies, Unicafe collects feedback from its customers. Your task is to implement a web application for collecting customer feedback. There are only three options for feedback: good, neutral, and bad.
 
+Wie die meisten Firmen sammelt Unicafe Feedback von seinen Kunden. Eure Aufgabe ist es, eine Webanwendung zu implementieren, um das Feedback zu sammeln. Es gibt nur drei Optionen für Feedback: good, neutral, und bad.
+
 > The application must display the total number of collected feedback for each category. Your final application could look like this:
+
+Die Anwendung soll die absolute Zahl des abgegebenen Feedbacks pro Kategorie anzeigen. Die Anwendung könnte so aussehen:
 
 !["fullstack content"](./images/part1d_image8.png?raw=true)
 
 > Note that your application needs to work only during a single browser session. Once you refresh the page, the collected feedback is allowed to disappear.
 
+Hinweis: Die Anwendung muss nur in einer einzigen Browsersitzung funktionieren. Wenn ihr die Seite aktualisiert, darf das gesammlte Feedback verschwinden.
+
 > It is advisable to use the same structure that is used in material and previous exercise. File index.js is as follows:
+
+Es wäre ratsam, die gleiche Struktur, wie in diesem Material und der vorangegangenen Aufgabe, zu verwenden. Die Datei index.js sieht so aus:
 
 ```javascript
 import React from 'react'
@@ -1359,6 +1377,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />)
 ```
 
 > You can use the code below as a starting point for the App.js file:
+
+Ihr könnt den folgenden Code als Ausgungspunkt für die Datei App.js verwenden:
 
 ```javascript
 import { useState } from 'react'
@@ -1383,13 +1403,19 @@ export default App
 
 > Expand your application so that it shows more statistics about the gathered feedback: the total number of collected feedback, the average score (good: 1, neutral: 0, bad: -1) and the percentage of positive feedback.
 
+Erweitert eure Anwendung, so dass sie mehr Statistiken über das gesammelte Feedback anzeigt: die absolute Zahl des gesammelten Feedback, die durchschnittliche Bewertung (good: 1, neutral: 0, bad: -1) und der Anteil des positiven Feedbacks.
+
 !["fullstack content"](./images/part1d_image9.png?raw=true)
 
 ### 1.8 unicafe step3
 
 > Refactor your application so that displaying the statistics is extracted into its own Statistics component. The state of the application should remain in the App root component.
 
+Verbessert eure Anwendung, so dass sie die Statistiken in einem eigenen Komponenten anzeigt. Der State der Anwendung sollte im Komponenten App verbleiben.
+
 > Remember that components should not be defined inside other components:
+
+Beachtet, dass Komponenten nicht innerhalb anderer Komponenten definiert werden sollten:
 
 ```javascript
 // a proper place to define a component
@@ -1417,17 +1443,27 @@ const App = () => {
 
 > Change your application to display statistics only once feedback has been gathered.
 
+Ändert eure Anwendung so, dass sie die Statistiken nur ausgibt, wenn Feedback gesammelt wurde.
+
 !["fullstack content"](./images/part1d_image10.png?raw=true)
 
 ### 1.10 unicafe step5
 
 > Let's continue refactoring the application. Extract the following two components:
 
+Verbessern wir die Anwendung noch mehr. Extrahiert die folgenden zwei Komponenten:
+
 > - Button for defining the buttons used for submitting feedback
+
+- Button: für das Definieren der Buttons, um Feedback abzugeben
 
 > - StatisticLine for displaying a single statistic, e.g. the average score.
 
+- StatisticLine: um eine einzelne Statistik, z.B. den durchschnittlichen Stand, anzuzeigen
+
 > To be clear: the StatisticLine component always displays a single statistic, meaning that the application uses multiple components for rendering all of the statistics:
+
+Um klar zu sein: der Komponent StatisticLine zeigt immer nur eine einzelne Statistik an, was bedeutet, dass die Anwendung mehrere Komponenten verwendet, um alle Statistiken anzuzeigen.
 
 ```javascript
 const Statistics = (props) => {
@@ -1445,27 +1481,41 @@ const Statistics = (props) => {
 
 > The application's state should still be kept in the root App component.
 
+Der State der Anwendung sollte weiterhin im Hauptkomponenten App verbleiben.
+
 ### 1.11* unicafe step6
 
 > Display the statistics in an HTML table, so that your application looks roughly like this:
+
+Stellt die Statistiken in einer HTML-Tablle dar, so dass eure Anwendung ungefähr so aussieht:
 
 !["fullstack content"](./images/part1d_image11.png?raw=true)
 
 > Remember to keep your console open at all times. If you see this warning in your console:
 
+Erinnert euch daran, immer eure Browserkonsole geöffnet zu haben. Wenn ihr diese Warnung in euerer Konsole seht:
+
 !["fullstack content"](./images/part1d_image12.png?raw=true)
 
 > Then perform the necessary actions to make the warning disappear. Try pasting the error message into a search engine if you get stuck.
+
+Dann führt alles Nötige aus, um die Warnung verschwinden zu lassen. Versucht die Fehlermeldung in einer Suchmaschine einzugeben, wenn ihr nicht weiterkommt.
 
 > Typical source of an error Unchecked runtime.lastError: Could not establish connection. Receiving end does not exist. is Chrome extension. Try going to chrome://extensions/ and try disabling them one by one and refreshing React app page; the error should eventually disappear.
 
 > Make sure that from now on you don't see any warnings in your console!
 
+Stellt sicher, dass ihr ab jetzt keine Warnung mehr in eurer Konsole angezeigt bekommt.
+
 ### 1.12* anecdotes step1
 
 > The world of software engineering is filled with anecdotes that distill timeless truths from our field into short one-liners.
 
+Die Welt der Softwareentwicklung ist voll von Anekdoten, die zeitlose Wahrheiten über unsere Branche in kurzen Einzeilern erzählen.
+
 > Expand the following application by adding a button that can be clicked to display a random anecdote from the field of software engineering: 
+
+Erweitert die folgende Anwendung, indem ihr einen Button hinzufügt, der, wenn er geklickt wird, eine zufällige Anekdote aus dem Bereich Softwareentwicklung anzeigt.
 
 ```javascript
 import { useState } from 'react'
@@ -1495,23 +1545,37 @@ export default App
 
 > Content of the file index.js is same as in previous exercises.
 
+Der Inhalt der Datei index.js ist der gleiche, wie in der vorherigen Aufgabe.
+
 > Find out how to generate random numbers in JavaScript, eg. via search engine or on Mozilla Developer Network. Remember that you can test generating random numbers e.g. straight in the console of your browser.
 
+Findet heraus, wie man zufällige Zahlen in Javascript, z.B. per Suchmaschine oder Mozilla Developer Network, generiert. Denkt daran, dass ihr das Generieren zufälliger Zahlen direkt in der Browserkonsole testen könnt.
+
 > Your finished application could look something like this:
+
+Eure fertige Anwendung sollte ungefähr so aussehen:
 
 !["fullstack content"](./images/part1d_image13.png?raw=true)
 
 > WARNING create-react-app will automatically turn your project into a git-repository unless you create your application inside of an existing git repository. Most likely you do not want each of your projects to be a separate repository, so simply run the rm -rf .git command at the root of your application.
 
+WARNUNG: create-react-app erstellt aus eurem Projekt ein git-Repository, es sei denn, ihr erstellt eure Anwendung in einem bereits bestehenden git-Repository. Sehr wahrscheinlich möchtet ihr nicht für jedes Projekt ein eigenes Repository, deswegen könnt ihr einfach den Befehlt rm -rf .git im Wurzelverzeichnis eurer Anwendung ausführen.
+
 ### 1.13* anecdotes step2
 
 > Expand your application so that you can vote for the displayed anecdote.
+
+Erweitert eure Anwendung, so dass man für die angezeigte Anekdote abstimmen kann.
 
 !["fullstack content"](./images/part1d_image14.png?raw=true)
 
 > NB store the votes of each anecdote into an array or object in the component's state. Remember that the correct way of updating state stored in complex data structures like objects and arrays is to make a copy of the state.
 
+Hinweis: Speichert die Stimmen für jede Anektdote in einem Array oder Objekt im State des Komponenten. Erinnert euch daran, dass man den State, der in komplexen Datenstrukturen wie Objekte oder Arrays gespeichert ist, aktualisiert, indem eine Kopie des States erstellt.
+
 > You can create a copy of an object like this:
+
+Ihr könnte eine Kopie von einem Objekt so erstellen:
 
 ```javascript
 const points = { 0: 1, 1: 3, 2: 4, 3: 2 }
@@ -1533,15 +1597,23 @@ copy[2] += 1
 
 > Using an array might be the simpler choice in this case. Searching the Internet will provide you with lots of hints on how to create a zero-filled array of a desired length.
 
+Ein Array zu benutzen, wäre die einfachere Wahl in diesem Fall. Wenn ihr das Internet durchsucht, werdet ihr viele Hinweise darauf finden, wie man ein mit Nullen gefülltes Array einer bestimmten Länge erstellt.
+
 ### 1.14*: anecdotes step3
 
 > Now implement the final version of the application that displays the anecdote with the largest number of votes:
+
+Implementiert jetzt die Endversion der Anwendung, die die Anekdote mit der höchsten Anzahl an Stimmen anzeigt.
 
 !["fullstack content"](./images/part1d_image15.png?raw=true)
 
 > If multiple anecdotes are tied for first place it is sufficient to just show one of them.
 
+Wenn mehrere Anekdoten auf dem ersten Platz landen, reicht es aus, eine davon anzuzeigen.
+
 > This was the last exercise for this part of the course and it's time to push your code to GitHub and mark all of your finished exercises to the exercise submission system.
+
+Das war die letzte Aufgabe dieses Abschnitts und es ist Zeit, euren Code auf GitHub zu veröffentlichen und markiert eure fertigen Aufgaben im Submissionsystem.
 
 [back to Part 1c](part_1c.md)
 
