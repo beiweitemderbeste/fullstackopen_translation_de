@@ -692,9 +692,15 @@ const App = () => {
 
 > Event handling has proven to be a difficult topic in previous iterations of this course.
 
+Event Handling hat sich in vorangegangenen Ausgaben dieses Kurses als schwierig erwiesen.
+
 > For this reason we will revisit the topic.
 
+Aus diesem Grund schauen wir uns das Thema nochmal an.
+
 > Let's assume that we're developing this simple application with the following component App:
+
+Nehmen wir an, dass wir eine einfache Anwendung mit dem folgenden App-Komponenten entwickeln:
 
 ```javascript
 const App = () => {
@@ -711,17 +717,27 @@ const App = () => {
 
 > We want the clicking of the button to reset the state stored in the value variable.
 
+Wir wollen, dass bei einem Klick auf den Button der State in der Variable value zurückgesetzt wird.
+
 > In order to make the button react to a click event, we have to add an event handler to it.
+
+Damit der Button auf einen Klick reagiert, müssen wir einen Event Handler an ihn hängen.
 
 > Event handlers must always be a function or a reference to a function. The button will not work if the event handler is set to a variable of any other type.
 
+Event Handler müssen immer eine Funktion oder ein Verweis auf eine Funktion sein. Der Button wird nicht funktionieren, wenn der Event Handler auf eine Variable eines anderen Typs gesetzt wird.
+
 > If we were to define the event handler as a string:
+
+Wenn wir den Event Handler als String definieren würden:
 
 ```javascript
 <button onClick="crap...">button</button>
 ```
 
 > React would warn us about this in the console:
+
+Würde uns React eine Warnung in der Konsole anzeigen:
 
 ```javascript
 index.js:2178 Warning: Expected `onClick` listener to be a function, instead got a value of `string` type.
@@ -732,11 +748,15 @@ index.js:2178 Warning: Expected `onClick` listener to be a function, instead got
 
 > The following attempt would also not work:
 
+Der folgende Versuch würde auch nicht funktionieren:
+
 ```javascript
 <button onClick={value + 1}>button</button>
 ```
 
 > We have attempted to set the event handler to value + 1 which simply returns the result of the operation. React will kindly warn us about this in the console:
+
+Hier haben wir versucht den Event Handler auf value + 1 zu setzen, was nur das Ergebnis dieser Operation ausgibt. React wird auch dafür eine Warnung anzeigen:
 
 ```javascript
 index.js:2178 Warning: Expected `onClick` listener to be a function, instead got a value of `number` type.
@@ -744,13 +764,19 @@ index.js:2178 Warning: Expected `onClick` listener to be a function, instead got
 
 > This attempt would not work either:
 
+Dieser Versuch würde auch nicht funktionieren:
+
 ```javascript
 <button onClick={value = 0}>button</button>
 ```
 
 > The event handler is not a function but a variable assignment, and React will once again issue a warning to the console. This attempt is also flawed in the sense that we must never mutate state directly in React.
 
+Der Event Handler ist keine Funktion, sondern die Zuweisung einer Variablen und React wird auch dafür eine Warnung in der Konsole anzeigen. Der Versuch hat auch das Problem, dass der State direkt verändert wird, was wir in React nie tun sollten.
+
 > What about the following:
+
+Was wäre mit dem folgenden:
 
 ```javascript
 <button onClick={console.log('clicked the button')}>
@@ -760,11 +786,19 @@ index.js:2178 Warning: Expected `onClick` listener to be a function, instead got
 
 > The message gets printed to the console once when the component is rendered but nothing happens when we click the button. Why does this not work even when our event handler contains a function console.log?
 
+Die Nachricht wird in der Konsole angezeigt, wenn der Komponent gerendert wird, aber ansonsten passiert nichts bei einem Klick auf den Button. Warum funktioniert das nicht, selbst wenn unser Event Handler die Funktion console.log enthält?
+
 > The issue here is that our event handler is defined as a function call which means that the event handler is actually assigned the returned value from the function, which in the case of console.log is undefined.
+
+Hier ist das Problem, dass unser Event Handler als Funktionsaufruf definiert ist, was bedeutet, dass dem Event Handler tatsächlich der Rückgabewert der Funktion zugewiesen wird, was hier undefined ist.
 
 > The console.log function call gets executed when the component is rendered and for this reason it gets printed once to the console.
 
+Der Funktionsaufruf console.log wird ausgeführt, wenn der Komponent gerendert wird und aus diesem Grund wird er nur einmal an der Konsole ausgegeben.
+
 > The following attempt is flawed as well:
+
+Der folgende Versuch hat auch seine Fehler:
 
 ```javascript
 <button onClick={setValue(0)}>button</button>
@@ -772,7 +806,11 @@ index.js:2178 Warning: Expected `onClick` listener to be a function, instead got
 
 > We have once again tried to set a function call as the event handler. This does not work. This particular attempt also causes another problem. When the component is rendered the function setValue(0) gets executed which in turn causes the component to be re-rendered. Re-rendering in turn calls setValue(0) again, resulting in an infinite recursion.
 
+Wir haben wieder versucht für den Event Handler einen Funktionsaufruf zu setzen. Das funktioniert nicht. Der besondere Versuch verursacht auch ein anderes Problem. Wenn der Komponent gerendert wird, wird die Funktion setValue(0) ausgeführt, was dazu führt, dass der Komponent erneut gerendert wird. Das erneute Rendern ruft wiederum setValue(0), was zu einer unendlichen Schleife führt.
+
 > Executing a particular function call when the button is clicked can be accomplished like this:
+
+Um einen bestimmten Funktionsaufruf auszuführen, wenn der Button geklickt wird, erreichen wir so:
 
 ```javascript
 <button onClick={() => console.log('clicked the button')}>
@@ -782,7 +820,11 @@ index.js:2178 Warning: Expected `onClick` listener to be a function, instead got
 
 > Now the event handler is a function defined with the arrow function syntax () => console.log('clicked the button'). When the component gets rendered, no function gets called and only the reference to the arrow function is set to the event handler. Calling the function happens only once the button is clicked.
 
+Jetzt ist der Event Handler eine Funktion, die als Pfeilfunktion () => console.log('clicked the button') definiert ist. Wenn der Komponent gerendert wird, wird keine Funktion aufgerufen und nur der Verweis auf die Pfeilfunktion als Event Handler gesetzt. Die Funktion wird nur aufgerufen, wenn der Button geklickt wird.
+
 > We can implement resetting the state in our application with this same technique:
+
+Wir können mit der gleichen Technik den State in unserer Anwendung zurücksetzen:
 
 ```javascript
 <button onClick={() => setValue(0)}>button</button>
@@ -790,9 +832,15 @@ index.js:2178 Warning: Expected `onClick` listener to be a function, instead got
 
 > The event handler is now the function () => setValue(0).
 
+Der Event Handler ist jetzt die Funktion () => setValue(0).
+
 > Defining event handlers directly in the attribute of the button is not necessarily the best possible idea.
 
+Den Event Handler direkt im Attribut eines Buttons zu definieren ist nicht die bestmögliche Idee.
+
 > You will often see event handlers defined in a separate place. In the following version of our application we define a function that then gets assigned to the handleClick variable in the body of the component function:
+
+Ihr werdet oft sehen, dass Event Händler an einem anderen Ort definiert werden. In der folgenden Version unserer Anwendung definieren wir eine Funktion, die dann im Körper der Komponentenfunktion der Variablen handleClick zugewiesen wird:
 
 ```javascript
 const App = () => {
@@ -812,11 +860,15 @@ const App = () => {
 
 > The handleClick variable is now assigned to a reference to the function. The reference is passed to the button as the onClick attribute:
 
+Der Variablen handleClick wird jetzt ein Verweis auf die Funktion zugewiesen. Der Verweis wird dem Button als onClick-Attribut zugewiesen:
+
 ```javascript
 <button onClick={handleClick}>button</button>
 ```
 
 > Naturally, our event handler function can be composed of multiple commands. In these cases we use the longer curly brace syntax for arrow functions:
+
+Natürlich kann unsere Event Handler-Funktion auch aus verschiedenen Befehlen bestehen. Für diese Fälle werwenden wir die längere Syntax mit geschwungenen Klammern:
 
 ```javascript
 const App = () => {
