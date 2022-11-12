@@ -364,3 +364,314 @@ Wir haben bereits über Event Handlers in Abschnitt 1 gesprochen, sie werden auf
 
 Ändern wir die Anwendung so ab, dass der Zählerstand sich erhöht, wenn ein Benutzer auf einen Button klickt.
 
+Buttons unterstützen sogenannte mouse events von denen der Klick der gebräuchlichste ist. Abgesehen vom Namen mouse events kann der Klick auf einen Button auch durch einen Tastendruck oder Touchscreen ausgelöst werden.
+
+In React sieht die Funktion eines Event Handlers ungefähr so aus: 
+
+```javascript
+const App = () => {
+  const [ counter, setCounter ] = useState(0)
+
+  const handleClick = () => {   
+    console.log('clicked')  
+  }
+  return (
+    <div>
+      <div>{counter}</div>
+      <button onClick={handleClick}>        
+        plus      
+      </button>    
+    </div>
+  )
+}
+```
+
+Wir setzten den Wert vom Attribut onClick auf einen Verweis auf die Funktion handleClick, die im Code definiert wird.
+
+Jetzt führt jeder Klick auf den Button plus dazu, dass die Funktion handleClick ausgeführt wird. Das heißt jeder Klick schreibt eine Nachricht in die Browserkonsole.
+
+Die event handler-Funktion kann auch direkt im Attribut onClick definiert werden:
+
+```javascript
+const App = () => {
+  const [ counter, setCounter ] = useState(0)
+
+  return (
+    <div>
+      <div>{counter}</div>
+      <button onClick={() => console.log('clicked')}>        
+        plus
+      </button>
+    </div>
+  )
+}
+```
+
+Wenn wir nun den Event Handler so abändern
+
+```javascript
+<button onClick={() => setCounter(counter + 1)}>
+  plus
+</button>
+```
+
+erhalten wir das gewünschte Verhalten, dass sich der Zählerstand um 1 erhöht und der Komponent erneut gerendert wird.
+
+Es gibt auch einen Button, um den Zähler zurückzusetzen:
+
+```javascript
+const App = () => {
+  const [ counter, setCounter ] = useState(0)
+
+  return (
+    <div>
+      <div>{counter}</div>
+      <button onClick={() => setCounter(counter + 1)}>
+        plus
+      </button>
+        <button onClick={() => setCounter(0)}>         
+          zero      
+        </button>    
+      </div>
+  )
+}
+```
+
+Jetzt ist unsere Anwendung bereit!
+
+## Event handler is a function
+
+Wir definieren die Event Handler für unsere Buttons dort, wo wir ihre onClick-Attribute vergeben:
+
+```javascript
+<button onClick={() => setCounter(counter + 1)}> 
+  plus
+</button>
+```
+
+Was, wenn wir versuchen würden, die Event Handler in einer einfacheren Form zu definieren?
+
+```javascript
+<button onClick={setCounter(counter + 1)}> 
+  plus
+</button>
+```
+
+Das würde erstmal zu sehr vielen Fehlermeldungen führen:
+
+!["fullstack content"](./images/part1c_image2.png?raw=true)
+
+Was passiert hier? Ein Event Handler sollte entweder eine Funktion oder ein Verweis auf eine Funktion sein, aber wenn wir so etwas schreiben
+
+```javascript
+<button onClick={setCounter(counter + 1)}>
+```
+
+ist der Event Handler eigentlich ein Funktionsaufruf. In vielen Situationen ist das in Ordnung, aber nicht in dieser besonderen Situation. Am Anfang ist der Wert der Variable counter 0. Wenn React den Komponenten das erste Mal rendert, ruft es die Funktion setCounter(0+1), und ändert damit den Wert des States des Komponenten zu 1. Das erzeugt ein erneutes rendern des Komponenten, dadurch ruft React wieder die Funktion setCounter auf und der State ändert sich erneut...
+
+Definieren wir die Event Handler wir vorhin:
+
+```javascript
+<button onClick={() => setCounter(counter + 1)}> 
+  plus
+</button>
+```
+
+Jetzt wird das Buttonattribut onClick, das definiert was passiert, wenn der Button geklickt wird, auf () => setCounter(counter + 1) gesetzt.
+
+Normalerweise ist das Definieren von Event Handlern innerhalb von JSX-Vorlagen keine gute Idee. Hier ist es in Ordnung, weil unsere Event Handler so einfach gestaltet sind.
+
+Trennen wir trotzdem die Event Handler in verschiedene Funktionen ab:
+
+```javascript
+const App = () => {
+  const [ counter, setCounter ] = useState(0)
+
+  const increaseByOne = () => setCounter(counter + 1)    
+  
+  const setToZero = () => setCounter(0)
+
+  return (
+    <div>
+      <div>{counter}</div>
+      <button onClick={increaseByOne}>        
+        plus
+      </button>
+      <button onClick={setToZero}>        
+        zero
+      </button>
+    </div>
+  )
+}
+```
+
+Hier wurden die Event Handler korrekt definiert. Der Wert des onClick-Attributs ist eine Varaiable, die auf eine Funktion verweist:
+
+```javascript
+<button onClick={increaseByOne}> 
+  plus
+</button>
+```
+
+## Passing state to child components
+
+Es wird empfohlen React-Komponenten zu schreiben, die klein und über ganze Anwendungen und sogar über Projekte wiederverwertbar sind. Verbessern wir unsere Anwendung so, dass sie aus drei kleineren Komponenten besteht, ein Komponent für das Darstellen des Zählers und zwei Komponenten für Buttons.
+
+Als ersten implementieren wir den Komponenten Display, der für das Darstellen des Inhalts des Zählers verantwortlich ist.
+
+Eine best practice in React ist es den State durch die Komponentenstruktur zu reichen. Die Dokumentation besagt:
+
+Oft stellen mehrere Komponenten die selben sich veränderten Daten dar. Wir empfehlen den gemeinsamen State in den obersten gemeinsamen Komponenten zu schreiben.
+
+Setzt wir also den State der Anwendung in den Komponenten App und geben ihn als props an den Komponenten Display weiter:
+
+```javascript
+const Display = (props) => {
+  return (
+    <div>{props.counter}</div>
+  )
+}
+```
+
+Den Komponenten zu verwenden ist einfach, wir müssen nur den State des Zählers übergeben:
+
+```javascript
+const App = () => {
+  const [ counter, setCounter ] = useState(0)
+
+  const increaseByOne = () => setCounter(counter + 1)
+  const setToZero = () => setCounter(0)
+
+  return (
+    <div>
+      <Display counter={counter}/>      
+      <button onClick={increaseByOne}>
+        plus
+      </button>
+      <button onClick={setToZero}> 
+        zero
+      </button>
+    </div>
+  )
+}
+```
+
+Alles funktioniert weiterhin. Wenn die Buttons geklickt werden und die App erneut gerendert wird, werden auch alle Unterkomponenten neugerendert, was Display einschließt.
+
+Erstellen wir jetzt einen Komponenten Button für die Buttons unserer Anwendung. Wir übergeben sowohl den Event Handler also auch den Titel des Buttons über die props:
+
+```javascript
+const Button = (props) => {
+  return (
+    <button onClick={props.onClick}>
+      {props.text}
+    </button>
+  )
+}
+```
+
+Und unser Komponent App sieht so aus:
+
+```javascript
+const App = () => {
+  const [ counter, setCounter ] = useState(0)
+
+  const increaseByOne = () => setCounter(counter + 1)
+  const decreaseByOne = () => setCounter(counter - 1)  
+  const setToZero = () => setCounter(0)
+
+  return (
+    <div>
+      <Display counter={counter}/>
+      <Button        
+        onClick={increaseByOne}        
+        text='plus'      
+      />      
+      <Button        
+        onClick={setToZero}        
+        text='zero'      
+      />           
+      <Button        
+        onClick={decreaseByOne}        
+        text='minus'      
+      />               
+    </div>
+  )
+}
+```
+
+Da wir jetzt Komponenten für die Buttons haben, die sich leicht wiederverwenden lassen, können wir in unsere Anwendung auch einen neue Funktionalität einbauen: einen Button, der es ermöglicht, den Zähler runterzusetzen.
+
+Der Event Handler wird an den Komponenten Button über onClick weitergegeben. Der Name der props selbst ist nicht signifikat, aber unsere Benennung war nicht komplett zufällig. Reacts eigene Anleitung schlägt diese Konvention vor.
+
+## Changes in state cause rerendering
+
+Besprechen wir nochmal die Hauptprinzipien, wie unsere Anwendung läuft:
+
+Wenn die Anwendung startet, wird der Code im Komponenten App ausgeführt. Dieser Code nutzt useState, um den State der Anwendung zu erstellen und einen Anfangswert für die Variable counter festzulegen. Diser Komponent App enthält den Komponenten Display, der den Wert des Zählers - 0 - ausgibt, und drei Button-Komponenten. Die Buttons haben alle Event Handler, die verwendet werden den State des Zähler zu ändern.
+
+Wenn einer der Buttons geklickt wird, wird der Event Handler ausgeführt. Der Event Handler verändert den State des Komponenten App mit der Funktion setCounter.
+
+Also, wenn ein Benutzer auf den Button plus klickt, ändert der Event Handler den Wert des Zählers auf 1 und der Komponent App wird erneut gerendert. Das führt dazu, das seine Unterkomponenten Display und Button auch erneut gerendert werden. Display erhält den neuen Wert des Zählers - 1 - als props. Die Komponenten Button erhalten Event Handler, die genutzt werden, um den State des Zählers zu ändern.
+
+## Refactoring the components
+
+Der Komponent, der den Wert des Zählers anzeigt, sieht so aus:
+
+```javascript
+const Display = (props) => {
+  return (
+    <div>{props.counter}</div>
+  )
+}
+```
+
+Der Komponent verwendet nur das Zählerfeld seiner props. Das bedeutet, das wir den Komponenten mit Destrukturieren vereinfachen können, ungefähr so:
+
+```javascript
+const Display = ({ counter }) => {
+  return (
+    <div>{counter}</div>
+  )
+}
+```
+
+Da die Funktion, die den Komponenten definiert, nur eine Ausgabe hat, können wir die Funktion als Pfeilfunktion darstellen:
+
+```javascript
+const Display = ({ counter }) => <div>{counter}</div>
+```
+
+Wir können auch den Komponenten Button vereinfachen.
+
+```javascript
+const Button = (props) => {
+  return (
+    <button onClick={props.onClick}>
+      {props.text}
+    </button>
+  )
+}
+```
+
+Wir nutzen Destrukturierung, um nur die benötigten Felder der props zu bekommen und verwenden hierfür auch Pfeilfunktionen:
+
+```javascript
+const Button = ({ onClick, text }) => (
+  <button onClick={onClick}>
+    {text}
+  </button>
+)
+```
+
+Jetzt können wir noch einen Schritt weitergehen und den Komponenten in nur einer Zeile schreiben:
+
+```javascript
+const Button = ({ onClick, text }) => <button onClick={onClick}>{text}</button>
+```
+
+Trotzdem solltet ihr vorsichtig sein und euere Komponenten nicht zu sehr zu vereinfachen. Denn es sorgt dafür, dass Erweiterungen deutlich schwieriger umzusetzen sind.
+
+[zurück zu Abschnitt 1b](part_1b.md)
+
+[weiter zu Abschnitt 1d](part_1d.md)
