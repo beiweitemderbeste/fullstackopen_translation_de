@@ -1207,6 +1207,8 @@ Welche der beiden präsentierten Arten, wie man Event Handler definiert, wählt 
 
 > Let's extract the button into its own component:
 
+Verwenden wir für den Button für einen eigenen Komponenten:
+
 ```javascript
 const Button = (props) => (
   <button onClick={props.handleClick}>
@@ -1217,7 +1219,11 @@ const Button = (props) => (
 
 > The component gets the event handler function from the handleClick prop, and the text of the button from the text prop.
 
+Der Komponent bekommt seine Event Handler-Funktion from prop handleClick und den Text des Buttons vom prop text.
+
 > Using the Button component is simple, although we have to make sure that we use the correct attribute names when passing props to the component.
+
+Das Verwenden des Komponents Button ist einfach, trotzdem müssen wir sicherestellen, das wir die korrekten Namen für die Attribute verwenden, wenn wir props zu dem Komponenten weiterreichen.
 
 !["fullstack content"](./images/part1d_image7.png?raw=true)
 
