@@ -892,9 +892,15 @@ const App = () => {
 
 > Another way to define an event handler is to use function that returns a function.
 
+Ein anderer Weg, um einen Event Handler zu definieren, ist eine Funktion, die wiederum eine Funktion zurückgibt.
+
 > You probably won't need to use functions that return functions in any of the exercises in this course. If the topic seems particularly confusing, you may skip over this section for now and return to it later.
 
+Ihr werdet wahrscheinlich in den Aufgaben dieses Kurs keine Funktionen nutzen, die andere Funktionen ausgeben. Wenn dieses Thema besonders verwirrend erscheint, könnt ihr diese Sektion erstmal überspringen und später zurückkommen.
+
 > Let's make the following changes to our code:
+
+Verändern wir unseren Code wir folgt:
 
 ```javascript
 const App = () => {
@@ -916,7 +922,11 @@ const App = () => {
 
 > The code functions correctly even though it looks complicated.
 
+Der Code funktioniert korrekt, auch wenn es kompliziert aussieht.
+
 > The event handler is now set to a function call:
+
+Auf den Eventhandler wird jetzt ein Funktionsaufruf gesetzt:
 
 ```javascript
 <button onClick={hello()}>button</button>
@@ -924,7 +934,11 @@ const App = () => {
 
 > Earlier on we stated that an event handler may not be a call to a function, and that it has to be a function or a reference to a function. Why then does a function call work in this case?
 
+Vorhin haben wir gesagt, dass ein Event Handler kein Funktionsaufruf sein darf, sondern es eine Funktion oder ein Verweis auf eine Funktion sein muss. Warum funktionier hier ein Funktionsaufruf trotzdem?
+
 > When the component is rendered, the following function gets executed:
+
+Wenn der Komponent gerendert wird, wird folgende Funktion ausgeführt:
 
 ```javascript
 const hello = () => {
@@ -936,11 +950,17 @@ const hello = () => {
 
 > The return value of the function is another function that is assigned to the handler variable.
 
+Der Ausgabewert der Funktion ist eine andere Funktion, die der Event Handler-Variablen zugewiesen wird.
+
 > When React renders the line:
+
+Wenn React die Zeile
 
 ```javascript
 <button onClick={hello()}>button</button>
 ```
+
+anzeigt, weist sie den Ausgabewert von hello() dem onClick-Attribut zu. Im Wesentlichen wird die Zeile auf folgendes umgewandelt:
 
 > It assigns the return value of hello() to the onClick attribute. Essentially the line gets transformed into:
 
@@ -952,9 +972,15 @@ const hello = () => {
 
 > Since the hello function returns a function, the event handler is now a function.
 
+Da die Funktion hello eine Funktion ausgibt, ist jetzt auch der Event Handler eine Funktion.
+
 > What's the point of this concept?
 
+Was ist der Sinn dieses Konzepts?
+
 > Let's change the code a tiny bit:
+
+Ändern wir den Code ein bisschen ab:
 
 ```javascript
 const App = () => {
@@ -980,13 +1006,19 @@ const App = () => {
 
 > Now the application has three buttons with event handlers defined by the hello function that accepts a parameter.
 
+Jetzt hat die Anwendung 3 Buttons mit Event Handlern, über die die Hello-Funktion inklusive Parameter ausgeführt wird.
+
 > The first button is defined as
+
+Der erste Button wird so definiert:
 
 ```javascript
 <button onClick={hello('world')}>button</button>
 ```
 
 > The event handler is created by executing the function call hello('world'). The function call returns the function:
+
+Der Event Handler wird erstellt, wenn die Funktion hello('world') ausgeführt wird. Der Funktionsaufruf gibt eine Funktion aus:
 
 ```javascript
 () => {
@@ -996,11 +1028,15 @@ const App = () => {
 
 > The second button is defined as:
 
+Der erste Button wird so definiert:
+
 ```javascript
 <button onClick={hello('react')}>button</button>
 ```
 
 > The function call hello('react') that creates the event handler returns:
+
+Der Funktionsaufruf hello('react'), der den Event Handler erstellt, gibt folgendes zurück:
 
 ```javascript
 () => {
@@ -1010,9 +1046,15 @@ const App = () => {
 
 > Both buttons get their own individualized event handlers.
 
+Beide Buttons bekommen ihre eigenen maßgeschneiderten Event Handlers.
+
 > Functions returning functions can be utilized in defining generic functionality that can be customized with parameters. The hello function that creates the event handlers can be thought of as a factory that produces customized event handlers meant for greeting users.
 
+Funktionen, die Funktionen ausgeben, können dafür genutzt werden, generische Funktionalitäten einzubauen, die mit Parametern angepasst werden können. Man kann von der Funktion hello, die die Event Handler erstellt, als eine Art Fabrik denken, die angepasste Event Handler produziert, um Benutzer zu begrüßen.
+
 > Our current definition is slightly verbose:
+
+Unsere aktuelle Definition ist ein bisschen ausführlich:
 
 ```javascript
 const hello = (who) => {
@@ -1026,6 +1068,8 @@ const hello = (who) => {
 
 > Let's eliminate the helper variables and directly return the created function:
 
+Eliminieren wir die Helfervariable und geben direkt die erstellte Funktion zurück:
+
 ```javascript
 const hello = (who) => {
   return () => {
@@ -1036,6 +1080,8 @@ const hello = (who) => {
 
 > Since our hello function is composed of a single return command, we can omit the curly braces and use the more compact syntax for arrow functions:
 
+Da unsere Funktion hello aus einem einzigen return-Befehl besteht, können wir die geschwungenen Klammern weglassen und die Pfeilsyntax verwenden:
+
 ```javascript
 const hello = (who) =>
   () => {
@@ -1045,6 +1091,8 @@ const hello = (who) =>
 
 > Lastly, let's write all of the arrows on the same line:
 
+Schreiben wir alle Pfeile in dieselbe Zeile: 
+
 ```javascript
 const hello = (who) => () => {
   console.log('hello', who)
@@ -1052,6 +1100,8 @@ const hello = (who) => () => {
 ```
 
 > We can use the same trick to define event handlers that set the state of the component to a given value. Let's make the following changes to our code:
+
+Wir können den gleichen Trick, der die Event Handler definiert, verwenden, um den State des Komponenten auf einen bestimmten Wert setzten. Ändern wir unseren Code wie folgt ab:
 
 ```javascript
 const App = () => {
@@ -1075,11 +1125,15 @@ const App = () => {
 
 > When the component is rendered, the thousand button is created:
 
+Wenn der Komponent gerendert wird, wird der Button thousand erstellt:
+
 ```javascript
 <button onClick={setToValue(1000)}>thousand</button>
 ```
 
 > The event handler is set to the return value of setToValue(1000) which is the following function:
+
+Der Event Handler wird auf den Rückgabewert von setToValue(1000) gesetzt, was die folgende Funktion ist:
 
 ```javascript
 () => {
@@ -1090,11 +1144,15 @@ const App = () => {
 
 > The increase button is declared as follows:
 
+Der Button increment sieht so aus:
+
 ```javascript
 <button onClick={setToValue(value + 1)}>increment</button>
 ```
 
 > The event handler is created by the function call setToValue(value + 1) which receives as its parameter the current value of the state variable value increased by one. If the value of value was 10, then the created event handler would be the function:
+
+Der Event Handler wird durch den Funktionsaufruf setToValue(value + 1) erstellt, der als Parameter den aktuellen Wert der Statevariable, um 1 erhöht, erhält. Wenn der Wert 10 wäre, wäre der erstellte Event Handler die Funktion:
 
 ```javascript
 () => {
@@ -1104,6 +1162,8 @@ const App = () => {
 ```
 
 > Using functions that return functions is not required to achieve this functionality. Let's return the setToValue function that is responsible for updating state, into a normal function:
+
+Aber man muss nicht Funktionen, die Funktionen ausgeben, verwenden, um diese Funktionalität zu erreichen. Ändern wir die Funktion setToValue, die für das Aktualisieren des States zuständig ist, in eine normale Funktion zurück:
 
 ```javascript
 const App = () => {
@@ -1133,11 +1193,15 @@ const App = () => {
 
 > We can now define the event handler as a function that calls the setToValue function with an appropriate parameter. The event handler for resetting the application state would be:
 
+Jetzt können wir den Event Handler als Funktion, die die Funktion setToValue mit einem passenden Parameter aufruft, definieren. Der Event Handler, der für das Zurücksetzen der Anwendung zuständig ist, würde so aussehen:
+
 ```javascript
 <button onClick={() => setToValue(0)}>reset</button>
 ```
 
 > Choosing between the two presented ways of defining your event handlers is mostly a matter of taste.
+
+Welche der beiden präsentierten Arten, wie man Event Handler definiert, wählt ist reine Geschmackssache.
 
 ## Passing Event Handlers to Child Components
 
