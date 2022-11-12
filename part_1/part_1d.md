@@ -651,9 +651,15 @@ Der erste State enthält den Wert des States left, der nächste enthält den Wer
 
 > There are a few limitations and rules we have to follow to ensure that our application uses hooks-based state functions correctly.
 
+Es gibt einige Begrenzungen und Regeln, die wir beachten müssen, um sicherzustellen, dass unsere Anwendung die hooks-basierten State-Funktionen korrekt verwendet.
+
 > The useState function (as well as the useEffect function introduced later on in the course) must not be called from inside of a loop, a conditional expression, or any place that is not a function defining a component. This must be done to ensure that the hooks are always called in the same order, and if this isn't the case the application will behave erratically.
 
+Die Funktion useState (und die Funktion useEffect, die wir uns später noch genauer anschauen) dürfen nicht innerhalb einer Schleife, einer Bedingung oder außerhalb einer Funktion aufgerufen werden. Das muss getan werden, damit die Hooks immer in derselben Reihenfolge  aufgerufen werden und das passiert nicht, wenn sich die Anwendung ungleichmäßig verhält.
+
 > To recap, hooks may only be called from the inside of a function body that defines a React component:
+
+Um nochmal zu wiederholen: Hooks dürfen nur innerhalb des Funktionskörpers eines React-Komponenten aufgerufen werden:
 
 ```javascript
 const App = () => {
