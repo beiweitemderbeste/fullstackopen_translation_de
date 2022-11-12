@@ -79,3 +79,133 @@ On the contrary, when you pass objects as distinct arguments separated by commas
 > - Higher-order functions
 > - Map
 > - Reduce basics
+
+## Event Handlers Revisited
+
+> Based on last year's course, event handling has proved to be difficult.
+
+> It's worth reading the revision chapter at the end of the previous part event handlers revisited, if it feels like your own knowledge on the topic needs some brushing up.
+
+> Passing event handlers to the child components of the App component has raised some questions. A small revision on the topic can be found here.
+
+## Rendering Collections
+
+> We will now do the 'frontend', or the browser-side application logic, in React for an application that's similar to the example application from part 0
+
+> Let's start with the following (the file App.js):
+
+```javascript
+const App = (props) => {
+  const { notes } = props
+
+  return (
+    <div>
+      <h1>Notes</h1>
+      <ul>
+        <li>{notes[0].content}</li>
+        <li>{notes[1].content}</li>
+        <li>{notes[2].content}</li>
+      </ul>
+    </div>
+  )
+}
+
+export default App
+```
+
+> The file index.js looks like:
+
+```javascript
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+
+import App from './App'
+
+const notes = [
+  {
+    id: 1,
+    content: 'HTML is easy',
+    date: '2019-05-30T17:30:31.098Z',
+    important: true
+  },
+  {
+    id: 2,
+    content: 'Browser can execute only JavaScript',
+    date: '2019-05-30T18:39:34.091Z',
+    important: false
+  },
+  {
+    id: 3,
+    content: 'GET and POST are the most important methods of HTTP protocol',
+    date: '2019-05-30T19:20:14.298Z',
+    important: true
+  }
+]
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <App notes={notes} />
+)
+```
+
+> Every note contains its textual content and a timestamp, as well as a boolean value for marking whether the note has been categorized as important or not, and also a unique id.
+
+> The example above works due to the fact that there are exactly three notes in the array.
+
+> A single note is rendered by accessing the objects in the array by referring to a hard-coded index number:
+
+```javascript
+<li>{notes[1].content}</li>
+```
+
+> This is, of course, not practical. We can improve on this by generating React elements from the array objects using the map function.
+
+```javascript
+notes.map(note => <li>{note.content}</li>)
+```
+
+> The result is an array of li elements.
+
+```javascript
+[
+  <li>HTML is easy</li>,
+  <li>Browser can execute only JavaScript</li>,
+  <li>GET and POST are the most important methods of HTTP protocol</li>,
+]
+```
+
+> Which can then be placed inside ul tags:
+
+```javascript
+const App = (props) => {
+  const { notes } = props
+
+  return (
+    <div>
+      <h1>Notes</h1>
+      <ul>        {notes.map(note => <li>{note.content}</li>)}      </ul>    </div>
+  )
+}
+```
+
+> Because the code generating the li tags is JavaScript, it must be wrapped in curly braces in a JSX template just like all other JavaScript code.
+
+> We will also make the code more readable by separating the arrow function's declaration across multiple lines:
+
+```javascript
+const App = (props) => {
+  const { notes } = props
+
+  return (
+    <div>
+      <h1>Notes</h1>
+      <ul>
+        {notes.map(note => 
+          <li>            
+            {note.content}          
+          </li>        
+        )}
+      </ul>
+    </div>
+  )
+}
+```
