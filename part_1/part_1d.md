@@ -1307,11 +1307,19 @@ const App = () => {
 
 > The internet is full of React-related material. However, we use the new style of React for which a large majority of the material found online is outdated.
 
+Im Internet gibt es viel Material zu React. Trotzdem nutzen wir den aktuellen Programmierstil von React, für den die Mehrheit des Onlinematerials veraltet ist.
+
 > You may find the following links useful:
+
+Ihr findet die folgenden Links sicher nützlich:
 
 > - The official React documentation is worth checking out at some point, although most of it will become relevant only later on in the course. Also, everything related to class-based components is irrelevant to us;  
 
+- Die offizielle Reactdokumentation ist es Wert gelesen zu werden, auch wenn das meiste erst zu einem späteren Zeitpunkt im Kurs relevant wird. Zudem ist alles, was sich auf klassenbasierte Komponenten bezieht, für uns irrelavant.
+
 > - Some courses on Egghead.io like Start learning React are of high quality, and recently updated The Beginner's Guide to React is also relatively good; both courses introduce concepts that will also be introduced later on in this course. NB The first one uses class components but the latter uses the new functional ones.
+
+Einige Kurse auf egghead.io, wie z.B. Start learning React, sind von hoher Qualität und der kürzlich aktualisierte The Beginner's Guide to React ist auch relativ gut. Beide Kurse führen Themen ein, die auch noch später in diesem Kurs bearbeitet werden. Hinweis: Ersterer verwendent Klassenkomponenten, aber der Zweite verwenden funktionale.
 
 ## Exercises
 
