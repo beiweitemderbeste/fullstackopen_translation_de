@@ -482,7 +482,11 @@ const App = () => {
 
 > In this course we use the state hook to add state to our React components, which is part of the newer versions of React and is available from version 16.8.0 onwards. Before the addition of hooks, there was no way to add state to functional components. Components that required state had to be defined as class components, using the JavaScript class syntax.
 
+In diesem Kurs benutzen wir den State Hook, um State an React-Komponenten hinzufügen. Der State Hook ist Teil neuerer Reactversionen und ist ab Version 16.8.0 verfügbar. Komponenten, die vorher einen State benötigten wurden als Klassenkomponenten definiert.
+
 > In this course we have made the slightly radical decision to use hooks exclusively from day one, to ensure that we are learning the current and future style of React. Even though functional components are the future of React, it is still important to learn the class syntax, as there are billions of lines of legacy React code that you might end up maintaining someday. The same applies to documentation and examples of React that you may stumble across on the internet.
+
+In diesem Kurs haben wir die leicht radikale Entscheidung getroffen ab Tag 1 ausschließlich Hooks zu nutzen, um sicherzustellen, dass wir den aktuellen und zukünftigen Programmierstil von React lernen. 
 
 > We will learn more about React class components later on in the course.
 
@@ -490,25 +494,45 @@ const App = () => {
 
 > A large part of a typical developer's time is spent on debugging and reading existing code. Every now and then we do get to write a line or two of new code, but a large part of our time is spent on trying to figure out why something is broken or how something works. Good practices and tools for debugging are extremely important for this reason.
 
+Ein großer Teil der typischen Entwicklerarbeit wird für Debugging und das Lesen von Code verwendet. Ab und zu schreigben wir selbst noch ein oder zwei Zeilen, aber ein großer Teil unserer Zeit wird dafür verwendet herauszufinden, warum etwas nicht funktioniert oder warum es funktioniert. Gute Werkzeuge für Debugging sind aus diesem Grund extrem wichtig.
+
 > Lucky for us, React is an extremely developer-friendly library when it comes to debugging.
+
+Glücklicherweise ist React eine extrem Entwicklerfreundliche Bibliothek, wenn es um Debugging geht.
 
 > Before we move on, let us remind ourselves of one of the most important rules of web development.
 
+Bevor wir weitermachen, erinnern wir uns an eine der wichtigsten Regeln der Webentwicklung.
+
 > The first rule of web development
+
+Die erste Regel der Webentwicklung
 
 > > Keep the browser's developer console open at all times.
 
+Immer die Browserkonsole offen haben.
+
 > > The Console tab in particular should always be open, unless there is a specific reason to view another tab.
+
+Besonders der Console-Tab sollte immer geöffnet sein (es sei denn, es gibt einen besonderen Grund, einen anderen Tab anzuschauen).
 
 > Keep both your code and the web page open together at the same time, all the time.
 
+Habt immer euren Editor und eure Webseite gleichzeitig offen.
+
 > If and when your code fails to compile and your browser lights up like a Christmas tree:
+
+Falls und wenn es zu Fehlern kommt, leuchtet der Browser wie ein Weihnachtsbaum auf:
 
 !["fullstack content"](./images/part1d_image1.png?raw=true)
 
 > don't write more code but rather find and fix the problem immediately. There has yet to be a moment in the history of coding where code that fails to compile would miraculously start working after writing large amounts of additional code. I highly doubt that such an event will transpire during this course either.
 
+In so einem Fall solltet ihr erst das Problem finden und lösen, bevor ihr weiterprogrammiert. Es gab noch nie eine Zeit, in der das masshaft weiters Programmieren Probleme auf wundersame Weise gelöst hat. Ich denke auch nicht, dass das jemals funktionieren wird.
+
 > Old school, print-based debugging is always a good idea. If the component
+
+Früher hat man mit Print-Ausdrücken gearbeitet, was heutzutage immer noch eine gute Idee ist. Wenn der Komponent
 
 ```javascript
 const Button = ({ onClick, text }) => (
@@ -519,6 +543,8 @@ const Button = ({ onClick, text }) => (
 ```
 
 > is not working as intended, it's useful to start printing its variables out to the console. In order to do this effectively, we must transform our function into the less compact form and receive the entire props object without destructuring it immediately:
+
+nicht funktioniert wie gedacht, ist es hilfreich, seine Variable in der Konsole ausgeben zu lassen.  Um das machen zu können, müssen wir unsere Funktion wieder zurückbauen und die props nicht Destrukturieren:
 
 ```javascript
 const Button = (props) => { 
@@ -535,7 +561,11 @@ const Button = (props) => {
 
 > This will immediately reveal if, for instance, one of the attributes has been misspelled when using the component.
 
+Das wird direkt zeigen, wenn z.B. eines der Attribute falsch geschrieben wurde.
+
 > NB When you use console.log for debugging, don't combine objects in a Java-like fashion by using the plus operator. Instead of writing:
+
+Hinweis: Wenn ihr console.log zum Debuggen einsetzt, solltet ihr nicht mehrere Objekte mit dem +-Zeichen verbinden. Also statt 
 
 ```javascript
 console.log('props value is ' + props)
@@ -543,11 +573,15 @@ console.log('props value is ' + props)
 
 > Separate the things you want to log to the console with a comma:
 
+zu schreiben, trennt die Objekte mit einem Komma:
+
 ```javascript
 console.log('props value is', props)
 ```
 
-> If you use the Java-like way of concatenating a string with an object, you will end up with a rather uninformative log message:
+> If you use the Java-like way of concatenating a string with an object, you will end up with a rather uninformative log message:+
+
+Wenn ihr den Java-artigen Weg geht, um Strings mit einem Objekt zu verwenden, erhaltet ihr eine eher uninformative Nachricht:
 
 ```javascript
 props value is [object Object]
@@ -555,29 +589,47 @@ props value is [object Object]
 
 > Whereas the items separated by a comma will all be available in the browser console for further inspection.
 
+Im Gegensatz dazu sind alle Objekte, die von einem Komma getrennt sind, in der Browserkonsole verfügbar.
+
 > Logging to the console is by no means the only way of debugging our applications. You can pause the execution of your application code in the Chrome developer console's debugger, by writing the command debugger anywhere in your code.
 
+Ausgaben über die Konsole ist natürlich nicht der einzige Weg, um Anwendungen zu debuggen. Ihr könnt die Ausführung eurer Anwendung im Debugger der Chrome developer tools jederzeit anhalten, in dem ihr den Befehl debugger irgendwo in euren Code schreibt.
+
 > The execution will pause once it arrives at a point where the debugger command gets executed:
+
+Die Ausführung wird gestoppt, wenn sie an den Punkt kommt, wo der Befehl debugger ausgeführt wird:
 
 !["fullstack content"](./images/part1d_image2.png?raw=true)
 
 > By going to the Console tab, it is easy to inspect the current state of variables:
 
+Wenn wir den Console-Tab öffnen, ist es leicht den aktuellen State der Variablen zu inspizieren:
+
 !["fullstack content"](./images/part1d_image3.png?raw=true)
 
 > Once the cause of the bug is discovered you can remove the debugger command and refresh the page.
 
+Wenn der Grund für den Bug gefunden wurde, kann der Befehl debugger entfernt und die Seite aktualisiert werden.
+
 > The debugger also enables us to execute our code line by line with the controls found on the right-hand side of the Sources tab.
 
+Der Debugger ermöglicht es uns unseren Code Zeile für Zeile auszuführen, dazu gibt es auf der rechten Seite eine Steuerung.
+
 > You can also access the debugger without the debugger command by adding breakpoints in the Sources tab. Inspecting the values of the component's variables can be done in the Scope-section:
+
+Ihr könnt den Debugger auch ohne den Befehl dazu aufrufen, indem ihr Breakpoints im Sources-Tab setzt. Die Werte der Komponentenvariablen kann man in der Scope-Sektion untersuchen:
 
 !["fullstack content"](./images/part1d_image4.png?raw=true)
 
 > It is highly recommended to add the React developer tools extension to Chrome. It adds a new Components tab to the developer tools. The new developer tools tab can be used to inspect the different React elements in the application, along with their state and props:
 
+Es wird sehr empfohlen, die Erweiterung für die React Developer tools für Chrom zu installieren. Mit der Erweiterung wir an die Entwicklertoos ein neues Componenten-Tab angehängt, mit dem man die verschiedenen React-Elemente der Anwendung untersuchen kann, inklusive State und props:
+
 !["fullstack content"](./images/part1d_image5.png?raw=true)
 
 > The App component's state is defined like so:
+
+Der State des Komponenten App wurde so definiert:
 
 ```javascript
 const [left, setLeft] = useState(0)
@@ -587,9 +639,13 @@ const [allClicks, setAll] = useState([])
 
 > Dev tools shows the state of hooks in the order of their definition:
 
+Die Entwicklerwerkzeuge zeigen jetzt den State der Hooks geordnet nach ihrer Definition an:
+
 !["fullstack content"](./images/part1d_image6.png?raw=true)
 
 > The first State contains the value of the left state, the next contains the value of the right state and the last contains the value of the allClicks state.
+
+Der erste State enthält den Wert des States left, der nächste enthält den Wert des States right und der letzte enthält den Wert des States allClicks.
 
 ## Rules of Hooks
 
