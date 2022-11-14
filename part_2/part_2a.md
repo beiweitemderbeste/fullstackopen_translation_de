@@ -352,3 +352,114 @@ notes.map((note, i) => ...)
 > This is; however, not recommended and can create undesired problems even if it seems to be working just fine.
 
 > Read more about this in this article.
+
+## Refactoring Modules
+
+> Let's tidy the code up a bit. We are only interested in the field notes of the props, so let's retrieve that directly using destructuring: 
+
+```javascript
+const App = ({ notes }) => {  
+  return (
+    <div>
+      <h1>Notes</h1>
+      <ul>
+        {notes.map(note => 
+          <li key={note.id}>
+            {note.content}
+          </li>
+        )}
+      </ul>
+    </div>
+  )
+}
+```
+
+> If you have forgotten what destructuring means and how it works, please review the section on destructuring.
+
+> We'll separate displaying a single note into its own component Note: 
+
+```javascript
+const Note = ({ note }) => {  
+  return (    
+    <li>{note.content}</li>  
+  )
+}
+
+const App = ({ notes }) => {
+  return (
+    <div>
+      <h1>Notes</h1>
+      <ul>
+        {notes.map(note =>           
+          <Note key={note.id} note={note} />        
+        )}      
+      </ul>
+    </div>
+  )
+}
+```
+
+> Note that the key attribute must now be defined for the Note components, and not for the li tags like before.
+
+> A whole React application can be written in a single file. Although that is, of course, not very practical. Common practice is to declare each component in their own file as an ES6-module.
+
+> We have been using modules the whole time. The first few lines of the file index.js:
+
+```javascript
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+
+import App from './App'
+```
+
+> import three modules, enabling them to be used in that file. The module React is placed into the variable React, the module react-dom into the variable ReactDOM, and the module that defines the main component of the app is placed into the variable App
+
+> Let's move our Note component into its own module.
+
+> In smaller applications, components are usually placed in a directory called components, which is in turn placed within the src directory. The convention is to name the file after the component.
+
+> Now, we'll create a directory called components for our application and place a file named Note.js inside. The contents of the Note.js file are as follows: 
+
+```javascript
+const Note = ({ note }) => {
+  return (
+    <li>{note.content}</li>
+  )
+}
+
+export default Note
+```
+
+> The last line of the module exports the declared module, the variable Note.
+
+> Now the file that is using the component - App.js - can import the module: 
+
+```javascript
+import Note from './components/Note'
+
+const App = ({ notes }) => {
+  // ...
+}
+```
+
+> The component exported by the module is now available for use in the variable Note, just as it was earlier.
+
+> Note that when importing our own components, their location must be given in relation to the importing file:
+
+```javascript
+'./components/Note'
+```
+
+> The period - . - in the beginning refers to the current directory, so the module's location is a file called Note.js in the components sub-directory of the current directory. The filename extension .js can be omitted.
+
+> Modules have plenty of other uses other than enabling component declarations to be separated into their own files. We will get back to them later in this course.
+
+> The current code of the application can be found on GitHub.
+
+> Note that the main branch of the repository contains the code for a later version of the application. The current code is in the branch part2-1:
+
+!["fullstack content"](./images/part2a_image1.png?raw=true)
+
+> If you clone the project, run the command npm install before starting the application with npm start.
+
+## When the Application Breaks
