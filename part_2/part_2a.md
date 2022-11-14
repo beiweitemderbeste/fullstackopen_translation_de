@@ -463,3 +463,95 @@ const App = ({ notes }) => {
 > If you clone the project, run the command npm install before starting the application with npm start.
 
 ## When the Application Breaks
+
+> Early in your programming career (and even after 30 years of coding like yours truly), what often happens is that the application just completely breaks down. This is even more the case with dynamically typed languages, such as JavaScript, where the compiler does not check the data type. For instance, function variables or return values.
+
+> A "React explosion" can, for example, look like this:
+
+!["fullstack content"](./images/part2a_image2.png?raw=true)
+
+> In these situations your best way out is the console.log method.
+
+> The piece of code causing the explosion is this:
+
+```javascript
+const Course = ({ course }) => (
+  <div>
+    <Header course={course} />
+  </div>
+)
+
+const App = () => {
+  const course = {
+    // ...
+  }
+
+  return (
+    <div>
+      <Course course={course} />
+    </div>
+  )
+}
+```
+
+> We'll hone in on the reason for the breakdown by adding console.log commands to the code. Because the first thing to be rendered is the App component, it's worth putting the first console.log there: 
+
+```javascript
+const App = () => {
+  const course = {
+    // ...
+  }
+
+  console.log('App works...')
+
+  return (
+    // ..
+  )
+}
+```
+
+> To see the printing in the console, we must scroll up over the long red wall of errors.
+
+!["fullstack content"](./images/part2a_image3.png?raw=true)
+
+> When one thing is found to be working, it's time to log deeper. If the component has been declared as a single statement, or a function without a return, it makes printing to the console harder.
+
+```javascript
+const Course = ({ course }) => (
+  <div>
+    <Header course={course} />
+  </div>
+)
+```
+
+> The component should be changed to its longer form in order for us to add the printing: 
+
+```javascript
+const Course = ({ course }) => { 
+  console.log(course)  
+  
+  return (
+    <div>
+      <Header course={course} />
+    </div>
+  )
+}
+```
+
+> Quite often the root of the problem is that the props are expected to be of a different type, or called with a different name than they actually are, and destructuring fails as a result. The problem often begins to solve itself when destructuring is removed and we see what the props actually contains. 
+
+```javascript
+const Course = (props) => {  
+  console.log(props)  
+  const { course } = props
+  return (
+    <div>
+      <Header course={course} />
+    </div>
+  )
+}
+```
+
+> If the problem has still not been resolved, there really isn't much to do apart from continuing to bug-hunt by sprinkling more console.log statements around your code.
+
+> I added this chapter to the material after the model answer for the next question exploded completely (due to props being of the wrong type), and I had to debug it using console.log.
