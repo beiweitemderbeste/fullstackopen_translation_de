@@ -21,7 +21,7 @@
 
 > Version 18 of React was released late March 2022. The code in this course should work with the new React version. However, some libraries might not yet be compatible with React 18. At the moment of writing (4th April) at least the Apollo client used in part 8 does not yet work with most recent React.
 
-Version 18 von React wurde im späten März 2022 veröffentlicht. Der Code in diesem Kurs sollte mit der neuen React-Version kompatibel sein, aber einige Bibliotheken könnten es noch nicht. Zur Zeit des Verfassens dieses Textes (04.04.) ist mindestens der Client für Apollo, der in Abschnitt 8 verwendet wird, noch nicht zur aktuellen Reactversion kompatibel.
+Version 18 von React wurde im späten März 2022 veröffentlicht. Der Code in diesem Kurs sollte mit der neuen React-Version kompatibel sein, aber einige Bibliotheken könnten es noch nicht sein. Zur Zeit des Verfassens dieses Textes (04.04.) ist mindestens der Client für Apollo, der in Abschnitt 8 verwendet wird, noch nicht zur aktuellen Reactversion kompatibel.
 
 > In case you end up in a situation where your application breaks because of library compatibility problems, downgrade to the older React by changing the file package.json as follows:
 
@@ -261,7 +261,7 @@ In dieser speziellen Anwendung ist das Speichern des States in einem einzigen St
 
 > There are situations where it can be beneficial to store a piece of application state in a more complex data structure. The official React documentation contains some helpful guidance on the topic.
 
-Es gibt Gelegenheiten, wo es profitabale sein kann, einen Teil des States in einer komplexeren Datenstruktur zu speichern. Die offizielle React-Dokumentation enthält einige hilfreiche Tipps zu diesem Thema.
+Es gibt Gelegenheiten, wo es profitabler sein kann, einen Teil des States in einer komplexeren Datenstruktur zu speichern. Die offizielle React-Dokumentation enthält einige hilfreiche Tipps zu diesem Thema.
 
 ## Handling arrays
 
@@ -510,7 +510,7 @@ Die erste Regel der Webentwicklung
 
 > > Keep the browser's developer console open at all times.
 
-Immer die Browserkonsole offen haben.
+- Immer die Browserkonsole offen haben
 
 > > The Console tab in particular should always be open, unless there is a specific reason to view another tab.
 
@@ -651,11 +651,11 @@ Der erste State enthält den Wert des States left, der nächste enthält den Wer
 
 > There are a few limitations and rules we have to follow to ensure that our application uses hooks-based state functions correctly.
 
-Es gibt einige Begrenzungen und Regeln, die wir beachten müssen, um sicherzustellen, dass unsere Anwendung die hooks-basierten State-Funktionen korrekt verwendet.
+Es gibt einige Begrenzungen und Regeln, die wir beachten müssen, um sicherzustellen, dass unsere Anwendung die hook-basierten State-Funktionen korrekt verwendet.
 
 > The useState function (as well as the useEffect function introduced later on in the course) must not be called from inside of a loop, a conditional expression, or any place that is not a function defining a component. This must be done to ensure that the hooks are always called in the same order, and if this isn't the case the application will behave erratically.
 
-Die Funktion useState (und die Funktion useEffect, die wir uns später noch genauer anschauen) dürfen nicht innerhalb einer Schleife, einer Bedingung oder außerhalb einer Funktion aufgerufen werden. Das muss getan werden, damit die Hooks immer in derselben Reihenfolge  aufgerufen werden und das passiert nicht, wenn sich die Anwendung ungleichmäßig verhält.
+Die Funktion useState (und die Funktion useEffect, die wir uns später noch genauer anschauen) dürfen nicht innerhalb einer Schleife, einer Bedingung oder außerhalb einer Funktion aufgerufen werden. Das muss erfolgen, damit die Hooks immer in derselben Reihenfolge  aufgerufen werden und das passiert nicht, wenn sich die Anwendung ungleichmäßig verhält.
 
 > To recap, hooks may only be called from the inside of a function body that defines a React component:
 
@@ -692,11 +692,11 @@ const App = () => {
 
 > Event handling has proven to be a difficult topic in previous iterations of this course.
 
-Event Handling hat sich in vorangegangenen Ausgaben dieses Kurses als schwierig erwiesen.
+Event Handling hat sich in vorangegangenen Ausgaben dieses Kurses als schwieriges Thema erwiesen.
 
 > For this reason we will revisit the topic.
 
-Aus diesem Grund schauen wir uns das Thema nochmal an.
+Aus diesem Grund schauen wir uns dieses Thema nochmal an.
 
 > Let's assume that we're developing this simple application with the following component App:
 
@@ -772,7 +772,7 @@ Dieser Versuch würde auch nicht funktionieren:
 
 > The event handler is not a function but a variable assignment, and React will once again issue a warning to the console. This attempt is also flawed in the sense that we must never mutate state directly in React.
 
-Der Event Handler ist keine Funktion, sondern die Zuweisung einer Variablen und React wird auch dafür eine Warnung in der Konsole anzeigen. Der Versuch hat auch das Problem, dass der State direkt verändert wird, was wir in React nie tun sollten.
+Der Event Handler ist keine Funktion, sondern die Zuweisung einer Variablen und React wird auch dafür eine Warnung in der Konsole anzeigen. Dieser Versuch hat auch das Problem, dass der State direkt verändert wird, was wir in React nie tun sollten.
 
 > What about the following:
 
@@ -868,7 +868,7 @@ Der Variablen handleClick wird jetzt ein Verweis auf die Funktion zugewiesen. De
 
 > Naturally, our event handler function can be composed of multiple commands. In these cases we use the longer curly brace syntax for arrow functions:
 
-Natürlich kann unsere Event Handler-Funktion auch aus verschiedenen Befehlen bestehen. Für diese Fälle werwenden wir die längere Syntax mit geschwungenen Klammern:
+Natürlich kann unsere Event Handler-Funktion auch aus verschiedenen Befehlen bestehen. Für diese Fälle verwenden wir die längere Syntax mit geschwungenen Klammern:
 
 ```javascript
 const App = () => {
@@ -934,7 +934,7 @@ Auf den Eventhandler wird jetzt ein Funktionsaufruf gesetzt:
 
 > Earlier on we stated that an event handler may not be a call to a function, and that it has to be a function or a reference to a function. Why then does a function call work in this case?
 
-Vorhin haben wir gesagt, dass ein Event Handler kein Funktionsaufruf sein darf, sondern es eine Funktion oder ein Verweis auf eine Funktion sein muss. Warum funktionier hier ein Funktionsaufruf trotzdem?
+Vorhin haben wir gesagt, dass ein Event Handler kein Funktionsaufruf sein darf, sondern es eine Funktion oder ein Verweis auf eine Funktion sein muss. Warum funktioniert hier ein Funktionsaufruf trotzdem?
 
 > When the component is rendered, the following function gets executed:
 
@@ -1028,7 +1028,7 @@ Der Event Handler wird erstellt, wenn die Funktion hello('world') ausgeführt wi
 
 > The second button is defined as:
 
-Der erste Button wird so definiert:
+Der zweite Button wird so definiert:
 
 ```javascript
 <button onClick={hello('react')}>button</button>
@@ -1223,7 +1223,7 @@ Der Komponent bekommt seine Event Handler-Funktion from prop handleClick und den
 
 > Using the Button component is simple, although we have to make sure that we use the correct attribute names when passing props to the component.
 
-Das Verwenden des Komponents Button ist einfach, trotzdem müssen wir sicherestellen, das wir die korrekten Namen für die Attribute verwenden, wenn wir props zu dem Komponenten weiterreichen.
+Das Verwenden des Komponents Button ist einfach, trotzdem müssen wir sicherstellen, das wir die korrekten Namen für die Attribute verwenden, wenn wir props zu dem Komponenten weiterreichen.
 
 !["fullstack content"](./images/part1d_image7.png?raw=true)
 
