@@ -44,7 +44,7 @@ If you concatenate an object with a string and log it to the console (like in ou
 props value is [object Object]
 ```
 
-On the contrary, when you pass objects as distinct arguments separated by commas to console.log, like in our second example above, the content of the object is printed to the developer console as strings that are insightful. If necessary, read more about debugging React-applications.
+> On the contrary, when you pass objects as distinct arguments separated by commas to console.log, like in our second example above, the content of the object is printed to the developer console as strings that are insightful. If necessary, read more about debugging React-applications.
 
 ## Protip: Visual Studio Code snippets
 
@@ -326,3 +326,29 @@ note => <li key={note.id}>{note.content}</li>
 >  - is used to create view elements, the value of the variable must be rendered inside curly braces. Try to see what happens if the braces are removed.
 
 > The use of curly braces will cause some pain in the beginning, but you will get used to them soon enough. The visual feedback from React is immediate.
+
+## Anti-pattern: Array Indexes as Keys
+
+> We could have made the error message on our console disappear by using the array indexes as keys. The indexes can be retrieved by passing a second parameter to the callback function of the map method: 
+
+```javascript
+notes.map((note, i) => ...)
+```
+
+> When called like this, i is assigned the value of the index of the position in the array where the note resides.
+
+> As such, one way to define the row generation without getting errors is:
+
+```javascript
+<ul>
+  {notes.map((note, i) => 
+    <li key={i}>
+      {note.content}
+    </li>
+  )}
+</ul>
+```
+
+> This is; however, not recommended and can create undesired problems even if it seems to be working just fine.
+
+> Read more about this in this article.
