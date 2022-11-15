@@ -249,3 +249,132 @@ setNewNote('')
 > You can find the code for our current application in its entirety in the part2-2 branch of this GitHub repository.
 
 ## Filtering Displayed Elements
+
+> Let's add some new functionality to our application that allows us to only view the important notes.
+
+> Let's add a piece of state to the App component that keeps track of which notes should be displayed:
+
+```javascript
+const App = (props) => {
+  const [notes, setNotes] = useState(props.notes) 
+  const [newNote, setNewNote] = useState('')
+  const [showAll, setShowAll] = useState(true)  
+
+  // ...
+}
+```
+
+> Let's change the component so that it stores a list of all the notes to be displayed in the notesToShow variable. The items of the list depend on the state of the component:
+
+```javascript
+import { useState } from 'react'
+import Note from './components/Note'
+
+const App = (props) => {
+  const [notes, setNotes] = useState(props.notes)
+  const [newNote, setNewNote] = useState('') 
+  const [showAll, setShowAll] = useState(true)
+
+  // ...
+
+  const notesToShow = showAll    
+  ? notes    
+  : notes.filter(note => note.important === true)
+
+  return (
+    <div>
+      <h1>Notes</h1>
+      <ul>
+        {notesToShow.map(note =>          
+          <Note key={note.id} note={note} />
+        )}
+      </ul>
+      // ...
+    </div>
+  )
+}
+```
+
+> The definition of the notesToShow variable is rather compact:
+
+```javascript
+const notesToShow = showAll
+  ? notes
+  : notes.filter(note => note.important === true)
+```
+
+> The definition uses the conditional operator also found in many other programming languages.
+
+> The operator functions as follows. If we have:
+
+```javascript
+const result = condition ? val1 : val2
+```
+
+> the result variable will be set to the value of val1 if condition is true. If condition is false, the result variable will be set to the value ofval2.
+
+> If the value of showAll is false, the notesToShow variable will be assigned to a list that only contains notes that have the important property set to true. Filtering is done with the help of the array filter method:
+
+```javascript
+notes.filter(note => note.important === true)
+```
+
+> The comparison operator is in fact redundant, since the value of note.important is either true or false, which means that we can simply write:
+
+```javascript
+notes.filter(note => note.important)
+```
+
+> The reason we showed the comparison operator first was to emphasize an important detail: in JavaScript val1 == val2 does not work as expected in all situations and it's safer to use val1 === val2 exclusively in comparisons. You can read more about the topic here.
+
+> You can test out the filtering functionality by changing the initial value of the showAll state.
+
+> Next, let's add functionality that enables users to toggle the showAll state of the application from the user interface.
+
+> The relevant changes are shown below:
+
+```javascript
+import { useState } from 'react' 
+import Note from './components/Note'
+
+const App = (props) => {
+  const [notes, setNotes] = useState(props.notes) 
+  const [newNote, setNewNote] = useState('')
+  const [showAll, setShowAll] = useState(true)
+
+  // ...
+
+  return (
+    <div>
+      <h1>Notes</h1>
+      <div>        
+        <button onClick={() => setShowAll(!showAll)}>         
+          show {showAll ? 'important' : 'all' }        
+        </button>      
+      </div>      
+      <ul>
+        {notesToShow.map(note =>
+          <Note key={note.id} note={note} />
+        )}
+      </ul>
+      // ...    
+    </div>
+  )
+}
+```
+
+> The displayed notes (all versus important) are controlled with a button. The event handler for the button is so simple that it has been defined directly in the attribute of the button element. The event handler switches the value of showAll from true to false and vice versa:
+
+```javascript
+() => setShowAll(!showAll)
+```
+
+> The text of the button depends on the value of the showAll state:
+
+```javascript
+show {showAll ? 'important' : 'all'}
+```
+
+> You can find the code for our current application in its entirety in the part2-3 branch of this GitHub repository.
+
+## exercises
