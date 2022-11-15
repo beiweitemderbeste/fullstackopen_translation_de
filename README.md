@@ -12,7 +12,6 @@
 - [part 5 - testing react apps](part_5/part_5.md)
 - [part 6 - state management with redux](part_6/part_6.md)
 - [part 7 - react router, custom hooks, styling app with css and webpack](part_7/part_7.md)
-  - [part 7f - exercises](part_7/part_7f.md)
 - [part 8 - graphql](part_8/part_8.md)
 - [part 9 - typescript](part_9/part_9.md)
 - [part 10 - React Native](part_10/part_10.md)
