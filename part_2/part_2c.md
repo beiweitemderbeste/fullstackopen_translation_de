@@ -374,3 +374,293 @@ axios.get('http://localhost:3001/notes').then(response => {
 > What's not immediately obvious, however, is where the command axios.get should be placed within the component.
 
 ## Effect-hooks
+
+> We have already used state hooks that were introduced along with React version 16.8.0, which provide state to React components defined as functions - the so-called functional components. Version 16.8.0 also introduces effect hooks as a new feature. As per the official docs:
+
+> The Effect Hook lets you perform side effects on function components. Data fetching, setting up a subscription, and manually changing the DOM in React components are all examples of side effects.
+
+> As such, effect hooks are precisely the right tool to use when fetching data from a server.
+
+> Let's remove the fetching of data from index.js. Since we're gonna be retrieving the notes from the server, there is no longer a need to pass data as props to the App component. So index.js can be simplified to:
+
+```javascript
+ReactDOM.createRoot(document.getElementById('root')).render(<App />)
+```
+
+> The App component changes as follows:
+
+```javascript
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import Note from './components/Note'
+
+const App = () => {  
+  const [notes, setNotes] = useState([])  
+  const [newNote, setNewNote] = useState('')
+  const [showAll, setShowAll] = useState(true)
+
+  useEffect(() => {    
+    console.log('effect')    
+    axios      
+      .get('http://localhost:3001/notes')      
+      .then(response => {        
+        console.log('promise fulfilled')        
+        setNotes(response.data)      
+      })  
+  }, [])  
+  console.log('render', notes.length, 'notes')
+
+  // ...
+}
+```
+
+> We have also added a few helpful prints, which clarify the progression of the execution.
+
+> This is printed to the console:
+
+```
+render 0 notes
+effect
+promise fulfilled
+render 3 notes
+```
+
+> First, the body of the function defining the component is executed and the component is rendered for the first time. At this point render 0 notes is printed, meaning data hasn't been fetched from the server yet.
+
+> The following function, or effect in React parlance:
+
+```javascript
+() => {
+  console.log('effect')
+  axios
+    .get('http://localhost:3001/notes')
+    .then(response => {
+      console.log('promise fulfilled')
+      setNotes(response.data)
+    })
+}
+```
+
+> is executed immediately after rendering. The execution of the function results in effect being printed to the console, and the command axios.get initiates the fetching of data from the server as well as registers the following function as an event handler for the operation:
+
+```javascript
+response => {
+  console.log('promise fulfilled')
+  setNotes(response.data)
+})
+```
+
+> When data arrives from the server, the JavaScript runtime calls the function registered as the event handler, which prints promise fulfilled to the console and stores the notes received from the server into the state using the function setNotes(response.data).
+
+> As always, a call to a state-updating function triggers the re-rendering of the component. As a result, render 3 notes is printed to the console, and the notes fetched from the server are rendered to the screen.
+
+> Finally, let's take a look at the definition of the effect hook as a whole:
+
+```javascript
+useEffect(() => {
+  console.log('effect')
+  axios
+    .get('http://localhost:3001/notes').then(response => {
+      console.log('promise fulfilled')
+      setNotes(response.data)
+    })
+}, [])
+```
+
+> Let's rewrite the code a bit differently.
+
+```javascript
+const hook = () => {
+  console.log('effect')
+  axios
+    .get('http://localhost:3001/notes')
+    .then(response => {
+      console.log('promise fulfilled')
+      setNotes(response.data)
+    })
+}
+
+useEffect(hook, [])
+```
+
+> Now we can see more clearly that the function useEffect actually takes two parameters. The first is a function, the effect itself. According to the documentation:
+
+> By default, effects run after every completed render, but you can choose to fire it only when certain values have changed.
+
+> So by default the effect is always run after the component has been rendered. In our case, however, we only want to execute the effect along with the first render.
+
+> The second parameter of useEffect is used to specify how often the effect is run. If the second parameter is an empty array [], then the effect is only run along with the first render of the component.
+
+> There are many possible use cases for an effect hook other than fetching data from the server. However, this use is sufficient for us, for now.
+
+> Think back to the sequence of events we just discussed. Which parts of the code are run? In what order? How often? Understanding the order of events is critical!
+
+> Note that we could have also written the code for the effect function this way:
+
+```javascript
+useEffect(() => {
+  console.log('effect')
+
+  const eventHandler = response => {
+    console.log('promise fulfilled')
+    setNotes(response.data)
+  }
+
+  const promise = axios.get('http://localhost:3001/notes')
+  promise.then(eventHandler)
+}, [])
+```
+
+> A reference to an event handler function is assigned to the variable eventHandler. The promise returned by the get method of Axios is stored in the variable promise. The registration of the callback happens by giving the eventHandler variable, referring to the event-handler function, as a parameter to the then method of the promise. It isn't usually necessary to assign functions and promises to variables, and a more compact way of representing things, as seen further above, is sufficient.
+
+```javascript
+useEffect(() => {
+  console.log('effect')
+  axios
+    .get('http://localhost:3001/notes')
+    .then(response => {
+      console.log('promise fulfilled')
+      setNotes(response.data)
+    })
+}, [])
+```
+
+> We still have a problem in our application. When adding new notes, they are not stored on the server.
+
+> The code for the application, as described so far, can be found in full on github, on branch part2-4.
+
+## The development runtime environment
+
+>  The configuration for the whole application has steadily grown more complex. Let's review what happens and where. The following image describes the makeup of the application
+
+!["fullstack content"](./images/part2c_image5.png?raw=true)
+
+> The JavaScript code making up our React application is run in the browser. The browser gets the JavaScript from the React dev server, which is the application that runs after running the command npm start. The dev-server transforms the JavaScript into a format understood by the browser. Among other things, it stitches together JavaScript from different files into one file. We'll discuss the dev-server in more detail in part 7 of the course.
+
+> The React application running in the browser fetches the JSON formatted data from json-server running on port 3001 on the machine. The server we query the data from - json-server - gets its data from the file db.json.
+
+> At this point in development, all the parts of the application happen to reside on the software developer's machine, otherwise known as localhost. The situation changes when the application is deployed to the internet. We will do this in part 3.
+
+## exercises
+
+### 2.11: The Phonebook Step6
+
+> We continue with developing the phonebook. Store the initial state of the application in the file db.json, which should be placed in the root of the project.
+
+```javascript
+{
+  "persons":[
+    { 
+      "name": "Arto Hellas", 
+      "number": "040-123456",
+      "id": 1
+    },
+    { 
+      "name": "Ada Lovelace", 
+      "number": "39-44-5323523",
+      "id": 2
+    },
+    { 
+      "name": "Dan Abramov", 
+      "number": "12-43-234345",
+      "id": 3
+    },
+    { 
+      "name": "Mary Poppendieck", 
+      "number": "39-23-6423122",
+      "id": 4
+    }
+  ]
+}
+```
+
+> Start json-server on port 3001 and make sure that the server returns the list of people by going to the address http://localhost:3001/persons in the browser.
+
+> If you receive the following error message:
+
+```javascript
+events.js:182
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE 0.0.0.0:3001
+    at Object._errnoException (util.js:1019:11)
+    at _exceptionWithHostPort (util.js:1041:20)
+```
+
+> it means that port 3001 is already in use by another application, e.g. in use by an already running json-server. Close the other application, or change the port in case that doesn't work.
+
+> Modify the application such that the initial state of the data is fetched from the server using the axios-library. Complete the fetching with an Effect hook.
+
+### 2.12* Data for countries, step1
+
+> The API https://restcountries.com provides data for different countries in a machine-readable format, a so-called REST API.
+
+> Create an application, in which one can look at data of various countries. The application should probably get the data from the endpoint all.
+
+> The user interface is very simple. The country to be shown is found by typing a search query into the search field.
+
+> If there are too many (over 10) countries that match the query, then the user is prompted to make their query more specific:
+
+!["fullstack content"](./images/part2c_image6.png?raw=true)
+
+> If there are ten or fewer countries, but more than one, then all countries matching the query are shown:
+
+!["fullstack content"](./images/part2c_image7.png?raw=true)
+
+> When there is only one country matching the query, then the basic data of the country (eg. capital and area), its flag and the languages spoken there, are shown:
+
+!["fullstack content"](./images/part2c_image8.png?raw=true)
+
+> NB: It is enough that your application works for most of the countries. Some countries, like Sudan, can be hard to support, since the name of the country is part of the name of another country, South Sudan. You don't need to worry about these edge cases.
+
+> WARNING create-react-app will automatically turn your project into a git-repository unless you create your application inside of an existing git repository. Most likely you do not want each of your projects to be a separate repository, so simply run the rm -rf .git command at the root of your application.
+
+### 2.13*: Data for countries, step2
+
+> There is still a lot to do in this part, so don't get stuck on this exercise!
+
+> Improve on the application in the previous exercise, such that when the names of multiple countries are shown on the page there is a button next to the name of the country, which when pressed shows the view for that country:
+
+!["fullstack content"](./images/part2c_image9.png?raw=true)
+
+> In this exercise it is also enough that your application works for most of the countries. Countries whose name appears in the name of another country, like Sudan, can be ignored.
+
+### 2.14*: Data for countries, step3
+
+> There is still a lot to do in this part, so don't get stuck on this exercise!
+
+> Add to the view showing the data of a single country, the weather report for the capital of that country. There are dozens of providers for weather data. One suggested API is https://openweathermap.org. Note that it might take some minutes until a generated api key is valid.
+
+!["fullstack content"](./images/part2c_image10.png?raw=true)
+
+> If you use Open weather map, here is the description how to get weather icons.
+
+> NB: In some browsers (such as Firefox) the chosen API might send an error response, which indicates that HTTPS encryption is not supported, although the request URL starts with http://. This issue can be fixed by completing the exercise using Chrome.
+
+> NB: You need an api-key to use almost every weather service. Do not save the api-key to source control! Nor hardcode the api-key to your source code. Instead use an environment variable to save the key.
+
+> Assuming the api-key is t0p53cr3t4p1k3yv4lu3, when the application is started like so:
+
+```javascript
+REACT_APP_API_KEY=t0p53cr3t4p1k3yv4lu3 npm start // For Linux/macOS Bash
+($env:REACT_APP_API_KEY="t0p53cr3t4p1k3yv4lu3") -and (npm start) // For Windows PowerShell
+set "REACT_APP_API_KEY=t0p53cr3t4p1k3yv4lu3" && npm start // For Windows cmd.exe
+```
+
+> you can access the value of the key from the process.env object:
+
+```javascript
+const api_key = process.env.REACT_APP_API_KEY
+// variable api_key has now the value set in startup
+```
+
+> Note that if you created the application using npx create-react-app ... and you want to use a different name for your environment variable then the environment variable name must still begin with REACT_APP_. You can also use a .env file rather than defining it on the command line each time by creating a file entitled '.env' in the root of the project and adding the following. 
+
+```javascript
+# .env
+
+REACT_APP_API_KEY=t0p53cr3t4p1k3yv4lu3
+```
+
+> Note that you will need to restart the server to apply the changes.
