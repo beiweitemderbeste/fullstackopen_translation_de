@@ -18,33 +18,49 @@
 
 > Before starting a new part, let's recap some of the topics that proved difficult last year.
 
+Bevor wir den neuen Abschnitt anfangen, schauen wir uns noch einige Themen an, die sich letztes Jahr als schwierig erwiesen haben.
+
 ## console.log
 
 > What's the difference between an experienced JavaScript programmer and a rookie? The experienced one uses console.log 10-100 times more.
 
+Was ist der Unterschied zwischen einem erfahrenen Javascriptprogrammierer und einem Anfänger? Der Programmierer nutzt console.log 10-100 mal öfter.
+
 > Paradoxically, this seems to be true even though a rookie programmer would need console.log (or any debugging method) more than an experienced one.
+
+Paradoxerweise scheint das wahr zu sein, obwohl ein Anfänger console.log (oder eine andere Art zu debuggen) öfter nutzen müsste als ein Profi.
 
 > When something does not work, don't just guess what's wrong. Instead, log or use some other way of debugging.
 
+Wenn etwas nicht funktioniert, ratet nicht, was falsch läuft. Benutzt stattdessen console.log oder etwas anderes zum Debuggen.
+
 > NB As explained in part 1, when you use the command console.log for debugging, don't concatenate things 'the Java way' with a plus. Instead of writing:
+
+Hinweis: Wie wir es schon im ersten Abschnitt angesprochen haben, sollte ihr "nicht den Java weg gehen", wenn es um das Benutzen von console.log geht:
 
 ```javascript
 console.log('props value is ' + props)
 ```
 
-separate the things to be printed with a comma:
+> separate the things to be printed with a comma:
+
+trennt die Elemente mit einem Komma:
 
 ```javascript
 console.log('props value is', props)
 ```
 
-If you concatenate an object with a string and log it to the console (like in our first example), the result will be pretty useless: 
+> If you concatenate an object with a string and log it to the console (like in our first example), the result will be pretty useless: 
+
+Wenn ihr ein Objekt mit einem String verbindet und es in der Konsole ausgebt (wie in unserem ersten Beispiel), nützt euch das Ergbnis nicht viel.
 
 ```javascript
 props value is [object Object]
 ```
 
 > On the contrary, when you pass objects as distinct arguments separated by commas to console.log, like in our second example above, the content of the object is printed to the developer console as strings that are insightful. If necessary, read more about debugging React-applications.
+
+Wenn ihr im Gegensatz dazu Objekte als verschiedene, mit Komata separierte, in der Konsole ausgebt (wie in unserem zweiten Beispiel), seht ihr den Inhalt des Objekts als Strings. Wenn nötig, könnt ihr mehr über "debugging React-applications" lesen.
 
 ## Protip: Visual Studio Code snippets
 
