@@ -60,17 +60,25 @@ props value is [object Object]
 
 > On the contrary, when you pass objects as distinct arguments separated by commas to console.log, like in our second example above, the content of the object is printed to the developer console as strings that are insightful. If necessary, read more about debugging React-applications.
 
-Wenn ihr im Gegensatz dazu Objekte als verschiedene, mit Komata separierte, in der Konsole ausgebt (wie in unserem zweiten Beispiel), seht ihr den Inhalt des Objekts als Strings. Wenn nötig, könnt ihr mehr über "debugging React-applications" lesen.
+Wenn ihr im Gegensatz dazu Objekte als verschiedene, mit Komata separierte Elemente, in der Konsole ausgebt (wie in unserem zweiten Beispiel), seht ihr den Inhalt des Objekts als String. Wenn nötig, könnt ihr mehr über "debugging React-applications" lesen.
 
 ## Protip: Visual Studio Code snippets
 
 > With Visual Studio Code it's easy to create 'snippets', i.e., shortcuts for quickly generating commonly re-used portions of code, much like how 'sout' works in Netbeans.
 
+Mit Visual Studio Code ist es einfach "snippets" zu erstellen, z.B. Tastenkürzel um schnell wiederbenutzbaren Code zu geneieren, ähnlich wie "sout" in Netbeans funktioniert.
+
 > Instructions for creating snippets can be found here.
+
+Anleitungen, wie man Snippets erstellt, können [hier](hier) gefunden werden.
 
 > Useful, ready-made snippets can also be found as VS Code plugins, in the marketplace.
 
+Vorgefertigte Snippets gibt es auch als VSCode plugins.
+
 > The most important snippet is the one for the console.log() command, for example, clog. This can be created like so: 
+
+Das wichtigste Snippet ist das für den Befehl console.log(). Das kann man z.B. so erstellen:
 
 ```javascript
 {
@@ -85,6 +93,8 @@ Wenn ihr im Gegensatz dazu Objekte als verschiedene, mit Komata separierte, in d
 ```
 
 > Debugging your code using console.log() is so common that Visual Studio Code has that snippet built in. To use it, type log and hit tab to autocomplete. More fully featured console.log() snippet extensions can be found in the marketplace.
+
+Mit console.log zu debuggen ist so verbreitet, dass VSCode dafür auch Snippets eingebaut hat. Um es zu benutzen, gebt log und drückt Tabulator für autocomplete. Mehr Erweiterungen für console.log()-Snippets findet ihr im marketplace von VSCode.
 
 ## JavaScript Arrays
 
