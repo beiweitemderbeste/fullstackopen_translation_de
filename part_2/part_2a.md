@@ -727,27 +727,43 @@ Wenn das Problem damit noch immer nicht behoben wurde, gibt es nicht wirklich vi
 
 > I added this chapter to the material after the model answer for the next question exploded completely (due to props being of the wrong type), and I had to debug it using console.log.
 
-Ich habe dieses Kapitel hinzugefügt, nachdem die Lösungsantwort für die nächste Frage "komplett" explodiert ist (weil die props den falschen Typ hatten) und ich mit console.log debuggen musste.
+Ich habe dieses Kapitel hinzugefügt, nachdem die Lösungsantwort für die nächste Frage "komplett explodiert" ist (weil die props den falschen Typ hatten) und ich mit console.log debuggen musste.
 
 ## Exercises
 
 > The exercises are submitted via GitHub, and by marking the exercises as done in the submission system.
 
+Die Aufgaben werden über GitHub eingereicht und müssen im Submissionsystem als erledigt markiert werden.
+
 > You can submit all of the exercises into the same repository, or use multiple different repositories. If you submit exercises from different parts into the same repository, name your directories well.
+
+Ihr könnt alle Aufgaben über ein Repository einreichen oder verschiedene Repositories benutzen. Bitte benennt eure Verzeichnisse korrekt, wenn ihr Aufgaben verschiedener Abschnitte im selben Repository einreicht. 
 
 > The exercises are submitted One part at a time. When you have submitted the exercises for a part, you can no longer submit any missed exercises for that part.
 
+Die Aufgaben werden Abschnitt für Abschnitt eingereicht. Wenn ihr eure Lösungen für einen Abschnitt eingereicht habt, könnt ihr keine weiteren Aufgaben für diesen Abschnitt einreichen.
+
 > Note that this part has more exercises than the ones before, so do not submit before you have done all exercises from this part you want to submit.
 
+Bitte beachtet, dass dieser Abschnitt mehr Aufgaben als die vorherigen hat, also ladet nichts hoch, bevor ihr nicht alle Aufgaben abgeschlossen habt, die ihr hochladen wollt.
+
 > WARNING create-react-app makes the project automatically into a git-repository, if the project is not created inside of an already existing repository. You probably do not want the project to become a repository, so run the command rm -rf .git from its root. 
+
+WARNUNG: create-react-app erstellt aus eurem Projekt ein git-Repository, es sei denn, ihr erstellt eure Anwendung in einem bereits bestehenden git-Repository. Sehr wahrscheinlich möchtet ihr nicht für jedes Projekt ein eigenes Repository, deswegen könnt ihr einfach den Befehlt rm -rf .git im Wurzelverzeichnis eurer Anwendung ausführen.
 
 ### 2.1 Course information step6
 
 > Let's finish the code for rendering course contents from exercises 1.1 - 1.5. You can start with the code from the model answers. The model answers for part 1 can be found by going to the submission system, click on my submissions at the top, and in the row corresponding to part 1 under the solutions column click on show. To see the solution to the course info exercise, click on index.js under kurssitiedot ("kurssitiedot" means "course info").
 
+Arbeiten wir an dem Code für das Anzeigen der Kursinhalte aus den Aufgaben 1.1 - 1.5 weiter. Ihr könnt mit dem Code der Modellantworten anfangen. Die Modellantworten für Abschnitt 1 findet ihr, indem ihr ins Submissionsystem geht, auf "my submissions" klickt und in der zugehörigen Reihe für Abschnitt 1 bei "solutions" auf "show" klickt. Um die Lösung für die Aufgabe "course info" zu sehen, müsst ihr auf "index.js" unter "kurssitiedot" klicken (kurssitiedot bedeutet course info).
+
 > Note that if you copy a project from one place to another, you might have to delete the node_modules directory and install the dependencies again with the command npm install before you can start the application. Generally, it's not recommended that you copy a project's whole contents and/or add the node_modules directory to the version control system.
 
+Bitte beachtet, dass, wenn ihr ein Projekt von einer Stelle zu einer anderen kopiert, ihr das Verzeichnis node_modules löscht und die Abhängigkeiten mit dem Befehl "npm install" installiert bevor ihr die Anwendung starten könnt. Es wird im allgemeinen nicht empfohlen, dass man den kompletten Inhalt eines Projekts kopiert und/oder das Verzeichnis node_modules zur Versionskontrolle hinzufügt.
+
 > Let's change the App component like so: 
+
+Ändern wir den Komponenten App folgendermaßen ab:
 
 ```javascript
 const App = () => {
@@ -781,7 +797,11 @@ export default App
 
 > Define a component responsible for formatting a single course called Course.
 
+Definiert einen Komponenten, der für das Anzeigen eines einzigen Kurses "Course" verantwortlich ist.
+
 > The component structure of the application can be, for example, the following: 
+
+Die Struktur der Anwendung könnte z.B. so aussehen:
 
 ```
 App
@@ -795,19 +815,31 @@ App
 
 > Hence, the Course component contains the components defined in the previous part, which are responsible for rendering the course name and its parts.
 
+Folglich enthält der Komponent Course die Komponenten die im vorherigen Abschnitt definiert wurden und für das Anzeigen des Kursnamens und seiner Bestandteile verantwortlich sind.
+
 > The rendered page can, for example, look as follows: 
+
+Die Seite könnte zum Beispiel so aussehen:
 
 !["fullstack content"](./images/part2a_image5.png?raw=true)
 
 > You don't need the sum of the exercises yet.
 
+Die Summe der Aufgaben ist jetzt noch nicht notwendig.
+
 > The application must work regardless of the number of parts a course has, so make sure the application works if you add or remove parts of a course.
 
+Die Anwendung muss unabhängig von der Anzahl der Abschnitte, die ein Kurs hat, sein. Also stellt sicher, dass die Anwendung auch funktioniert, wenn ihr Abschnitte löscht oder hinzufügt.
+
 > Ensure that the console shows no errors!
+
+Stellt auch sicher, dass in der Konsole keine Fehler angezeigt werden.
 
 ### 2.2: Course information step7
 
 > Show also the sum of the exercises of the course. 
+
+Zeigt jetzt auch die Summe der Aufgaben an.
 
 !["fullstack content"](./images/part2a_image6.png?raw=true)
 
@@ -815,7 +847,11 @@ App
 
 > If you haven't done so already, calculate the sum of exercises with the array method reduce.
 
+Wenn ihr es bis jetzt noch nicht getan habt, dann berechnet jetzt die Summe der Aufgaben mit der Array-Methode reduce.
+
 > Pro tip: when your code looks as follows:
+
+Profitipp: Wenn eurer Code so aussieht:
 
 ```javascript
 const total = 
@@ -823,6 +859,8 @@ const total =
 ```
 
 > and does not work, it's worth to use console.log, which requires the arrow function to be written in its longer form:
+
+und nicht funktioniert, lohnt es sich console.log zu nutzen, was voraussetzt, dass die Pfeilfunktion in ihrer Langform verwendet werden muss:
 
 ```javascript
 const total = parts.reduce((s, p) => {
@@ -833,13 +871,19 @@ const total = parts.reduce((s, p) => {
 
 > Not working? : Use your search engine to look up how reduce is used in an Object Array.
 
+Funktioniert nicht? Nutzt eine Suchmaschine, um nachzusehen, wie reduce mit einem Array verwendet wird.
+
 > Pro tip 2: There is a plugin for VS Code that automatically changes short form arrow functions into their longer form, and vice versa. 
+
+Profitipp 2: Es gibt ein Plugin für VSCode, dass automatisch Pfeilfunktionen von ihrer Langform in ihre Kurzform und zurück verwandelt.
 
 !["fullstack content"](./images/part2a_image7.png?raw=true)
 
 ### 2.4 Course information step9
 
 > Let's extend our application to allow for an arbitrary number of courses:
+
+Erweitern wir unsere Anwendung, um eine beliebige Zahl an Kursen zu erlauben:
 
 ```javascript
 const App = () => {
@@ -898,8 +942,12 @@ const App = () => {
 
 > The application can, for example, look like this: 
 
+Die Anwendung könnte zum Beispiel so aussehen:
+
 !["fullstack content"](./images/part2a_image8.png?raw=true)
 
 ###  2.5: separate module
 
 > Declare the Course component as a separate module, which is imported by the App component. You can include all subcomponents of the course into the same module. 
+
+Definiert den Komponenten Course als abgetrenntes Modul, dass in den Komponenten App importiert wird. Ihr könnt alle Unterkomponenten des Kurses in das selbe Modul einfügen. 
