@@ -322,7 +322,7 @@ React benutzt die Key-Attribute der Objekte eines Arrays um festzulegen, wie die
 
 > Understanding how the array method map works is crucial for the rest of the course.
 
-Die Array-Methode map zu verstehen, ist wesentlich für den Rest dieses Kurses:
+Die Array-Methode [map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) zu verstehen, ist wesentlich für den Rest dieses Kurses:
 
 > The application contains an array called notes:
 
@@ -436,13 +436,19 @@ Das Benutzen von geschwungenen Klammern wird am Anfang für Kopfschmerzen sorgen
 
 > We could have made the error message on our console disappear by using the array indexes as keys. The indexes can be retrieved by passing a second parameter to the callback function of the map method: 
 
+Wir hätten die Fehlermeldung in der Konsole auch verschwinden lassen können, indem wir die Indizes des Arrays als keys benutzen.
+
 ```javascript
 notes.map((note, i) => ...)
 ```
 
 > When called like this, i is assigned the value of the index of the position in the array where the note resides.
 
+Wenn i so aufgerufen wird, wird i der Wert des Index von der Arrayposition, an dessen Position sich die Notiz befindet, zugewiesen.
+
 > As such, one way to define the row generation without getting errors is:
+
+So kann man auch die Liste generieren, ohne Fehlermeldungen zu erhalten:
 
 ```javascript
 <ul>
@@ -456,11 +462,15 @@ notes.map((note, i) => ...)
 
 > This is; however, not recommended and can create undesired problems even if it seems to be working just fine.
 
-> Read more about this in this article.
+Dieser Weg wird trotzdem nicht empfohlen und zu unerwünschten Problemen führen, auch wenn es gut zu funktionieren scheint.
+
+Ihr könnt in diesem [Artikel](https://robinpokorny.medium.com/index-as-a-key-is-an-anti-pattern-e0349aece318) mehr darüber lesen.
 
 ## Refactoring Modules
 
 > Let's tidy the code up a bit. We are only interested in the field notes of the props, so let's retrieve that directly using destructuring: 
+
+Räumen wir unseren Code ein bisschen auf. Uns interessiert nur das Feld "notes" der props, also holen wir sie uns direkt über "destructuring":
 
 ```javascript
 const App = ({ notes }) => {  
@@ -481,7 +491,11 @@ const App = ({ notes }) => {
 
 > If you have forgotten what destructuring means and how it works, please review the section on destructuring.
 
+Wenn ihr vergessen habt, was "destructuring" bedeutet und wie es funktioniert, lest bitte erneut die Sektion über [destructuring](https://fullstackopen.com/en/part1/component_state_event_handlers#destructuring)
+
 > We'll separate displaying a single note into its own component Note: 
+
+Wir separieren die einzelnen Notizen in ihre jeweiligen eigenen Komponenten:
 
 ```javascript
 const Note = ({ note }) => {  
@@ -506,9 +520,15 @@ const App = ({ notes }) => {
 
 > Note that the key attribute must now be defined for the Note components, and not for the li tags like before.
 
+Hinweis: Das Attribut "key" muss jetzt für den Komponenten Note defniert werden und nicht wie zuvor für die li-Tags.
+
 > A whole React application can be written in a single file. Although that is, of course, not very practical. Common practice is to declare each component in their own file as an ES6-module.
 
+Eine ganze React-Anwendung kann in eine einzigen Datei geschrieben werden. Auch wenn das natürlich nicht sehr praktisch ist. Es ist üblich, jeden Komponenten in einer eigenen Datei als ein ES6-Modul zu definieren. 
+
 > We have been using modules the whole time. The first few lines of the file index.js:
+
+Wir haben die schon die ganze Zeit Module genutzt. Die ersten Zeilen der Datei index.js
 
 ```javascript
 import React from 'react'
@@ -519,11 +539,19 @@ import App from './App'
 
 > import three modules, enabling them to be used in that file. The module React is placed into the variable React, the module react-dom into the variable ReactDOM, and the module that defines the main component of the app is placed into the variable App
 
+[importieren](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) drei Module. Damit können die Module in dieser Datei verwendet werden. Das Modul React wird auf die Variable React festgelegt, das Modul react-dom auf die Variable ReactDOM und das Modul, das den Hauptkomponenten App definiert, auf die Variable App.
+
 > Let's move our Note component into its own module.
+
+Setzen wir den Komponenten Note in sein eigenes Modul.
 
 > In smaller applications, components are usually placed in a directory called components, which is in turn placed within the src directory. The convention is to name the file after the component.
 
+In kleineren Anwendungen sind Komponenten normalerweise in dem Verzeichnis "components", das selbst im Verzeichnis "src" ist. Die Konvention ist die Dateien jeweils nach den Komponenten zu benennen.
+
 > Now, we'll create a directory called components for our application and place a file named Note.js inside. The contents of the Note.js file are as follows: 
+
+Jetzt erstellen wir das Verzeichnis "components" für unsere Anwendung mit der Datei Note.js. Der Inhalt von Note.js sieht so aus:
 
 ```javascript
 const Note = ({ note }) => {
@@ -537,7 +565,11 @@ export default Note
 
 > The last line of the module exports the declared module, the variable Note.
 
+Die letzte Zeile des Moduls exportiert das Modul, die Variable Note.
+
 > Now the file that is using the component - App.js - can import the module: 
+
+Jetzt kann die Datei App.js, die den Komponenten verwendet, das Modul importieren.
 
 ```javascript
 import Note from './components/Note'
@@ -549,7 +581,11 @@ const App = ({ notes }) => {
 
 > The component exported by the module is now available for use in the variable Note, just as it was earlier.
 
+Der Komponent, der von dem Modul exportiert wird, ist jetzt verfügbar durch die Variable Note, so wie vorher schon.
+
 > Note that when importing our own components, their location must be given in relation to the importing file:
+
+Bitte beachtet, dass beim Importieren eigener Komponenten, deren Verzeichnis relativ zur importierten Datei liegt:
 
 ```javascript
 './components/Note'
@@ -557,15 +593,25 @@ const App = ({ notes }) => {
 
 > The period - . - in the beginning refers to the current directory, so the module's location is a file called Note.js in the components sub-directory of the current directory. The filename extension .js can be omitted.
 
+Der - . - am Anfang bezieht sich auf das aktuelle Verzeichnis, was bedeudet, dass sich das Modul in der Datei Note.js befindet, die selbst im Unterverzeichnis components im aktuellen Verzeichnis ist. Die Dateinamenerweiterung .js kann weggelassen werden.
+
 > Modules have plenty of other uses other than enabling component declarations to be separated into their own files. We will get back to them later in this course.
+
+Module kann man für vieles verwenden, nicht nur für das Separieren von Komponenten in eigene Dateien. Wir kommen später in diesem Kurs darauf zurück.
 
 > The current code of the application can be found on GitHub.
 
+Der aktuelle Anwendungscode befindet sich auf [GitHub](https://github.com/fullstack-hy2020/part2-notes/tree/part2-1).
+
 > Note that the main branch of the repository contains the code for a later version of the application. The current code is in the branch part2-1:
 
-!["fullstack content"](./images/part2a_image1.png?raw=true)
+Bitte beachtet, dass der Main-Branch Code von späteren Versionen der Anwendung enthält. Der aktuelle Code is im Branch part2-1:
+
+!["fullstack content"](./images/part2a_image2.png?raw=true)
 
 > If you clone the project, run the command npm install before starting the application with npm start.
+
+Wenn ihr das Projekt klonen, führt den Befehl "npm install" aus bevor ihr die Anwendung mit dem Befehl "npm start" startet.
 
 ## When the Application Breaks
 
@@ -573,7 +619,7 @@ const App = ({ notes }) => {
 
 > A "React explosion" can, for example, look like this:
 
-!["fullstack content"](./images/part2a_image2.png?raw=true)
+!["fullstack content"](./images/part2a_image3.png?raw=true)
 
 > In these situations your best way out is the console.log method.
 
@@ -617,7 +663,7 @@ const App = () => {
 
 > To see the printing in the console, we must scroll up over the long red wall of errors.
 
-!["fullstack content"](./images/part2a_image3.png?raw=true)
+!["fullstack content"](./images/part2a_image4.png?raw=true)
 
 > When one thing is found to be working, it's time to log deeper. If the component has been declared as a single statement, or a function without a return, it makes printing to the console harder.
 
@@ -729,7 +775,7 @@ App
 
 > The rendered page can, for example, look as follows: 
 
-!["fullstack content"](./images/part2a_image4.png?raw=true)
+!["fullstack content"](./images/part2a_image5.png?raw=true)
 
 > You don't need the sum of the exercises yet.
 
@@ -741,7 +787,7 @@ App
 
 > Show also the sum of the exercises of the course. 
 
-!["fullstack content"](./images/part2a_image5.png?raw=true)
+!["fullstack content"](./images/part2a_image6.png?raw=true)
 
 ### 2.3* Course information step8
 
@@ -767,7 +813,7 @@ const total = parts.reduce((s, p) => {
 
 > Pro tip 2: There is a plugin for VS Code that automatically changes short form arrow functions into their longer form, and vice versa. 
 
-!["fullstack content"](./images/part2a_image6.png?raw=true)
+!["fullstack content"](./images/part2a_image7.png?raw=true)
 
 ### 2.4 Course information step9
 
@@ -830,7 +876,7 @@ const App = () => {
 
 > The application can, for example, look like this: 
 
-!["fullstack content"](./images/part2a_image7.png?raw=true)
+!["fullstack content"](./images/part2a_image8.png?raw=true)
 
 ###  2.5: separate module
 
