@@ -617,13 +617,21 @@ Wenn ihr das Projekt klonen, führt den Befehl "npm install" aus bevor ihr die A
 
 > Early in your programming career (and even after 30 years of coding like yours truly), what often happens is that the application just completely breaks down. This is even more the case with dynamically typed languages, such as JavaScript, where the compiler does not check the data type. For instance, function variables or return values.
 
+Am Beginn euer Programmiererkarriere (und auch nach 30 Jahrem professionellem Programmierens) wird es oft passieren, dass eure Anwendung einfach nicht funktioniert. Das ist vorallem bei dynamischen Sprachen wie Javascript der Fall, wo der Compiler nicht keine Datentypen abfragt.
+
 > A "React explosion" can, for example, look like this:
+
+Eine "React-Explosion" kann z.B. so aussehen:
 
 !["fullstack content"](./images/part2a_image3.png?raw=true)
 
 > In these situations your best way out is the console.log method.
 
+In einem solchen Fall hilft euch besten der Befehl console.log.
+
 > The piece of code causing the explosion is this:
+
+Verantwortlich für die Explosion ist dieser Code:
 
 ```javascript
 const Course = ({ course }) => (
@@ -647,6 +655,8 @@ const App = () => {
 
 > We'll hone in on the reason for the breakdown by adding console.log commands to the code. Because the first thing to be rendered is the App component, it's worth putting the first console.log there: 
 
+Wir suchen nach dem Grund des Absturzes in dem console.log-Befehle in den Code setzen. Weil als erstes der Komponent App gerendert wird, setzen wir dort den ersten console.log-Befehl:
+
 ```javascript
 const App = () => {
   const course = {
@@ -663,9 +673,13 @@ const App = () => {
 
 > To see the printing in the console, we must scroll up over the long red wall of errors.
 
+Um die Ausgabe in der Konsole zu sehen, müssen wir durch eine riesige rote Wand voller Fehler scrollen.
+
 !["fullstack content"](./images/part2a_image4.png?raw=true)
 
 > When one thing is found to be working, it's time to log deeper. If the component has been declared as a single statement, or a function without a return, it makes printing to the console harder.
+
+Wenn die eine Sache zu funktionieren scheint, ist es an der Zeit woanders zu suchen. Wenn der Komponent als einziger Ausdruck definiert wird oder eine Funktion ohne Rückgabewert, ist die Ausgabe an die Konsole schwieriger:
 
 ```javascript
 const Course = ({ course }) => (
@@ -676,6 +690,8 @@ const Course = ({ course }) => (
 ```
 
 > The component should be changed to its longer form in order for us to add the printing: 
+
+Der Komponent sollte in seine längere Form geändert werden, um die Ausgabe an die Konsole hinzuzufügen:
 
 ```javascript
 const Course = ({ course }) => { 
@@ -691,6 +707,8 @@ const Course = ({ course }) => {
 
 > Quite often the root of the problem is that the props are expected to be of a different type, or called with a different name than they actually are, and destructuring fails as a result. The problem often begins to solve itself when destructuring is removed and we see what the props actually contains. 
 
+Sehr oft sind die props eine Problem, von denen ein anderer Datentyp erwartet wird, oder sie werden mit einem anderen Namen, als sie eigentlich haben, aufgerufen und deswegen schlägt das "Destructuring" fehl. Meistens lösen sich die Probleme von selbst, wenn das Destructuring aufgehoben wird und wir tatsächlich sehen, was die props enthalten:
+
 ```javascript
 const Course = (props) => {  
   console.log(props)  
@@ -705,7 +723,11 @@ const Course = (props) => {
 
 > If the problem has still not been resolved, there really isn't much to do apart from continuing to bug-hunt by sprinkling more console.log statements around your code.
 
+Wenn das Problem damit noch immer nicht behoben wurde, gibt es nicht wirklich viel zu tun abgesehen davon weiter nach Bugs zu suchen, indem ihr mehr console.log-Befehle in euren Code schreibt.
+
 > I added this chapter to the material after the model answer for the next question exploded completely (due to props being of the wrong type), and I had to debug it using console.log.
+
+Ich habe dieses Kapitel hinzugefügt, nachdem die Lösungsantwort für die nächste Frage "komplett" explodiert ist (weil die props den falschen Typ hatten) und ich mit console.log debuggen musste.
 
 ## Exercises
 
