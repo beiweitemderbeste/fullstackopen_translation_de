@@ -243,3 +243,91 @@ const App = (props) => {
 Damit verschwindet die Fehlermeldung.
 
 React benutzt die Key-Attribute der Objekte eines Arrays um festzulegen, wie die Ansicht eines Komponenten bei dessem erneuten Rendern generiert werden soll. Mehr dazu gibt es in der [React-Dokumentation](https://reactjs.org/docs/reconciliation.html#recursing-on-children).
+
+## Map
+
+Die Array-Methode [map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) zu verstehen, ist essenziel für den Rest dieses Kurses:
+
+Die Anwendung enthält ein Array "notes":
+
+```javascript
+const notes = [
+  {
+    id: 1,
+    content: 'HTML is easy',
+    date: '2019-05-30T17:30:31.098Z',
+    important: true
+  },
+  {
+    id: 2,
+    content: 'Browser can execute only JavaScript',
+    date: '2019-05-30T18:39:34.091Z',
+    important: false
+  },
+  {
+    id: 3,
+    content: 'GET and POST are the most important methods of HTTP protocol',
+    date: '2019-05-30T19:20:14.298Z',
+    important: true
+  }
+]
+```
+
+Unterbrechen wir einen Moment und untersuchen, wie map genau funktioniert.
+
+Sagen wir, dass der folgende Code an die letzte Zeile angehängt wird:
+
+```javascript
+const result = notes.map(note => note.id)
+console.log(result)
+```
+
+In der Konsole wird [1, 2, 3] ausgegeben. "map" erstellt immer ein neues Array. Dessen Elemente werden aus den Elementen des originalen Arrays über mapping erstellt, d.h. über die Funktion, die map als Parameter übergeben wird.
+
+Die Funktion lautet
+
+```javascript
+note => note.id
+```
+
+Was eine Pfeilfunktion in Kurzform ist. Die vollständige Version würde so aussehen:
+
+```javascript
+(note) => {
+  return note.id
+}
+```
+
+Die Funktion erhält ein note-Objekt als Parameter und gibt den Wert von dessen id-Feld zurück.
+
+Ändern wir den Befehl so ab
+
+```javascript
+const result = notes.map(note => note.content)
+```
+
+erhalten wir ein Array, das die Inhalte der Notizen enthält.
+
+Das ist schon sehr ähnlich zu dem React-Code, den wir benutzt haben:
+
+```javascript
+notes.map(note =>
+  <li key={note.id}>{note.content}</li>
+)
+```
+
+Dieser erstellt einen li-Tag mit den Inhalten einer Notiz für jedes note-Objekt.
+
+Weil die Funktion, die map als Parameter übergeben bekommt, 
+
+```javascript
+note => <li key={note.id}>{note.content}</li>
+```
+
+genutzt wird, um view-Elemente zu erstellen, müssen die Werte der Variablen in geschwungene Klammern gesetzt werden. Schaut nach, was passiert, wenn ihr diese weglasst.
+
+Das Benutzen von geschwungenen Klammern wird am Anfang für Kopfschmerzen sorgen, aber ihr werdet euch noch früh genug an sie gewöhnen. React gibt dafür direkt sichtbare Rückmeldeldungen.
+
+Das Benutzen von geschwungenen Klammern wird am Anfang für Kopfschmerzen sorgen, aber ihr werdet euch noch früh genug an sie gewöhnen. React gibt dafür direkt sichtbare Rückmeldungen aus.
+
+## Anti-pattern: Array Indexes as Keys
