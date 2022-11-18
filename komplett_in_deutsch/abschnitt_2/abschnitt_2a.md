@@ -560,3 +560,178 @@ Wenn das Problem damit noch immer nicht behoben wurde, gibt es nicht wirklich vi
 Ich habe dieses Kapitel hinzugefügt, nachdem die Lösungsantwort für die nächste Frage "komplett explodiert" ist (weil die props den falschen Typ hatten) und ich mit console.log debuggen musste.
 
 ## Exercises
+
+Die Aufgaben werden über GitHub eingereicht und müssen im Submissionsystem als erledigt markiert werden.
+
+Ihr könnt alle Aufgaben über ein Repository einreichen oder verschiedene Repositories benutzen. Bitte benennt eure Verzeichnisse korrekt, wenn ihr Aufgaben verschiedener Abschnitte im selben Repository einreicht. 
+
+Die Aufgaben werden Abschnitt für Abschnitt eingereicht. Wenn ihr eure Lösungen für einen Abschnitt eingereicht habt, könnt ihr keine weiteren Aufgaben für diesen Abschnitt einreichen.
+
+Bitte beachtet, dass dieser Abschnitt mehr Aufgaben als die vorherigen hat, also ladet nichts hoch, bevor ihr nicht alle Aufgaben abgeschlossen habt, die ihr hochladen wollt.
+
+WARNUNG: create-react-app erstellt aus eurem Projekt ein git-Repository, es sei denn, ihr erstellt eure Anwendung in einem bereits bestehenden git-Repository. Sehr wahrscheinlich möchtet ihr nicht für jedes Projekt ein eigenes Repository, deswegen könnt ihr einfach den Befehlt rm -rf .git im Wurzelverzeichnis eurer Anwendung ausführen.
+
+### 2.1 Course information step6
+
+Arbeiten wir an dem Code für das Anzeigen der Kursinhalte aus den Aufgaben 1.1 - 1.5 weiter. Ihr könnt mit dem Code der Modellantworten anfangen. Die Modellantworten für Abschnitt 1 findet ihr, indem ihr ins Submissionsystem geht, auf "my submissions" klickt und in der zugehörigen Reihe für Abschnitt 1 bei "solutions" auf "show" klickt. Um die Lösung für die Aufgabe "course info" zu sehen, müsst ihr auf "index.js" unter "kurssitiedot" klicken (kurssitiedot bedeutet course info).
+
+Bitte beachtet, dass, wenn ihr ein Projekt von einer Stelle zu einer anderen kopiert, ihr das Verzeichnis node_modules löscht und die Abhängigkeiten mit dem Befehl "npm install" installiert bevor ihr die Anwendung starten könnt. Es wird im allgemeinen nicht empfohlen, dass man den kompletten Inhalt eines Projekts kopiert und/oder das Verzeichnis node_modules zur Versionskontrolle hinzufügt.
+
+Bitte beachtet, dass, wenn ihr ein Projekt von einer Stelle zu einer anderen kopiert, ihr das Verzeichnis node_modules löscht und die Abhängigkeiten mit dem Befehl "npm install" installiert bevor ihr die Anwendung startet. Es wird im allgemeinen nicht empfohlen, dass man den kompletten Inhalt eines Projekts kopiert und/oder das Verzeichnis node_modules zur Versionskontrolle hinzufügt.
+
+Ändern wir den Komponenten App folgendermaßen ab:
+
+```javascript
+const App = () => {
+  const course = {
+    id: 1,
+    name: 'Half Stack application development',
+    parts: [
+      {
+        name: 'Fundamentals of React',
+        exercises: 10,
+        id: 1
+      },
+      {
+        name: 'Using props to pass data',
+        exercises: 7,
+        id: 2
+      },
+      {
+        name: 'State of a component',
+        exercises: 14,
+        id: 3
+      }
+    ]
+  }
+
+  return <Course course={course} />
+}
+
+export default App
+```
+
+Definiert einen Komponenten, der für das Anzeigen eines einzigen Kurses "Course" verantwortlich ist.
+
+Die Struktur der Anwendung könnte z.B. so aussehen:
+
+```
+App
+  Course
+    Header
+    Content
+      Part
+      Part
+      ...
+```
+
+Folglich enthält der Komponent Course die Komponenten, die im vorherigen Abschnitt definiert wurden und für das Anzeigen des Kursnamens und seiner Bestandteile verantwortlich sind.
+
+Die Seite könnte zum Beispiel so aussehen:
+
+!["fullstack content"](./bilder/abschnitt2a_bild5.png?raw=true)
+
+Die Summe der Aufgaben ist jetzt noch nicht notwendig.
+
+Die Anwendung muss unabhängig sein von der Anzahl der Abschnitte, die ein Kurs hat. Also stellt sicher, dass die Anwendung auch funktioniert, wenn ihr Abschnitte löscht oder hinzufügt.
+
+Stellt auch sicher, dass in der Konsole keine Fehler angezeigt werden.
+
+### 2.2: Course information step7
+
+Zeigt jetzt auch die Summe der Aufgaben an.
+
+!["fullstack content"](./bilder/abschnitt2a_bild6.png?raw=true)
+
+### 2.3* Course information step8
+
+Wenn ihr es bis jetzt noch nicht getan habt, dann berechnet jetzt die Summe der Aufgaben reduce.
+
+Profitipp: Wenn euer Code so aussieht
+
+```javascript
+const total = 
+  parts.reduce((s, p) => someMagicHere)
+```
+
+und nicht funktioniert, lohnt es sich console.log zu nutzen, was voraussetzt, dass die Pfeilfunktion in ihrer Langform verwendet wird:
+
+```javascript
+const total = parts.reduce((s, p) => {
+  console.log('what is happening', s, p)
+  return someMagicHere 
+})
+```
+
+Funktioniert nicht? Nutzt eine Suchmaschine, um nachzusehen, wie reduce mit einem Array verwendet wird.
+
+Profitipp 2: Es gibt ein Plugin für VSCode, dass automatisch Pfeilfunktionen von ihrer Langform in ihre Kurzform und zurück verwandelt.
+
+!["fullstack content"](./bilder/abschnitt2a_bild7.png?raw=true)
+
+### 2.4 Course information step9
+
+Erweitern wir unsere Anwendung, um eine beliebige Zahl an Kursen zu erlauben:
+
+```javascript
+const App = () => {
+  const courses = [
+    {
+      name: 'Half Stack application development',
+      id: 1,
+      parts: [
+        {
+          name: 'Fundamentals of React',
+          exercises: 10,
+          id: 1
+        },
+        {
+          name: 'Using props to pass data',
+          exercises: 7,
+          id: 2
+        },
+        {
+          name: 'State of a component',
+          exercises: 14,
+          id: 3
+        },
+        {
+          name: 'Redux',
+          exercises: 11,
+          id: 4
+        }
+      ]
+    }, 
+    {
+      name: 'Node.js',
+      id: 2,
+      parts: [
+        {
+          name: 'Routing',
+          exercises: 3,
+          id: 1
+        },
+        {
+          name: 'Middlewares',
+          exercises: 7,
+          id: 2
+        }
+      ]
+    }
+  ]
+
+  return (
+    <div>
+      // ...
+    </div>
+  )
+}
+```
+
+Die Anwendung könnte zum Beispiel so aussehen:
+
+!["fullstack content"](./bilder/abschnitt2a_bild8.png?raw=true)
+
+###  2.5: separate module
+
+Definiert den Komponenten Course als abgetrenntes Modul, dass in den Komponenten App importiert wird. Ihr könnt alle Unterkomponenten des Kurses in das selbe Modul einfügen. 
