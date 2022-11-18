@@ -331,3 +331,138 @@ Das Benutzen von geschwungenen Klammern wird am Anfang für Kopfschmerzen sorgen
 Das Benutzen von geschwungenen Klammern wird am Anfang für Kopfschmerzen sorgen, aber ihr werdet euch noch früh genug an sie gewöhnen. React gibt dafür direkt sichtbare Rückmeldungen aus.
 
 ## Anti-pattern: Array Indexes as Keys
+
+Wir hätten die Fehlermeldung in der Konsole auch verschwinden lassen können, indem wir die Indizes des Arrays als keys benutzen.
+
+```javascript
+notes.map((note, i) => ...)
+```
+
+Wenn i so aufgerufen wird, wird i der Wert des Index von der Arrayposition, an dessen Position sich die Notiz befindet, zugewiesen.
+
+So kann man auch die Liste generieren, ohne Fehlermeldungen zu erhalten:
+
+```javascript
+<ul>
+  {notes.map((note, i) => 
+    <li key={i}>
+      {note.content}
+    </li>
+  )}
+</ul>
+```
+
+Dieser Weg wird trotzdem nicht empfohlen und zu unerwünschten Problemen führen, auch wenn es gut zu funktionieren scheint.
+
+Ihr könnt in diesem [Artikel](https://robinpokorny.medium.com/index-as-a-key-is-an-anti-pattern-e0349aece318) mehr darüber lesen.
+
+## Refactoring Modules
+
+Räumen wir unseren Code ein bisschen auf. Uns interessiert nur das Feld "notes" der props, also holen wir sie uns direkt über "destructuring":
+
+```javascript
+const App = ({ notes }) => {  
+  return (
+    <div>
+      <h1>Notes</h1>
+      <ul>
+        {notes.map(note => 
+          <li key={note.id}>
+            {note.content}
+          </li>
+        )}
+      </ul>
+    </div>
+  )
+}
+```
+
+Wenn ihr vergessen habt, was "destructuring" bedeutet und wie es funktioniert, lest bitte erneut die Sektion über [destructuring](https://fullstackopen.com/en/part1/component_state_event_handlers#destructuring)
+
+Wir separieren die einzelnen Notizen in eigenen Komponenten:
+
+```javascript
+const Note = ({ note }) => {  
+  return (    
+    <li>{note.content}</li>  
+  )
+}
+
+const App = ({ notes }) => {
+  return (
+    <div>
+      <h1>Notes</h1>
+      <ul>
+        {notes.map(note =>           
+          <Note key={note.id} note={note} />        
+        )}      
+      </ul>
+    </div>
+  )
+}
+```
+
+Hinweis: Das Attribut "key" muss jetzt für den Komponenten Note defniert werden und nicht wie zuvor für die li-Tags.
+
+Eine ganze React-Anwendung kann in eine einzige Datei geschrieben werden. Auch wenn das natürlich nicht sehr praktisch ist. Es ist üblich, jeden Komponenten in einer eigenen Datei als ein ES6-Modul zu definieren. 
+
+Wir haben die schon die ganze Zeit Module genutzt. Die ersten Zeilen der Datei index.js
+
+```javascript
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+
+import App from './App'
+```
+
+[importieren](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) drei Module. Damit können die Module in dieser Datei verwendet werden. Das Modul React wird auf die Variable React festgelegt, das Modul react-dom auf die Variable ReactDOM und das Modul, das den Hauptkomponenten App definiert, auf die Variable App.
+
+Setzen wir den Komponenten Note in sein eigenes Modul.
+
+In kleineren Anwendungen sind Komponenten normalerweise in dem Verzeichnis "components", das selbst im Verzeichnis "src" ist. Die Konvention ist die Dateien jeweils nach den Komponenten zu benennen.
+
+Jetzt erstellen wir das Verzeichnis "components" für unsere Anwendung mit der Datei Note.js. Der Inhalt von Note.js sieht so aus:
+
+```javascript
+const Note = ({ note }) => {
+  return (
+    <li>{note.content}</li>
+  )
+}
+
+export default Note
+```
+
+Die letzte Zeile des Moduls exportiert das Modul (die Variable Note).
+
+Jetzt kann die Datei App.js, die den Komponenten verwendet, das Modul importieren.
+
+```javascript
+import Note from './components/Note'
+
+const App = ({ notes }) => {
+  // ...
+}
+```
+
+Der Komponent, der von dem Modul exportiert wird, ist jetzt durch die Variable Note verfügbar.
+
+Bitte beachtet, dass beim Importieren eigener Komponenten, deren Verzeichnis relativ zur importierten Datei liegt:
+
+```javascript
+'./components/Note'
+```
+
+Der - . - am Anfang bezieht sich auf das aktuelle Verzeichnis, was bedeudet, dass sich das Modul in der Datei Note.js befindet, die selbst im Unterverzeichnis components im aktuellen Verzeichnis liegt. Die Dateinamenerweiterung .js kann weggelassen werden.
+
+Module kann man für vieles verwenden, nicht nur für das Separieren von Komponenten in eigene Dateien. Wir kommen später in diesem Kurs noch darauf zurück.
+
+Der aktuelle Anwendungscode befindet sich auf [GitHub](https://github.com/fullstack-hy2020/part2-notes/tree/part2-1).
+
+Bitte beachtet, dass Code von späteren Versionen der Anwendung im Branch Main enthalten sind. Der jetzige Code ist im Branch part2-1:
+
+!["fullstack content"](./images/part2a_image2.png?raw=true)
+
+Wenn ihr das Projekt klonen wollt, führt den Befehl "npm install" aus, bevor ihr die Anwendung mit dem Befehl "npm start" startet.
+
+## When the Application Breaks
