@@ -21,5 +21,7 @@
 
 ## Inhaltsverzeichnis des übersetzten Kurses
 
-- [Abschnitt 0](komplett_in_deutsch/abschnitt_0/abschnitt_0.md)
-- [Abschnitt 1](komplett_in_deutsch/abschnitt_1/abschnitt_1.md)
+- [Abschnitt 0 - fundamentals of web apps](komplett_in_deutsch/abschnitt_0/abschnitt_0.md)
+- [Abschnitt 1 - introduction to react](komplett_in_deutsch/abschnitt_1/abschnitt_1.md)
+- [Abschnitt 2 - communicating with server](komplett_in_deutsch/abschnitt_2/abschnitt_2.md)
+
