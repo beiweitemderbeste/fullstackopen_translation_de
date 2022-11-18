@@ -1329,7 +1329,7 @@ Reicht die Lösungen für die Aufgaben ein, indem ihr euren Code auf GitHub ver�
 
 > Remember, submit all the exercises of one part in a single submission. Once you have submitted your solutions for one part, you cannot submit more exercises to that part any more.
 
-Merkt euch alle Aufgaben eines Abschnitts gesammtelt einzureichen. Wenn ihr eure Lösungen für einen Abschnitt eingereicht habt, könnt ihr keinen weiteren Aufgaben für diesen Abschnitt einreichen.
+Bitte beachtet, dass ihr alle Aufgaben eines Abschnitts gesammtelt einreicht. Wenn ihr eure Lösungen für einen Abschnitt eingereicht habt, könnt ihr keine weiteren Aufgaben für diesen Abschnitt einreichen.
 
 > Some of the exercises work on the same application. In these cases, it is sufficient to submit just the final version of the application. If you wish, you can make a commit after every finished exercise, but it is not mandatory.
 
