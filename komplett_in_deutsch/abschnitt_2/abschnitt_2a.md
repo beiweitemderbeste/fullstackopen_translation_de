@@ -466,3 +466,97 @@ Bitte beachtet, dass Code von späteren Versionen der Anwendung im Branch Main e
 Wenn ihr das Projekt klonen wollt, führt den Befehl "npm install" aus, bevor ihr die Anwendung mit dem Befehl "npm start" startet.
 
 ## When the Application Breaks
+
+Am Beginn euer Programmiererkarriere (und auch nach 30 Jahrem professionellem Programmierens) wird es oft passieren, dass eure Anwendung einfach nicht funktioniert. Das ist vorallem bei dynamischen Sprachen wie Javascript der Fall, wo der Compiler keine Datentypen abfragt.
+
+Eine "React-Explosion" kann z.B. so aussehen:
+
+!["fullstack content"](./bilder/abschnitt2a_bild3.png?raw=true)
+
+In einem solchen Fall hilft euch am besten der Befehl console.log.
+
+Verantwortlich für die Explosion ist dieser Code:
+
+```javascript
+const Course = ({ course }) => (
+  <div>
+    <Header course={course} />
+  </div>
+)
+
+const App = () => {
+  const course = {
+    // ...
+  }
+
+  return (
+    <div>
+      <Course course={course} />
+    </div>
+  )
+}
+```
+
+Wir suchen nach dem Grund des Absturzes in dem console.log-Befehle in den Code setzen. Weil als erstes der Komponent App gerendert wird, setzen wir dort den ersten console.log-Befehl:
+
+```javascript
+const App = () => {
+  const course = {
+    // ...
+  }
+
+  console.log('App works...')
+
+  return (
+    // ..
+  )
+}
+```
+
+Um die Ausgabe in der Konsole zu sehen, müssen wir durch eine riesige rote Wand voller Fehler scrollen.
+
+!["fullstack content"](./bilder/abschnitt2a_bild4.png?raw=true)
+
+Wenn die eine Sache zu funktionieren scheint, ist es an der Zeit woanders zu suchen. Wenn der Komponent als einziger Ausdruck definiert wird oder eine Funktion ohne Rückgabewert, ist die Ausgabe an die Konsole schwieriger:
+
+```javascript
+const Course = ({ course }) => (
+  <div>
+    <Header course={course} />
+  </div>
+)
+```
+
+Der Komponent sollte in seine längere Form geändert werden, um die Ausgabe an die Konsole hinzuzufügen:
+
+```javascript
+const Course = ({ course }) => { 
+  console.log(course)  
+  
+  return (
+    <div>
+      <Header course={course} />
+    </div>
+  )
+}
+```
+
+Sehr oft sind die props eine Problem, von denen ein anderer Datentyp erwartet wird, oder sie werden mit einem anderen Namen, als sie eigentlich haben, aufgerufen und deswegen schlägt das "Destructuring" fehl. Meistens lösen sich die Probleme von selbst, wenn das Destructuring aufgehoben wird und wir tatsächlich sehen, was die props enthalten:
+
+```javascript
+const Course = (props) => {  
+  console.log(props)  
+  const { course } = props
+  return (
+    <div>
+      <Header course={course} />
+    </div>
+  )
+}
+```
+
+Wenn das Problem damit noch immer nicht behoben wurde, gibt es nicht wirklich viel zu tun abgesehen davon weiter nach Bugs zu suchen, indem ihr mehr console.log-Befehle in euren Code schreibt.
+
+Ich habe dieses Kapitel hinzugefügt, nachdem die Lösungsantwort für die nächste Frage "komplett explodiert" ist (weil die props den falschen Typ hatten) und ich mit console.log debuggen musste.
+
+## Exercises
