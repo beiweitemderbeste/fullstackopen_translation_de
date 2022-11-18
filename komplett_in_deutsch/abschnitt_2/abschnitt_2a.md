@@ -79,3 +79,135 @@ Wenn sich funktionales Programmieren mit Arrays für euch fremd anfühlt, sollte
 - [reduce basics](https://www.youtube.com/watch?v=Wl98eZpkp-c&t=31s)
 
 ## Event Handlers Revisited
+
+Event Handling hat sich letztes Jahr im Kurs als schwieriges Thema erwiesen.
+
+Wenn ihr noch Wissenslücken bei diesem Thema habt, empfehlen wir euch, nochmal das Thema [event handling revisited](https://fullstackopen.com/en/part1/a_more_complex_state_debugging_react_apps#event-handling-revisited) es letztens Abschnitts zu lesen.
+
+Wie man Event Handler an Unterkomponenten weitergibt, hat einige Fragen aufgeworfen. Eine kleine Wiederholung zu diesem Thema kann [hier](https://fullstackopen.com/en/part1/a_more_complex_state_debugging_react_apps#passing-event-handlers-to-child-components) gefunden werden.
+
+## Rendering Collections
+
+Wir beginnen jetzt mit dem Frontend oder besser gesagt der browserseitigen Anwendungslogik in React für eine Anwendung, die vergleichbar mit der Beispielanwendung aus Abschnitt 0 ist.
+
+Fangen wir mit dem Folgenden an (die Datei App.js):
+
+```javascript
+const App = (props) => {
+  const { notes } = props
+
+  return (
+    <div>
+      <h1>Notes</h1>
+      <ul>
+        <li>{notes[0].content}</li>
+        <li>{notes[1].content}</li>
+        <li>{notes[2].content}</li>
+      </ul>
+    </div>
+  )
+}
+
+export default App
+```
+
+Die Datei index.js sieht so aus:
+
+```javascript
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+
+import App from './App'
+
+const notes = [
+  {
+    id: 1,
+    content: 'HTML is easy',
+    date: '2019-05-30T17:30:31.098Z',
+    important: true
+  },
+  {
+    id: 2,
+    content: 'Browser can execute only JavaScript',
+    date: '2019-05-30T18:39:34.091Z',
+    important: false
+  },
+  {
+    id: 3,
+    content: 'GET and POST are the most important methods of HTTP protocol',
+    date: '2019-05-30T19:20:14.298Z',
+    important: true
+  }
+]
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <App notes={notes} />
+)
+```
+
+Jede Notiz enthält einen Text, einen Zeitstempel, einen Boolean-Wert, um zu markieren, ob die Notiz als wichtig kategorisiert wurde und eine einzigartige ID.
+
+Das obige Beispiel funktioniert, weil es exakt drei Notizen in dem Array gibt.
+
+Eine einzige Notiz wird dargestellt, indem auf die Objekte im Array mit einer hartkodierten Index-Nummer referenziert wird.
+
+```javascript
+<li>{notes[1].content}</li>
+```
+
+Das ist natürlich nicht praktikabel. Verbessern wir den Code, indem wir React-Elemente aus den Array-Objekten über die Funktion map generieren:
+
+```javascript
+notes.map(note => <li>{note.content}</li>)
+```
+
+Das Ergbnis ist ein Array aus li-Elementen.
+
+```javascript
+[
+  <li>HTML is easy</li>,
+  <li>Browser can execute only JavaScript</li>,
+  <li>GET and POST are the most important methods of HTTP protocol</li>,
+]
+```
+
+die wir dann innerhalb der ul-Tags platzieren:
+
+```javascript
+const App = (props) => {
+  const { notes } = props
+
+  return (
+    <div>
+      <h1>Notes</h1>
+      <ul>        
+        {notes.map(note => <li>{note.content}</li>)}      
+      </ul>    
+    </div>
+  )
+}
+```
+
+Weil der Code, der die li-Tags generiert aus Javascript besteht, muss dieser in geschwungenen Klammern in einem JSX-Template stehen, wie auch anderer Javascript-Code.
+
+Verbessern wir den Code so, dass er leserlicher wird. Dazu spalten wir die Pfeilfunktion auf mehrere Zeilen auf:
+
+```javascript
+const App = (props) => {
+  const { notes } = props
+
+  return (
+    <div>
+      <h1>Notes</h1>
+      <ul>
+        {notes.map(note => 
+          <li>            
+            {note.content}          
+          </li>        
+        )}
+      </ul>
+    </div>
+  )
+}
+```
+
