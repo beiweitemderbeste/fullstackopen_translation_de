@@ -211,3 +211,35 @@ const App = (props) => {
 }
 ```
 
+## key-attribut
+
+Obwohl die Anwendung zu funktionieren scheint, gibt es trotzdem eine ekelhafte Warnung in der Konsole:
+
+!["fullstack content"](./images/part2a_image1.png?raw=true)
+
+Wie die in der Fehlermeldung verlinkte React-Seite vorschlägt, muss jedes Listenelement, z.B. die Elemente, die über die map-Methode generiert wurden, ein einzigartiges Attritbut "key" besitzen.
+
+Fügen wir die Keys hinzu:
+
+```javascript
+const App = (props) => {
+  const { notes } = props
+
+  return (
+    <div>
+      <h1>Notes</h1>
+      <ul>
+        {notes.map(note => 
+          <li key={note.id}>            
+            {note.content}
+          </li>
+        )}
+      </ul>
+    </div>
+  )
+}
+```
+
+Damit verschwindet die Fehlermeldung.
+
+React benutzt die Key-Attribute der Objekte eines Arrays um festzulegen, wie die Ansicht eines Komponenten bei dessem erneuten Rendern generiert werden soll. Mehr dazu gibt es in der [React-Dokumentation](https://reactjs.org/docs/reconciliation.html#recursing-on-children).
