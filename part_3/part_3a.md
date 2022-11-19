@@ -236,3 +236,56 @@ console.log(`Server running on port ${PORT}`)
 !["fullstack content"](./images/part3a_image2.png?raw=true)
 
 ## express
+
+> Implementing our server code directly with Node's built-in http web server is possible. However, it is cumbersome, especially once the application grows in size.
+
+> Many libraries have been developed to ease server side development with Node, by offering a more pleasing interface to work with the built-in http module. These libraries aim to provide a better abstraction for general use cases we usually require to build a backend server. By far the most popular library intended for this purpose is express.
+
+> Let's take express into use by defining it as a project dependency with the command:
+
+```
+npm install express
+```
+
+> The dependency is also added to our package.json file:
+
+```javascript
+{
+  // ...
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
+```
+
+> The source code for the dependency is installed to the node_modules directory located in the root of the project. In addition to express, you can find a great amount of other dependencies in the directory:
+
+!["fullstack content"](./images/part3a_image3.png?raw=true)
+
+> These are in fact the dependencies of the express library, and the dependencies of all of its dependencies, and so forth. These are called the transitive dependencies of our project.
+
+> The version 4.17.2. of express was installed in our project. What does the caret in front of the version number in package.json mean?
+
+```javascript
+"express": "^4.17.2"
+```
+
+> The versioning model used in npm is called semantic versioning.
+
+> The caret in the front of ^4.17.2 means that if and when the dependencies of a project are updated, the version of express that is installed will be at least 4.17.2. However, the installed version of express can also be one that has a larger patch number (the last number), or a larger minor number (the middle number). The major version of the library indicated by the first major number must be the same.
+
+> We can update the dependencies of the project with the command:
+
+```
+npm update
+```
+
+> Likewise, if we start working on the project on another computer, we can install all up-to-date dependencies of the project defined in package.json with running the below command in the project's root directory:
+
+```
+npm install
+```
+
+> If the major number of a dependency does not change, then the newer versions should be backwards compatible. This means that if our application happened to use version 4.99.175 of express in the future, then all the code implemented in this part would still have to work without making changes to the code. In contrast, the future 5.0.0. version of express may contain changes that would cause our application to no longer work.
+
+## Web and express
