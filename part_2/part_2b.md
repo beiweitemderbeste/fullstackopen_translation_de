@@ -11,7 +11,11 @@
 
 > Let's continue expanding our application by allowing users to add new notes. You can find the code for our current application here.
 
+Erweitern wir unsere Anwendung, indem wir Benutzern erlauben neue Notizen hinzuzufügen. Ihr könnt den Code der jetzigen Anwendung [hier](link-missing) einsehen.
+
 > In order to get our page to update when new notes are added it's best to store the notes in the App component's state. Let's import the useState function and use it to define a piece of state that gets initialized with the initial notes array passed in the props.
+
+Damit sich unsere Seite aktualisiert, wenn eine neue Notiz angehängt wird, ist der beste Weg, die Notizen im State des Komponenten App zu speichern. Importieren wir die Funktion useState und nutzen sie, um einen State zu definieren, der initialisiert wird, wenn das anfängliche notes-Array an die props übergeben wird.
 
 ```javascript
 import { useState } from 'react'
@@ -36,6 +40,8 @@ export default App
 ```
 
 > The component uses the useState function to initialize the piece of state stored in notes with the array of notes passed in the props:
+
+Der Komponent verwendet die Funktion useState 
 
 ```javascript
 const App = (props) => { 
