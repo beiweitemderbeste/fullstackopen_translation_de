@@ -5,12 +5,14 @@
 ## Inhaltsverzeichnis
 
 - [Cypress](#Cypress)
-- [exercise](#exercise)
-- [exercise](#exercise)
-- [exercise](#exercise)
-- [exercise](#exercise)
-- [exercise](#exercise)
-- [exercise](#exercise)
+- [Writing to a form](#Writing-to-a-form)
+- [Some things to note](#Some-things-to-note)
+- [Testing new note form](#Testing-new-note-form)
+- [Controlling the state of the database](#Controlling-the-state-of-the-database)
+- [Failed login test](#Failed-login-test)
+- [Bypassing the UI](#Bypassing-the-UI)
+- [Changing the importance of a note](#Changing-the-importance-of-a-note)
+- [Running and debugging the tests](#Running-and-debugging-the-tests)
 - [exercise](#exercise)
 
 > So far we have tested the backend as a whole on an API level using integration tests, and tested some frontend components using unit tests.
