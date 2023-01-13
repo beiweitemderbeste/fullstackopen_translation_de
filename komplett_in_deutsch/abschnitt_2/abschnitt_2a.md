@@ -88,7 +88,7 @@ Wie man Event Handler an Unterkomponenten weitergibt, hat einige Fragen aufgewor
 
 ## Rendering Collections
 
-Wir beginnen jetzt mit dem Frontend oder besser gesagt der browserseitigen Anwendungslogik in React für eine Anwendung, die vergleichbar mit der Beispielanwendung aus Abschnitt 0 ist.
+Wir beginnen jetzt mit dem Frontend (oder besser gesagt der browserseitigen Anwendungslogik) in React für eine Anwendung, die vergleichbar mit der Beispielanwendung aus Abschnitt 0 ist.
 
 Fangen wir mit dem Folgenden an (die Datei App.js):
 
@@ -145,7 +145,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 )
 ```
 
-Jede Notiz enthält einen Text, einen Zeitstempel, einen Boolean-Wert, um zu markieren, ob die Notiz als wichtig kategorisiert wurde und eine einzigartige ID.
+Jede Notiz enthält einen Text, einen Zeitstempel, eine einzigartige ID und einen Boolean-Wert, um zu festzulegen, ob die Notiz als wichtig kategorisiert wurde.
 
 Das obige Beispiel funktioniert, weil es exakt drei Notizen in dem Array gibt.
 
@@ -155,7 +155,7 @@ Eine einzige Notiz wird dargestellt, indem auf die Objekte im Array mit einer ha
 <li>{notes[1].content}</li>
 ```
 
-Das ist natürlich nicht praktikabel. Verbessern wir den Code, indem wir React-Elemente aus den Array-Objekten über die Funktion map generieren:
+Das ist natürlich nicht praktikabel. Verbessern wir den Code, indem wir React-Elemente aus den Array-Objekten über die Funktion __map__ generieren:
 
 ```javascript
 notes.map(note => <li>{note.content}</li>)
@@ -188,7 +188,7 @@ const App = (props) => {
 }
 ```
 
-Weil der Code, der die li-Tags generiert aus Javascript besteht, muss dieser in geschwungenen Klammern in einem JSX-Template stehen, wie auch anderer Javascript-Code.
+Weil der Code, der die li-Tags generiert, aus Javascript besteht, muss dieser in geschwungenen Klammern stehen.
 
 Verbessern wir den Code so, dass er leserlicher wird. Dazu spalten wir die Pfeilfunktion auf mehrere Zeilen auf:
 
@@ -215,9 +215,9 @@ const App = (props) => {
 
 Obwohl die Anwendung zu funktionieren scheint, gibt es trotzdem eine ekelhafte Warnung in der Konsole:
 
-!["fullstack content"](./images/part2a_image1.png?raw=true)
+!["fullstack content"](./bilder/abschnitt2a_bild1.png?raw=true)
 
-Wie die in der Fehlermeldung verlinkte React-Seite vorschlägt, muss jedes Listenelement, z.B. die Elemente, die über die map-Methode generiert wurden, ein einzigartiges Attritbut "key" besitzen.
+Wie die in der Fehlermeldung verlinkte React-Seite sagt, muss jedes Listenelement, z.B. die Elemente, die über die Methode generiert wurden, ein einzigartiges Attritbut "key" besitzen.
 
 Fügen wir die Keys hinzu:
 
@@ -246,7 +246,7 @@ React benutzt die Key-Attribute der Objekte eines Arrays um festzulegen, wie die
 
 ## Map
 
-Die Array-Methode [map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) zu verstehen, ist essenziel für den Rest dieses Kurses:
+Die Array-Methode [map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) zu verstehen, ist essenziel wichtig für den Rest dieses Kurses:
 
 Die Anwendung enthält ein Array "notes":
 
@@ -447,7 +447,7 @@ const App = ({ notes }) => {
 
 Der Komponent, der von dem Modul exportiert wird, ist jetzt durch die Variable Note verfügbar.
 
-Bitte beachtet, dass beim Importieren eigener Komponenten, deren Verzeichnis relativ zur importierten Datei liegt:
+Bitte beachtet beim Importieren, dass das Verzeichnis eigener Komponenten relativ zur importierten Datei liegt:
 
 ```javascript
 './components/Note'
@@ -461,7 +461,7 @@ Der aktuelle Anwendungscode befindet sich auf [GitHub](https://github.com/fullst
 
 Bitte beachtet, dass Code von späteren Versionen der Anwendung im Branch Main enthalten sind. Der jetzige Code ist im Branch part2-1:
 
-!["fullstack content"](./images/part2a_image2.png?raw=true)
+!["fullstack content"](./bilder/abschnitt2a_bild2.png?raw=true)
 
 Wenn ihr das Projekt klonen wollt, führt den Befehl "npm install" aus, bevor ihr die Anwendung mit dem Befehl "npm start" startet.
 
@@ -527,7 +527,7 @@ const Course = ({ course }) => (
 )
 ```
 
-Der Komponent sollte in seine längere Form geändert werden, um die Ausgabe an die Konsole hinzuzufügen:
+Der Komponent sollte in seine längere Form geändert werden, um die Ausgabe in der Konsole anzuzeigen:
 
 ```javascript
 const Course = ({ course }) => { 
