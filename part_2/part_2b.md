@@ -15,7 +15,7 @@ Erweitern wir unsere Anwendung, indem wir Benutzern erlauben neue Notizen hinzuz
 
 > In order to get our page to update when new notes are added it's best to store the notes in the App component's state. Let's import the useState function and use it to define a piece of state that gets initialized with the initial notes array passed in the props.
 
-Damit sich unsere Seite aktualisiert, wenn eine neue Notiz angehängt wird, ist der beste Weg, die Notizen im State des Komponenten App zu speichern. Importieren wir die Funktion useState und nutzen sie, um einen State zu definieren, der initialisiert wird, wenn das anfängliche notes-Array an die props übergeben wird.
+Damit sich unsere Seite aktualisiert, wenn eine neue Notiz angehängt wird, ist es am besten die Notizen im State des Komponenten __App__ zu speichern. Importieren wir die Funktion __useState__ und nutzen sie, um einen State zu definieren, der initialisiert wird, wenn das anfängliche notes-Array an die props übergeben wird.
 
 ```javascript
 import { useState } from 'react'
@@ -41,7 +41,7 @@ export default App
 
 > The component uses the useState function to initialize the piece of state stored in notes with the array of notes passed in the props:
 
-Der Komponent verwendet die Funktion useState 
+Der Komponent verwendet die Funktion useState, um den State zu initialisieren, der in "notes" gespeichert ist. Das Array der "notes" wird dabei als props übergeben:
 
 ```javascript
 const App = (props) => { 
@@ -53,6 +53,8 @@ const App = (props) => {
 
 > If we wanted to start with an empty list of notes, we would set the initial value as an empty array, and since the props would not be used, we could omit the props parameter from the function definition:
 
+Wenn wir mit einer leeren Liste von Notizen anfangen wollten, würden wir den Startwert auf ein leeres Array setzen und da die props hier nicht benötigt werden, könnten wir den Parameter props in der Funktionsdefinition weglassen:
+
 ```javascript
 const App = () => { 
   const [notes, setNotes] = useState([]) 
@@ -63,13 +65,19 @@ const App = () => {
 
 > Let's stick with the initial value passed in the props for the time being.
 
+Wir starten aber vorläufig mit den props als Startwert.
+
 > Next, let's add an HTML form to the component that will be used for adding new notes.
+
+Als nächstes erweitern wir den Komponenten um ein HTML-Formular, das für das Hinzufügen neuer Notizen genutzt wird.
 
 ```javascript
 const App = (props) => {
   const [notes, setNotes] = useState(props.notes)
 
-  const addNote = (event) => {    event.preventDefault()    console.log('button clicked', event.target)  
+  const addNote = (event) => {    
+    event.preventDefault()   
+    console.log('button clicked', event.target)  
   }
 
   return (
@@ -91,7 +99,11 @@ const App = (props) => {
 
 > We have added the addNote function as an event handler to the form element that will be called when the form is submitted, by clicking the submit button.
 
+Wir haben die Funktion addNote als Event Handler an das Formular gefügt. Diese wird aufgerufen, wenn das Formular über den submit-Button abgeschickt wird.
+
 > We use the method discussed in part 1 for defining our event handler:
+
+Wir definieren unseren Event Handler wie in Abschnitt 1:
 
 ```javascript
 const addNote = (event) => {
@@ -102,15 +114,25 @@ const addNote = (event) => {
 
 > The event parameter is the event that triggers the call to the event handler function:
 
+Der Parameter event ist das Ereignis, das den Aufruf der Event Handler-Funktion auslöst.
+
 > The event handler immediately calls the event.preventDefault() method, which prevents the default action of submitting a form. The default action would, among other things, cause the page to reload.
 
+Der Event Handler ruft unmittelbar die Funktion event.preventDefault() auf, die die Standardaktion verhindert: das Abschicken des Formulars. Die Standardaktion würde u.a. das Neuladen der Seite bewirken.
+
 > The target of the event stored in event.target is logged to the console:
+
+Das Ziel des Ereignisses, dass in event.target gespeichert ist, wird in der Konsole ausgegeben:
 
 !["fullstack content"](./images/part2b_image1.png?raw=true)
 
 > The target in this case is the form that we have defined in our component.
 
+In diesem Fall ist das Ziel das Formular, das wir in unserem Komponenten definiert haben.
+
 > How do we access the data contained in the form's input element?
+
+Wie können wir auf die Daten zugreifen, die im Input-Element des Formulars gespeichert sind?
 
 ## Controlled component
 
