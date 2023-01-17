@@ -132,20 +132,22 @@ In diesem Fall ist das Ziel das Formular, das wir in unserem Komponenten definie
 
 > How do we access the data contained in the form's input element?
 
-Wie können wir auf die Daten zugreifen, die im Input-Element des Formulars gespeichert sind?
+Wie können wir auf die Daten zugreifen, die im Eingabefeld des Formulars gespeichert sind?
 
 ## Controlled component
 
 > There are many ways to accomplish this; the first method we will take a look at is through the use of so-called controlled components.
 
+Es gibt viele Wege, um das zu erreichen. Den ersten Weg, den wir uns ansehen, ist das Benutzen von sogenannten "controlled components".
+
 > Let's add a new piece of state called newNote for storing the user-submitted input and let's set it as the input element's value attribute:
+
+Erweitern wir unseren Code um den State newNote, um die Benutzereingaben zu speichern und setzen ihn als Wert für das Eingabefeld: 
 
 ```javascript
 const App = (props) => {
   const [notes, setNotes] = useState(props.notes)
-  const [newNote, setNewNote] = useState(    
-    'a new note...'  
-  )
+  const [newNote, setNewNote] = useState('a new note...')
 
   const addNote = (event) => {
     event.preventDefault()
@@ -156,9 +158,7 @@ const App = (props) => {
     <div>
       <h1>Notes</h1>
       <ul>
-        {notes.map(note => 
-          <Note key={note.id} note={note} />
-        )}
+        {notes.map(note => <Note key={note.id} note={note} />)}
       </ul>
       <form onSubmit={addNote}>
         <input value={newNote} />        
@@ -171,11 +171,17 @@ const App = (props) => {
 
 > The placeholder text stored as the initial value of the newNote state appears in the input element, but the input text can't be edited. The console displays a warning that gives us a clue as to what might be wrong:
 
+Der Platzhaltertext, der als Startwert des States von newNote gespeichert ist, erscheint im Eingabefeld, aber der Eingabetext kann nicht bearbeitet werden. Die Konsole zeigt eine Warnung an, die uns darüber informiert, was falsch laufen könnte:
+
 !["fullstack content"](./images/part2b_image2.png?raw=true)
 
 > Since we assigned a piece of the App component's state as the value attribute of the input element, the App component now controls the behavior of the input element.
 
+Da wir einen Teil des States des Komponenten App dem Wert des Eingabefelds zugewiesen haben, steuert der Komponent App nun das Verhalten des Eingabefelds.
+
 > In order to enable editing of the input element, we have to register an event handler that synchronizes the changes made to the input with the component's state:
+
+Um das Eingabefeld bearbeiten zu können, registrieren wir einen Event Handler, der Veränderungen an der Eingabe mit dem State des Komponenten synchronisiert:
 
 ```javascript
 const App = (props) => {
@@ -213,6 +219,8 @@ const App = (props) => {
 
 > We have now registered an event handler to the onChange attribute of the form's input element:
 
+Jetzt haben einen Event Handler für das Attribut onChange registriert:
+
 ```javascript
 <input
   value={newNote}
@@ -221,6 +229,8 @@ const App = (props) => {
 ```
 
 > The event handler is called every time a change occurs in the input element. The event handler function receives the event object as its event parameter:
+
+Der Event Handler wird jedesmal aufgerufen, wenn es eine Änderung im Eingabefeld gibt. Die Funktion des Event Handlers erhält das Event-Objekt als event-Parameter:
 
 ```javascript
 const handleNoteChange = (event) => {
@@ -231,17 +241,27 @@ const handleNoteChange = (event) => {
 
 > The target property of the event object now corresponds to the controlled input element, and event.target.value refers to the input value of that element.
 
+Das Ziel des Event-Objekts stimmt jetzt mit dem Eingabefeld überein und event.target.value bezieht sich auf den Eingabewert des Elements.
+
 > Note that we did not need to call the event.preventDefault() method like we did in the onSubmit event handler. This is because there is no default action that occurs on an input change, unlike on a form submission.
 
+Beachtet, dass wir die Funktion event.preventDefault() nicht aufrufen mussten, wie wir es beim Event Handler onSubmit getan haben, da es keine Standardaktion für die Änderung des Eingabefelds gibt, im Gegensatz zum Abschicken eines Formulars.
+
 > You can follow along in the console to see how the event handler is called:
+
+Jetzt könnt ihr in der Konsole verfolgen, wie der Event Handler aufgerufen wird:
 
 !["fullstack content"](./images/part2b_image3.png?raw=true)
 
 > You did remember to install React devtools, right? Good. You can directly view how the state changes from the React Devtools tab:
 
+Ihr erinnert euch, dass ihr die React Devtools installiert habt? Gut. Ihr könnt in den React Devtools direkt sehen, wie sich der State verändert:
+
 !["fullstack content"](./images/part2b_image4.png?raw=true)
 
 > Now the App component's newNote state reflects the current value of the input, which means that we can complete the addNote function for creating new notes:
+
+ Jetzt spiegelt der State newNote des Komponenten App den aktuellen Wert der Eingabe, was bedeudet, dass wir die Funktion addNote für das Erstellen neuer Notizen vervollständigen können:
 
 ```javascript
 const addNote = (event) => {
@@ -260,7 +280,11 @@ const addNote = (event) => {
 
 > First, we create a new object for the note called noteObject that will receive its content from the component's newNote state. The unique identifier id is generated based on the total number of notes. This method works for our application since notes are never deleted. With the help of the Math.random() function, our note has a 50% chance of being marked as important.
 
+Zuerst erstellen wir für die Notiz ein neues Objekt noteObject, das seinen Inhalt vom State newNote des Komponenten erhält. Der einzigartige Identifier id wird auf Basis der Gesamtzahl der Notizen generiert. Das reicht für unsere Anwendung, da Notizen niemals gelöscht werden. Mithilfe der Funktion Math.random() hat unsere Notiz eine 50%ige Chance als wichtig markiert zu werden.
+
 > The new note is added to the list of notes using the concat array method, introduced in part 1:
+
+Die neue Notiz wird mit der Array-Funktion concat, die in Abschnitt 1 eingeführt wurde, an die Notizenliste gehängt:
 
 ```javascript
 setNotes(notes.concat(noteObject))
@@ -268,13 +292,19 @@ setNotes(notes.concat(noteObject))
 
 > The method does not mutate the original notes array, but rather creates a new copy of the array with the new item added to the end. This is important since we must never mutate state directly in React!
 
+Diese Funktion verändert nicht das originale Array notes, sondern erstellt eine neue Kopie des Arrays mit einem neuen Element, dass am Ende angefügt wird. Das ist wichtig, da wir in React niemals State direkt verändern dürfen!
+
 > The event handler also resets the value of the controlled input element by calling the setNewNote function of the newNote state:
+
+Der Event Handler setzt ebenso den Wert des Eingabefelds zurück, in dem die Funktion setNewNote aufgerufen wird:
 
 ```javascript
 setNewNote('')
 ```
 
 > You can find the code for our current application in its entirety in the part2-2 branch of this GitHub repository.
+
+Ihr finden den Quellcode für unsere aktuelle Anwendug in seiner Gesamtheit im Branch part2-2 von [diesem GitHub Repository](https://github.com/fullstack-hy2020/part2-notes/tree/part2-2).
 
 ## Filtering Displayed Elements
 
