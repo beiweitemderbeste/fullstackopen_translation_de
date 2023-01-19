@@ -471,15 +471,25 @@ Ihr findet den Quellcode für unsere aktuelle Anwendung in seiner Gesamtheit im 
 
 > In the first exercise, we will start working on an application that will be further developed in the later exercises. In related sets of exercises it is sufficient to return the final version of your application. You may also make a separate commit after you have finished each part of the exercise set, but doing so is not required.
 
+In der ersten Aufgabe beginnen wir an einer Anwendung zu arbeiten, die in späteren Aufgaben weiterentwickelt wird. Bei Aufgaben, die sich aufeinander beziehen, reicht es aus die endgültige Version der Anwendung abzugeben. Ihr könnt auch für jeden Teil der Aufgaben einen eigenen Commit erstellen, aber das ist nicht erforderlich.
+
 > WARNING create-react-app will automatically turn your project into a git-repository unless you create your application inside of an existing git repository. It's likely that you do not want your project to be a repository, so simply run the rm -rf .git command at the root of your application.
+
+WARNUNG: create-react-app macht aus eurem Projekt automatisch ein git-Repository, außer ihr habt eure Anwendung in einem bereits bestehendem git-Repository erstellt. Voraussichtlich wollt ihr das nicht tun, also führt einfach den Befehl "rm -rf .git" im Wurzelverzeichnis eurer Anwendung.
 
 ### 2.6: The Phonebook Step1
 
 > Let's create a simple phonebook. In this part we will only be adding names to the phonebook.
 
+Erstellen wir ein einfaches Telefonbuch. In diesem Teil werden wir nur Namen hinzufügen.
+
 > Let us start by implementing the addition of a person to phonebook.
 
+Fangen wir an, in dem wir das Hinzufügen einer Person zum Telefonbuch implementieren.
+
 > You can use the code below as a starting point for the App component of your application:
+
+Ihr könnt den folgenden Code als Ausgangspunkt für den Komponenten App benutzen:
 
 ```javascript
 import { useState } from 'react'
@@ -512,7 +522,11 @@ export default App
 
 > The newName state is meant for controlling the form input element.
 
+Der State newName ist für das Kontrollieren des Eingabefelds des Formulars gedacht.
+
 > Sometimes it can be useful to render state and other variables as text for debugging purposes. You can temporarily add the following element to the rendered component:
+
+Manchmal kann es zum Debuggen nützlich sein, sich den State oder andere Variablen als Text anzusehen. Ihr könnt temporär das folgende Element im Komponenten hinzufügen:
 
 ```javascript
 <div>debug: {newName}</div>
@@ -520,17 +534,29 @@ export default App
 
 > It's also important to put what we learned in the debugging React applications chapter of part one into good use. The React developer tools extension especially, is incredibly useful for tracking changes that occur in the application's state.
 
+Es ist auch wichtig, das einzusetzen, was wir im Kapitel über das Debuggen von React-Anwendungen gelernt. Insbesondere die React Developer Tools sind unglaublich nützlich, um Änderung des States der Anwendung zu verfolgen.
+
 > After finishing this exercise your application should look something like this:
+
+Wenn ihr die Aufgabe erledigt habt, sollte eure Anwendung ungefähr so aussehen:
 
 !["fullstack content"](./images/part2b_image5.png?raw=true)
 
 > Note the use of the React developer tools extension in the picture above!
 
+Beachtet das Benutzen der React Developer Tools im oberen Bild.
+
 > NB:
+
+Hinweis:
 
 > - you can use the person's name as value of the key property
 
+- Ihr könnt den Namen einer Person als Wert für den Key benutzen.
+
 > - remember to prevent the default action of submitting HTML forms!
+
+- Denkt daran, die Standardaktion für das Abschicken von HTML-Formularen zu verhindern.
 
 ### 2.7: The Phonebook Step2
 
