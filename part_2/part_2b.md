@@ -602,6 +602,8 @@ Das Benutzen von Template String ist die eher idiomatischere Option und das Zeic
 
 > Expand your application by allowing users to add phone numbers to the phone book. You will need to add a second input element to the form (along with its own event handler):
 
+Erweitert eure Anwendung, in dem ihr es Benutzern erlaubt, Telefonnummern zum Telefonbuch hinzuzufügen. Ihr wert ein zweites Eingabefeld im Formular benötigen (zusammen mit seinem Event Handler):
+
 ```javascript
 <form>
   <div>name: <input /></div>
@@ -611,6 +613,8 @@ Das Benutzen von Template String ist die eher idiomatischere Option und das Zeic
 ```
 
 > At this point the application could look something like this. The image also displays the application's state with the help of React developer tools:
+
+Zu diesem Zeitpunkt könnte die Anwendung ungefähr so aussehen. Das Bild zeigt auch den State der Anwendung mithilfe der React Developer Tools:
 
 !["fullstack content"](./images/part2b_image7.png?raw=true)
 
