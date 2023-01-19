@@ -310,7 +310,11 @@ Ihr finden den Quellcode für unsere aktuelle Anwendug in seiner Gesamtheit im B
 
 > Let's add some new functionality to our application that allows us to only view the important notes.
 
+Erweitern wir unsere Anwendung um eine Funktionalität, die es uns erlaubt, nur die wichtigen Notizen zu sehen.
+
 > Let's add a piece of state to the App component that keeps track of which notes should be displayed:
+
+Wir erweitern unseren Komponenten App um einen State, der verfolgt, welche Notizen angezeigt werden sollen.
 
 ```javascript
 const App = (props) => {
@@ -323,6 +327,8 @@ const App = (props) => {
 ```
 
 > Let's change the component so that it stores a list of all the notes to be displayed in the notesToShow variable. The items of the list depend on the state of the component:
+
+Verändern wir den Komponenten so, dass er eine Liste mit allen Notizen, die angezeigt werden sollen, in der Variable notesToShow speichert:
 
 ```javascript
 import { useState } from 'react'
@@ -355,6 +361,8 @@ const App = (props) => {
 
 > The definition of the notesToShow variable is rather compact:
 
+Die Definition der Variable notesToShow is recht eher kompakt:
+
 ```javascript
 const notesToShow = showAll
   ? notes
@@ -363,15 +371,23 @@ const notesToShow = showAll
 
 > The definition uses the conditional operator also found in many other programming languages.
 
+Die Definition benutzt den Conditional Operator, den es auch in vielen anderen Programmiersprachen gibt.
+
 > The operator functions as follows. If we have:
+
+Der Operator funktioniert wie folgt:
 
 ```javascript
 const result = condition ? val1 : val2
 ```
 
-> the result variable will be set to the value of val1 if condition is true. If condition is false, the result variable will be set to the value ofval2.
+> The result variable will be set to the value of val1 if condition is true. If condition is false, the result variable will be set to the value ofval2.
+
+Die Variable result wird auf den Wert von val1 gesetzt, wenn die Bedingung wahr ist. Ist die Bedingung falsch, wird die Variable result auf den Wert von val2 gesetzt.
 
 > If the value of showAll is false, the notesToShow variable will be assigned to a list that only contains notes that have the important property set to true. Filtering is done with the help of the array filter method:
+
+Wenn der Wert von showAll false ist, wird der Variable notesToShow eine Liste zugewiesen, die nur Notizen enthält, bei denen die Eigenschaft important auf true gesetzt wurde.
 
 ```javascript
 notes.filter(note => note.important === true)
@@ -379,17 +395,27 @@ notes.filter(note => note.important === true)
 
 > The comparison operator is in fact redundant, since the value of note.important is either true or false, which means that we can simply write:
 
+Der Vergleichsoperater ist tatsächlich redundant, da der Wert von note.important entweder true oder false ist, was bedeudet, das wir folgendermaßen verkürzen können:
+
 ```javascript
 notes.filter(note => note.important)
 ```
 
 > The reason we showed the comparison operator first was to emphasize an important detail: in JavaScript val1 == val2 does not work as expected in all situations and it's safer to use val1 === val2 exclusively in comparisons. You can read more about the topic here.
 
+Der Grund, warum wir den Vergleichsoperatur zuerst gezeigt haben, ist um ein wichtiges Detail hervorzuheben: in JavaScript funktioniert val1 == val2 nicht in allen Situation so, wie man es erwartet und es ist sicherer ausschließlich val1 === val2 bei Vergleichen zu verwenden.
+
 > You can test out the filtering functionality by changing the initial value of the showAll state.
+
+Ihr könnt die Filterfunktionalität testen, in dem ihr den Startwert des States showAll verändert.
 
 > Next, let's add functionality that enables users to toggle the showAll state of the application from the user interface.
 
+Als nächstes fügen wir eine Funkionalität hinzu, die es Nutzern erlaubt, den State showAll der Anwendung im User Interface ein- und auszuschalten.
+
 > The relevant changes are shown below:
+
+Die relevanten Änderungen werden hier gezeigt:
 
 ```javascript
 import { useState } from 'react' 
@@ -423,17 +449,23 @@ const App = (props) => {
 
 > The displayed notes (all versus important) are controlled with a button. The event handler for the button is so simple that it has been defined directly in the attribute of the button element. The event handler switches the value of showAll from true to false and vice versa:
 
+Die angezeigten Notizen (all oder important) werden mit einem Button kontrolliert. Der Event Handler des Buttons ist so einfach, dass er direkt als Attribut des Buttons definiert wurde. Der Event Handler schaltet den Wert von showAll von true zu false und zurück:
+
 ```javascript
 () => setShowAll(!showAll)
 ```
 
 > The text of the button depends on the value of the showAll state:
 
+Der Text des Buttons hängt vom Wert des States von showAll ab:
+
 ```javascript
 show {showAll ? 'important' : 'all'}
 ```
 
 > You can find the code for our current application in its entirety in the part2-3 branch of this GitHub repository.
+
+Ihr findet den Quellcode für unsere aktuelle Anwendung in seiner Gesamtheit im Branch part2-3 von diesem GitHub Repository.
 
 ## exercises
 
