@@ -622,11 +622,17 @@ Zu diesem Zeitpunkt könnte die Anwendung ungefähr so aussehen. Das Bild zeigt 
 
 > Implement a search field that can be used to filter the list of people by name:
 
+Implementiert ein Suchfeld, das genutzt werden kann, um die Liste der Leute nach Namen zu sortieren:
+
 !["fullstack content"](./images/part2b_image7.png?raw=true)
 
 > You can implement the search field as an input element that is placed outside the HTML form. The filtering logic shown in the image is case insensitive, meaning that the search term arto also returns results that contain Arto with an uppercase A.
 
+Ihr könnt das Suchfeld als Eingabefeld, das außerhalb des Formulars platziert wird, implementieren.
+
 > NB: When you are working on new functionality, it's often useful to "hardcode" some dummy data into your application, e.g.
+
+Hinweis: Wenn ihr an einer neuen Funktionalität arbeitet, ist es oft nützlich Testdaten in eure Anwendung zu schreiben, z.B. so:
 
 ```javascript
 const App = () => {
@@ -642,6 +648,8 @@ const App = () => {
 ```
 
 > This saves you from having to manually input data into your application for testing out your new functionality.
+
+Das rettet euch davor, jedes Mal manuell Daten in eure Anwendung eingeben zu müssen, um die Anwendung zu testen.
 
 ### 2.10: The Phonebook Step5
 
