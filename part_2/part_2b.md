@@ -562,11 +562,17 @@ Hinweis:
 
 > Prevent the user from being able to add names that already exist in the phonebook. JavaScript arrays have numerous suitable methods for accomplishing this task. Keep in mind how object equality works in Javascript.
 
+Verhindert, dass Benutzer Namen hinzufügen können, die es bereits im Telefonbuch gibt. JavaScript Arrays haben mehrere passende Funktionen, um diese Aufgabe zu erledigen.
+
 > Issue a warning with the alert command when such an action is attempted:
+
+Erzeugt eine Warnung mit dem Befehl alert, wenn sowas versucht wird:
 
 !["fullstack content"](./images/part2b_image6.png?raw=true)
 
 > Hint: when you are forming strings that contain values from variables, it is recommended to use a template string:
+
+Tipp: Wenn ihr Strings erstellt, die die Werte von Variablen enthalten, wird empfohlen Template Strings zu benutzen:
 
 ```javascript
 `${newName} is already added to phonebook`
@@ -574,17 +580,23 @@ Hinweis:
 
 > If the newName variable holds the value Arto Hellas, the template string expression returns the string
 
+Wenn die Variable newName den Wert Arto Hellas hält, gibt der Template Strings den String zurück
+
 ```javascript
 `Arto Hellas is already added to phonebook`
 ```
 
 > The same could be done in a more Java-like fashion by using the plus operator:
 
+Das gleiche könnte auch mit der Java-ähnlich Methode mit dem Plus-Operater erreicht werden:
+
 ```javascript
 newName + ' is already added to phonebook'
 ```
 
 > Using template strings is the more idiomatic option and the sign of a true JavaScript professional.
+
+Das Benutzen von Template String ist die eher idiomatischere Option und das Zeichen eines wahren Javascript-Profis.
 
 ### 2.8: The Phonebook Step3
 
