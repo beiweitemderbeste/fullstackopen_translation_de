@@ -13,9 +13,15 @@
 
 > For a while now we have only been working on "frontend", i.e. client-side (browser) functionality. We will begin working on "backend", i.e. server-side functionality in the third part of this course. Nonetheless, we will now take a step in that direction by familiarizing ourselves with how code executing in the browser communicates with the backend.
 
+Wir haben jetzt eine Zeit lang am Frontend gearbeitet, der clientseiten (browserseitigen) Funktionalität. Wir beginnen jetzt mit der Arbeit am Backend, z.B. mit der serverseitigen Funktionalität im dritten Abschnitt des Kurses. Nichtdestotrotz werden wir uns jetzt damit vertraut, wie Code, der im Browser ausgeführt wird, mit dem Backend kommuniziert.
+
 > Let's use a tool meant to be used during software development called JSON Server to act as our server.
 
+Wir benutzen ein Werkzeug (JSON Server), dass für die Softwareentwicklung gedacht ist, um als unser Server zu agieren.
+
 > Create a file named db.json in the root directory of the previous notes project with the following content:
+
+Erstellt eine Datei db.json im Wurzelverzeichnis des vorangegangen Notizenprojekts mit folgendem Inhalt:
 
 ```javascript
 {
@@ -44,7 +50,11 @@
 
 > You can install JSON server globally on your machine using the command npm install -g json-server. A global installation requires administrative privileges, which means that it is not possible on faculty computers or freshman laptops.
 
+Ihr könnt JSON Server global auf eurem Rechner mit dem Befehl npm install -g json-server installieren. Eine globale Installation verlangt administrative Berechtigungen, was bedeutet, dass das nicht auf Fakultätsrechnern oder Freshman-Laptops möglich ist.
+
 > After installing run the following command to run the json-server. The json-server starts running on port 3000 by default; but since projects created using create-react-app reserve port 3000, we must define an alternate port, such as port 3001, for the json-server. The --watch option automatically looks for any saved changes to db.json
+
+Führt den folgenden Befehl nach der Installation aus, um den json-server zu starten. Standardmäßig startet der JSON-Server auf Port 3000, aber da Projekte, die mit create-react-app erstellt wurden, Port 3000 reservieren, müssen wir einen alternativen Port für den json-server definieren, wie z.B. Port 3001. Die Option --watch überwacht automatisch Änderungen an db.json.
 
 ```javascript
 json-server --port 3001 --watch db.json
@@ -52,21 +62,33 @@ json-server --port 3001 --watch db.json
 
 > However, a global installation is not necessary. From the root directory of your app, we can run the json-server using the command npx:
 
+Allerdings ist eine globale Installation nicht notwendig. Im Wurzelverzeichnis eurer App könnt ihr den json-server mit dem Befehl npx starten:
+
 ```javascript
 npx json-server --port 3001 --watch db.json
 ```
 
 > Let's navigate to the address http://localhost:3001/notes in the browser. We can see that json-server serves the notes we previously wrote to the file in JSON format:
 
+Ruft die Adresse http://localhost:3001/notes in Browser auf. Wir können sehen, das der json-server die Notizen, die wir vorhin in die Datei geschrieben, im JSON-Format ausgibt:
+
 !["fullstack content"](./images/part2c_image1.png?raw=true)
 
 > If your browser doesn't have a way to format the display of JSON-data, then install an appropriate plugin, e.g. JSONVue to make your life easier.
 
+Wenn euer Browser keine Möglichkeit hat, die JSON-Daten darzustellen, dann installiert ein passendes Plugin, z.B. JSONVue, um euer Leben einfacher zu machen.
+
 > Going forward, the idea will be to save the notes to the server, which in this case means saving them to the json-server. The React code fetches the notes from the server and renders them to the screen. Whenever a new note is added to the application, the React code also sends it to the server to make the new note persist in "memory".
+
+Von jetzt an ist die Idee, dass Notizen auf dem Server gespeichert werden, was in diesem Fall bedeutet, dass sie im JSON-Server gespeichert werden. Der React-Code holt sich die Notizen vom Server und zeigt sie am Bildschirm an. Wenn eine neue Notiz hinzugefügt wird, sendet der React-Code die Notiz an den Server, damit sie gespeichert wird.
 
 > json-server stores all the data in the db.json file, which resides on the server. In the real world, data would be stored in some kind of database. However, json-server is a handy tool that enables the use of server-side functionality in the development phase without the need to program any of it.
 
+json-server speichert alle Daten in der Datei db.json, die auf dem Server verbleibt. In der realen Welt würden die Daten in einer Datenbank gespeichert werden. json-server ist ein nützliches Werkzeug, das ermöglicht serverseitige Funktionalitäten in der Entwicklungsphase zu nutzen, ohne sie vorher programmieren zu müssen.
+
 > We will get familiar with the principles of implementing server-side functionality in more detail in part 3 of this course.
+
+Wir machen uns mit den Prinzipien der Implementierung serverseitiger Funktionalitäten in Abschnitt 3 des Kurses genauer vertraut.
 
 ### The browser as a runtime environment
 
