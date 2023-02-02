@@ -655,11 +655,15 @@ Das rettet euch davor, jedes Mal manuell Daten in eure Anwendung eingeben zu mü
 
 > If you have implemented your application in a single component, refactor it by extracting suitable parts into new components. Maintain the application's state and all event handlers in the App root component.
 
-
+Schreibt eure Anwendung um, wenn ihr sie als einzelnen Komponenten implementiert habt, indem ihr passende Teile in eigene Komponenten packt. Verwaltet den State der Anwendung und alle Event Handler im Komponenten App.
 
 > It is sufficient to extract three components from the application. Good candidates for separate components are, for example, the search filter, the form for adding new people into the phonebook, a component that renders all people from the phonebook, and a component that renders a single person's details.
 
+Es reicht aus, wenn ihr drei weitere Komponenten erstellt. Gute Kandidaten dafür wären z.B. der Suchfilter, das Formular für das Erstellen neuer Einträge, ein Komponent, der alle Einträge des Telefonbuchs anzeigt und ein Komponenten, der die Details einer einzelnen Person anzeigt.
+
 > The application's root component could look similar to this after the refactoring. The refactored root component below only renders titles and lets the extracted components take care of the rest.
+
+Der Komponent App könnte nach dem Umschreiben ungefähr so aussehen.  Der untenstehende Komponent zeigt nur die Titel an und lässt die neuen Komponenten sich um den Rest kümmern.
 
 ```javascript
 const App = () => {
@@ -686,3 +690,5 @@ const App = () => {
 ```
 
 > NB: You might run into problems in this exercise if you define your components "in the wrong place". Now would be a good time to rehearse the chapter do not define a component in another component from last part.
+
+Hinweis: Ihr könntet Probleme bei dieser Aufgabe bekommen, wenn ihr eure Komponenten an der falschen Stelle definiert. Jetzt wäre ein guter Zeitpunkt, um das Kapitel "do not define a component in another component" des letzten Abschnitts zu wieder holen.
