@@ -84,9 +84,9 @@ Die Datei App.js definiert einen React-Komponenten "App". Der Befehl in der letz
 ReactDOM.createRoot(document.getElementById('root')).render(<App />)
 ```
 
-stellt die Inhalte von diesem App-Komponenten einem div-Element mit der id "root" dar. Das div-Element wird in der Datei public/index.html eingefügt.
+stellt die Inhalte des Komponenten in einem div-Element mit der id "root" dar. Das div-Element wird in der Datei public/index.html eingefügt.
 
-Standardäßig enthält public/index.html kein HTML, das für uns im Browser sichtbar ist. Ihr könnt versuchen HTML in diese Datei zu schreiben, aber normalerweise wird in React jeder Inhalt über Komponenten dargestellt.
+Standardmäßig enthält public/index.html kein HTML, das für uns im Browser sichtbar ist. Ihr könnt versuchen HTML in diese Datei zu schreiben, aber normalerweise wird in React jeder Inhalt über Komponenten dargestellt.
 
 Schauen wir uns den Code, der den Komponenten definiert, ein bisschen genauer an:
 
@@ -258,7 +258,7 @@ Eine andere Konvention ist die Idee einen Hauptkomponenten "App" an die Spitze d
 
 Es ist möglich an die Komponenten Daten zu übergeben, diese werden "props" genannt.
 
-Ändern wir den Komponenten Hello ab:
+Ändern wir den Komponenten Hello wie folgt ab:
 
 ```javascript
 const Hello = (props) => {
@@ -520,7 +520,8 @@ const Content = ... {
 }
 ```
 
-Unsere Anwendung gibt die verschiedenen Informationen auf recht primitive Weise weiter, da die Informationen auf individuellen Variablen basieren. Diese Situation werden wir in Kürze verbessern.
+Unsere Anwendung stellt Informationen auf recht primitive Weise dar, da die Informationen auf individuellen Variablen basieren. Diese Situation werden wir in Kürze verbessern.
 
 [zurück zu Abschnitt 1](abschnitt_1.md)
+
 [weiter zu Abschnitt 1b](abschnitt_1b.md)
