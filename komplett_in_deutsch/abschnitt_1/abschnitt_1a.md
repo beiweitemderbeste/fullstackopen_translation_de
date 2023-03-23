@@ -7,13 +7,14 @@
 - [Multiple Components](#Multiple-Components)
 - [props: passing data to components](#props-passing-data-to-components)
 - [Some notes](#Some-notes)
+- [Do not render objects](#do-not-render-objects)
 - [Exercises](#Exercises)
 
-Wir befassen uns jetzt mit dem wahrscheinlich wichtigstem Thema dieses Kurses, der React-Bibliothek. Wir fangen an, indem wir eine einfache React-Anwendung erstellen und uns mit den Grundkonzepten von React auseinandersetzen.
+Wir befassen uns jetzt mit dem wahrscheinlich wichtigstem Thema dieses Kurses, der [React-Bibliothek](https://reactjs.org/). Wir fangen an, indem wir eine einfache React-Anwendung erstellen und uns mit den Grundkonzepten von React auseinandersetzen.
 
-Der bei weitem einfachste Weg zu starten ist "create-react-app" zu benutzen. Es ist möglich (aber nicht notwendig) create-react-app auf eurem Rechner zu installieren, wenn npm mit Nodejs (mind. Version 5.3) installiert wurde.
+Der bei weitem einfachste Weg zu starten ist [create-react-app](https://github.com/facebook/create-react-app) zu benutzen. Es ist möglich (aber nicht notwendig) create-react-app auf eurem Rechner zu installieren, wenn npm mit Nodejs (mind. Version 5.3) installiert wurde.
 
-Wir beginnen, indem wir die Anwendung "part1" erstellen und in das Verzeichnis wechseln:
+Wir beginnen, indem wir die Anwendung "part1" erstellen und in das Verzeichnis "part1" wechseln:
 
 ```
 npx create-react-app part1
@@ -26,7 +27,7 @@ Die Anwendung wird folgendermaßen gestartet:
 npm start
 ```
 
-Standardmäßig läuft die Anwendung unter http://localhost:3000
+Standardmäßig läuft die Anwendung unter [http://localhost:3000](http://localhost:3000)
 
 Euer Standardbrowser sollte sie automatisch öffnen. Öffnet direkt die Browserkonsole:
 
@@ -78,7 +79,7 @@ Schaut [hier](https://fullstackopen.com/en/part1/a_more_complex_state_debugging_
 
 ## Component
 
-Die Datei App.js definiert einen React-Komponenten "App". Der Befehl in der letzten Zeile von index.js
+Die Datei App.js definiert einen [React-Komponenten](https://reactjs.org/docs/components-and-props.html) "App". Der Befehl in der letzten Zeile von index.js
 
 ```javascript
 ReactDOM.createRoot(document.getElementById('root')).render(<App />)
@@ -116,7 +117,7 @@ Die Funktion wird dann der Konstanten App zugewiesen:
 const App = ...
 ```
 
-Es gibt verschiedene Wege, um Funktionen in Javascript zu definieren. Wir verwenden hier Pfeilfunktionen, die in einer neueren Version von Javascript (bekannt als ECMAScript 6) beschrieben werden.
+Es gibt verschiedene Wege, um Funktionen in Javascript zu definieren. Wir verwenden hier [Pfeilfunktionen](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions), die in einer neueren Version von Javascript (bekannt als [ECMAScript 6](http://es6-features.org/#Constants)) beschrieben werden.
 
 Da die Funktion nur aus einem Ausdruck besteht, haben wir eine Kurzform verwendet, die so lautet:
 
@@ -170,7 +171,7 @@ Jeglicher Javascriptcode innerhalb der geschwungenen Klammern wird ausgewertet u
 
 ## JSX
 
-Es sieht so aus als würden React-Komponenten HTML ausgeben, was aber nicht der Fall ist. React-Kompenenten werden meistens in JSX geschrieben. Auch wenn JSX wie HTML aussieht, handelt es sich tatsächlich um eine andere Art Javascript zu schreiben.
+Es sieht so aus als würden React-Komponenten HTML ausgeben, was aber nicht der Fall ist. React-Kompenenten werden meistens in [JSX](https://reactjs.org/docs/introducing-jsx.html) geschrieben. Auch wenn JSX wie HTML aussieht, handelt es sich tatsächlich um eine andere Art Javascript zu schreiben.
 
 Nachdem Kompilieren sieht unsere Anwendung so aus:
 
@@ -192,13 +193,13 @@ const App = () => {
 }
 ```
 
-Die Kompilierung wird von "babel" übernommen. Projekte, die mit create-react-app erstellt wurden, sind so konfiguriert, das die Kompilierung automatisch geschieht. Wir werden uns in Abschnitt 7 dieses Kurs näher mit diesem Thema beschäftigen.
+Die Kompilierung wird von [Babel](https://babeljs.io/repl/) übernommen. Projekte, die mit create-react-app erstellt wurden, sind so konfiguriert, das die Kompilierung automatisch geschieht. Wir werden uns in Abschnitt 7 dieses Kurs näher mit diesem Thema beschäftigen.
 
 Es ist möglich, React in "purem" Javascript zu schreiben ohne JSX zu verwenden. Allerdings würde das niemand, der bei klarem Verstand ist, tun.
 
 In der Praxis sieht JSX ähnlich wie HTML aus, mit dem Unterschied, dass man dynamischen Inhalt leicht einfügen kann, indem man Javascript in geschwungenen Klammern einfügt. Die Grundgedanke von JSX ist sehr ähnlich zu anderen Template-Sprachen, wie z.B. Thymeleaf für Java Spring.
 
-JSX ist ähnlich wie XML, was bedeudet, dass jeder Tag geschlossen werden muss. Zum Beispiel ist ein Zeilenumbruch ein leeres Element, dass in HTML so geschrieben werden kann:
+JSX ist ähnlich wie [XML](https://developer.mozilla.org/en-US/docs/Web/XML/XML_introduction), was bedeudet, dass jeder Tag geschlossen werden muss. Zum Beispiel ist ein Zeilenumbruch ein leeres Element, dass in HTML so geschrieben werden kann:
 
 ```
 <br>
@@ -256,7 +257,7 @@ Eine andere Konvention ist die Idee einen Hauptkomponenten "App" an die Spitze d
 
 ## props: passing data to components
 
-Es ist möglich an die Komponenten Daten zu übergeben, diese werden "props" genannt.
+Es ist möglich an die Komponenten Daten zu übergeben, diese werden [props](https://reactjs.org/docs/components-and-props.html) genannt.
 
 Ändern wir den Komponenten Hello wie folgt ab:
 
@@ -353,7 +354,7 @@ const App = () => {
 }
 ```
 
-Die Seite wird den Inhalt des Footer-Komponenten nicht anzeigen und stattdessen erstellt React nur ein leeres Footer-Element, mit anderen Worten das eingebaute HTML-Element statt des React-Elements mit demselben Namen. Wenn ihr den Namen des Komponent am Anfang großschreibt, erstellt React ein div-Element für den Footer und zeigt darin seinen Inhalt an.
+Die Seite wird den Inhalt des Footer-Komponenten nicht anzeigen und stattdessen erstellt React nur ein leeres [Footer](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer)-Element, mit anderen Worten das eingebaute HTML-Element statt des React-Elements mit demselben Namen. Wenn ihr den Namen des Komponent am Anfang großschreibt, erstellt React ein div-Element für den Footer und zeigt darin seinen Inhalt an.
 
 Beachtet, dass der Inhalt eines React-Komponenten (normalerweise) ein Hauptelement enthalten muss. Wenn wir einen Komponenten ohne ein Hauptelement definieren: 
 
@@ -385,7 +386,7 @@ const App = () => {
 
 Jedoch ist dies beim Definieren des Hauptkomponenten nicht besonders ratsam und es macht den Code hässlich.
 
-Weil ein Hauptelement vorgeschrieben ist, haben wir ein Extra-div-Element in der DOM. Das kann man vermeiden, indem man Fragemente verwendet, mit anderen Worten, man umschließt den Inhalt des Komponenten mit einem leeren Element:
+Weil ein Hauptelement vorgeschrieben ist, haben wir ein Extra-div-Element in der DOM. Das kann man vermeiden, indem man [Fragemente](https://reactjs.org/docs/fragments.html#short-syntax) verwendet, mit anderen Worten, man umschließt den Inhalt des Komponenten mit einem leeren Element:
 
 ```javascript
 const App = () => {
@@ -405,6 +406,103 @@ const App = () => {
 
 Jetzt ist die Kompilierung erfolgreich und die von React generierte DOM enthält nicht länger ein unnötiges div-Element.
 
+## Do not render objects
+
+Überlegt euch eine Anwendung, die die Namen und das Alter unserer Freunde am Monitor ausgibt:
+
+```Javascript
+const App = () => {
+  const friends = [
+    { name: 'Peter', age: 4 },
+    { name: 'Maya', age: 10 },
+  ]
+
+  return (
+    <div>
+      <p>{friends[0]}</p>
+      <p>{friends[1]}</p>
+    </div>
+  )
+}
+
+export default App
+```
+
+Allerdings erscheint nichts am Monitor. Ich habe 15 Minuten lang versucht das Problem zu finden, aber ich habe es trotzdem nicht gefunden.
+
+Schließlich habe ich mich an das Versprechen erinnert, das wir gemacht haben:
+
+  Ich verspreche die Browserkonsole die ganze Zeit geöffnet zu haben, während des Kurses und für mein restliches Leben, wenn ich Webentwicklung betreibe.
+
+Die Konsole schreit in rot:
+
+!["fullstack content"](./images/part1a_image5.png?raw=true)
+
+Die Ursache des Problems ist, dass Objekte keine validen React-Kinder sind, was bedeutet, dass die Anwendung versucht Objekte anzuzeigen und immer wieder scheitert.
+
+Der Code versucht die Informationen eines Freundes wie folgt anzuzeigen:
+
+```javascript
+<p>{friends[0]}</p>
+```
+
+und das verursacht das Problem, weil das Element in den geschweiften Klammern, das angezeigt werden soll, ein Objekt ist.
+
+```javascript
+{ name: 'Peter', age: 4 }
+```
+
+In React müssen die individuellen Elemente in geschweiften Klammern, die angezeigt werden sollen, primitive Werte sein, also z.B. Strings oder Nummern.
+
+Die Lösung sieht so aus:
+
+```javascript
+const App = () => {
+  const friends = [
+    { name: 'Peter', age: 4 },
+    { name: 'Maya', age: 10 },
+  ]
+
+  return (
+    <div>
+      <p>{friends[0].name} {friends[0].age}</p>
+      <p>{friends[1].name} {friends[1].age}</p>
+    </div>
+  )
+}
+
+export default App
+```
+
+Jetzt wird der Name des Freundes gesondert innerhalb der geschweiften Klammern angezeigt
+
+```javascript
+{friends[0].name}
+```
+
+und auch sein Alter
+
+```javascript
+{friends[0].age}
+```
+
+Nach der Korrektur des Fehlers solltet ihr die Fehlermeldungen in eurer Browserkonsole löschen, in dem ihr 🚫 betätigt, danach die Seite aktualisieren und sicherstellen, dass keine weiteren Fehlermeldungen angezeigt werden.
+
+Ein kleiner Hinweis zum vorherigen. React erlaubt auch das Anzeigen von Arrays, wenn das Array Werte enthält, die angezeigt werden könnten (also z.B. Strings oder Nummern).
+
+```javascript
+const App = () => {
+  const friends = [ 'Peter', 'Maya']
+
+  return (
+    <div>
+      <p>{friends}</p>
+    </div>
+  )
+}
+```
+
+In diesem Abschnitt ist der Versuch vom direkten Anzeigen von Tabellen wertlos, wir werden später darauf zürückkommen. 
 
 ## Exercises
 
