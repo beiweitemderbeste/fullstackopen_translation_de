@@ -58,25 +58,6 @@ export default App
 
 Die Dateien App.css, App.test.js, index.css, logo.svg, setupTests.js und reportWebVitals.js können gelöscht werden, weil sie momentan nicht benötigt werden. 
 
-Wenn ihr folgenden Fehler angezeigt bekommt
-
-!["fullstack content"](./bilder/abschnitt1a_bild2.png?raw=true)
-
-liegt das daran, dass ihr aus irgeneinem Grund eine ältere React-Version als die aktuelle (18) benutzt.
-
-Die Lösung dafür ist, index.js so abzuändern
-
-```javascript
-import ReactDOM from 'react-dom'
-import App from './App'
-
-ReactDOM.render(<App />, document.getElementById('root'))
-```
-
-Ihr müsst das dann wahrscheinlich auch in euren anderen Projekten machen.
-
-Schaut [hier](https://fullstackopen.com/en/part1/a_more_complex_state_debugging_react_apps/#a-note-on-react-version) nach, wenn ihr mehr über die Versionsunterschiede wissen wollt.
-
 ## Component
 
 Die Datei App.js definiert einen [React-Komponenten](https://reactjs.org/docs/components-and-props.html) "App". Der Befehl in der letzten Zeile von index.js
