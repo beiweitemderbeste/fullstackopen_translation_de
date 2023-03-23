@@ -551,7 +551,6 @@ export default App
 
 Allerdings erscheint nichts am Monitor. Ich habe 15 Minuten lang versucht das Problem zu finden, aber ich habe es trotzdem nicht gefunden.
 
-
 > I finally remember the promise we made
 
     I promise to keep the console open all the time during this course, and for the rest of my life when I'm doing web development
