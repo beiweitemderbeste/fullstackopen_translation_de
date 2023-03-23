@@ -49,6 +49,36 @@ Javascript erinnert vom Namen und Syntax an Java. Aber wenn es um die Kerneigens
 
 In bestimmten Kreisen ist es beliebt Eigenschaften von Java zu simulieren und in Javascript zu schreiben. Das wird von unserer Seite nicht empfohlen, da die Sprachen und ihre zugehörigen Ökosystem sehr verschieden sind.
 
+## Variables
+
+> In JavaScript there are a few ways to go about defining variables:
+
+In JavaScript gibt es mehrere Wege Variablen zu definieren:
+
+```javascript
+const x = 1
+let y = 5
+
+console.log(x, y)   // 1, 5 are printed
+y += 10
+console.log(x, y)   // 1, 15 are printed
+y = 'sometext'
+console.log(x, y)   // 1, sometext are printed
+x = 4               // causes an error
+```
+
+> const does not define a variable but a constant for which the value can no longer be changed. On the other hand, let defines a normal variable.
+
+[const](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) definiert keine Variable sondern eine Konstante, deren Wert nicht geändert werden kann. Auf der anderen Seite definiert [let eine normale Variable.
+
+> In the example above, we also see that the variable's data type can change during execution. At the start, y stores an integer; at the end, it stores a string.
+
+Im obigen Beispiel sehen wir auch, dass sich der Datentyp von Variablen während der Ausführung ändert. Am Anfang speichert y einen Integer, am Ende speichert es einen String.
+
+> It is also possible to define variables in JavaScript using the keyword var. var was, for a long time, the only way to define variables. const and let were only recently added in version ES6. In specific situations, var works in a different way compared to variable definitions in most languages - see JavaScript Variables - Should You Use let, var or const? on Medium or Keyword: var vs. let on JS Tips for more information. During this course the use of var is ill-advised and you should stick with using const and let! You can find more on this topic on YouTube - e.g. var, let and const - ES6 JavaScript Features
+
+In Javascript ist es möglich mit dem Schlüsselwort var Variablen zu definieren. var war für eine lange Zeit der einzige Weg, um Variablen zu definieren. const und let wurden erst kürzlich in Version ES6 hinzugefügt. In bestimmten Situationen arbeitet var anders als Variabeldefinitionen in den meisten Sprachen - lest dazu mehr unter [JavaScript Variables - Should You Use let, var or const? on Medium](https://medium.com/craft-academy/javascript-variables-should-you-use-let-var-or-const-394f7645c88f) oder [Keyword: var vs. let on JS Tips](http://www.jstips.co/en/javascript/keyword-var-vs-let/). In diesem Kurs var zu benutzen ist unvernünftig und ihr solltet bei const und let bleiben! Ihr könnt zu diesem Thema mehr auf YouTube finden - z.B. [var, let and const - ES6 JavaScript Features](https://youtu.be/sjyJBL5fkp8)
+
 ## Arrays
 
 > An array and a couple of examples of its use:
