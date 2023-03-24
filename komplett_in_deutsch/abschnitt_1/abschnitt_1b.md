@@ -11,27 +11,49 @@
 - [Classes](#Classes)
 - [Javascript Materials](#Javascript-Materials)
 
-Während des Kurses werden wir viel Javascript zusätzlich zur Webentwicklung lernen.
+Während des Kurses werden wir zusätzlich zur Webentwicklung viel Javascript lernen.
 
-Bei Javascript hat sich in den letzten Jahren viel getan und in diesem Kurz greifen wir auf einige Features der neuen Versionen zu. Der offizielle Name des Javascript-Standards ist ECMAScript. Im Moment ist die aktuelleste Version von Juni 2021 "ECMAScript®2021", auch bekannt als ES12.
+Bei Javascript hat sich in den letzten Jahren viel getan und in diesem Kurz greifen wir auf einige Features der neuen Versionen zu. Der offizielle Name des Javascript-Standards ist [ECMAScript](https://en.wikipedia.org/wiki/ECMAScript). Im Moment ist die aktuelleste Version von Juni 2022 [ECMAScript®2022](https://www.ecma-international.org/ecma-262/), auch bekannt als ES13.
 
 Nicht alle Browser unterstützen schon alle neue Javascript-Features. Aus diesem Grund wird ein großer Teil des Codes, der im Browser läuft, von einer neueren in eine ältere, kompatiblere Version von Javascript übersetzt.
 
-Heutzutage geschieht dies am meisten mit "Babel". Die Übersetzung wird in React-Anwendungen, die mit create-react-app erstellt wurden, automatisch eingestellt. Wir schauen uns die Konfiguration dieser Übersetzung in Abschnitt 7 noch genauer an.
+Heutzutage geschieht dies am häufigsten mit [Babel](https://babeljs.io/). Die Übersetzung wird in React-Anwendungen, die mit create-react-app erstellt wurden, automatisch eingestellt. Wir schauen uns die Konfiguration dieser Übersetzung in Abschnitt 7 noch genauer an.
 
-Node.js ist eine Javascript-Laufzeitumgebung, die auf Googles Chrome V8 Javascript Engine basiert, und praktisch überall läuft, von Servern bis zu mobilen Telefonen. Üben wir ein bisschen das Schreiben von Javascript, indem wir Node benutzen. Es wird erwartet, dass mindestens Version 16.12.2 von Node.js auf euren Rechnern installiert ist. Die neueste Version von Node.js versteht auch die neuesten Versionen von Javascript, so dass dieser Code nicht übersetzt werden muss.
+[Node.js](https://nodejs.org/en/) ist eine Javascript-Laufzeitumgebung, die auf Googles [Chrome V8](https://developers.google.com/v8/) Javascript Engine basiert, und praktisch auf allen Geräten läuft, von Servern bishin zu mobilen Telefonen. Üben wir ein bisschen das Schreiben von Javascript, indem wir Node benutzen. Die neueste Version von Node.js versteht auch die neuesten Versionen von Javascript, so dass dieser Code nicht übersetzt werden muss.
 
 Unser Code wird in Dateien geschrieben, deren Dateinamen mit ".js" enden und mit dem Befehl "node dateiname.js" gestartet werden.
 
-Man kann auch Javascript-Code in die Node.js-Konsole tippen (diese öffnet man durch den Befehl "node" im Terminal). Ebenso könnt ihr auch Javascript in der Entwicklerkonsole eures Browsers tippen. Die aktuellen Versionen von Firefox können mit den neuen Features von Javascript ganz gut umgehen, ohne den Code vorher übersetzen zu müssen. Alternativ könnt ihr auch Werkzeuge wie [JS Bin](link-einfügen) verwenden.
+Man kann auch Javascript-Code in die Node.js-Konsole tippen (diese öffnet man durch den Befehl "node" im Terminal). Ebenso könnt ihr auch Javascript in der Entwicklerkonsole eures Browsers tippen. Die aktuellen Versionen von Firefox können mit den neuen Features von Javascript ganz gut umgehen, ohne den Code vorher übersetzen zu müssen. Alternativ könnt ihr auch Werkzeuge wie [JS Bin](https://jsbin.com/?js,console) verwenden.
 
-Javascript erinnert vom Namen und Syntax an Java. Aber wenn es um die Kerneigenschaften der Sprachen geht, könnten sie nicht unterschiedlicher sein. Wenn man einen Java-Background hat, mag einem Javascript ein bisschen fremd vorkommen, besonders wenn man keine Anstrengung unternimmt, um seine Eigenschaften nachzuschauen.
+Javascript erinnert vom Namen und Syntax an Java. Aber wenn es um die Kerneigenschaften der Sprachen geht, könnten sie nicht unterschiedlicher sein. Wenn man einen Java-Background hat, mag einem Javascript ein bisschen fremd vorkommen, besonders wenn man keine Anstrengung unternimmt seine Features nachzuschauen.
 
-In bestimmten Kreisen ist es beliebt Eigenschaften von Java zu simulieren und in Javascript zu schreiben. Das wird von unserer Seite nicht empfohlen, da die Sprachen und ihre zugehörigen Ökosystem sehr verschieden sind.
+In bestimmten Kreisen ist es beliebt Eigenschaften von Java zu simulieren und in Javascript zu schreiben. Das wird von unserer Seite nicht empfohlen, da die Sprachen und ihre zugehörigen Ökosysteme sehr verschieden sind.
+
+## Variables
+
+In JavaScript gibt es mehrere Wege Variablen zu definieren:
+
+```javascript
+const x = 1
+let y = 5
+
+console.log(x, y)   // 1, 5 are printed
+y += 10
+console.log(x, y)   // 1, 15 are printed
+y = 'sometext'
+console.log(x, y)   // 1, sometext are printed
+x = 4               // causes an error
+```
+
+[const](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) definiert keine Variable sondern eine Konstante, deren Wert nicht geändert werden kann. Auf der anderen Seite definiert [let eine normale Variable.
+
+Im obigen Beispiel sehen wir auch, dass sich der Datentyp von Variablen während der Ausführung ändert. Am Anfang speichert y einen Integer, am Ende speichert es einen String.
+
+In Javascript ist es möglich mit dem Schlüsselwort var Variablen zu definieren. var war für eine lange Zeit der einzige Weg, um Variablen zu definieren. const und let wurden erst kürzlich in Version ES6 hinzugefügt. In bestimmten Situationen arbeitet var anders als Variabeldefinitionen in den meisten Sprachen - lest dazu mehr unter [JavaScript Variables - Should You Use let, var or const? on Medium](https://medium.com/craft-academy/javascript-variables-should-you-use-let-var-or-const-394f7645c88f) oder [Keyword: var vs. let on JS Tips](http://www.jstips.co/en/javascript/keyword-var-vs-let/). In diesem Kurs var zu benutzen ist unvernünftig und ihr solltet bei const und let bleiben! Ihr könnt zu diesem Thema mehr auf YouTube finden - z.B. [var, let and const - ES6 JavaScript Features](https://youtu.be/sjyJBL5fkp8)
 
 ## Arrays
 
-Ein Array und ein paar Beispiele, wie es verwendet werden kann
+Ein Array und ein paar Beispiele, wie es verwendet werden kann:
 
 ```javascript
 const t = [1, -1, 3]
@@ -56,9 +78,9 @@ value => {
 }
 ```
 
-forEach ruft die Funktion für jeden Wert des Arrays auf und übergibt immer den jeweiligen Wert als Argument an die Funktion. Die Pfeilfunktion kann auch andere Argumente übergeben bekommen.
+forEach ruft die Funktion für jeden Wert des Arrays auf und übergibt immer den jeweiligen Wert als Argument an die Funktion. Der Funktion können als Argument der forEach-Schleife auch [andere Argumente](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) übergeben werden.
 
-Im vorangegangenen Beispiel wurde neue Werte mit der push-Methode zum Array hinzugefügt. Wenn React verwendet wird, nutzt man oft Techniken aus der funktionalen Programmierung. Eine Charakteristik des funktionalen Programmierungsparadigmas ist das Benutzen von unveränderbaren Datenstrukturen. In React wird oft die Methode "concat" verwendet. Diese hängt keinen neuen Wert an das Array, sondern erstellt ein neues Array, dass den Inhalt des alten Arrays und den neuen Wert enthält.
+Im vorangegangenen Beispiel wurde neue Werte mit der Methode [push](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) zum Array hinzugefügt. Wenn React verwendet wird, nutzt man oft Techniken aus der funktionalen Programmierung. Eine Charakteristik des funktionalen Programmierungsparadigmas ist das Benutzen von [unveränderbaren](https://en.wikipedia.org/wiki/Immutable_object) Datenstrukturen. In React wird oft die Methode [concat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat) verwendet. Diese hängt keinen neuen Wert an das Array, sondern erstellt ein neues Array, dass den Inhalt des alten Arrays und den neuen Wert enthält.
 
 ```javascript
 const t = [1, -1, 3]
@@ -69,9 +91,9 @@ console.log(t)  // [1, -1, 3] is printed
 console.log(t2) // [1, -1, 3, 5] is printed
 ```
 
-Der Aufruf der Methode "t.concat(5)" hängt keinen neuen Wert an das Array "t", sondern gibt ein neues Array aus, das die Werte von "t" und den Wert "5" enthält.
+Der Aufruf der Methode t.concat(5) hängt keinen neuen Wert an das Array t, sondern gibt ein neues Array aus, das die Werte von t und den Wert 5 enthält.
 
-Es gibt viele nützliche Methoden, die für Arrays definiert worden sind. Schauen wir uns ein kurzes Beispiel der map-Methode an
+Es gibt viele nützliche Methoden, die für Arrays definiert worden sind. Schauen wir uns ein kurzes Beispiel der Methode [map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) an:
 
 ```javascript
 const t = [1, 2, 3]
@@ -92,7 +114,7 @@ console.log(m2)
 
 Hier wird ein Array, das nur Integers enthält, in ein Array umgewandelt, dass nur HTML-Strings enthält. Im zweiten Abschnitt des Kurses werden wir sehen, dass die map-Methode sehr häufig in React zum Einsatz kommt.
 
-Einzelne Werte eines Arrays können leicht über "destructuring" Variablen zugewiesen werden.
+Einzelne Werte eines Arrays können leicht über [destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) Variablen zugewiesen werden.
 
 ```javascript
 const t = [1, 2, 3, 4, 5]
@@ -103,11 +125,11 @@ console.log(first, second)  // 1, 2 is printed
 console.log(rest)          // [3, 4, 5] is printed
 ```
 
-Hier werden den Variablen "first" und "second" die ersten beiden Integer des Arrays als Werte zugewiesen. Die verbliebenen Integer werden gesammelt einem eigenen Array zugewiesen, das selbst der Variable "rest" zugewiesen wird.
+Hier werden den Variablen first und second die ersten beiden Integer des Arrays als Werte zugewiesen. Die verbliebenen Integer werden gesammelt einem eigenen Array zugewiesen, das selbst der Variable "rest" zugewiesen wird.
 
 ## Objects
 
-Es gibt verschiedene Möglichkeiten, um Objekte in Javascript zu definieren. Eine häufig verwendete ist die Benutzung von "object literals", das die Eigenschaften eines Objekts innerhalb geschwungener Klammern darstellt:
+Es gibt verschiedene Möglichkeiten, um Objekte in Javascript zu definieren. Eine häufig verwendete ist die Benutzung von [object literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Object_literals), das die Eigenschaften eines Objekts innerhalb geschwungener Klammern darstellt:
 
 ```javascript
 const object1 = {
@@ -151,9 +173,9 @@ object1['secret number'] = 12341
 
 Die untere Ergänzung muss über eckige Klammern erfolgen, da bei der Punktnotierung kein Leerzeichen im Namen sein darf.
 
-Selbstverständlich können Objekte in Javascript auch Methoden haben. Allerdings werden wir in diesem Kurs keine Objekte mit eigenen Methoden definieren. Deswegen sprechen wir sie auch nur kurz an
+Selbstverständlich können Objekte in Javascript auch Methoden haben. Allerdings werden wir in diesem Kurs keine Objekte mit eigenen Methoden definieren. Deswegen sprechen wir sie auch nur kurz an.
 
-Objekte können auch über sogenannte Constructor-Funktionen definiert werden, was an Techniken anderer Programmiersprachen erinnert, z.B. Javas Klassen. Abgesehen von diesr Ähnlichkeit, hat Javascript nichts ähnliches wie Klassen aus objektorientierten Programmiersprachen. Es gab allerdings eine Ergänzung zur Klassensyntax in Version ES6, die es in einigen Fällen ermöglicht, objektorientierte Klassen zu erstellen.
+Objekte können auch über sogenannte Constructor-Funktionen definiert werden, was an Techniken anderer Programmiersprachen erinnert, z.B. Javas Klassen. Abgesehen von dieser Ähnlichkeit, hat Javascript nichts ähnliches wie Klassen aus objektorientierten Programmiersprachen. Es gab allerdings eine Ergänzung zur Klassensyntax in Version ES6, die es in einigen Fällen ermöglicht, objektorientierte Klassen zu erstellen.
 
 ## Functions
 
@@ -197,9 +219,9 @@ const tSquared = t.map(p => p * p)
 // tSquared is now [1, 4, 9]
 ```
 
-Pfeilfunktionen gibt es erst seit Version ES6. Vorher gab es nur die Möglichkeit mit dem Schlagwort "function" Funktionen zu definieren.
+Pfeilfunktionen gibt es erst seit Version [ES6](http://es6-features.org/). Vorher gab es nur die Möglichkeit mit dem Schlagwort function Funktionen zu definieren.
 
-Es gibt zwei Arten, um auf Funktionen zu verweisen. Eine davon ist, einen Namen in der Funktionsdeklaration zu verwenden:
+Es gibt zwei Arten, um auf Funktionen zu verweisen. Eine davon ist, einen Namen in der [Funktionsdeklaration](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function) zu verwenden:
 
 ```javascript
 function product(a, b) {
@@ -210,7 +232,7 @@ const result = product(2, 6)
 // result is now 12
 ```
 
-Die andere Art ist die Funktion durch einen Funktionsaudruck zu definieren. In diesem Fall wird für die Funktion kein Name vergeben und die Definition der Funktion kann im übrigen Code bleiben:
+Die andere Art ist die Funktion durch einen [Funktionsaudruck](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/function) zu definieren. In diesem Fall wird für die Funktion kein Name vergeben und die Definition der Funktion kann im übrigen Code bleiben:
 
 ```javascript
 const average = function(a, b) {
@@ -296,7 +318,7 @@ const App = () => {
 
 Hinweis: Ab jetzt könnt ihr immer davon ausgehen, dass es sich um 3 Teile handelt, also müsst ihr keine Schleifen für das Array schreiben. Wir kommen auf das Thema - Komponenten im Bezug auf die Werte in einem Array zu erstellen - im nächsten Abschnitt zurück.
 
-Übergebt allerdings nicht die verschiedenen Objekte als separate props vom App-Komponenten an die Komponenten Content und Total. Übergebt sie stattdessen diekt als Array:
+Übergebt allerdings nicht die verschiedenen Objekte als separate props vom App-Komponenten an die Komponenten Content und Total. Übergebt sie stattdessen direkt als Array:
 
 ```javascript
 const App = () => {
@@ -344,9 +366,9 @@ const App = () => {
 }
 ```
 
-## Object-methods-and-"this"
+## Object methods and this
 
-Da wir in diesem Kurs eine Reactversion verwenden, die React Hooks kennt, müssen wir nicht wissen, wie man Objekte mit Methoden erstellen. Das Folgende ist nicht relevant für den weiteren Kurs, aber trotzdem gut zu wissen. Besonders, wenn man ältere Reactversionen pflegt.
+Da wir in diesem Kurs eine Reactversion verwenden, die React Hooks kennt, müssen wir nicht wissen, wie man Objekte mit Methoden erstellt. Das Folgende ist nicht relevant für den weiteren Kurs, aber trotzdem gut zu wissen. Besonders, wenn man ältere Reactversionen pflegt.
 
 Pfeilfunktionen und Funktionen, die mit dem Schlagwort function erstellt wurden, unterscheiden sich erheblich, wenn es darum geht, wie mit "this" umgegangen wird.
 
@@ -430,7 +452,7 @@ referenceToGreet() // prints "hello, my name is undefined"
 
 Wenn wir die Methode über einen Verweis aufrufen, verliert die Methode das Wissen, auf wen "this" verweist. Im Gegensatz zu anderen Sprachen beruht in Javascript die Definition von "this" darauf, wie die Methode aufgerufen wurde. Geschieht der Aufruf über einen Verweis, zeigt der Wert von "this" auf das sogenannte globale Objekt und das Endergebnis ist oft nicht das, was der Softwareentwickler im Sinn hatte.
 
-Wenn man den Überblick darüber verliert, auf wen "this" verweist, bekommt man Probleme. Es gibt öfter Situationen, in denen React oder Node (genauer gesagt, die Javascript-Engine des Browsers) eine Methode eines Objektes aufruft, die der Entwickler definiert hat. In diesem Kurs umgehen wir diese Probleme, in dem wir wenig "this" verwenden.
+Wenn man den Überblick darüber verliert, auf wen "this" verweist, bekommt man Probleme. Es gibt öfter Situationen, in denen React oder Node (genauer gesagt, die Javascript-Engine des Browsers) eine Methode eines Objektes aufruft, die der Entwickler definiert hat. In diesem Kurs umgehen wir diese Probleme, indem wir wenig "this" verwenden.
 
 Eine Möglichkeit, um "this" verschwinden zu lassen, ist einen Timeout zu setzen, der die Funktion greet aufruft. Wir verwenden dafür die Funktion setTimeout:
 
