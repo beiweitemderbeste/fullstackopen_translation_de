@@ -9,7 +9,7 @@
 - [Objects](#Objects)
 - [Functions](#Functions)
 - [Exercises](#Exercises)
-- [Objects Methods and this](#Objects-Methods-and-this)
+- [Object Methods and this](#Object-Methods-and-this)
 - [Classes](#Classes)
 - [Javascript Materials](#Javascript-Materials)
 
@@ -464,11 +464,11 @@ const App = () => {
 }
 ```
 
-## Object-methods-and-"this"
+## Object methods and this
 
 > Due to the fact that during this course we are using a version of React containing React Hooks we have no need for defining objects with methods. The contents of this chapter are not relevant to the course but are certainly in many ways good to know. In particular when using older versions of React one must understand the topics of this chapter.
 
-Da wir in diesem Kurs eine Reactversion verwenden, die React Hooks kennt, müssen wir nicht wissen, wie man Objekte mit Methoden erstellen. Das Folgende ist nicht relevant für den weiteren Kurs, aber trotzdem gut zu wissen. Besonders, wenn man ältere Reactversionen pflegt.
+Da wir in diesem Kurs eine Reactversion verwenden, die React Hooks kennt, müssen wir nicht wissen, wie man Objekte mit Methoden erstellt. Das Folgende ist nicht relevant für den weiteren Kurs, aber trotzdem gut zu wissen. Besonders, wenn man ältere Reactversionen pflegt.
 
 > Arrow functions and functions defined using the function keyword vary substantially when it comes to how they behave with respect to the keyword this, which refers to the object itself.
 
@@ -675,6 +675,10 @@ Eine andere großartige Quelle, um Javascript zu lernen, ist [javascript.info](l
 > The free and highly engaging book Eloquent JavaScript https://eloquentjavascript.net. Takes you from the basics to interesting stuff quickly, a mixture of theory projects and exercises, covers general programming theory as well as the JavaScript language.
 
 Das kostenfreie und sehr fesselnde Buch [Eloquent Javascript](https://eloquentjavascript.net). Bringt euch sehr schnell von den Grundlagen zum interessanten Zeug, eine Mischung aus theoretischen Projekten und Aufgaben, es geht sowohl um generelle Programmierkenntnisse, sowie um die Sprache an sich.
+
+> Namaste 🙏 JavaScript is another great and highly recommended free JavaScript tutorial in order to understand how JS works under the hood. Namaste JavaScript is a pure in-depth JavaScript course released for free on YouTube. It will cover the core concepts of JavaScript in detail and everything about how JS works behind the scenes inside the JavaScript engine.
+
+Namaste 🙏 JavaScript ist ein weiteres großartiges kostenfreies Javascript Tutorial, um zu verstehen, wie Javascript unter der Haube funktioniert. Namaste Javascript ist ein ausführlicher Javascript-Kurs, der kostenfrei auf YouTube veröffentlich wurde. Er behandelt die Kernkonzepte von Javascript im Detail und alles darüber, wie JS hinter den Kulissen arbeitet.
 
 > egghead.io has plenty of quality screencasts on JavaScript, React, and other interesting topics. Unfortunately, some of the material is behind a paywall.
 

@@ -370,7 +370,7 @@ const App = () => {
 
 Da wir in diesem Kurs eine Reactversion verwenden, die React Hooks kennt, müssen wir nicht wissen, wie man Objekte mit Methoden erstellt. Das Folgende ist nicht relevant für den weiteren Kurs, aber trotzdem gut zu wissen. Besonders, wenn man ältere Reactversionen pflegt.
 
-Pfeilfunktionen und Funktionen, die mit dem Schlagwort function erstellt wurden, unterscheiden sich erheblich, wenn es darum geht, wie mit "this" umgegangen wird.
+Pfeilfunktionen und Funktionen, die mit dem Schlagwort function erstellt wurden, unterscheiden sich erheblich, wenn es darum geht, wie mit [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) umgegangen wird.
 
 Wir können einem Objekt Methoden zuweisen, indem wir Objekteigenschaften als Funktionen definieren:
 
@@ -450,11 +450,11 @@ const referenceToGreet = arto.greet
 referenceToGreet() // prints "hello, my name is undefined"
 ```
 
-Wenn wir die Methode über einen Verweis aufrufen, verliert die Methode das Wissen, auf wen "this" verweist. Im Gegensatz zu anderen Sprachen beruht in Javascript die Definition von "this" darauf, wie die Methode aufgerufen wurde. Geschieht der Aufruf über einen Verweis, zeigt der Wert von "this" auf das sogenannte globale Objekt und das Endergebnis ist oft nicht das, was der Softwareentwickler im Sinn hatte.
+Wenn wir die Methode über einen Verweis aufrufen, verliert die Methode das Wissen, auf wen "this" verweist. Im Gegensatz zu anderen Sprachen beruht in Javascript die Definition von [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) darauf, wie die Methode aufgerufen wurde. Geschieht der Aufruf über einen Verweis, zeigt der Wert von "this" auf das sogenannte [globale Objekt](https://developer.mozilla.org/en-US/docs/Glossary/Global_object) und das Endergebnis ist oft nicht das, was der Softwareentwickler im Sinn hatte.
 
 Wenn man den Überblick darüber verliert, auf wen "this" verweist, bekommt man Probleme. Es gibt öfter Situationen, in denen React oder Node (genauer gesagt, die Javascript-Engine des Browsers) eine Methode eines Objektes aufruft, die der Entwickler definiert hat. In diesem Kurs umgehen wir diese Probleme, indem wir wenig "this" verwenden.
 
-Eine Möglichkeit, um "this" verschwinden zu lassen, ist einen Timeout zu setzen, der die Funktion greet aufruft. Wir verwenden dafür die Funktion setTimeout:
+Eine Möglichkeit, um "this" verschwinden zu lassen, ist einen Timeout zu setzen, der die Funktion greet aufruft. Wir verwenden dafür die Funktion [setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout):
 
 ```javascript
 const arto = {
@@ -478,13 +478,13 @@ setTimeout(arto.greet.bind(arto), 1000)
 
 Der Funktionsaufruf arto.greet.bind(arto) erstellt eine neue Funktion, bei der "this" an Arto gebunden ist, unabhängig davon, wie die Methode greet aufgerufen wird.
 
-Indem man Pfeilfunktionen nutzt, ist es möglich einige Probleme zu umgehen, die mit "this" verbunden sind. Allerdings sollten sie nicht für Objektmethoden verwendet werden, weil dann "this" überhaupt nicht funktioniert. Wir kommen später nochmal auf die Beziehung von Pfeilfunktionenn und "this" zurück.
+Indem man [Pfeilfunktionen](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) nutzt, ist es möglich einige Probleme zu umgehen, die mit "this" verbunden sind. Allerdings sollten sie nicht für Objektmethoden verwendet werden, weil dann "this" überhaupt nicht funktioniert. Wir kommen später nochmal auf die Beziehung von Pfeilfunktionenn und "this" zurück.
 
-Wenn ihr ein besseres Verständnis für "this" in Javascript bekommen wollt, dann empfehlen wir unbedingt die Screencastserie "Understand JavaScript's this Keyword in Depth" von [egghead.io](egghead.io).
+Wenn ihr ein besseres Verständnis für "this" in Javascript bekommen wollt, dann empfehlen wir unbedingt die Screencastserie [Understand JavaScript's this Keyword in Depth](https://egghead.io/courses/understand-javascript-s-this-keyword-in-depthf) von [egghead.io](egghead.io).
 
 ## Classes
 
-Wie bereits erwähnt gibt es in Javascript keine Klassen, die mit denen von objektorientierten Sprachen vergleichbar sind. Allerdings gibt es Features mit denen sich objektorientierte Klassen simulieren lassen.
+Wie bereits erwähnt gibt es in Javascript keine Klassen, die mit denen von objektorientierten Sprachen vergleichbar sind. Allerdings gibt es Features mit denen sich objektorientierte [Klassen](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) simulieren lassen.
 
 Schauen wir uns kurz die Klassensyntax an, die mit ES6 eingeführt wurde. Diese Syntax vereinfachte die Definition von Klassen in Javascript ungemein.
 
@@ -508,21 +508,21 @@ const janja = new Person('Janja Garnbret', 23)
 janja.greet()
 ```
 
-Diese Syntax erinnert stark daran, wie Klassen und Objekte in Java erstellt werden. Ihr Verhalten ist dem von Java-Objekten auch sehr ähnlich. Im Kern sind sie aber immer noch Objekte, die auf Javascripts Prototypenvererbung basieren. Der Datentyp von beiden Objekten ist tatsächlich Object, weil Javascript im Wesentlichen nur 7 Datentypen kennt: Boolean, Null, Undefined, Number, String, Symbol, BigInt und Object.
+Diese Syntax erinnert stark daran, wie Klassen und Objekte in Java erstellt werden. Ihr Verhalten ist dem von Java-Objekten auch sehr ähnlich. Im Kern sind sie aber immer noch Objekte, die auf Javascripts [Prototypenvererbung](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Inheritance) basieren. Der Datentyp von beiden Objekten ist tatsächlich Object, weil Javascript im Wesentlichen nur 7 Datentypen kennt: [Boolean, Null, Undefined, Number, String, Symbol, BigInt und Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures).
 
-Die Einführung von Klassen war eine kontroverse Ergänzung. Schaut euch [Not Awesome: ES6 Classes or Is “Class” In ES6 The New “Bad” Part?](link-missing) auf Medium für mehr Details an.
+Die Einführung von Klassen war eine kontroverse Ergänzung. Schaut euch [Not Awesome: ES6 Classes](https://github.com/petsel/not-awesome-es6-classes) oder [Is “Class” In ES6 The New “Bad” Part?](https://medium.com/@rajaraodv/is-class-in-es6-the-new-bad-part-6c4e6fe1ee65) für mehr Details an.
 
-Diese Klassensyntax aus ES6 wird viel in älteren React- und Node.js-Projekten verwendet, daher ist ihr Verstehen vorteilhaft. Allerdings nutzen wir in diesem Kurs die neuen Hooks von React, daher gibt gibt es für die Klassen keine direkte Anwendung.
+Diese Klassensyntax aus ES6 wird viel in älteren React- und Node.js-Projekten verwendet, daher ist ihr Verstehen vorteilhaft. Allerdings nutzen wir in diesem Kurs die neuen [Hooks](https://reactjs.org/docs/hooks-intro.html) von React, daher gibt gibt es für die Klassen keine direkte Anwendung.
 
 ## Javascript Materials
 
-Es gibt gute und schlechte Anleitungen für Javascript im Internet. Die meisten Links zu Javascript auf dieser Seite verweisen auf [Mozilla's JavaScript Guide](link-missing)
+Es gibt gute und schlechte Anleitungen für Javascript im Internet. Die meisten Links zu Javascript auf dieser Seite verweisen auf [Mozilla's JavaScript Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
-Wir empfehlen dringend [A re-introduction to JavaScript (JS tutorial)](link-missing) auf der Webseite von [Mozilla](link-missing)
+Wir empfehlen dringend [A re-introduction to JavaScript (JS tutorial)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) auf der Webseite von Mozilla.
 
-Wenn ihr euch richtig gut mit Javascript auskennen wollt, es gibt da eine großartige, kostenfreie Buchserie: [You-Dont-Know-JS](link-missing)
+Wenn ihr euch richtig gut mit Javascript auskennen wollt, es gibt da eine großartige, kostenfreie Buchserie: [You-Dont-Know-JS](https://github.com/getify/You-Dont-Know-JS)
 
-Eine andere großartige Quelle, um Javascript zu lernen, ist [javascript.info](link-missing)
+Eine andere großartige Quelle, um Javascript zu lernen, ist [javascript.info](https://javascript.info/)
 
 Das kostenfreie und sehr fesselnde Buch [Eloquent Javascript](https://eloquentjavascript.net). Bringt euch sehr schnell von den Grundlagen zum interessanten Zeug, eine Mischung aus theoretischen Projekten und Aufgaben, es geht sowohl um generelle Programmierkenntnisse, sowie um Javascript an sich.
 
