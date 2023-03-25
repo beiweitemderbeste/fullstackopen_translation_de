@@ -7,7 +7,7 @@
 - [Objects](#Objects)
 - [Functions](#Functions)
 - [Exercises](#Exercises)
-- [Objects Methods and this](#Objects-Methods-and-this)
+- [Object Methods and this](#Object-Methods-and-this)
 - [Classes](#Classes)
 - [Javascript Materials](#Javascript-Materials)
 
@@ -525,6 +525,8 @@ Wenn ihr euch richtig gut mit Javascript auskennen wollt, es gibt da eine großa
 Eine andere großartige Quelle, um Javascript zu lernen, ist [javascript.info](https://javascript.info/)
 
 Das kostenfreie und sehr fesselnde Buch [Eloquent Javascript](https://eloquentjavascript.net). Bringt euch sehr schnell von den Grundlagen zum interessanten Zeug, eine Mischung aus theoretischen Projekten und Aufgaben, es geht sowohl um generelle Programmierkenntnisse, sowie um Javascript an sich.
+
+Das kostenfreie und sehr fesselnde Buch [Eloquent Javascript](https://eloquentjavascript.net). Bringt euch sehr schnell von den Grundlagen zum interessanten Zeug, eine Mischung aus theoretischen Projekten und Aufgaben, es geht sowohl um generelle Programmierkenntnisse, sowie um die Sprache an sich.
 
 [egghead.io](egghead.io) hat viele qualitativ vervollte Screencasts zu Javascript, React und anderen interessanten Themen. Leider ist ein Teil des Materials hinter einer Zahlwand.
 
