@@ -73,9 +73,9 @@ Wenn wir unseren Code genauer anschauen, bemerken wir, das die Hilfsfunktion eig
 
 ## Destructuring
 
-In unserem vorangegangenen Code haben wir auf die Daten, die an unseren Komponenten übergeben wurden, mit props.name und props.age verwiesen. Von diesen beiden Ausdrücken mussten wir props.age zweimal verwenden.
+Bevor wir weitermachen, schauen wir uns noch ein kleines aber nützliches Feature von Javascript an, das mit der ES6-Spezifikation hinzugefügt wurde: das [Destrukturieren](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) von Teilen von Objekten und Arrays und ihr gleichzeitiges Zuweisen zu Variablen.
 
-> Since props is an object
+In unserem vorangegangenen Code haben wir auf die Daten, die an unseren Komponenten übergeben wurden, mit props.name und props.age verwiesen. Von diesen beiden Ausdrücken mussten wir props.age zweimal verwenden.
 
 Da props ein Objekt ist
 
@@ -144,7 +144,8 @@ dann weist der Ausdruck const { name, age } = props die Werte "Arto Hellas" an "
 Wir können mit dem Destrukturieren auch einen Schritt weitergehen:
 
 ```javascript
-const Hello = ({ name, age }) => {  const bornYear = () => new Date().getFullYear() - age
+const Hello = ({ name, age }) => {  
+  const bornYear = () => new Date().getFullYear() - age
 
   return (
     <div>
@@ -232,7 +233,7 @@ Der Befehl zum erneuten rendern wurde in die Funktion refresh eingebaut, um zu v
 
 Jetzt wird der Komponent dreimal gerendert, das erste Mal mit dem Wert 1, dann 2 und schließlich 3. Allerdings werden die Werte 1 und 2 nur so kurz am Bildschirm ausgegeben, dass man es nicht bemerken kann.
 
-Wir können eine leicht interessantere Funktionalität einbauen, indem wir den Zähler mit jeder Sekunde erneut rendern und erhöhen:
+Wir können eine leicht interessantere Funktionalität einbauen, indem wir den Zähler mit jeder Sekunde erneut rendern und erhöhen. Dafür nutzen wir [setInterval](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval):
 
 ```javascript
 setInterval(() => {
@@ -247,7 +248,7 @@ Erneute Aufrufe der Methode render ist nicht der empfohlene Weg, um in React Kom
 
 Bis jetzt waren unsere Komponenten sehr einfach gestaltet, d.h. sie enthielten keinen State, der sich im Lebenszyklus eines Komponenten ändern könnte.
 
-Als nächste erweitern wir unseren Komponenten App mithilfe des React State Hooks um einen State.
+Als nächste erweitern wir unseren Komponenten App mithilfe des [State-Hooks](https://reactjs.org/docs/hooks-state.html) um einen State.
 
 Ändert die Anwendung wie folgt ab: index.js wird zu
 
@@ -297,7 +298,7 @@ Der Funktionsaufruf fügt einen State an den Komponenten und zeigt ihn mit einem
 
 Der Variablen counter wird der Startwert von State (der 0 ist) zugewiesen. Der Variablen setCounter wird eine Funktion zugewiesen, die dafür genutzt wird den State zu ändern.
 
-Die Anwendung ruft die Funktion setTimeout auf und übergibt ihr zwei Parameter: eine Funktion, um den Zählerstand zu erhöhen und einen Timeout von einer Sekunde:
+Die Anwendung ruft die Funktion [setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout) auf und übergibt ihr zwei Parameter: eine Funktion, um den Zählerstand zu erhöhen und einen Timeout von einer Sekunde:
 
 ```javascript
 setTimeout(
@@ -360,13 +361,13 @@ Somit lassen sich die Funktionsaufrufe des Komponenten App leicht folgen:
 
 ## Event Handling
 
-Wir haben bereits über Event Handlers in Abschnitt 1 gesprochen, sie werden aufgerufen, wenn spezielle Ereignisse gestartet werden sollen, z.B. können Benutzerinteraktionen mit den verschiedenen Elementen einer Webseite eine ganze Reihe von Ergeignissen starten.
+Wir haben bereits über Event Handlers in Abschnitt 0 gesprochen, sie werden aufgerufen, wenn spezielle Ereignisse gestartet werden sollen, z.B. können Benutzerinteraktionen mit den verschiedenen Elementen einer Webseite eine ganze Reihe von Ergeignissen starten.
 
-Ändern wir die Anwendung so ab, dass der Zählerstand sich erhöht, wenn ein Benutzer auf einen Button klickt.
+Ändern wir die Anwendung so ab, dass der Zählerstand sich erhöht, wenn ein Benutzer auf einen [Button](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) klickt.
 
-Buttons unterstützen sogenannte mouse events von denen der Klick der gebräuchlichste ist. Abgesehen vom Namen mouse events kann der Klick auf einen Button auch durch einen Tastendruck oder Touchscreen ausgelöst werden.
+Buttons unterstützen sogenannte [mouse events](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent) von denen der [click](https://developer.mozilla.org/en-US/docs/Web/Events/click) der gebräuchlichste ist. Abgesehen vom Namen mouse events kann der Klick auf einen Button auch durch einen Tastendruck oder Touchscreen ausgelöst werden.
 
-In React sieht die Funktion eines Event Handlers ungefähr so aus: 
+In React sieht die [Erstellung eines Event Handlers](https://reactjs.org/docs/handling-events.html) für ein Klick-Event ungefähr so aus: 
 
 ```javascript
 const App = () => {
@@ -519,7 +520,7 @@ Es wird empfohlen React-Komponenten zu schreiben, die klein und über ganze Anwe
 
 Als ersten implementieren wir den Komponenten Display, der für das Darstellen des Inhalts des Zählers verantwortlich ist.
 
-Eine best practice in React ist es den State durch die Komponentenstruktur zu reichen. Die Dokumentation besagt:
+Eine best practice in React ist es [den State durch die Komponentenstruktur zu reichen](https://reactjs.org/docs/lifting-state-up.html). Die Dokumentation besagt:
 
 Oft stellen mehrere Komponenten die selben sich veränderten Daten dar. Wir empfehlen den gemeinsamen State in den obersten gemeinsamen Komponenten zu schreiben.
 
