@@ -12,6 +12,7 @@
 - [anti-pattern: array indexes as keys](#anti-pattern:-array-indexes-as-keys)
 - [refactoring modules](#refactoring-modules)
 - [when the application breaks](#when-the-application-breaks)
+- [web developers oath](web-developers-oath)
 - [exercises](#exercises)
 
 Bevor wir den neuen Abschnitt anfangen, schauen wir uns noch einige Themen an, die sich letztes Jahr als schwierig erwiesen haben.
@@ -42,15 +43,15 @@ Wenn ihr ein Objekt mit einem String verbindet und es in der Konsole ausgebt (wi
 props value is [object Object]
 ```
 
-Wenn ihr im Gegensatz dazu Objekte als verschiedene, mit Komata separierte, Elemente in der Konsole ausgebt (wie in unserem zweiten Beispiel), seht ihr den Inhalt des Objekts als String. Wenn nötig, könnt ihr mehr über "debugging React-applications" lesen.
+Wenn ihr im Gegensatz dazu Objekte als verschiedene, mit Komata separierte, Elemente in der Konsole ausgebt (wie in unserem zweiten Beispiel), seht ihr den Inhalt des Objekts als String. Wenn nötig, könnt ihr mehr über [debugging React-applications](https://fullstackopen.com/en/part1/a_more_complex_state_debugging_react_apps#debugging-react-applications) lesen.
 
 ## Protip: Visual Studio Code snippets
 
 Mit Visual Studio Code ist es einfach "snippets" zu erstellen, z.B. Tastenkürzel um schnell wiederbenutzbaren Code zu geneieren, ähnlich wie "sout" in Netbeans funktioniert.
 
-Anleitungen, wie man Snippets erstellt, können [hier](hier) gefunden werden.
+Anleitungen, wie man Snippets erstellt, können [hier](https://code.visualstudio.com/docs/editor/userdefinedsnippets#_creating-your-own-snippets) gefunden werden.
 
-Vorgefertigte Snippets gibt es auch als VSCode plugins.
+Vorgefertigte Snippets gibt es auch als VSCode plugins auf dem [marketplace](https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets).
 
 Das wichtigste Snippet ist das für den Befehl console.log(). Das kann man z.B. so erstellen:
 
@@ -66,11 +67,11 @@ Das wichtigste Snippet ist das für den Befehl console.log(). Das kann man z.B. 
 }
 ```
 
-Mit console.log zu debuggen ist so verbreitet, dass VSCode dafür Snippets eingebaut hat. Um es zu benutzen, gebt log und drückt Tabulator für autocomplete. Mehr Erweiterungen für console.log()-Snippets findet ihr im marketplace von VSCode.
+Mit console.log zu debuggen ist so verbreitet, dass VSCode dafür Snippets eingebaut hat. Um es zu benutzen, gebt log und drückt Tabulator für autocomplete. Mehr Erweiterungen für console.log()-Snippets findet ihr im [marketplace](https://marketplace.visualstudio.com/search?term=console.log&target=VSCode&category=All%20categories&sortBy=Relevance) von VSCode.
 
 ## JavaScript Arrays
 
-Ab diesem Zeitpunkt werden wir die ganze Zeit Methoden der funktionialen Programmierung für Javascript [Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) - wie "find", "filter" und "map" - benutzen. Wir arbeiten nach den gleichen allgemeinen Prinzipien wie Streams in Java 8. Diese wurden in den letzten Jahren in den beiden Kursen "Ohjelmoinnin perusteet" und "Ohjelmoinnin jatkokurssi" der Informatikfakultät und in den Programmier-MOOC benutzt.
+Ab diesem Zeitpunkt werden wir die ganze Zeit Methoden der funktionialen Programmierung für Javascript [Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) - wie "find", "filter" und "map" - benutzen.
 
 Wenn sich funktionales Programmieren mit Arrays für euch fremd anfühlt, solltet ihr mindestens die ersten drei Teile der folgenden Youtube-Reihe [Functional Programming in JavaScript](https://www.youtube.com/playlist?list=PL0zVEGEvSaeEd9hlmCXrk5yUyqUag-n84) anschauen:
 
@@ -217,7 +218,7 @@ Obwohl die Anwendung zu funktionieren scheint, gibt es trotzdem eine ekelhafte W
 
 !["fullstack content"](./bilder/abschnitt2a_bild1.png?raw=true)
 
-Wie die in der Fehlermeldung verlinkte React-Seite sagt, muss jedes Listenelement, z.B. die Elemente, die über die Methode generiert wurden, ein einzigartiges Attritbut "key" besitzen.
+Wie die in der Fehlermeldung verlinkte [React-Seite](https://reactjs.org/docs/lists-and-keys.html#keys) vorschlägt, muss jedes Listenelement, z.B. die Elemente, die über die map-Methode generiert wurden, ein einzigartiges Attritbut "key" besitzen.
 
 Fügen wir die Keys hinzu:
 
@@ -358,7 +359,7 @@ Ihr könnt in diesem [Artikel](https://robinpokorny.medium.com/index-as-a-key-is
 
 ## Refactoring Modules
 
-Räumen wir unseren Code ein bisschen auf. Uns interessiert nur das Feld "notes" der props, also holen wir sie uns direkt über "destructuring":
+Räumen wir unseren Code ein bisschen auf. Uns interessiert nur das Feld "notes" der props, also holen wir sie uns direkt über [destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment):
 
 ```javascript
 const App = ({ notes }) => {  
@@ -433,9 +434,9 @@ const Note = ({ note }) => {
 export default Note
 ```
 
-Die letzte Zeile des Moduls exportiert das Modul (die Variable Note).
+Die letzte Zeile des Moduls [exportiert](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export) das Modul (die Variable Note).
 
-Jetzt kann die Datei App.js, die den Komponenten verwendet, das Modul importieren.
+Jetzt kann die Datei App.js, die den Komponenten verwendet, das Modul [importieren](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import).
 
 ```javascript
 import Note from './components/Note'
@@ -459,7 +460,7 @@ Module kann man für vieles verwenden, nicht nur für das Separieren von Kompone
 
 Der aktuelle Anwendungscode befindet sich auf [GitHub](https://github.com/fullstack-hy2020/part2-notes/tree/part2-1).
 
-Bitte beachtet, dass Code von späteren Versionen der Anwendung im Branch Main enthalten sind. Der jetzige Code ist im Branch part2-1:
+Bitte beachtet, dass Code von späteren Versionen der Anwendung im Branch Main enthalten sind. Der jetzige Code ist im Branch [part2-1](https://github.com/fullstack-hy2020/part2-notes/tree/part2-1):
 
 !["fullstack content"](./bilder/abschnitt2a_bild2.png?raw=true)
 
@@ -558,6 +559,22 @@ const Course = (props) => {
 Wenn das Problem damit noch immer nicht behoben wurde, gibt es nicht wirklich viel zu tun abgesehen davon weiter nach Bugs zu suchen, indem ihr mehr console.log-Befehle in euren Code schreibt.
 
 Ich habe dieses Kapitel hinzugefügt, nachdem die Lösungsantwort für die nächste Frage "komplett explodiert" ist (weil die props den falschen Typ hatten) und ich mit console.log debuggen musste.
+
+## web developers oath
+
+Erinnert euch, was ihr am Ende des letzten Abschnitts versprochen habt, bevor ihr die Aufgaben angeht:
+
+Programmieren ist schwer, weswegen ich alle möglichen Mittel einsetzen werde, um es leichter zu machen
+
+- Ich habe immer die Browserkonsole offen
+
+- Ich mache in kleinen Schritten Fortschritte
+
+- Ich werde viele console.log-Ausdrücke schreiben, um sicherzugehen, dass ich verstehe, wie der Code funktioniert und um mir zu helfen, Probleme genau zu bestimmen
+
+- Wenn mein Code nicht funktioniert, werde ich nicht noch mehr Code schreiben. Stattdessen werde ich Code löschen bis er funktioniert oder zu einem Zeitpunkt zurückgehen, an dem alles funktioniert hat
+
+- Wenn ich im Discord- oder Telegramchannel (oder auch woanders) nach Hilfe frage, werde ich meine Fragen fachgerecht stellen. Lest [hier](http://fullstackopen.com/en/part0/general_info#how-to-get-help-in-discord-telegram) nach, wie man nach Hilfe fragt
 
 ## Exercises
 
