@@ -4,78 +4,26 @@
 
 ## Inhaltsverzeichnis
 
-- [A note on React version](#A-note-on-React-version)
 - [Complex state](#Complex-state)
 - [Handling arrays](#Handling-arrays)
+- [Update of the state is asynchronous](Update-of-the-state-is-asynchronous)
 - [Conditional rendering](#Conditional-rendering)
 - [Old React](#Old-React)
+- [Debugging React applications](Debugging-React-applications)
 - [Rules of Hooks](#Rules-of-Hooks)
 - [Event Handling Revisited](#Event-Handling-Revisited)
-- [Function that returns a function](#Function-that-returns-a-function)
+- [A Function that returns a function](#A-Function-that-returns-a-function)
 - [Passing Event Handlers to Child Components](#Passing-Event-Handlers-to-Child-Components)
 - [Do Not Define Components Within Components](#Do-Not-Define-Components-Within-Components)
 - [Useful Reading](#Useful-Reading)
+- [Web programmers oath](Web-programmers-oath)
 - [Exercises](#Exercises)
-
-## A note on React version
-
-> Version 18 of React was released late March 2022. The code in this course should work with the new React version. However, some libraries might not yet be compatible with React 18. At the moment of writing (4th April) at least the Apollo client used in part 8 does not yet work with most recent React.
-
-Version 18 von React wurde im späten März 2022 veröffentlicht. Der Code in diesem Kurs sollte mit der neuen React-Version kompatibel sein, aber einige Bibliotheken könnten es noch nicht sein. Zur Zeit des Verfassens dieses Textes (04.04.) ist mindestens der Client für Apollo, der in Abschnitt 8 verwendet wird, noch nicht zur aktuellen Reactversion kompatibel.
-
-> In case you end up in a situation where your application breaks because of library compatibility problems, downgrade to the older React by changing the file package.json as follows:
-
-Tritt der Fall auf, dass eure Anwendung wegen Kompabilitätsproblemen von Bibliotheken nicht funktioniert, führt ein Downgrade zu einer älteren Reactversion durch, in dem ihr die Datei package.json so ändert:
-
-```javascript
-{
-  "dependencies": {
-    "react": "^17.0.2",    
-    "react-dom": "^17.0.2",    
-    "react-scripts": "5.0.0",
-    "web-vitals": "^2.1.4"
-  },
-  // ...
-}
-```
-
-> After the change is made, reinstall dependencies by running
-
-Nach der Änderung müssen die Abhängigkeiten erneut installiert werden
-
-```javascript
-npm install
-```
-
-> Note that also the file index.js needs to be changed a bit. For React 17 it looks like
-
-Beachtet, dass auch die Datei index.js abgeändert werden muss. In React 17 sieht das so aus
-
-```javascript
-import ReactDOM from 'react-dom'
-import App from './App'
-
-ReactDOM.render(<App />, document.getElementById('root'))
-```
-
-> but for React 18 the correct form is
-
-aber in React 18 wäre das korrekt
-
-```javascript
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-
-import App from './App'
-
-ReactDOM.createRoot(document.getElementById('root')).render(<App />)
-```
 
 ## Complex state
 
 > In our previous example the application state was simple as it was comprised of a single integer. What if our application requires a more complex state?
 
-In unserem vorangegangen Beispiel bestand der State der Anwendung aus nur einem Integer. Was, wenn unsere Anwendung einen komplexeren State benöitgen würde?
+In unserem vorangegangen Beispiel bestand der State der Anwendung aus nur einem Integer. Was, wenn unsere Anwendung einen komplexeren State benötigen würde?
 
 > In most cases the easiest and best way to accomplish this is by using the useState function multiple times to create separate "pieces" of state.
 
@@ -159,7 +107,7 @@ const App = () => {
 
 > Now the component only has a single piece of state and the event handlers have to take care of changing the entire application state.
 
-Jetzt hat der Komponent nur einen State un die Event Handler kümmern sich darum, den State der ganzen Anwendung zu ändern.
+Jetzt hat der Komponent nur einen State und die Event Handler kümmern sich darum, den State der ganzen Anwendung zu ändern.
 
 > The event handler looks a bit messy. When the left button is clicked, the following function is called:
 
@@ -192,7 +140,7 @@ Der neue Wert der Eigenschaft left ist jetzt der gleiche Wert von left + 1 aus d
 
 > We can define the new state object a bit more neatly by using the object spread syntax that was added to the language specification in the summer of 2018:
 
-Ein geschickterer Weg, um ein neues State-Objekt zu definieren, ist die Object Spread-Syntax, die mit der Spezifikation der Sprache im Sommer 2018 kam:
+Ein geschickterer Weg, um ein neues State-Objekt zu definieren, ist die [Object Spread-Syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax), die mit der Spezifikation im Sommer 2018 kam:
 
 ```javascript
 const handleLeftClick = () => {
@@ -253,7 +201,7 @@ const handleLeftClick = () => {
 
 > The application appears to work. However, it is forbidden in React to mutate state directly, since it can result in unexpected side effects. Changing state has to always be done by setting the state to a new object. If properties from the previous state object are not changed, they need to simply be copied, which is done by copying those properties into a new object, and setting that as the new state.
 
-Die Anwendung scheint zu funktionieren, trotzdem ist es in React verboten, den State direkt zu verändern, da das ungewünschte Nebeneffekte haben kann. Das Ändern des States muss immer über den Weg, ein neues Objekt zu erstellen, erfolgen.
+Die Anwendung scheint zu funktionieren, trotzdem ist es in React verboten, den State direkt zu verändern, da das [unerwünschte Nebeneffekte](https://stackoverflow.com/a/40309023) haben kann. Das Ändern des States muss immer über die Erstellung eines neuen Objekts erfolgen. Wenn sich die Eigenschaften des vorangegangen Stateobjekts nicht geändert haben, müssen sie einfach nur kopiert werden, was durch Kopieren der Eigenschaften in ein neues Objekt und das Setzen dieses Objekts als State erfolgt.
 
 > Storing all of the state in a single state object is a bad choice for this particular application; there's no apparent benefit and the resulting application is a lot more complex. In this case storing the click counters into separate pieces of state is a far more suitable choice.
 
@@ -261,7 +209,7 @@ In dieser speziellen Anwendung ist das Speichern des States in einem einzigen St
 
 > There are situations where it can be beneficial to store a piece of application state in a more complex data structure. The official React documentation contains some helpful guidance on the topic.
 
-Es gibt Gelegenheiten, wo es profitabler sein kann, einen Teil des States in einer komplexeren Datenstruktur zu speichern. Die offizielle React-Dokumentation enthält einige hilfreiche Tipps zu diesem Thema.
+Es gibt Gelegenheiten, wo es profitabler sein kann, einen Teil des States in einer komplexeren Datenstruktur zu speichern. Die [offizielle React-Dokumentation](https://react.dev/learn/choosing-the-state-structure) enthält einige hilfreiche Tipps zu diesem Thema.
 
 ## Handling arrays
 
@@ -322,7 +270,7 @@ Der Teil des States, der in allClicks gespeichert ist, wird als Array festgelegt
 
 > As mentioned previously, it's also possible in JavaScript to add items to an array with the push method. If we add the item by pushing it to the allClicks array and then updating the state, the application would still appear to work:
 
-Wie bereits erwähnt ist es in Javascript auch möglich mit der Methode push neue Elemente an ein Array zu hängen. Wenn wir ein Element über push hinufügen und dann den State aktualisieren, würde die Anwendung immer noch funktionieren:
+Wie bereits erwähnt ist es in Javascript auch möglich mit der Methode [push](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push) neue Elemente an ein Array zu hängen. Wenn wir ein Element über push hinufügen und dann den State aktualisieren, würde die Anwendung immer noch funktionieren:
 
 ```javascript
 const handleLeftClick = () => {
@@ -358,7 +306,114 @@ const App = () => {
 
 > We call the join method on the allClicks array that joins all the items into a single string, separated by the string passed as the function parameter, which in our case is an empty space.
 
-Wir rufen die Methode join für das Array allClicks auf, dass alle Elemente des Arrays zu einem einzigen String zusammenfügt.
+Wir rufen die Methode [join](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join) für das Array allClicks auf, dass alle Elemente des Arrays zu einem einzigen String zusammenfügt.
+
+## Update of the state is asynchronous
+
+> Let's expand the application so that it keeps track of the total number of button presses in the state total, whose value is always updated when the buttons are pressed:
+
+Erweitern wir unsere Anwendung, so dass sie die Gesamtzahl aller Buttonklicks im State total mitzählt. Der Wert dieses States wird immer aktualisiert, wenn auf Buttons geklickt wird:
+
+```javascript
+const App = () => {
+  const [left, setLeft] = useState(0)
+  const [right, setRight] = useState(0)
+  const [allClicks, setAll] = useState([])
+  const [total, setTotal] = useState(0)
+
+  const handleLeftClick = () => {
+    setAll(allClicks.concat('L'))
+    setLeft(left + 1)
+    setTotal(left + right)  
+  }
+
+  const handleRightClick = () => {
+    setAll(allClicks.concat('R'))
+    setRight(right + 1)
+    setTotal(left + right)  
+  }
+
+  return (
+    <div>
+      {left}
+      <button onClick={handleLeftClick}>left</button>
+      <button onClick={handleRightClick}>right</button>
+      {right}
+      <p>{allClicks.join(' ')}</p>
+      <p>total {total}</p>    
+    </div>
+  )
+}
+```
+
+> The solution does not quite work:
+
+Diese Lösung funktioniert nicht wirklich:
+
+!["fullstack content"](./images/part1d_image16.png?raw=true)
+
+> The total number of button presses is consistently one less than the actual amount of presses, for some reason.
+
+Die Gesamtzahl der Buttonklicks ist durchgehend 1 weniger als die tatsächliche Anzahl der Klicks.
+
+> Let us add couple of console.log statements to the event handler:
+
+Fügen wir ein paar console.log-Ausdrücke in den Event Handler:
+
+```javascript
+const App = () => {
+  // ...
+  const handleLeftClick = () => {
+    setAll(allClicks.concat('L'))
+    console.log('left before', left)    
+    setLeft(left + 1)
+    console.log('left after', left)    
+    setTotal(left + right) 
+  }
+
+  // ...
+}
+```
+
+> The console reveals the problem
+
+Die Konsole zeigt das Problem:
+
+!["fullstack content"](./images/part1d_image17.png?raw=true)
+
+> Even though a new value was set for left by calling setLeft(left + 1), the old value persists despite the update. As a result, the attempt to count button presses produces a result that is too small:
+
+Auch wenn ein neuer Wert für left mit dem Aufruf setLeft(left + 1) gesetzt wurde, bleibt der alte Wert trotz dieser Aktualisierung weiterhin bestehen. Aufgrund dessen produziert der Versuch die Klicks zu zählen einen zu geringen Wert:
+
+```javascript
+setTotal(left + right) 
+```
+
+> The reason for this is that a state update in React happens asynchronously, i.e. not immediately but "at some point" before the component is rendered again.
+
+Der Grund dafür ist, dass eine Aktualisierung eines States in React [asynchron](https://react.dev/learn/queueing-a-series-of-state-updates) passiert, d.h. nicht sofort aber "zu einem bestimmten Punkt" bevor der Komponent erneut angezeigt wird.
+
+> We can fix the app as follows:
+
+Wir können das Problem so lösen:
+
+```javascript
+const App = () => {
+  // ...
+  const handleLeftClick = () => {
+    setAll(allClicks.concat('L'))
+    const updatedLeft = left + 1
+    setLeft(updatedLeft)
+    setTotal(updatedLeft + right) 
+  }
+
+  // ...
+}
+```
+
+> So now the number of button presses is definitely based on the correct number of left button presses.
+
+Jetzt basiert die Gesamtzahl der Buttonklicks definitiv auf der richtigen Zahl der linken Buttonklicks.
 
 ## Conditional rendering
 
@@ -400,7 +455,7 @@ const App = () => {
 
 > Now the behavior of the component depends on whether or not any buttons have been clicked. If not, meaning that the allClicks array is empty, the component renders a div element with some instructions instead:
 
-Das Verhalten des Komponenten hängt davon ab, ob einer der Button geklickt wurde oder nicht. Wenn nicht, ist das Array allClicks leer, der Komponent zeigt stattdessen ein div-Element mit einigen Anweisungen an:
+Das Verhalten des Komponenten hängt davon ab, ob einer der Buttons geklickt wurde oder nicht. Wenn nicht, ist das Array allClicks leer, der Komponent zeigt stattdessen ein div-Element mit einigen Anweisungen an:
 
 ```html
 <div>the app is used by pressing the buttons</div>
@@ -422,7 +477,7 @@ Der Komponent History zeigt komplett verschiedene React-Elemente an, abhängig v
 
 > React also offers many other ways of doing conditional rendering. We will take a closer look at this in part 2.
 
-React bietet auch viele andere Wege für conditional rendering an. Wir schauen uns das noch genauer in Abschnitt 2 an.
+React bietet auch viele andere Wege für [conditional rendering](https://react.dev/learn/conditional-rendering) an. Wir schauen uns das noch genauer in Abschnitt 2 an.
 
 > Let's make one last modification to our application by refactoring it to use the Button component that we defined earlier on:
 
@@ -482,13 +537,15 @@ const App = () => {
 
 > In this course we use the state hook to add state to our React components, which is part of the newer versions of React and is available from version 16.8.0 onwards. Before the addition of hooks, there was no way to add state to functional components. Components that required state had to be defined as class components, using the JavaScript class syntax.
 
-In diesem Kurs benutzen wir den State Hook, um State an React-Komponenten hinzufügen. Der State Hook ist Teil neuerer Reactversionen und ist ab Version 16.8.0 verfügbar. Komponenten, die vorher einen State benötigten wurden als Klassenkomponenten definiert.
+In diesem Kurs benutzen wir den Hook [State](https://react.dev/learn/state-a-components-memory), um State an React-Komponenten hinzufügen. Der State Hook ist Teil neuerer Reactversionen und ist ab Version [16.8.0](https://www.npmjs.com/package/react/v/16.8.0) verfügbar. Komponenten, die vorher einen State benötigten wurden als Klassenkomponenten definiert.
 
 > In this course we have made the slightly radical decision to use hooks exclusively from day one, to ensure that we are learning the current and future style of React. Even though functional components are the future of React, it is still important to learn the class syntax, as there are billions of lines of legacy React code that you might end up maintaining someday. The same applies to documentation and examples of React that you may stumble across on the internet.
 
-In diesem Kurs haben wir die leicht radikale Entscheidung getroffen ab Tag 1 ausschließlich Hooks zu nutzen, um sicherzustellen, dass wir den aktuellen und zukünftigen Programmierstil von React lernen. 
+In diesem Kurs haben wir die leicht radikale Entscheidung getroffen ab Tag 1 ausschließlich Hooks zu nutzen, um sicherzustellen, dass wir den aktuellen und zukünftigen Programmierstil von React lernen. Auch wenn funktionale Komponenten die Zukunft von React sind, ist es immer noch wichtig die Klassensyntax zu lernen, da es noch Millarden an Zeilen von altem React-Code gibt, die ihr vielleicht eines Tages warten müsst. Das gleiche gilt für Dokumentationen und Beispiele von React-Code über die ihr im Internet stolpert.
 
 > We will learn more about React class components later on in the course.
+
+Wir werden später im Kurs mehr über die Klassenkomponenten von React lernen.
 
 ## Debugging React applications
 
@@ -514,11 +571,11 @@ Die erste Regel der Webentwicklung
 
 > > The Console tab in particular should always be open, unless there is a specific reason to view another tab.
 
-Besonders der Console-Tab sollte immer geöffnet sein (es sei denn, es gibt einen besonderen Grund, einen anderen Tab anzuschauen).
+- Besonders der Console-Tab sollte immer geöffnet sein (es sei denn, es gibt einen besonderen Grund, einen anderen Tab anzuschauen).
 
 > Keep both your code and the web page open together at the same time, all the time.
 
-Habt immer euren Editor und eure Webseite gleichzeitig offen.
+Habt immer euren Editor und eure Webseite gleichzeitig offen
 
 > If and when your code fails to compile and your browser lights up like a Christmas tree:
 
@@ -593,7 +650,7 @@ Im Gegensatz dazu sind alle Objekte, die von einem Komma getrennt sind, in der B
 
 > Logging to the console is by no means the only way of debugging our applications. You can pause the execution of your application code in the Chrome developer console's debugger, by writing the command debugger anywhere in your code.
 
-Ausgaben über die Konsole ist natürlich nicht der einzige Weg, um Anwendungen zu debuggen. Ihr könnt die Ausführung eurer Anwendung im Debugger der Chrome developer tools jederzeit anhalten, in dem ihr den Befehl debugger irgendwo in euren Code schreibt.
+Ausgaben über die Konsole ist natürlich nicht der einzige Weg, um Anwendungen zu debuggen. Ihr könnt die Ausführung eurer Anwendung im Debugger der Chrome developer tools jederzeit anhalten, in dem ihr den Befehl [debugger](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/debugger) irgendwo in euren Code schreibt.
 
 > The execution will pause once it arrives at a point where the debugger command gets executed:
 
@@ -692,15 +749,15 @@ const App = () => {
 
 > Event handling has proven to be a difficult topic in previous iterations of this course.
 
-Event Handling hat sich in vorangegangenen Ausgaben dieses Kurses als schwieriges Thema erwiesen.
+Event Handling hat sich in den vorangegangenen Ausgaben dieses Kurses als schwieriges Thema erwiesen.
 
 > For this reason we will revisit the topic.
 
-Aus diesem Grund schauen wir uns dieses Thema nochmal an.
+Aus diesem Grund schauen wir uns dieses Thema erneut an.
 
 > Let's assume that we're developing this simple application with the following component App:
 
-Nehmen wir an, dass wir eine einfache Anwendung mit dem folgenden App-Komponenten entwickeln:
+Nehmen wir an, dass wir eine einfache Anwendung mit dem folgenden Komponenten App entwickeln:
 
 ```javascript
 const App = () => {
@@ -888,7 +945,7 @@ const App = () => {
 }
 ```
 
-## Function that returns a function
+## A Function that returns a function
 
 > Another way to define an event handler is to use function that returns a function.
 
@@ -1269,11 +1326,11 @@ const App = () => {
 
 > The application still appears to work, but don't implement components like this! Never define components inside of other components. The method provides no benefits and leads to many unpleasant problems. The biggest problems are due to the fact that React treats a component defined inside of another component as a new component in every render. This makes it impossible for React to optimize the component.
 
-Die Anwendung scheint weiterhin zu funktionieren, aber implementiert niemals Komponenten auf diese Art! Diese Methode hat keine Boni und für zu vielen unagenehmen Problemen. Die größten Probleme sind dem Fakt geschuldet, dass React Komponenten, die innerhalb anderer Komponenten definiert wurden, als neuen Komponenten behandelt. Das macht es für React unmöglich, den Komponenten zu optimieren.
+Die Anwendung scheint weiterhin zu funktionieren, aber implementiert niemals Komponenten auf diese Art! Diese Methode hat keine Boni und führt zu vielen unangenehmen Problemen. Die größten Probleme sind dem Fakt geschuldet, dass React Komponenten, die innerhalb anderer Komponenten definiert wurden, als neuen Komponenten behandelt. Das macht es für React unmöglich, den Komponenten zu optimieren.
 
 > Let's instead move the Display component function to its correct place, which is outside of the App component function:
 
-Schieben wir stattdessen den Komponenten Display seine korrekte Stelle, was außerhalb des Komponenten App ist:
+Schieben wir stattdessen den Komponenten Display an seine korrekte Stelle, was außerhalb des Komponenten App ist:
 
 ```javascript
 const Display = props => <div>{props.value}</div>
@@ -1315,11 +1372,37 @@ Ihr findet die folgenden Links sicher nützlich:
 
 > - The official React documentation is worth checking out at some point, although most of it will become relevant only later on in the course. Also, everything related to class-based components is irrelevant to us;  
 
-- Die offizielle Reactdokumentation ist es Wert gelesen zu werden, auch wenn das meiste erst zu einem späteren Zeitpunkt im Kurs relevant wird. Zudem ist alles, was sich auf klassenbasierte Komponenten bezieht, für uns irrelavant.
+- Die [offizielle Reactdokumentation](https://react.dev/learn) ist es Wert gelesen zu werden, auch wenn das meiste erst zu einem späteren Zeitpunkt im Kurs relevant wird. Zudem ist alles, was sich auf klassenbasierte Komponenten bezieht, für uns irrelavant.
 
 > - Some courses on Egghead.io like Start learning React are of high quality, and recently updated The Beginner's Guide to React is also relatively good; both courses introduce concepts that will also be introduced later on in this course. NB The first one uses class components but the latter uses the new functional ones.
 
-Einige Kurse auf egghead.io, wie z.B. Start learning React, sind von hoher Qualität und der kürzlich aktualisierte The Beginner's Guide to React ist auch relativ gut. Beide Kurse führen Themen ein, die auch noch später in diesem Kurs bearbeitet werden. Hinweis: Ersterer verwendent Klassenkomponenten, aber der Zweite verwenden funktionale.
+- Einige Kurse auf [egghead.io](https://egghead.io/), wie z.B. [Start learning React](https://egghead.io/courses/start-learning-react), sind von hoher Qualität und der kürzlich aktualisierte [Beginner's Guide to React](https://egghead.io/courses/the-beginner-s-guide-to-reactjs) ist auch relativ gut. Beide Kurse führen Themen ein, die auch noch später in diesem Kurs bearbeitet werden. Hinweis: Der erste verwendent Klassenkomponenten, aber der zweite verwenden funktionale.
+
+## Web programmers oath
+
+> Programming is hard, that is why I will use all the possible means to make it easier
+
+Programmieren ist schwer, weswegen ich alle möglichen Mittel einsetzen werde, um es leichter zu machen
+
+> - I will have my browser developer console open all the time
+
+- Ich habe immer die Browserkonsole offen
+
+> - I progress with small steps
+
+- Ich mache in kleinen Schritten Fortschritte
+
+> - I will write lots of console.log statements to make sure I understand how the code behaves and to help pinpointing problems
+
+- Ich werde viele console.log-Ausdrücke schreiben, um sicherzugehen, dass ich verstehe, wie der Code funktioniert und um mir zu helfen, Probleme genau zu bestimmen
+
+> - If my code does not work, I will not write more code. Instead I start deleting the code until it works or just return to a state when everything was still working
+
+- Wenn mein Code nicht funktioniert, werde ich nicht noch mehr Code schreiben. Stattdessen werde ich Code löschen bis er funktioniert oder zu einem Zeitpunkt zurückgehen, an dem alles funktioniert hat
+
+> - When I ask for help in the course Discord or Telegram channel or elsewhere I formulate my questions properly, see here how to ask for help
+
+- Wenn ich im Discord- oder Telegramchannel (oder auch woanders) nach Hilfe frage, werde ich meine Fragen fachgerecht stellen. Lest [hier](http://fullstackopen.com/en/part0/general_info#how-to-get-help-in-discord-telegram) nach, wie man nach Hilfe fragt
 
 ## Exercises
 
