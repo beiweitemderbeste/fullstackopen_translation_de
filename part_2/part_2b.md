@@ -11,11 +11,11 @@
 
 > Let's continue expanding our application by allowing users to add new notes. You can find the code for our current application here.
 
-Erweitern wir unsere Anwendung, indem wir Benutzern erlauben neue Notizen hinzuzufügen. Ihr könnt den Code der jetzigen Anwendung [hier](link-missing) einsehen.
+Erweitern wir unsere Anwendung, indem wir Benutzern erlauben neue Notizen hinzuzufügen. Ihr könnt den Code der jetzigen Anwendung [hier](https://github.com/fullstack-hy2020/part2-notes/tree/part2-1) einsehen.
 
 > In order to get our page to update when new notes are added it's best to store the notes in the App component's state. Let's import the useState function and use it to define a piece of state that gets initialized with the initial notes array passed in the props.
 
-Damit sich unsere Seite aktualisiert, wenn eine neue Notiz angehängt wird, ist es am besten die Notizen im State des Komponenten __App__ zu speichern. Importieren wir die Funktion __useState__ und nutzen sie, um einen State zu definieren, der initialisiert wird, wenn das anfängliche notes-Array an die props übergeben wird.
+Damit sich unsere Seite aktualisiert, wenn eine neue Notiz angehängt wird, ist es am besten die Notizen im State des Komponenten App zu speichern. Importieren wir die Funktion [useState](https://reactjs.org/docs/hooks-state.html) und nutzen sie, um einen State zu definieren, der initialisiert wird, wenn das anfängliche notes-Array an die props übergeben wird.
 
 ```javascript
 import { useState } from 'react'
@@ -51,6 +51,10 @@ const App = (props) => {
 }
 ```
 
+> We can also use React Developer Tools to see that this really happens:
+
+!["fullstack content"](./images/part2b_image9.png?raw=true)
+
 > If we wanted to start with an empty list of notes, we would set the initial value as an empty array, and since the props would not be used, we could omit the props parameter from the function definition:
 
 Wenn wir mit einer leeren Liste von Notizen anfangen wollten, würden wir den Startwert auf ein leeres Array setzen und da die props hier nicht benötigt werden, könnten wir den Parameter props in der Funktionsdefinition weglassen:
@@ -69,7 +73,7 @@ Wir starten aber vorläufig mit den props als Startwert.
 
 > Next, let's add an HTML form to the component that will be used for adding new notes.
 
-Als nächstes erweitern wir den Komponenten um ein HTML-Formular, das für das Hinzufügen neuer Notizen genutzt wird.
+Als nächstes erweitern wir den Komponenten um ein [HTML-Formular](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms), das für das Hinzufügen neuer Notizen genutzt wird.
 
 ```javascript
 const App = (props) => {
@@ -114,11 +118,11 @@ const addNote = (event) => {
 
 > The event parameter is the event that triggers the call to the event handler function:
 
-Der Parameter event ist das Ereignis, das den Aufruf der Event Handler-Funktion auslöst.
+Der Parameter event ist das [Ereignis](https://reactjs.org/docs/handling-events.html), das den Aufruf der Event Handler-Funktion auslöst.
 
 > The event handler immediately calls the event.preventDefault() method, which prevents the default action of submitting a form. The default action would, among other things, cause the page to reload.
 
-Der Event Handler ruft unmittelbar die Funktion event.preventDefault() auf, die die Standardaktion verhindert: das Abschicken des Formulars. Die Standardaktion würde u.a. das Neuladen der Seite bewirken.
+Der Event Handler ruft unmittelbar die Funktion event.preventDefault() auf, die die Standardaktion verhindert: das Abschicken des Formulars. Die Standardaktion würde [u.a.](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/submit_event) das Neuladen der Seite bewirken.
 
 > The target of the event stored in event.target is logged to the console:
 
@@ -138,7 +142,7 @@ Wie können wir auf die Daten zugreifen, die im Eingabefeld des Formulars gespei
 
 > There are many ways to accomplish this; the first method we will take a look at is through the use of so-called controlled components.
 
-Es gibt viele Wege, um das zu erreichen. Den ersten Weg, den wir uns ansehen, ist das Benutzen von sogenannten "controlled components".
+Es gibt viele Wege, um das zu erreichen. Den ersten Weg, den wir uns ansehen, ist das Benutzen von sogenannten [controlled components](https://reactjs.org/docs/forms.html#controlled-components).
 
 > Let's add a new piece of state called newNote for storing the user-submitted input and let's set it as the input element's value attribute:
 
@@ -177,7 +181,7 @@ Der Platzhaltertext, der als Startwert des States von newNote gespeichert ist, e
 
 > Since we assigned a piece of the App component's state as the value attribute of the input element, the App component now controls the behavior of the input element.
 
-Da wir einen Teil des States des Komponenten App dem Wert des Eingabefelds zugewiesen haben, steuert der Komponent App nun das Verhalten des Eingabefelds.
+Da wir einen Teil des States des Komponenten App dem Wert des Eingabefelds zugewiesen haben, [steuert](https://reactjs.org/docs/forms.html#controlled-components) der Komponent App nun das Verhalten des Eingabefelds.
 
 > In order to enable editing of the input element, we have to register an event handler that synchronizes the changes made to the input with the component's state:
 
@@ -255,7 +259,7 @@ Jetzt könnt ihr in der Konsole verfolgen, wie der Event Handler aufgerufen wird
 
 > You did remember to install React devtools, right? Good. You can directly view how the state changes from the React Devtools tab:
 
-Ihr erinnert euch, dass ihr die React Devtools installiert habt? Gut. Ihr könnt in den React Devtools direkt sehen, wie sich der State verändert:
+Ihr erinnert euch, dass ihr die [React Devtools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) installiert habt? Gut. Ihr könnt in den React Devtools direkt sehen, wie sich der State verändert:
 
 !["fullstack content"](./images/part2b_image4.png?raw=true)
 
@@ -284,7 +288,7 @@ Zuerst erstellen wir für die Notiz ein neues Objekt noteObject, das seinen Inha
 
 > The new note is added to the list of notes using the concat array method, introduced in part 1:
 
-Die neue Notiz wird mit der Array-Funktion concat, die in Abschnitt 1 eingeführt wurde, an die Notizenliste gehängt:
+Die neue Notiz wird mit der Array-Funktion [concat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat), die in Abschnitt 1 eingeführt wurde, an die Notizenliste gehängt:
 
 ```javascript
 setNotes(notes.concat(noteObject))
@@ -292,7 +296,7 @@ setNotes(notes.concat(noteObject))
 
 > The method does not mutate the original notes array, but rather creates a new copy of the array with the new item added to the end. This is important since we must never mutate state directly in React!
 
-Diese Funktion verändert nicht das originale Array notes, sondern erstellt eine neue Kopie des Arrays mit einem neuen Element, dass am Ende angefügt wird. Das ist wichtig, da wir in React niemals State direkt verändern dürfen!
+Diese Funktion verändert nicht das originale Array notes, sondern erstellt eine neue Kopie des Arrays mit einem neuen Element, dass am Ende angefügt wird. Das ist wichtig, da wir in React [niemals State direkt verändern](https://reactjs.org/docs/state-and-lifecycle.html#using-state-correctly) dürfen!
 
 > The event handler also resets the value of the controlled input element by calling the setNewNote function of the newNote state:
 
@@ -371,7 +375,7 @@ const notesToShow = showAll
 
 > The definition uses the conditional operator also found in many other programming languages.
 
-Die Definition benutzt den Conditional Operator, den es auch in vielen anderen Programmiersprachen gibt.
+Die Definition benutzt den [Conditional](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) Operator, den es auch in vielen anderen Programmiersprachen gibt.
 
 > The operator functions as follows. If we have:
 
@@ -387,7 +391,7 @@ Die Variable result wird auf den Wert von val1 gesetzt, wenn die Bedingung wahr 
 
 > If the value of showAll is false, the notesToShow variable will be assigned to a list that only contains notes that have the important property set to true. Filtering is done with the help of the array filter method:
 
-Wenn der Wert von showAll false ist, wird der Variable notesToShow eine Liste zugewiesen, die nur Notizen enthält, bei denen die Eigenschaft important auf true gesetzt wurde.
+Wenn der Wert von showAll false ist, wird der Variable notesToShow eine Liste zugewiesen, die nur Notizen enthält, bei denen die Eigenschaft important auf true gesetzt wurde. Das Filtern geschieht mit Hilfe der Array-Methode [filter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter).
 
 ```javascript
 notes.filter(note => note.important === true)
@@ -403,7 +407,7 @@ notes.filter(note => note.important)
 
 > The reason we showed the comparison operator first was to emphasize an important detail: in JavaScript val1 == val2 does not work as expected in all situations and it's safer to use val1 === val2 exclusively in comparisons. You can read more about the topic here.
 
-Der Grund, warum wir den Vergleichsoperatur zuerst gezeigt haben, ist um ein wichtiges Detail hervorzuheben: in JavaScript funktioniert val1 == val2 nicht in allen Situation so, wie man es erwartet und es ist sicherer ausschließlich val1 === val2 bei Vergleichen zu verwenden.
+Der Grund, warum wir den Vergleichsoperatur zuerst gezeigt haben, ist um ein wichtiges Detail hervorzuheben: in JavaScript funktioniert val1 == val2 nicht in allen Situation so, wie man es erwartet und es ist sicherer ausschließlich val1 === val2 bei Vergleichen zu verwenden. [Hier](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness) könnt ihr mehr darüber lesen.
 
 > You can test out the filtering functionality by changing the initial value of the showAll state.
 
@@ -465,7 +469,7 @@ show {showAll ? 'important' : 'all'}
 
 > You can find the code for our current application in its entirety in the part2-3 branch of this GitHub repository.
 
-Ihr findet den Quellcode für unsere aktuelle Anwendung in seiner Gesamtheit im Branch part2-3 von diesem GitHub Repository.
+Ihr findet den Quellcode für unsere aktuelle Anwendung in seiner Gesamtheit im Branch part2-3 von [diesem GitHub Repository](https://github.com/fullstack-hy2020/part2-notes/tree/part2-3).
 
 ## exercises
 
@@ -624,7 +628,7 @@ Zu diesem Zeitpunkt könnte die Anwendung ungefähr so aussehen. Das Bild zeigt 
 
 Implementiert ein Suchfeld, das genutzt werden kann, um die Liste der Leute nach Namen zu sortieren:
 
-!["fullstack content"](./images/part2b_image7.png?raw=true)
+!["fullstack content"](./images/part2b_image8.png?raw=true)
 
 > You can implement the search field as an input element that is placed outside the HTML form. The filtering logic shown in the image is case insensitive, meaning that the search term arto also returns results that contain Arto with an uppercase A.
 
