@@ -22,19 +22,35 @@
 
 > In this part our focus shifts towards the backend: that is, towards implementing functionality on the server side of the stack.
 
+In diesem Abschnitt richtet sich unser Augenmerk auf das Backend. Das Backend besteht aus den serverseitigen Funktionen des Stacks.
+
 > We will be building our backend on top of NodeJS, which is a JavaScript runtime based on Google's Chrome V8 JavaScript engine.
 
-> This course material was written with the version 16.13.2 of Node.js. Please make sure that your version of Node is at least as new as the version used in the material (you can check the version by running node -v in the command line).
+Wir bauen unser Backend auf NodeJS auf. NodeJS ist eine Javascript-Laufzeitumgebung, die auf Googles Chrome V8 Javascript-Engine basiert.
+
+> This course material was written with version v18.13.0 of Node.js. Please make sure that your version of Node is at least as new as the version used in the material (you can check the version by running node -v in the command line).
+
+Das Kursmaterial wurde mit Node.js-Version 18.13.0 geschrieben. Bitte stellt sicher, dass eure Node-Version mindestens ebenso aktuell ist (ihr könnt eure Version von Node überpüfen, indem ihr in der Kommmandozeile "node -v" eingebt).
 
 > As mentioned in part 1, browsers don't yet support the newest features of JavaScript, and that is why the code running in the browser must be transpiled with e.g. babel. The situation with JavaScript running in the backend is different. The newest version of Node supports a large majority of the latest features of JavaScript, so we can use the latest features without having to transpile our code.
 
+Wie bereits in Abschnitt 1 erwähnt unterstützen nicht alle Browser die aktuellesten Funktionen von JavvaScript, weshalb der Code, der im Browser läuft, übersetzt werden muss (z.B. mit babel). Bei JavaScript, das im Backend läuft, sieht es anders aus. Die aktuellste Version von Node unterstützt einen Großteil der neuesten JavaScript-Funktionen, so dass wir diesen Code nicht übersetzen müssen.
+
 > Our goal is to implement a backend that will work with the notes application from part 2. However, let's start with the basics by implementing a classic "hello world" application.
+
+Unser Ziel ist die Implementierung eines Backends, das mit der Notizenanwendung aus Abschnitt 2 funktioniert.
 
 > Notice that the applications and exercises in this part are not all React applications, and we will not use the create-react-app utility for initializing the project for this application.
 
+Beachtet, dass nicht alle Anwendungen und Übungen in diesem Abschnitt React-Anwendungen sind. Auch werden wir create-react-app nicht verwenden, um das Projekt für diese Anwendung zu initialisieren.
+
 > We had already mentioned npm back in part 2, which is a tool used for managing JavaScript packages. In fact, npm originates from the Node ecosystem.
 
+Wir haben "npm" bereits in Abschnitt 2 erwähnt. npm ist ein Werkzeug, um JavaScript-Pakete zu verwalten. Tatsächlich kommt npm aus dem NodeJS-Ökosystem.
+
 > Let's navigate to an appropriate directory, and create a new template for our application with the npm init command. We will answer the questions presented by the utility, and the result will be an automatically generated package.json file at the root of the project that contains information about the project.
+
+Navigiert über die Kommandozeile in ein passendes Verzeichnis, erstellt ein Template für unsere Anwendung mit dem Befehl "npm init" und beantwortet die Fragen des Befehls. Hieraus wird eine automatisch generierte Datei package.json erstellt im Wurzelverzeichnis des Projekts ersellt. Diese Datei enthält Informationen über das Projekt:
 
 ```javascript
 {
@@ -52,7 +68,11 @@
 
 > The file defines, for instance that the entry point of the application is the index.js file.
 
+Die Datei enthält z.B. die Einstiegspunkt der Anwedung: die Datei index.js
+
 >Let's make a small change to the scripts object:
+
+Ändern wir das scripts-Objekt leicht ab:
 
 ```javascript
 {
@@ -67,11 +87,15 @@
 
 > Next, let's create the first version of our application by adding an index.js file to the root of the project with the following code:
 
+Als nächstes erstellen wir die erste Version unserer Anwendung, indem wir eine Datei index.js zum Wurzelverzeichniss des Projekts mit dem folgenden Code hinzufügen:
+
 ```javascript
 console.log('hello world')
 ```
 
 > We can run the program directly with Node from the command line:
+
+Wir können das Programm direkt mit Node in der Kommandozeile starten:
 
 ```
 node index.js
@@ -79,11 +103,15 @@ node index.js
 
 > Or we can run it as an npm script:
 
+oder es als npm-Skript laufen lassen:
+
 ```
 npm start
 ```
 
 > The start npm script works because we defined it in the package.json file:
+
+Das npm-Skript funktioniert, weil wir es in der Dateil package.json definiert haben:
 
 ```javascript
 {
@@ -98,7 +126,11 @@ npm start
 
 > Even though the execution of the project works when it is started by calling node index.js from the command line, it's customary for npm projects to execute such tasks as npm scripts.
 
+Auch wenn die Ausführung des Projekts funktioniert, wenn man es über "node index.js" startet, ist es dennoch üblich, das npm-Projekte über npm-Skripte ausgeführt werden.
+
 > By default the package.json file also defines another commonly used npm script called npm test. Since our project does not yet have a testing library, the npm test command simply executes the following command:
+
+Standardmäßig wird in der Datei package.json auch ein anderes viel genutztes npm-Skript definiert: npm test. Da unser Projekt noch nicht über eine Testbibliothek verfügt, führt das Skript npm test nur den folgenden Befehl aus:
 
 ```javascript
 echo "Error: no test specified" && exit 1
