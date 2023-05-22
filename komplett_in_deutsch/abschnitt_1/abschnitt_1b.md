@@ -247,7 +247,7 @@ In diesem Kurs definieren wir Funktionen nur als Pfeilfunktionen.
 
 ## Exercises
 
-Wir arbeiten weiter an der Anwendung, mit wir schon in den vorangegangen Aufgaben gearbeitet haben. Ihr könnt mit dem gleichen Code weiterarbeiten, da nur der Endstand der eingereichten Anwendung erforderlich ist.
+Wir arbeiten weiter an der Anwendung aus den vorangegangen Aufgaben. Ihr könnt mit dem gleichen Code weiterarbeiten, da nur der Endstand der eingereichten Anwendung erforderlich ist.
 
 Hinweis: Ihr könnt Probleme bekommen, wenn es um die Struktur geht, mit der props an Komponenten weitergegeben werden. Um zu wissen, um welche props es geht, könnt ihr sie einfach auf der Konsole ausgeben, z.B. so:
 
@@ -288,7 +288,7 @@ const App = () => {
 
 ### 1.4 course information step4
 
-Fügt nun alle Objekte in ein Array. Ändert wieder die Definitionen der Variablen wie folgt ab und passt wieder den Rest der Anwendung an, damit sie weiterhin funktioniert:
+Fügt nun alle Objekte in ein Array. Ändert die Definitionen der Variablen wie folgt ab und passt wieder den Rest der Anwendung an, damit sie wieder funktioniert:
 
 ```javascript
 const App = () => {

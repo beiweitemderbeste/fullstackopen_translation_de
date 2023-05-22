@@ -159,7 +159,7 @@ console.log(`Server running on port ${PORT}`)
 Server running on port 3001
 ```
 
-We can open our humble application in the browser by visiting the address http://localhost:3001:
+> We can open our humble application in the browser by visiting the address http://localhost:3001:
 
 !["fullstack content"](./images/part3a_image1.png?raw=true)
 

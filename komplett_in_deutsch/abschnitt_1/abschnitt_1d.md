@@ -22,9 +22,9 @@
 
 In unserem vorangegangen Beispiel bestand der State der Anwendung aus nur einem Integer. Was, wenn unsere Anwendung einen komplexeren State benötigen würde?
 
-In den meisten Fällen ist die beste Art das zu erreichen, indem man die Funktion useState mehrfach verwendet, um verschiedene "Stücke" des States zu erstellen.
+In den meisten Fällen erreichtm man das, indem man die Funktion useState mehrfach verwendet, um verschiedene "Stücke" des States zu erstellen.
 
-Im folgenden Code erstellen wir 2 Teile des States der Anwendung mit den Namen left und right, die beide einen Anfangswert von 0 zugewiesen bekommen:
+Im folgenden Code erstellen wir 2 Teile des States mit den Namen left und right, die beide einen Anfangswert von 0 zugewiesen bekommen:
 
 ```javascript
 const App = () => {
@@ -1099,27 +1099,15 @@ Ihr findet die folgenden Links sicher nützlich:
 
 ## Web programmers oath
 
-> Programming is hard, that is why I will use all the possible means to make it easier
-
 Programmieren ist schwer, weswegen ich alle möglichen Mittel einsetzen werde, um es leichter zu machen
-
-> - I will have my browser developer console open all the time
 
 - Ich habe immer die Browserkonsole offen
 
-> - I progress with small steps
-
 - Ich mache in kleinen Schritten Fortschritte
-
-> - I will write lots of console.log statements to make sure I understand how the code behaves and to help pinpointing problems
 
 - Ich werde viele console.log-Ausdrücke schreiben, um sicherzugehen, dass ich verstehe, wie der Code funktioniert und um mir zu helfen, Probleme genau zu bestimmen
 
-> - If my code does not work, I will not write more code. Instead I start deleting the code until it works or just return to a state when everything was still working
-
 - Wenn mein Code nicht funktioniert, werde ich nicht noch mehr Code schreiben. Stattdessen werde ich Code löschen bis er funktioniert oder zu einem Zeitpunkt zurückgehen, an dem alles funktioniert hat
-
-> - When I ask for help in the course Discord or Telegram channel or elsewhere I formulate my questions properly, see here how to ask for help
 
 - Wenn ich im Discord- oder Telegramchannel (oder auch woanders) nach Hilfe frage, werde ich meine Fragen fachgerecht stellen. Lest [hier](http://fullstackopen.com/en/part0/general_info#how-to-get-help-in-discord-telegram) nach, wie man nach Hilfe fragt
 
@@ -1143,7 +1131,7 @@ rm -rf node_modules/ && npm i
 
 Wie die meisten Firmen sammelt Unicafe Feedback von seinen Kunden. Eure Aufgabe ist es, eine Webanwendung zu implementieren, um das Feedback zu sammeln. Es gibt nur drei Optionen für Feedback: good, neutral, und bad.
 
-Die Anwendung soll die absolute Zahl des abgegebenen Feedbacks pro Kategorie anzeigen. Die Anwendung könnte so aussehen:
+Die Anwendung soll die absolute Zahl der abgegebenen Feedbacks pro Kategorie anzeigen. Die Anwendung könnte so aussehen:
 
 !["fullstack content"](./bilder/abschnitt1d_bild8.png?raw=true)
 
