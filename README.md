@@ -17,3 +17,28 @@
 - [Abschnitt 1 - introduction to react](komplett_in_deutsch/abschnitt_1/abschnitt_1.md)
 - [Abschnitt 2 - communicating with server](komplett_in_deutsch/abschnitt_2/abschnitt_2.md)
 
+## translation progress ger=>eng
+
+[ ] part 0
+
+[x] part 1
+[x] part 1a
+[x] part 1b
+[x] part 1c
+[x] part 1d
+
+[ ] part 2
+[x] part 2a
+[x] part 2b
+[ ] part 2c
+[ ] part 2d
+
+## translation progress komplett auf deutsch
+
+[ ] part 0
+
+[x] part 1
+[x] part 1a
+[x] part 1b
+[x] part 1c
+[x] part 1d
