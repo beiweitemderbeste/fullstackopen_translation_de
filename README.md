@@ -21,11 +21,18 @@
 
 [ ] part 0
 
-[x] part 1
-[x] part 1a
-[x] part 1b
-[x] part 1c
-[x] part 1d
+- [x] part 1
+- [x] part 1a
+- [x] part 1b
+- [ ] part 1c
+- [ ] part 1d
+
+- [x] [0.1 HTML](./part0/0.1.md)
+- [x] [0.2 CSS](./part0/0.2.md)
+- [x] [0.3 HTML forms](./part0/0.3.md)
+- [x] [0.4 new note](./part0/0.4.md)
+- [ ] [0.5 Single page app](./part0/0.5.md)
+- [ ] [0.6 New note](./part0/0.6.md)
 
 [ ] part 2
 [x] part 2a
