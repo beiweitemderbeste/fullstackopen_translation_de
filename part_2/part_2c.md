@@ -94,11 +94,19 @@ Wir machen uns mit den Prinzipien der Implementierung serverseitiger Funktionali
 
 > Our first task is fetching the already existing notes to our React application from the address http://localhost:3001/notes.
 
+Unsere erste Aufgabe ist das Laden der bereits existierenden Notizen unserer React-Anwendung von der Adresse http://localhost:3001/notes
+
 > In the part0 example project we already learned a way to fetch data from a server using JavaScript. The code in the example was fetching the data using XMLHttpRequest, otherwise known as an HTTP request made using an XHR object. This is a technique introduced in 1999, which every browser has supported for a good while now.
+
+Im Beispielproject in Abschnitt 0 haben wir bereits eine Möglichkeit kennengelernt, um mit JavaScript Daten von einem Server zu laden. Der Code im Beispiel hat die Daten über "XMLHttpRequest" geladen, mit anderen Worten: eine HTTP-Anfrage wurde über ein XHR-Object gestellt. Diese Technik wurde 1999 eingeführt, was bedeutet, dass sie jeder Browser seit einiger Zeit unterstützt.
 
 > The use of XHR is no longer recommended, and browsers already widely support the fetch method, which is based on so-called promises, instead of the event-driven model used by XHR.
 
+Das Verwenden von XHR wird nicht länger empfohlen und die meisten Browser unterstützen bereits die Fetch-Methode, die auf sogenannten Promises beruht, anstatt auf das ereignisgesteuerte Model von XHR.
+
 > As a reminder from part0 (which one should in fact remember to not use without a pressing reason), data was fetched using XHR in the following way: 
+
+Als Erinnerung an Abschnitt 0 (wo wir auch gelernt haben, das folgende nur einszusetzen, wenn es dafür einen dringenden Grund gibt), wo die Daten mit XHR folgendermaßen geladen wurden:
 
 ```javascript
 const xhttp = new XMLHttpRequest()
@@ -116,9 +124,15 @@ xhttp.send()
 
 > Right at the beginning we register an event handler to the xhttp object representing the HTTP request, which will be called by the JavaScript runtime whenever the state of the xhttp object changes. If the change in state means that the response to the request has arrived, then the data is handled accordingly.
 
+Ganz am Anfang registrieren wir einen Event Handler für das xhttp-Objekt, das die HTTP-Anfrage repräsentiert. Dieser Event Handler wird von der JavaScipt Laufzeitumgebung immer dann aufgerufen, wenn sich der Status des xhttp-Objekts ändert. Wenn die Änderung des Status bedeutet, dass die Antwort auf die HTTP-Anfrage angekommen ist, dann werden die Daten entsprechent behandelt.
+
 > It is worth noting that the code in the event handler is defined before the request is sent to the server. Despite this, the code within the event handler will be executed at a later point in time. Therefore, the code does not execute synchronously "from top to bottom", but does so asynchronously. JavaScript calls the event handler that was registered for the request at some point.
 
+Es lohnt sich zu beachten, dass der Code des Event Handlers definiert wird, bevor die Anfrage an den Server geschickt wird. Abgesehen davon wird der Code des Event Handlers zu einem späteren Zeitpunkt ausgeführt. Deshalb wird der Code nicht synchron "von oben nach unten" ausgeführt, sondern asynchron. JavaScript ruft den Event Handler, der für die Anfrage registriert wurde, an einem Punkt auf.
+
 > A synchronous way of making requests that's common in Java programming, for instance, would play out as follows (NB, this is not actually working Java code):
+
+Eine Möglichkeit synchron Anfragen zu stellen, ist in der Java-Programmierung normal, z.B. würde unsere Anfrage ungefährt so aussehen (Hinweis: Das ist kein wirklich funktionierender Java-Code):
 
 ```javascript
 HTTPRequest request = new HTTPRequest();
@@ -133,13 +147,23 @@ notes.forEach(m => {
 
 > In Java the code executes line by line and stops to wait for the HTTP request, which means waiting for the command request.get(...) to finish. The data returned by the command, in this case the notes, are then stored in a variable, and we begin manipulating the data in the desired manner.
 
+In Java wird der Code Zeile für Zeile ausgeführt und hält dann an, um auf die HTTP-Anfrage zu warten, was bedeutet, das gewartet wird bis das Kommando request.get(...) fertig ist.
+
 > On the other hand, JavaScript engines, or runtime environments, follow the asynchronous model. In principle, this requires all IO-operations (with some exceptions) to be executed as non-blocking. This means that code execution continues immediately after calling an IO function, without waiting for it to return.
+
+Auf der anderen Seite folgen JavaScript-Engines oder Laufzeitumgebungen dem asynchronen Modell. Im Prinzip wird verlangt, dass alle IO-Operationen (mit einigen Ausnahmen) nicht blockend ausgeführt werden. Das bedeutet, dass die Ausführung des Codes direkt weiterläuft, nachdem eine IO-Funktion ausgeführt wurde, ohne auf ihre Rückgabe zu warten.
 
 > When an asynchronous operation is completed, or, more specifically, at some point after its completion, the JavaScript engine calls the event handlers registered to the operation.
 
+Wenn eine asynchrone Operation ausgeführt wurde, oder genauer gesagt, an einem unbestimmten Punkt nach ihrer Ausführung, ruft die JavaScript-Engine den Event Handler auf, der für die Operation registriert wurde.
+
 > Currently, JavaScript engines are single-threaded, which means that they cannot execute code in parallel. As a result, it is a requirement in practice to use a non-blocking model for executing IO operations. Otherwise, the browser would "freeze" during, for instance, the fetching of data from a server.
 
+Aktuell sind JavaScript-Engines single-threaded, was bedeutet, dass sie Programmcode nicht parallel ausführen können. Daher ist es in der Praxis eine Grundvoraussetzung ein nichtblockierendes Modell zu nutzen, um IO-Operationen auszuführen. Ansonsten würde der Browser "einfrieren", um zum Beispiel Daten von einem Server zu laden.
+
 > Another consequence of this single-threaded nature of JavaScript engines is that if some code execution takes up a lot of time, the browser will get stuck for the duration of the execution. If we added the following code at the top of our application:
+
+Eine weitere Konsequenz dieser Single Threads von Javascript-Engines ist, dass wenn die Ausführung eines Codes sehr lang dauert, bleibt der Browser für die Länge dieser Ausführungen hängen. Wenn wir folgenden Code an den Anfang unserer Anwendung setzen:
 
 ```javascript
 setTimeout(() => {
@@ -154,11 +178,19 @@ setTimeout(() => {
 
 > everything would work normally for 5 seconds. However, when the function defined as the parameter for setTimeout is run, the browser will be stuck for the duration of the execution of the long loop. Even the browser tab cannot be closed during the execution of the loop, at least not in Chrome.
 
+würde alles für 5 Sekunden normal weiterlaufen. Wenn allerdings die Funktion, die als Parameter von setTimeout definiert wurde, ausgführt wird, bleibt der Browser für die Ausführungdauer der while-Schleife hängen. Man kann nicht einmal das Browsertab während der Schleifenausführung schließen, zumindest nicht in Chrome.
+
 > For the browser to remain responsive, i.e., to be able to continuously react to user operations with sufficient speed, the code logic needs to be such that no single computation can take too long.
+
+Damit der Browser weiter ansprechbar bleibt, um beispielsweise dauerhaft auf Benutzeroperationen mit ausreichender Geschwindigkeit zu antworden, muss der Code so logisch sein, dass keine einzelne Berechnung zu lang dauert.
 
 > There is a host of additional material on the subject to be found on the internet. One particularly clear presentation of the topic is the keynote by Philip Roberts called What the heck is the event loop anyway?
 
+Zu diesem Thema  gibt es zuhauf weiterführendes Material im Internet. Eine besonders klare Präsentation dieses Themas findet ihr in der Keynote-Rede von Philip Roberts "What the heck is the event loop anyway?".
+
 > In today's browsers, it is possible to run parallelized code with the help of so-called web workers. The event loop of an individual browser window is, however, still only handled by a single thread.
+
+Mit den heutigen Browsers ist es möglich, Code mithilfe von sogenannten Web Workers parallel auszuführen. Die Ereignisschleife eines individuellen Browserfensters wird allerdings immer noch von einem einzelnen Thread gehändelt.
 
 ### npm
 
